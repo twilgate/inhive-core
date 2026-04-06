@@ -1,10 +1,10 @@
 -s dir
---name hiddify-core
+--name inhive-core
 --category net
 --license GPL-3.0-or-later
 --description "The universal proxy platform."
---url "https://hiddify.com/"
---maintainer "hiddify <wrt@hiddify.com>"
+--url "https://inhive.ru/"
+--maintainer "hiddify <wrt@inhive.ru>"
 --no-deb-generate-changes
 
 --config-files /etc/config/hiddify
@@ -24,4 +24,4 @@ release/config/openwrt.conf=/etc/config/hiddify
 release/config/openwrt.init=/etc/init.d/hiddify
 release/config/openwrt.keep=/lib/upgrade/keep.d/hiddify 
 
-LICENSE.md=/usr/share/licenses/hiddify-core/LICENSE.md
+LICENSE.md=/usr/share/licenses/inhive-core/LICENSE.md

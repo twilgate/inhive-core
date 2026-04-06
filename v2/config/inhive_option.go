@@ -10,7 +10,7 @@ import (
 	dns "github.com/sagernet/sing-dns"
 )
 
-type HiddifyOptions struct {
+type InhiveOptions struct {
 	EnableFullConfig        bool   `json:"enable-full-config,omitempty" overridable:"true"`
 	LogLevel                string `json:"log-level,omitempty"`
 	LogFile                 string `json:"log-file,omitempty"`
@@ -105,8 +105,8 @@ type WarpOptions struct {
 	Account            WarpAccount
 }
 
-func DefaultHiddifyOptions() *HiddifyOptions {
-	return &HiddifyOptions{
+func DefaultInhiveOptions() *InhiveOptions {
+	return &InhiveOptions{
 		EnableNTP: true,
 		DNSOptions: DNSOptions{
 			RemoteDnsAddress:        "1.1.1.1",
@@ -264,13 +264,13 @@ func parseUint(value interface{}) (uint64, error) {
 	return 0, fmt.Errorf("invalid uint value")
 }
 
-func GetOverridableHiddifyOptions(overrides map[string][]string) *HiddifyOptions {
-	overrideHiddify := HiddifyOptions{}
+func GetOverridableInhiveOptions(overrides map[string][]string) *InhiveOptions {
+	overrideHiddify := InhiveOptions{}
 
 	// Convert flat overrides to nested structure
 	nestedOverrides := convertFlatToNested(overrides)
 
-	// Use reflection to iterate over the fields of HiddifyOptions
+	// Use reflection to iterate over the fields of InhiveOptions
 	v := reflect.ValueOf(&overrideHiddify).Elem()
 	t := reflect.TypeOf(overrideHiddify)
 

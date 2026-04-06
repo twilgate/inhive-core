@@ -3,8 +3,8 @@
 USE_PROCD=1
 START=99
 
-NAME="hiddify"
-PROG="/usr/bin/hiddify-cli"
+NAME="inhive"
+PROG="/usr/bin/inhive-cli"
  
  
 start_service() {

@@ -145,13 +145,13 @@ Other
 - Improve dns. [hiddify]
 - Add new regex dns resolver, better dns routing. [hiddify]
 - Add new regex dns resolver, better dns routing. [hiddify]
-- Update warp.go. [Hiddify]
-- Fix warp. [Hiddify]
+- Update warp.go. [InHive]
+- Fix warp. [InHive]
 - Improve urltest fix: warp  bug. [hiddify]
 - Update. [hiddify]
 - Update linux build. [hiddify]
 - Fix allow insecure. [hiddify]
-- Merge pull request #101 from q4a/dev. [Hiddify]
+- Merge pull request #101 from q4a/dev. [InHive]
 
   add CI for arm64 Linux build
 - Add CI for arm64 Linux build. [Aleksey Komarov]
@@ -286,10 +286,10 @@ v3.1.3 (2024-09-29)
 v3.1.2 (2024-09-29)
 -------------------
 - Release: version 3.1.2. [hiddify]
-- Update README.md. [Hiddify]
-- Update README.md. [Hiddify]
-- Update docker-compose.yml. [Hiddify]
-- Update README.md. [Hiddify]
+- Update README.md. [InHive]
+- Update README.md. [InHive]
+- Update docker-compose.yml. [InHive]
+- Update README.md. [InHive]
 - Update WRT package HASH. [hiddify-com]
 
 
@@ -302,7 +302,7 @@ Fix
 
 Other
 ~~~~~
-- Release: version 3.1.1. [Hiddify]
+- Release: version 3.1.1. [InHive]
 - Update WRT package HASH. [hiddify-com]
 
 
@@ -315,18 +315,18 @@ Fix
 
 Other
 ~~~~~
-- Release: version 3.1.0. [Hiddify]
+- Release: version 3.1.0. [InHive]
 - Update WRT package HASH. [hiddify-com]
-- Release: version 3.1.0. [Hiddify]
-- Release: version 3.1.0. [Hiddify]
-- Release: version 3.1.0. [Hiddify]
-- Release: version 3.1.0. [Hiddify]
-- Release: version 3.1.0. [Hiddify]
-- Release: version 3.1.0. [Hiddify]
-- Release: version 3.1.0. [Hiddify]
+- Release: version 3.1.0. [InHive]
+- Release: version 3.1.0. [InHive]
+- Release: version 3.1.0. [InHive]
+- Release: version 3.1.0. [InHive]
+- Release: version 3.1.0. [InHive]
+- Release: version 3.1.0. [InHive]
+- Release: version 3.1.0. [InHive]
 - Auto update wrt package on each release. [hiddify]
 - Add template extension and demo extension. [hiddify]
-- Update README.md. [Hiddify]
+- Update README.md. [InHive]
 
 
 v3.0.1 (2024-09-29)
@@ -340,18 +340,18 @@ New
 
 Fix
 ~~~
-- Docker. [Hiddify]
+- Docker. [InHive]
 - Windows build. [hiddify]
 - Docker image. [hiddify]
 - Docker image. [hiddify]
 
 Other
 ~~~~~
-- Release: version 3.0.1. [Hiddify]
-- Release: version 3.1.0. [Hiddify]
+- Release: version 3.0.1. [InHive]
+- Release: version 3.1.0. [InHive]
 - Fix docker file. [hiddify]
-- Release: version 3.0.1. [Hiddify]
-- Merge pull request #69 from izhdahawrt/main. [Hiddify]
+- Release: version 3.0.1. [InHive]
+- Merge pull request #69 from izhdahawrt/main. [InHive]
 
   wrt: update core to 3.0.0
 - Wrt: update core to 3.0.0. [Kaveh Dadgar]
@@ -370,7 +370,7 @@ New
 Changes
 ~~~~~~~
 - Framgnet option. [hiddify]
-- HiddifyOptions. [x]
+- InHiveOptions. [x]
 
 Fix
 ~~~
@@ -396,8 +396,8 @@ Fix
 
 Other
 ~~~~~
-- Release: version 3.0.0. [Hiddify]
-- Merge pull request #66 from izhdahawrt/izhdahawrt-wrtfocus. [Hiddify]
+- Release: version 3.0.0. [InHive]
+- Merge pull request #66 from izhdahawrt/izhdahawrt-wrtfocus. [InHive]
 - Add: openwrt import webui assets 2.3.0. [Kaveh Dadgar]
 
   import webui assets from latest 2.3.0 release packages for OpenWrt releases as well.
@@ -406,26 +406,26 @@ Other
   updated to latest version.
   web-ui assets have been imported from release files.
   general polishing according to newly introduced changes.
-  commands and config files have been simplified for easier interaction. ( service hiddify restart. instead of typing down service hiddify-core restart.
-- Delete: openwrt old hiddify-core.init. [Kaveh Dadgar]
+  commands and config files have been simplified for easier interaction. ( service hiddify restart. instead of typing down service inhive-core restart.
+- Delete: openwrt old inhive-core.init. [Kaveh Dadgar]
 
   was not working
 - Add: Openwrt new hiddify.init. [Kaveh Dadgar]
-- Delete: old hiddify-core.conf. [Kaveh Dadgar]
+- Delete: old inhive-core.conf. [Kaveh Dadgar]
 
-  remove old hiddify-core.conf for the sake of new hiddify.conf
+  remove old inhive-core.conf for the sake of new hiddify.conf
 - Add: new openwrt configuration. [Kaveh Dadgar]
 
-  shortened hiddify-core to hiddify for simplicity.
+  shortened inhive-core to hiddify for simplicity.
   removed options workingdir and user as it is not being used at the
   moment also we need root privilege for tun.
   added new option "config" referring to config file or url after -c switch.
   introduced option "appconfig" referring to app config file or url
    after -d switch.
 
-  hiddify-cli run -c <config file or sublink> -d <HiddifyApp config file
+  hiddify-cli run -c <config file or sublink> -d <InHiveApp config file
   or URL>
-  https://hiddify.com/app/HiddifyCli-guide/#
+  https://inhive.ru/app/InHiveCli-guide/#
 - Add: new geo format config. [Kaveh Dadgar]
 - Remove:old geodb format from config. [Kaveh Dadgar]
 - If an outbound has detour, use dns over proxy. [hiddify]
@@ -441,28 +441,28 @@ v2.3.0 (2024-09-02)
 
 New
 ~~~
-- Add option to use xray core when possible. [Hiddify]
+- Add option to use xray core when possible. [InHive]
 
 Fix
 ~~~
-- Vmess xray links. [Hiddify]
-- Parse config issues. [Hiddify]
-- Xray core start multiinstance, add use xray core only. [Hiddify]
+- Vmess xray links. [InHive]
+- Parse config issues. [InHive]
+- Xray core start multiinstance, add use xray core only. [InHive]
 
 Other
 ~~~~~
-- Release: version 2.3.0. [Hiddify]
-- Update to singbox 1.9.4. [Hiddify]
-- Merge pull request #60 from alirezarm78/main. [Hiddify]
+- Release: version 2.3.0. [InHive]
+- Update to singbox 1.9.4. [InHive]
+- Merge pull request #60 from alirezarm78/main. [InHive]
 
   Fix docker network mode and volume mounts
 - Change docker network mode to host. [Alireza Rahmani]
 - Fix bugs for docker. [Alireza Rahmani]
-- Update LICENSE.md. [Hiddify]
-- Avoid self loop route in android in tun. [Hiddify]
-- Test. [Hiddify]
-- Some changes for xray routing mark. [Hiddify]
-- Add intrrupt connection. [Hiddify]
+- Update LICENSE.md. [InHive]
+- Avoid self loop route in android in tun. [InHive]
+- Test. [InHive]
+- Some changes for xray routing mark. [InHive]
+- Add intrrupt connection. [InHive]
 
 
 v2.1.5 (2024-08-05)
@@ -470,17 +470,17 @@ v2.1.5 (2024-08-05)
 
 Fix
 ~~~
-- Warp random domains. [Hiddify]
-- Tunnel service. [Hiddify]
-- Bug? [Hiddify]
+- Warp random domains. [InHive]
+- Tunnel service. [InHive]
+- Bug? [InHive]
 
 Other
 ~~~~~
-- Release: version 2.1.5. [Hiddify]
-- Revert changes. [Hiddify]
-- Test. [Hiddify]
-- Simple refactor config.go. [Hiddify]
-- Added default region. [Hiddify]
+- Release: version 2.1.5. [InHive]
+- Revert changes. [InHive]
+- Test. [InHive]
+- Simple refactor config.go. [InHive]
+- Added default region. [InHive]
 
 
 v2.1.4 (2024-08-04)
@@ -488,11 +488,11 @@ v2.1.4 (2024-08-04)
 
 New
 ~~~
-- Ignore utls if no fp is in the url, fix instance not stoped. [Hiddify]
+- Ignore utls if no fp is in the url, fix instance not stoped. [InHive]
 
 Other
 ~~~~~
-- Release: version 2.1.4. [Hiddify]
+- Release: version 2.1.4. [InHive]
 
 
 v2.1.3 (2024-08-04)
@@ -500,23 +500,23 @@ v2.1.3 (2024-08-04)
 
 Fix
 ~~~
-- Reenable indeependent nat for vpn server. [Hiddify]
-- When no dns found for skydns. [Hiddify]
+- Reenable indeependent nat for vpn server. [InHive]
+- When no dns found for skydns. [InHive]
 
 Other
 ~~~~~
-- Release: version 2.1.3. [Hiddify]
+- Release: version 2.1.3. [InHive]
 
 
 v2.1.2 (2024-08-02)
 -------------------
-- Release: version 2.1.2. [Hiddify]
-- Add domains with .ru .ir .cn .tr as ignore list. [Hiddify]
+- Release: version 2.1.2. [InHive]
+- Add domains with .ru .ir .cn .tr as ignore list. [InHive]
 
 
 v2.1.1 (2024-08-02)
 -------------------
-- Release: version 2.1.1. [Hiddify]
+- Release: version 2.1.1. [InHive]
 
 
 v2.1.0 (2024-08-02)
@@ -524,21 +524,21 @@ v2.1.0 (2024-08-02)
 
 Fix
 ~~~
-- Bugs and improvement. [Hiddify]
-- Urltest bugs. [Hiddify]
+- Bugs and improvement. [InHive]
+- Urltest bugs. [InHive]
 
 Other
 ~~~~~
-- Release: version 2.1.0. [Hiddify]
+- Release: version 2.1.0. [InHive]
 - Change outbound on the fly only on force test or when no outbound
-  avilble. [Hiddify]
-- Better tunnel management and cache dns of url test. [Hiddify]
-- Add mark to xray. [Hiddify]
+  avilble. [InHive]
+- Better tunnel management and cache dns of url test. [InHive]
+- Add mark to xray. [InHive]
 
 
 v2.0.4 (2024-07-31)
 -------------------
-- Release: version 2.0.4. [Hiddify]
+- Release: version 2.0.4. [InHive]
 
 
 v2.0.3 (2024-07-30)
@@ -546,15 +546,15 @@ v2.0.3 (2024-07-30)
 
 New
 ~~~
-- Add fragment to xray if not available. [Hiddify]
+- Add fragment to xray if not available. [InHive]
 
 Fix
 ~~~
-- Xray fragment bug, add loglevel to xray configs. [Hiddify]
+- Xray fragment bug, add loglevel to xray configs. [InHive]
 
 Other
 ~~~~~
-- Release: version 2.0.3. [Hiddify]
+- Release: version 2.0.3. [InHive]
 
 
 v2.0.2 (2024-07-30)
@@ -562,25 +562,25 @@ v2.0.2 (2024-07-30)
 
 Fix
 ~~~
-- Config export issue. [Hiddify]
+- Config export issue. [InHive]
 
 Other
 ~~~~~
-- Release: version 2.0.2. [Hiddify]
-- Always show fragment option. [Hiddify]
+- Release: version 2.0.2. [InHive]
+- Always show fragment option. [InHive]
 
 
 v2.0.1 (2024-07-29)
 -------------------
-- Release: version 2.0.1. [Hiddify]
-- Update to xray core 1.8.23. [Hiddify]
+- Release: version 2.0.1. [InHive]
+- Update to xray core 1.8.23. [InHive]
 
 
 v2.0.0 (2024-07-28)
 -------------------
-- Release: version 2.0.0. [Hiddify]
-- Add xray fragment support. [Hiddify]
-- Fix warp over proxy bug. [Hiddify]
+- Release: version 2.0.0. [InHive]
+- Add xray fragment support. [InHive]
+- Fix warp over proxy bug. [InHive]
 
 
 v1.9.0 (2024-07-25)
@@ -588,11 +588,11 @@ v1.9.0 (2024-07-25)
 
 New
 ~~~
-- Add xray support. [Hiddify]
+- Add xray support. [InHive]
 
 Other
 ~~~~~
-- Release: version 1.9.0. [Hiddify]
+- Release: version 1.9.0. [InHive]
 
 
 v1.7.0 (2024-07-17)
@@ -600,18 +600,18 @@ v1.7.0 (2024-07-17)
 
 New
 ~~~
-- Remove for apple. [Hiddify]
+- Remove for apple. [InHive]
 
 Other
 ~~~~~
-- Release: version 1.7.0. [Hiddify]
-- Release: version 1.7.0. [Hiddify]
+- Release: version 1.7.0. [InHive]
+- Release: version 1.7.0. [InHive]
 
 
 v1.6.3 (2024-07-14)
 -------------------
-- Release: version 1.6.3. [Hiddify]
-- Add socks, phttp and phttps support. [Hiddify]
+- Release: version 1.6.3. [InHive]
+- Add socks, phttp and phttps support. [InHive]
 
 
 v1.6.1 (2024-07-12)
@@ -619,11 +619,11 @@ v1.6.1 (2024-07-12)
 
 Changes
 ~~~~~~~
-- Local sites now use direct dns server for routing. [Hiddify]
+- Local sites now use direct dns server for routing. [InHive]
 
 Other
 ~~~~~
-- Release: version 1.6.1. [Hiddify]
+- Release: version 1.6.1. [InHive]
 
 
 v1.6.0 (2024-07-12)
@@ -631,12 +631,12 @@ v1.6.0 (2024-07-12)
 
 New
 ~~~
-- Add knocker warp noise mode. [Hiddify]
+- Add knocker warp noise mode. [InHive]
 
 Other
 ~~~~~
-- Release: version 1.6.0. [Hiddify]
-- Add socks, http, https support. [Hiddify]
+- Release: version 1.6.0. [InHive]
+- Add socks, http, https support. [InHive]
 
 
 v1.5.1 (2024-07-09)
@@ -644,20 +644,20 @@ v1.5.1 (2024-07-09)
 
 Changes
 ~~~~~~~
-- Move geoip into our github repository for more reliablity. [Hiddify]
+- Move geoip into our github repository for more reliablity. [InHive]
 
 Other
 ~~~~~
-- Release: version 1.5.1. [Hiddify]
+- Release: version 1.5.1. [InHive]
 
 
 v1.5.0 (2024-07-06)
 -------------------
-- Release: version 1.5.0. [Hiddify]
-- Update to singbox 1.9.3. [Hiddify]
-- More ads website to block. [Hiddify]
-- Update  macos 11 to macos12. [Hiddify]
-- Add basic routing and block ads, remove old geo assets. [Hiddify]
+- Release: version 1.5.0. [InHive]
+- Update to singbox 1.9.3. [InHive]
+- More ads website to block. [InHive]
+- Update  macos 11 to macos12. [InHive]
+- Add basic routing and block ads, remove old geo assets. [InHive]
 
 
 v1.3.6 (2024-06-01)
@@ -665,11 +665,11 @@ v1.3.6 (2024-06-01)
 
 Fix
 ~~~
-- Bug. [Hiddify]
+- Bug. [InHive]
 
 Other
 ~~~~~
-- Release: version 1.3.6. [Hiddify]
+- Release: version 1.3.6. [InHive]
 
 
 v1.3.4 (2024-06-01)
@@ -677,23 +677,23 @@ v1.3.4 (2024-06-01)
 
 Fix
 ~~~
-- Crash. [Hiddify]
+- Crash. [InHive]
 
 Other
 ~~~~~
-- Release: version 1.3.4. [Hiddify]
-- Add default tag selector. [Hiddify]
+- Release: version 1.3.4. [InHive]
+- Add default tag selector. [InHive]
 
 
 v1.3.0 (2024-05-31)
 -------------------
-- Release: version 1.3.0. [Hiddify]
-- Use fix ip for wow. [Hiddify]
-- Add warp in warp & reserved & more more. [Hiddify]
-- Add inbound option and custom flags. [Hiddify]
-- Update to singbox 1.9.0 and update to warp-plus. [Hiddify]
-- Allow full config. [Hiddify]
-- Merge pull request #32 from real-alchemist/main. [Hiddify]
+- Release: version 1.3.0. [InHive]
+- Use fix ip for wow. [InHive]
+- Add warp in warp & reserved & more more. [InHive]
+- Add inbound option and custom flags. [InHive]
+- Update to singbox 1.9.0 and update to warp-plus. [InHive]
+- Allow full config. [InHive]
+- Merge pull request #32 from real-alchemist/main. [InHive]
 
   Fix docker
 - Update Docker/hiddify.sh. [real-alchemist]
@@ -702,9 +702,9 @@ v1.3.0 (2024-05-31)
 
 v1.2.1 (2024-03-24)
 -------------------
-- Release: version 1.2.1. [Hiddify]
-- Change clash-api-secret to web-secret. [Hiddify]
-- Add default config for wrt. [Hiddify]
+- Release: version 1.2.1. [InHive]
+- Change clash-api-secret to web-secret. [InHive]
+- Add default config for wrt. [InHive]
 
 
 v1.2.0 (2024-03-22)
@@ -722,8 +722,8 @@ Other
 ~~~~~
 - Release: version 1.2.0. [hiddify]
 - Remove debug symbols for cli. [hiddify]
-- Change name of core to hiddify-core. [hiddify]
-- Rename name to hiddify core. [Hiddify]
+- Change name of core to inhive-core. [hiddify]
+- Rename name to hiddify core. [InHive]
 
 
 v1.1.0 (2024-03-19)
@@ -731,13 +731,13 @@ v1.1.0 (2024-03-19)
 
 New
 ~~~
-- Add tproxy and fix crash on invalid fragment config. [Hiddify]
+- Add tproxy and fix crash on invalid fragment config. [InHive]
 
 Other
 ~~~~~
-- Release: version 1.1.0. [Hiddify]
-- Release: version 1.1.0. [Hiddify]
-- Use dynamic idle timeout. [Hiddify]
+- Release: version 1.1.0. [InHive]
+- Release: version 1.1.0. [InHive]
+- Use dynamic idle timeout. [InHive]
 
 
 v1.0.1 (2024-03-18)
@@ -745,12 +745,12 @@ v1.0.1 (2024-03-18)
 
 New
 ~~~
-- Add random secret if not provided. [Hiddify]
+- Add random secret if not provided. [InHive]
 
 Other
 ~~~~~
-- Release: version 1.0.1. [Hiddify]
-- Fix; standalone issue and add secret. [Hiddify]
+- Release: version 1.0.1. [InHive]
+- Fix; standalone issue and add secret. [InHive]
 
 
 v1.0.0 (2024-03-18)
@@ -758,11 +758,11 @@ v1.0.0 (2024-03-18)
 
 Fix
 ~~~
-- Issue with singbox 1.8.9. [Hiddify]
+- Issue with singbox 1.8.9. [InHive]
 
 Other
 ~~~~~
-- Release: version 1.0.0. [Hiddify]
+- Release: version 1.0.0. [InHive]
 
 
 v0.18.0 (2024-03-17)
@@ -770,29 +770,29 @@ v0.18.0 (2024-03-17)
 
 New
 ~~~
-- Add docker image to repository. [Hiddify]
+- Add docker image to repository. [InHive]
 
 Fix
 ~~~
-- Disable grpc core. [Hiddify]
-- Tunnel service issue. [Hiddify]
+- Disable grpc core. [InHive]
+- Tunnel service issue. [InHive]
 
 Other
 ~~~~~
-- Release: version 0.18.0. [Hiddify]
-- Ignore alpn in websocket. [Hiddify]
-- Update to singbox v1.8.9. [Hiddify]
-- Better vpn service handler. [Hiddify]
-- Lower response time. [Hiddify]
-- Refactor global and admin service to use grpc. [Hiddify]
-- Big refactor. make compatible v2 and v1 interface. [Hiddify]
-- Release: version 0.17.9.dev. [Hiddify]
-- Merge branch 'main' of hiddify-github:hiddify/hiddify-next-core.
-  [Hiddify]
+- Release: version 0.18.0. [InHive]
+- Ignore alpn in websocket. [InHive]
+- Update to singbox v1.8.9. [InHive]
+- Better vpn service handler. [InHive]
+- Lower response time. [InHive]
+- Refactor global and admin service to use grpc. [InHive]
+- Big refactor. make compatible v2 and v1 interface. [InHive]
+- Release: version 0.17.9.dev. [InHive]
+- Merge branch 'main' of hiddify-github:hiddify/inhive-core.
+  [InHive]
 - Add core grpc server. [problematicconsumer]
-- Refactor docker. [Hiddify]
-- Refactor docker. [Hiddify]
-- Merge pull request #30 from real-alchemist/main. [Hiddify]
+- Refactor docker. [InHive]
+- Refactor docker. [InHive]
+- Merge pull request #30 from real-alchemist/main. [InHive]
 
   add dockerfile
 - Add dockerfile. [real-alchemist]
@@ -803,11 +803,11 @@ v0.17.8 (2024-03-10)
 
 Fix
 ~~~
-- Hysteria link. [Hiddify]
+- Hysteria link. [InHive]
 
 Other
 ~~~~~
-- Release: version 0.17.8. [Hiddify]
+- Release: version 0.17.8. [InHive]
 
 
 v0.17.7 (2024-03-10)
@@ -815,13 +815,13 @@ v0.17.7 (2024-03-10)
 
 Fix
 ~~~
-- Typo. [Hiddify]
+- Typo. [InHive]
 
 Other
 ~~~~~
-- Release: version 0.17.7. [Hiddify]
-- Allow webui only if AllowConnectionFromLAN. [Hiddify]
-- Release: version 0.17.7. [Hiddify]
+- Release: version 0.17.7. [InHive]
+- Allow webui only if AllowConnectionFromLAN. [InHive]
+- Release: version 0.17.7. [InHive]
 
 
 v0.17.6 (2024-03-10)
@@ -829,21 +829,21 @@ v0.17.6 (2024-03-10)
 
 New
 ~~~
-- Add useragent. [Hiddify]
+- Add useragent. [InHive]
 
 Fix
 ~~~
-- Warp setting. [Hiddify]
+- Warp setting. [InHive]
 
 Other
 ~~~~~
-- Release: version 0.17.6. [Hiddify]
+- Release: version 0.17.6. [InHive]
 
 
 v0.17.4 (2024-03-10)
 --------------------
-- Release: version 0.17.4. [Hiddify]
-- Update ray2sing. [Hiddify]
+- Release: version 0.17.4. [InHive]
+- Update ray2sing. [InHive]
 
 
 v0.17.1 (2024-03-10)
@@ -851,12 +851,12 @@ v0.17.1 (2024-03-10)
 
 Fix
 ~~~
-- Libcore linux amd64. [Hiddify]
-- Linux lib path. [Hiddify]
+- Libcore linux amd64. [InHive]
+- Linux lib path. [InHive]
 
 Other
 ~~~~~
-- Release: version 0.17.1. [Hiddify]
+- Release: version 0.17.1. [InHive]
 
 
 v0.17.0 (2024-03-09)
@@ -864,53 +864,53 @@ v0.17.0 (2024-03-09)
 
 New
 ~~~
-- Add all linux support. [Hiddify]
-- Add cli interface with basic webui. [Hiddify]
-- Add hiddifyrpc. [Hiddify]
+- Add all linux support. [InHive]
+- Add cli interface with basic webui. [InHive]
+- Add hiddifyrpc. [InHive]
 
 Fix
 ~~~
-- Path. [Hiddify]
-- Path issue in download and upload artificat. [Hiddify]
-- Conflict in upload artificat. [Hiddify]
-- Duplicate file name. [Hiddify]
-- Bugs and issues. [Hiddify]
-- Build issue. [Hiddify]
-- Build issue. [Hiddify]
+- Path. [InHive]
+- Path issue in download and upload artificat. [InHive]
+- Conflict in upload artificat. [InHive]
+- Duplicate file name. [InHive]
+- Bugs and issues. [InHive]
+- Build issue. [InHive]
+- Build issue. [InHive]
 
 Other
 ~~~~~
-- Release: version 0.17.0. [Hiddify]
-- Release: version 0.17.0. [Hiddify]
-- Release: version 0.17.0. [Hiddify]
-- Disable cgo for cli only build. [Hiddify]
-- Make release name uniform, use no so for cli only builds. [Hiddify]
-- Release: version 0.17.0. [Hiddify]
-- Update to singbox 1.8.8. [Hiddify]
-- Merge. [Hiddify]
+- Release: version 0.17.0. [InHive]
+- Release: version 0.17.0. [InHive]
+- Release: version 0.17.0. [InHive]
+- Disable cgo for cli only build. [InHive]
+- Make release name uniform, use no so for cli only builds. [InHive]
+- Release: version 0.17.0. [InHive]
+- Update to singbox 1.8.8. [InHive]
+- Merge. [InHive]
 - Refactor options. [problematicconsumer]
 - Fix json keys. [problematicconsumer]
-- Add dynamic port. [Hiddify]
-- Update to singbox 1.8.7. [Hiddify]
+- Add dynamic port. [InHive]
+- Update to singbox 1.8.7. [InHive]
 
 
 v0.16.8 (2024-02-27)
 --------------------
-- Release: version 0.16.8. [Hiddify]
+- Release: version 0.16.8. [InHive]
 - Enable windows service again due to resolution of False Positive in
-  windows defender. [Hiddify]
+  windows defender. [InHive]
 
 
 v0.16.7 (2024-02-24)
 --------------------
-- Release: version 0.16.7. [Hiddify]
-- Disable windows service due to False Positive in Anti virus. [Hiddify]
+- Release: version 0.16.7. [InHive]
+- Disable windows service due to False Positive in Anti virus. [InHive]
 
 
 v0.16.4 (2024-02-22)
 --------------------
-- Release: version 0.16.4. [Hiddify]
-- Make up and down wireguard only with real event. [Hiddify]
+- Release: version 0.16.4. [InHive]
+- Make up and down wireguard only with real event. [InHive]
 
 
 v0.16.1 (2024-02-22)
@@ -919,30 +919,30 @@ v0.16.1 (2024-02-22)
 New
 ~~~
 - Add better support for network change! now warp will be reconnected
-  after network change. [Hiddify]
-- Add early support for. [Hiddify]
+  after network change. [InHive]
+- Add early support for. [InHive]
 
 Changes
 ~~~~~~~
-- Add more logs, add ip selector. [Hiddify]
+- Add more logs, add ip selector. [InHive]
 
 Fix
 ~~~
-- Final resolution to network change issue. [Hiddify]
-- Change network issue. [Hiddify]
-- Warp configs, add warp delay, fix network switch. [Hiddify]
-- Bug in gomobile. [Hiddify]
+- Final resolution to network change issue. [InHive]
+- Change network issue. [InHive]
+- Warp configs, add warp delay, fix network switch. [InHive]
+- Bug in gomobile. [InHive]
 
 Other
 ~~~~~
-- Release: version 0.16.1. [Hiddify]
-- Fix netswitch. [Hiddify]
-- Merge branch 'main' of hiddify-github:hiddify/hiddify-next-core.
-  [Hiddify]
+- Release: version 0.16.1. [InHive]
+- Fix netswitch. [InHive]
+- Merge branch 'main' of hiddify-github:hiddify/inhive-core.
+  [InHive]
 - Change warp generation. [problematicconsumer]
-- Add more logs. [Hiddify]
-- Add more logs. [Hiddify]
-- Add more logs. [Hiddify]
+- Add more logs. [InHive]
+- Add more logs. [InHive]
+- Add more logs. [InHive]
 
 
 v0.16.0 (2024-02-18)
@@ -957,38 +957,38 @@ v0.15.15 (2024-02-16)
 
 Changes
 ~~~~~~~
-- Add some logs for interface change listener. [Hiddify]
+- Add some logs for interface change listener. [InHive]
 
 Fix
 ~~~
-- Bypass lan. [Hiddify]
+- Bypass lan. [InHive]
 
 Other
 ~~~~~
-- Release: version 0.15.15. [Hiddify]
-- Add more logs. [Hiddify]
-- Merge branch 'main' of hiddify-github:hiddify/hiddify-next-core.
-  [Hiddify]
+- Release: version 0.15.15. [InHive]
+- Add more logs. [InHive]
+- Merge branch 'main' of hiddify-github:hiddify/inhive-core.
+  [InHive]
 - Change interval type. [problematicconsumer]
 
 
 v0.15.12 (2024-02-15)
 ---------------------
-- Release: version 0.15.12. [Hiddify]
-- Release: version 0.5.12. [Hiddify]
-- Fix config orders. [Hiddify]
+- Release: version 0.15.12. [InHive]
+- Release: version 0.5.12. [InHive]
+- Fix config orders. [InHive]
 
 
 v0.15.11 (2024-02-15)
 ---------------------
-- Release: version 0.15.11. [Hiddify]
+- Release: version 0.15.11. [InHive]
 
 
 v0.15.10 (2024-02-15)
 ---------------------
-- Release: version 0.15.10. [Hiddify]
+- Release: version 0.15.10. [InHive]
 - Add support for regenrate config, make parallel call for warp config.
-  [Hiddify]
+  [InHive]
 
 
 v0.15.0 (2024-02-14)
@@ -996,35 +996,35 @@ v0.15.0 (2024-02-14)
 
 New
 ~~~
-- Filter tags includes §hide§ for example for detour. [Hiddify]
+- Filter tags includes §hide§ for example for detour. [InHive]
 - Add vpn service mode as seperated option, fix crash of wireguard in
-  wireguard and more stable wireguard. [Hiddify]
-- Add fallback for commander if not working as a service. [Hiddify]
-- Configurable warp noise parameters, fix stopping issues. [Hiddify]
+  wireguard and more stable wireguard. [InHive]
+- Add fallback for commander if not working as a service. [InHive]
+- Configurable warp noise parameters, fix stopping issues. [InHive]
 - Retest proxies on 10 Failure (may cause too much battery usage)
-  [Hiddify]
-- Add more checks in the input json. [Hiddify]
-- Add delay 65535 when node is unavilable. [Hiddify]
+  [InHive]
+- Add more checks in the input json. [InHive]
+- Add delay 65535 when node is unavilable. [InHive]
 
 Fix
 ~~~
-- Bug in linux. [Hiddify]
-- MTU. [Hiddify]
-- Fragment. [Hiddify]
-- Multi receiver of command client issue. [Hiddify]
-- Bug and redundant chacks. [Hiddify]
-- Changedir, new: add support of partial singbox configs. [Hiddify]
+- Bug in linux. [InHive]
+- MTU. [InHive]
+- Fragment. [InHive]
+- Multi receiver of command client issue. [InHive]
+- Bug and redundant chacks. [InHive]
+- Changedir, new: add support of partial singbox configs. [InHive]
 
 Other
 ~~~~~
-- Release: version 0.15.0. [Hiddify]
+- Release: version 0.15.0. [InHive]
 - Add auto recovery, send group with their active profiles, make warp
   more robust thanks to uoosef, support multiple receiver for command
-  group. [Hiddify]
-- Use random warp ip if it can not be resolved. [Hiddify]
-- Do prestart dns checkings 10 times faster in parallel. [Hiddify]
-- Update go.sum. [Hiddify]
-- Create CONTRIBUTING.md. [Hiddify]
+  group. [InHive]
+- Use random warp ip if it can not be resolved. [InHive]
+- Do prestart dns checkings 10 times faster in parallel. [InHive]
+- Update go.sum. [InHive]
+- Create CONTRIBUTING.md. [InHive]
 
 
 v0.14.2 (2024-02-09)
@@ -1032,11 +1032,11 @@ v0.14.2 (2024-02-09)
 
 Fix
 ~~~
-- Bug. [Hiddify]
+- Bug. [InHive]
 
 Other
 ~~~~~
-- Release: version 0.14.2. [Hiddify]
+- Release: version 0.14.2. [InHive]
 
 
 v0.14.1 (2024-02-09)
@@ -1044,12 +1044,12 @@ v0.14.1 (2024-02-09)
 
 Fix
 ~~~
-- Appimage admin service bug. [Hiddify-com]
-- Linux make HiddifyService bug. [Hiddify]
+- Appimage admin service bug. [InHive-com]
+- Linux make InHiveService bug. [InHive]
 
 Other
 ~~~~~
-- Release: version 0.14.1. [Hiddify]
+- Release: version 0.14.1. [InHive]
 
 
 v0.14.0 (2024-02-08)
@@ -1057,88 +1057,88 @@ v0.14.0 (2024-02-08)
 
 New
 ~~~
-- Add CommandGroupInfoOnly. [Hiddify]
-- Move running admin service to core. [Hiddify]
-- Add cmd.sh to use a same tags with production. [Hiddify]
-- Make tunnel service working. [Hiddify]
-- Add chain support & fix warp bug. [Hiddify]
-- Add static ip resolver. [Hiddify]
-- Add default dns with fragment in doh. [Hiddify]
-- Add tunnel service. [Hiddify]
+- Add CommandGroupInfoOnly. [InHive]
+- Move running admin service to core. [InHive]
+- Add cmd.sh to use a same tags with production. [InHive]
+- Make tunnel service working. [InHive]
+- Add chain support & fix warp bug. [InHive]
+- Add static ip resolver. [InHive]
+- Add default dns with fragment in doh. [InHive]
+- Add tunnel service. [InHive]
 
 Changes
 ~~~~~~~
-- Change name of service to HiddifyService. [Hiddify]
-- Activate tunnel service only in windows and linux. [Hiddify]
-- Ubuntu image to 20.04 for better compatibility. [Hiddify]
-- Release format to hiddify-core-platfrom. [Hiddify]
+- Change name of service to InHiveService. [InHive]
+- Activate tunnel service only in windows and linux. [InHive]
+- Ubuntu image to 20.04 for better compatibility. [InHive]
+- Release format to inhive-core-platfrom. [InHive]
 
 Fix
 ~~~
 - Close box service in case of exception, use source is private and
-  disallow make in windows. [Hiddify]
-- Bug of group only info which only zero and 1 group exists. [Hiddify]
-- Update wireguard imports. [Hiddify]
-- Unexpected warp exit! [Hiddify]
-- Compile issue in linux. [Hiddify]
-- Bug in release due to libcore.dll path. [Hiddify]
-- Release bug. [Hiddify]
-- More release bug. [Hiddify]
-- Release bug. [Hiddify]
-- Release bug. [Hiddify]
-- Panic in singbox. [Hiddify]
-- Bug in padding. [Hiddify]
+  disallow make in windows. [InHive]
+- Bug of group only info which only zero and 1 group exists. [InHive]
+- Update wireguard imports. [InHive]
+- Unexpected warp exit! [InHive]
+- Compile issue in linux. [InHive]
+- Bug in release due to libcore.dll path. [InHive]
+- Release bug. [InHive]
+- More release bug. [InHive]
+- Release bug. [InHive]
+- Release bug. [InHive]
+- Panic in singbox. [InHive]
+- Bug in padding. [InHive]
 
 Other
 ~~~~~
-- Release: version 0.14.0. [Hiddify]
-- Remove dependency to psiphon which use go1.20. [Hiddify]
+- Release: version 0.14.0. [InHive]
+- Remove dependency to psiphon which use go1.20. [InHive]
 - Change to Stop State in case of an error occure. fix connection bug.
-  [Hiddify]
-- Merge pull request #19 from omid-the-great/main. [Hiddify]
+  [InHive]
+- Merge pull request #19 from omid-the-great/main. [InHive]
 
   Chnage repository language to golang
 - Improve: Undetectable dart api. [Omid The Great]
 - Add internal build cli. [problematicconsumer]
 - Change config options structure. [problematicconsumer]
 - Change config builder using constant tag names. [problematicconsumer]
-- Update sing. [Hiddify]
-- Merge. [Hiddify]
-- Merge. [Hiddify]
-- Merge pull request #17 from omid-the-great/main. [Hiddify]
+- Update sing. [InHive]
+- Merge. [InHive]
+- Merge. [InHive]
+- Merge pull request #17 from omid-the-great/main. [InHive]
 
   add web_service for tunnel start/stop
 - Add certification generator to cli. [Omid The Great]
 - . [Omid The Great]
-- Include tls fragment only to gRPC and WS. [Hiddify]
-- Remove extra settings that may create some issues. [Hiddify]
+- Include tls fragment only to gRPC and WS. [InHive]
+- Remove extra settings that may create some issues. [InHive]
 
 
 v0.13.1 (2024-01-26)
 --------------------
-- Release: version 0.13.1. [Hiddify]
-- Fix bug in: fragment. [Hiddify]
+- Release: version 0.13.1. [InHive]
+- Fix bug in: fragment. [InHive]
 
 
 v0.13.0 (2024-01-26)
 --------------------
-- Release: version 0.13.0. [Hiddify]
-- Update to singbox1.8.4, fix vless http crash. [Hiddify]
+- Release: version 0.13.0. [InHive]
+- Update to singbox1.8.4, fix vless http crash. [InHive]
 
 
 v0.12.8 (2024-01-26)
 --------------------
-- Release: version 0.12.8. [Hiddify]
+- Release: version 0.12.8. [InHive]
 
 
 v0.12.7 (2024-01-26)
 --------------------
-- Release: version 0.12.7. [Hiddify]
+- Release: version 0.12.7. [InHive]
 
 
 v0.12.6 (2024-01-26)
 --------------------
-- Release: version 0.12.6. [Hiddify]
+- Release: version 0.12.6. [InHive]
 
 
 v0.12.5 (2024-01-26)
@@ -1146,18 +1146,18 @@ v0.12.5 (2024-01-26)
 
 New
 ~~~
-- Add auto warp. [Hiddify]
-- Add auto warp option. [Hiddify]
+- Add auto warp. [InHive]
+- Add auto warp option. [InHive]
 
 Other
 ~~~~~
-- Release: version 0.12.5. [Hiddify]
+- Release: version 0.12.5. [InHive]
 
 
 v0.12.2 (2024-01-26)
 --------------------
-- Release: version 0.12.2. [Hiddify]
-- Temporary fix: @consumer need resolution. [Hiddify]
+- Release: version 0.12.2. [InHive]
+- Temporary fix: @consumer need resolution. [InHive]
 
 
 v0.12.1 (2024-01-25)
@@ -1165,39 +1165,39 @@ v0.12.1 (2024-01-25)
 
 New
 ~~~
-- Add warp option. [Hiddify]
-- Add warp config. [Hiddify]
-- Add tls tricks only to tls configs. [Hiddify]
+- Add warp option. [InHive]
+- Add warp config. [InHive]
+- Add tls tricks only to tls configs. [InHive]
 
 Fix
 ~~~
-- Bug. [Hiddify]
-- Bugs. [Hiddify]
-- Warp. [Hiddify]
+- Bug. [InHive]
+- Bugs. [InHive]
+- Warp. [InHive]
 
 Other
 ~~~~~
-- Release: version 0.12.1. [Hiddify]
-- Release: version 0.12.0. [Hiddify]
-- Speed up ping. [Hiddify]
-- Merge pull request #15 from 83hd4d/dev. [Hiddify]
+- Release: version 0.12.1. [InHive]
+- Release: version 0.12.0. [InHive]
+- Speed up ping. [InHive]
+- Merge pull request #15 from 83hd4d/dev. [InHive]
 
   Fix issues and Add features
-- Update outbound.go. [Hiddify]
+- Update outbound.go. [InHive]
 - Fix service.go to work with singbox 1.8.2 Drop deprecated feautre
   (Clash API: cache_file and store_selected) Add feature (Cache File:
   path) Add new idle_timeout field for URLTest outbound Refactor
   outbound.go Add feature to omit TLSTricks and Fragment on VLESS
   Reality configs. [83hd4d]
-- Update to singbox 1.8.2. [Hiddify]
-- Update to singbox 1.8.2. [Hiddify]
+- Update to singbox 1.8.2. [InHive]
+- Update to singbox 1.8.2. [InHive]
 
 
 v0.14.20 (2024-01-21)
 ---------------------
-- Release: version 0.14.20. [Hiddify]
-- Update feature_request.yaml. [Hiddify]
-- Update bug_report.yaml. [Hiddify]
+- Release: version 0.14.20. [InHive]
+- Update feature_request.yaml. [InHive]
+- Update bug_report.yaml. [InHive]
 
 
 v0.11.2 (2024-01-21)
@@ -1205,17 +1205,17 @@ v0.11.2 (2024-01-21)
 
 Fix
 ~~~
-- Make. [Hiddify]
+- Make. [InHive]
 
 Other
 ~~~~~
-- Release: version 0.11.2. [Hiddify]
+- Release: version 0.11.2. [InHive]
 - Fix json parser for files with comment. [problematicconsumer]
 - Add mux. [problematicconsumer]
 - Change builder. [problematicconsumer]
 - Change outbound patch. [problematicconsumer]
 - Merge branch 'main' [problematicconsumer]
-- Revert changes for swift. [Hiddify]
+- Revert changes for swift. [InHive]
 
 
 v0.14.11 (2024-01-20)
@@ -1223,25 +1223,25 @@ v0.14.11 (2024-01-20)
 
 New
 ~~~
-- Add deb and rpm build. [Hiddify]
+- Add deb and rpm build. [InHive]
 
 Fix
 ~~~
-- Versioning issue in ios singbox platform extension. [Hiddify]
-- Release bug. [Hiddify]
-- Release bug. [Hiddify]
-- Build linux. [Hiddify]
-- Stats bug in iOS. [Hiddify]
+- Versioning issue in ios singbox platform extension. [InHive]
+- Release bug. [InHive]
+- Release bug. [InHive]
+- Build linux. [InHive]
+- Stats bug in iOS. [InHive]
 - Some bugs in ios. [hiddify]
 
 Other
 ~~~~~
-- Release: version 0.14.11. [Hiddify]
-- Merge pull request #351 from amirsaam/main. [Hiddify]
+- Release: version 0.14.11. [InHive]
+- Merge pull request #351 from amirsaam/main. [InHive]
 
   use universal bundleid from base.xconfig
 - Use universal bundleid from base.xconfig. [Amir Mohammadi]
-- Merge pull request #350 from amirsaam/main. [Hiddify]
+- Merge pull request #350 from amirsaam/main. [InHive]
 
   ios log handler base functionality
 - Log handler base functionality. [Amir Mohammadi]
@@ -1252,31 +1252,31 @@ Other
 - Add mux options. [problematicconsumer]
 - Add mux. [problematicconsumer]
 - Update release_message.md. [lymanjre]
-- Update build.yml. [Hiddify]
+- Update build.yml. [InHive]
 - Update changelog. [problematicconsumer]
 - Update readme. [problematicconsumer]
 - Fix ios stats. [problematicconsumer]
 - Add reset tunnel option on ios. [problematicconsumer]
-- Update build.yml. [Hiddify]
-- Fix release. [Hiddify]
-- Fix release. [Hiddify]
-- FIX: RELEASE BUG. [Hiddify]
-- Fix release bug in macos. [Hiddify]
-- Update build.yml. [Hiddify]
-- Update build.yml. [Hiddify]
-- Update build.yml. [Hiddify]
+- Update build.yml. [InHive]
+- Fix release. [InHive]
+- Fix release. [InHive]
+- FIX: RELEASE BUG. [InHive]
+- Fix release bug in macos. [InHive]
+- Update build.yml. [InHive]
+- Update build.yml. [InHive]
+- Update build.yml. [InHive]
 - Update dependencies. [problematicconsumer]
-- Fix not releasing linux packages. [Hiddify]
-- Merge pull request #347 from amirsaam/main. [Hiddify]
+- Fix not releasing linux packages. [InHive]
+- Merge pull request #347 from amirsaam/main. [InHive]
 
   fix connection bug after bundle update
 - Fix connection bug after bundle update. [Amir Mohammadi]
-- Merge pull request #345 from amirsaam/main. [Hiddify]
+- Merge pull request #345 from amirsaam/main. [InHive]
 
   update to latest itunes connect
 - Update to latest itunes connect. [Amir Mohammadi]
-- Revert changes for swift package. [Hiddify]
-- Merge pull request #344 from amirsaam/main. [Hiddify]
+- Revert changes for swift package. [InHive]
+- Merge pull request #344 from amirsaam/main. [InHive]
 
   switch to local spm to load libcore
 - Merge branch 'main' of https://github.com/amirsaam/hiddify-next. [Amir
@@ -1286,31 +1286,31 @@ Other
 - Remove tvOS, previously added apple vision for ipad. [Amir Mohammadi]
 - Handle xcode crash. [Amir Mohammadi]
 - Switch to local spm. [Amir Mohammadi]
-- Fix make ios. [Hiddify]
-- Release: version 0.14.1.dev. [Hiddify]
-- Bumpcore version to v0.11. [Hiddify]
-- Merge branch 'main' of hiddify-github:hiddify/hiddify-next. [Hiddify]
-- Merge pull request #343 from amirsaam/main. [Hiddify]
+- Fix make ios. [InHive]
+- Release: version 0.14.1.dev. [InHive]
+- Bumpcore version to v0.11. [InHive]
+- Merge branch 'main' of hiddify-github:hiddify/hiddify-next. [InHive]
+- Merge pull request #343 from amirsaam/main. [InHive]
 
   url scheme +  target dependency + general update
 - Merge branch 'hiddify:main' into main. [Amir Mohammadi]
 - Add url scheme. [Amir Mohammadi]
 - Update Package.resolved. [Amir Mohammadi]
 - Target dependancy + pod update, package resolve. [Amir Mohammadi]
-- Remove hiddify://import/ from export option. [Hiddify]
-- Merge pull request #342 from amirsaam/main. [Hiddify]
+- Remove hiddify://import/ from export option. [InHive]
+- Merge pull request #342 from amirsaam/main. [InHive]
 
   getting libcore from spm, adding landscape mode
 - Merge branch 'main' of https://github.com/amirsaam/hiddify-next. [Amir
   Mohammadi]
-- Delete pubspec.lock. [Hiddify]
+- Delete pubspec.lock. [InHive]
 - Revert some changers. [Amir Mohammadi]
 
   This reverts some of commit dde7c2419a12e0f36976f4c0ff8e66d882ec62ac.
 - Update pod, getting libcore from spm, adding landscape mode. [Amir
   Mohammadi]
 - Change profile options modal. [problematicconsumer]
-- Fix infinite sub expire date (#334) [Hiddify, Pavel Volkov,
+- Fix infinite sub expire date (#334) [InHive, Pavel Volkov,
   problematicconsumer]
 
   * Fix infinite sub expire date
@@ -1329,11 +1329,11 @@ Other
 
   ---------
 - Fix fragment bugs. [problematicconsumer]
-- Merge pull request #340 from amirsaam/main. [Hiddify]
+- Merge pull request #340 from amirsaam/main. [InHive]
 
   fix ui not showing connected after relaunch
 - Fix ui not showing connected after relaunch. [Amir Mohammadi]
-- Merge pull request #338 from amirsaam/main. [Hiddify]
+- Merge pull request #338 from amirsaam/main. [InHive]
 
   add push notification entitlement
 - Merge branch 'main' of https://github.com/amirsaam/hiddify-next. [Amir
@@ -1358,11 +1358,11 @@ Other
 - Fix infinite sub traffic. [problematicconsumer]
 - Fix bugs. [problematicconsumer]
 - Fix modal text alignment. [problematicconsumer]
-- Merge pull request #329 from amirsaam/newMain. [Hiddify]
+- Merge pull request #329 from amirsaam/newMain. [InHive]
 
   revert landscape mode
 - Revert landscape mode. [Amir Mohammadi]
-- Merge pull request #328 from amirsaam/main. [Hiddify]
+- Merge pull request #328 from amirsaam/main. [InHive]
 
   remove unnecessary force unwrap, libcore linking add landscape mode
 - Remove unnecessary force unwrap, libcore linking add landscape mode,
@@ -1374,31 +1374,31 @@ Other
   [problematicconsumer]
 - Fix ios flutter plugins. [problematicconsumer]
 - Fix ios core name. [problematicconsumer]
-- Merge pull request #323 from amirsaam/main. [Hiddify]
+- Merge pull request #323 from amirsaam/main. [InHive]
 
   better fix for vpn connecting
 - Better fix for vpn connecting. [Amir Mohammadi]
-- Merge pull request #321 from amirsaam/main. [Hiddify]
+- Merge pull request #321 from amirsaam/main. [InHive]
 
   match exportOptions identifiers with project
 - Fixing not connecting to vpn. [Amir Mohammadi]
 - Match exportOptions identifiers with project. [Amir Mohammadi]
-- Merge pull request #319 from amirsaam/main. [Hiddify]
+- Merge pull request #319 from amirsaam/main. [InHive]
 
   fix vpn profile not being created + changing run to release
 - Fix vpn profile not being created + changing run to release. [Amir
   Mohammadi]
-- Merge pull request #318 from amirsaam/main. [Hiddify]
+- Merge pull request #318 from amirsaam/main. [InHive]
 
   ios fix?
 - Ios fix? [Amir Mohammadi]
 - Fix build. [problematicconsumer]
 - Fix windows deep link. [problematicconsumer]
-- Merge pull request #316 from amirsaam/main. [Hiddify]
+- Merge pull request #316 from amirsaam/main. [InHive]
 
   Update pubspec.lock
 - Update pubspec.lock. [Amir Mohammadi]
-- Merge pull request #315 from amirsaam/main. [Hiddify]
+- Merge pull request #315 from amirsaam/main. [InHive]
 
   add back cupertino_http
 - Add back cupertino_http. [Amir Mohammadi]
@@ -1412,7 +1412,7 @@ v0.11.1 (2024-01-17)
 --------------------
 - Change config parser. [problematicconsumer]
 - Change gitignore. [problematicconsumer]
-- Update Package.swift. [Hiddify]
+- Update Package.swift. [InHive]
 
 
 v0.11.0 (2024-01-17)
@@ -1420,78 +1420,78 @@ v0.11.0 (2024-01-17)
 
 New
 ~~~
-- Add support for mux from sublink. [Hiddify]
-- Add sha256 to github action for ios. [Hiddify]
-- Update plist for ios. [Hiddify]
+- Add support for mux from sublink. [InHive]
+- Add sha256 to github action for ios. [InHive]
+- Update plist for ios. [InHive]
 
 Fix
 ~~~
-- Disabled padding. [Hiddify]
-- Bug in checksum. [Hiddify]
-- Typo. [Hiddify]
-- Singbox fragment issue. [Hiddify]
-- Bug. [Hiddify]
+- Disabled padding. [InHive]
+- Bug in checksum. [InHive]
+- Typo. [InHive]
+- Singbox fragment issue. [InHive]
+- Bug. [InHive]
 
 Other
 ~~~~~
-- Release: version 0.11.0. [Hiddify]
-- Merge branch 'main' of https://github.com/hiddify/hiddify-next-core.
-  [Hiddify]
-- Merge pull request #14 from amirsaam/main. [Hiddify]
+- Release: version 0.11.0. [InHive]
+- Merge branch 'main' of https://github.com/hiddify/inhive-core.
+  [InHive]
+- Merge pull request #14 from amirsaam/main. [InHive]
 
   fix checksum
 - Fix checksum. [Amir Mohammadi]
-- Merge pull request #13 from amirsaam/main. [Hiddify]
+- Merge pull request #13 from amirsaam/main. [InHive]
 
   fix typo in spm
 - Update Package.swift. [Amir Mohammadi]
-- Update. [Hiddify]
-- Merge branch 'main' of https://github.com/hiddify/hiddify-next-core.
-  [Hiddify]
-- Update Package.swift. [Hiddify]
-- Merge branch 'main' of https://github.com/hiddify/hiddify-next-core.
-  [Hiddify]
-- Merge pull request #12 from amirsaam/main. [Hiddify]
+- Update. [InHive]
+- Merge branch 'main' of https://github.com/hiddify/inhive-core.
+  [InHive]
+- Update Package.swift. [InHive]
+- Merge branch 'main' of https://github.com/hiddify/inhive-core.
+  [InHive]
+- Merge pull request #12 from amirsaam/main. [InHive]
 
   fix current spm
 - Resolve. [Amir Mohammadi]
 - Fix current spm. [Amir Mohammadi]
-- Better manage configs. [Hiddify]
-- Force json as singbox config. [Hiddify]
-- Merge pull request #11 from amirsaam/main. [Hiddify]
+- Better manage configs. [InHive]
+- Force json as singbox config. [InHive]
+- Merge pull request #11 from amirsaam/main. [InHive]
 
   Switch to SPM from Pod
 - Switch to SPM from Pod. [Amir Mohammadi]
-- Update release.yml. [Hiddify]
-- Merge pull request #10 from amirsaam/main. [Hiddify]
+- Update release.yml. [InHive]
+- Merge pull request #10 from amirsaam/main. [InHive]
 
   missed the "v" in generated link
 - Update Libcore.podspec. [Amir Mohammadi]
-- Merge pull request #9 from amirsaam/main. [Hiddify]
+- Merge pull request #9 from amirsaam/main. [InHive]
 
   another try to fix podspec
 - Update Libcore.podspec. [Amir Mohammadi]
 - Update Libcore.podspec. [Amir Mohammadi]
-- Merge pull request #8 from amirsaam/main. [Hiddify]
+- Merge pull request #8 from amirsaam/main. [InHive]
 
   fix podspec?
 - Update Libcore.podspec. [Amir Mohammadi]
 - Fix podspec? [Amir Mohammadi]
 - Add default padding mode. [problematicconsumer]
-- Update Libcore.podspec. [Hiddify]
+- Update Libcore.podspec. [InHive]
 - Fix tls tricks. [problematicconsumer]
 - Change build cli. [problematicconsumer]
 - Add parse cli. [problematicconsumer]
 - Refactor shared. [problematicconsumer]
-- Possible bubg resolving of fragment. [Hiddify]
+- Possible bubg resolving of fragment. [InHive]
 - Add check config cmd. [problematicconsumer]
 - Add default config options. [problematicconsumer]
 - Bump go version. [problematicconsumer]
-- Update podspec. [Hiddify]
-- Update pod spec. [Hiddify]
-- Update podspec. [Hiddify]
-- Update podspec. [Hiddify]
-- Update podspec. [Hiddify]
+- Update podspec. [InHive]
+- Update pod spec. [InHive]
+- Update podspec. [InHive]
+- Update podspec. [InHive]
+- Update podspec. [InHive]
 
 
 v0.13.6 (2024-01-07)
@@ -1560,18 +1560,18 @@ v0.10.0 (2024-01-07)
 
 New
 ~~~
-- Add podspec in make file. [Hiddify]
+- Add podspec in make file. [InHive]
 
 Other
 ~~~~~
 - Release: version 0.10.0. [problematicconsumer]
-- Update release.yml. [Hiddify]
+- Update release.yml. [InHive]
 - Update dependencies (sing-box v1.7.8) [problematicconsumer]
 - Fix build. [problematicconsumer]
 - Add allow connection from lan. [problematicconsumer]
 - Add dns routing option. [problematicconsumer]
-- Update release.yml. [Hiddify]
-- Create Libcore.podspec. [Hiddify]
+- Update release.yml. [InHive]
+- Create Libcore.podspec. [InHive]
 
 
 v0.12.3 (2023-12-28)
@@ -1579,7 +1579,7 @@ v0.12.3 (2023-12-28)
 
 Changes
 ~~~~~~~
-- Fix inconsistent channel naming. [Hiddify]
+- Fix inconsistent channel naming. [InHive]
 
 Fix
 ~~~
@@ -1637,38 +1637,38 @@ v0.12.0 (2023-12-20)
 
 New
 ~~~
-- Add support for hysteria and wg. [Hiddify]
-- Add user-agent like clash sing-box for better compatibility. [Hiddify]
-- Send all releases to beta by default. [Hiddify]
-- Add ic_launcher for android tv. [Hiddify]
-- Publish dev release to seperate channel. [Hiddify]
-- Add winget. [Hiddify]
-- Add prepare to make file. [Hiddify]
-- Add ios core library to the project. [Hiddify]
+- Add support for hysteria and wg. [InHive]
+- Add user-agent like clash sing-box for better compatibility. [InHive]
+- Send all releases to beta by default. [InHive]
+- Add ic_launcher for android tv. [InHive]
+- Publish dev release to seperate channel. [InHive]
+- Add winget. [InHive]
+- Add prepare to make file. [InHive]
+- Add ios core library to the project. [InHive]
 
 Fix
 ~~~
-- Bug in  windows portable. [Hiddify]
-- Linux parse. [Hiddify]
+- Bug in  windows portable. [InHive]
+- Linux parse. [InHive]
 - Build-linux-libs. [Aloxaf]
-- Build. [Hiddify]
-- Naming issue. [Hiddify]
-- Winget release. [Hiddify]
-- Action version. [Hiddify]
-- Winget publish. [Hiddify]
-- Build error. [Hiddify]
-- No commit message. [Hiddify]
-- Build. [Hiddify]
-- Bug. [Hiddify]
-- Build. [Hiddify]
-- Distutils. [Hiddify]
-- No commit message. [Hiddify]
-- Ipa. [Hiddify]
+- Build. [InHive]
+- Naming issue. [InHive]
+- Winget release. [InHive]
+- Action version. [InHive]
+- Winget publish. [InHive]
+- Build error. [InHive]
+- No commit message. [InHive]
+- Build. [InHive]
+- Bug. [InHive]
+- Build. [InHive]
+- Distutils. [InHive]
+- No commit message. [InHive]
+- Ipa. [InHive]
 
 Other
 ~~~~~
 - Release: version 0.12.0. [problematicconsumer]
-- Add hiddify/iimport schema. [Hiddify]
+- Add hiddify/iimport schema. [InHive]
 - Fix chinese inlang url. [problematicconsumer]
 - Update README_ru.md. [lymanjre]
 - Update README_cn.md. [lymanjre]
@@ -1693,9 +1693,9 @@ Other
 - Fix text input traversal. [problematicconsumer]
 - Add basic d-pad support. [problematicconsumer]
 - Fix tray initialization bug. [problematicconsumer]
-- Update LICENSE.md. [Hiddify]
-- Update LICENSE.md. [Hiddify]
-- Update LICENSE.md. [Hiddify]
+- Update LICENSE.md. [InHive]
+- Update LICENSE.md. [InHive]
+- Update LICENSE.md. [InHive]
 - Update README_fa.md. [lymanjre]
 - Update README_fa.md. [lymanjre]
 - Update README_cn.md. [lymanjre]
@@ -1722,10 +1722,10 @@ Other
 - Update platform interface. [hiddify]
 - Merge branch 'main' of https://github.com/hiddify/hiddify-next.
   [hiddify]
-- Update dev-i.yml. [Hiddify]
-- Update dev-i.yml. [Hiddify]
-- Update pubspec.yaml. [Hiddify]
-- Create dev-i.yml. [Hiddify]
+- Update dev-i.yml. [InHive]
+- Update dev-i.yml. [InHive]
+- Update pubspec.yaml. [InHive]
+- Create dev-i.yml. [InHive]
 - Update changelog. [problematicconsumer]
 - Update dependencies. [problematicconsumer]
 - Update core (singbox v1.7) [problematicconsumer]
@@ -1734,7 +1734,7 @@ Other
 - Refactor logs. [problematicconsumer]
 - Remove unused clash api. [problematicconsumer]
 - Update core (singbox 1.7.0-rc.2) [problematicconsumer]
-- Merge branch 'main' of hiddify-github:hiddify/hiddify-next. [Hiddify]
+- Merge branch 'main' of hiddify-github:hiddify/hiddify-next. [InHive]
 - Refactor router. [problematicconsumer]
 - Refactor profiles. [problematicconsumer]
 - Update changelog. [problematicconsumer]
@@ -1753,7 +1753,7 @@ Other
 - Update README.md. [lymanjre]
 - Update release_message.md. [lymanjre]
 - Update appcast. [problematicconsumer]
-- Merge pull request #189 from jomertix/main. [Hiddify]
+- Merge pull request #189 from jomertix/main. [InHive]
 
   Update ru strings
 - Nothing changed strings_tr.i18n.json. [jomertix]
@@ -1771,7 +1771,7 @@ Other
   This reverts commit 49bb62c8289d0885a762e01b7f0785690a7d3af7.
 - Change ir region rules. [problematicconsumer]
 - Release: version 0.10.10.dev. [problematicconsumer]
-- Merge pull request #179 from betaxab/main. [Hiddify]
+- Merge pull request #179 from betaxab/main. [InHive]
 
   Update translations
 - Inlang: update translations. [betaxab]
@@ -1779,24 +1779,24 @@ Other
 - Add error handling for geo assets. [problematicconsumer]
 - Fix build. [problematicconsumer]
 - Add geo assets settings. [problematicconsumer]
-- Fix bug in strings_tr.i18n.json. [Hiddify]
-- Merge pull request #173 from hasankarli/main. [Hiddify]
+- Fix bug in strings_tr.i18n.json. [InHive]
+- Merge pull request #173 from hasankarli/main. [InHive]
 
   Update Turkish translations
 - Inlang: update translations. [hasankarli]
-- Merge pull request #169 from solokot/main. [Hiddify]
+- Merge pull request #169 from solokot/main. [InHive]
 
   Update Russian translation
-- Merge branch 'main' into main. [Hiddify]
-- Merge pull request #168 from jomertix/main. [Hiddify]
+- Merge branch 'main' into main. [InHive]
+- Merge pull request #168 from jomertix/main. [InHive]
 
   inlang: update translations
 - Inlang: update translations. [jomertix]
-- Merge pull request #172 from Locas56227/main. [Hiddify]
+- Merge pull request #172 from Locas56227/main. [InHive]
 
   Fix and improve Chinese README
 - Fix and improve Chinese README. [Locas]
-- Update build.yml. [Hiddify]
+- Update build.yml. [InHive]
 - Update appcast. [problematicconsumer]
 - Release: version 0.10.9.dev. [problematicconsumer]
 - Add navigation to system tray. [problematicconsumer]
@@ -1815,7 +1815,7 @@ Other
 - Update README_cn.md. [lymanjre]
 - Update README_fa.md. [lymanjre]
 - Update README.md. [lymanjre]
-- Merge pull request #165 from huajizhige/main. [Hiddify]
+- Merge pull request #165 from huajizhige/main. [InHive]
 
   Improve translation
 - Inlang: update translations. [huajizhige]
@@ -1829,7 +1829,7 @@ Other
 - Improve qr code scanner ux. [problematicconsumer]
 - Fix code typo. [problematicconsumer]
 - Ci: ignore appcast. [problematicconsumer]
-- Merge pull request #164 from jomertix/main. [Hiddify]
+- Merge pull request #164 from jomertix/main. [InHive]
 
   Update ru string
 - Update strings_ru.i18n.json. [jomertix]
@@ -1838,13 +1838,13 @@ Other
 - Update strings_ru.i18n.json. [jomertix]
 
   Fix translate
-- Merge pull request #162 from solokot/main. [Hiddify]
+- Merge pull request #162 from solokot/main. [InHive]
 
   Update strings_ru
 - Update strings_ru. [solokot]
 
   Fix google translate
-- Merge pull request #161 from Aloxaf/Aloxaf-patch-1. [Hiddify]
+- Merge pull request #161 from Aloxaf/Aloxaf-patch-1. [InHive]
 
   fix: build-linux-libs
 - Add sub link share. [problematicconsumer]
@@ -1853,7 +1853,7 @@ Other
 - Add export config to clipboard. [problematicconsumer]
 - Update. [hiddify]
 - Add geoassessts to makefile prepare. [hiddify]
-- Merge pull request #155 from solokot/main. [Hiddify]
+- Merge pull request #155 from solokot/main. [InHive]
 
   Update strings_ru
 - Update strings_ru. [solokot]
@@ -1878,23 +1878,23 @@ Other
 - Update README_cn.md. [lymanjre]
 - Update README_fa.md. [lymanjre]
 - Update README.md. [lymanjre]
-- Release: version 0.10.7.dev. [Hiddify]
-- Release: version 0.10.6.dev. [Hiddify]
-- Release: version 0.10.5.dev. [Hiddify]
-- Release: version 0.10.4.dev. [Hiddify]
-- Release: version 0.10.3.dev. [Hiddify]
-- Merge branch 'main' of hiddify-github:hiddify/hiddify-next. [Hiddify]
-- Merge pull request #138 from huajizhige/main. [Hiddify]
+- Release: version 0.10.7.dev. [InHive]
+- Release: version 0.10.6.dev. [InHive]
+- Release: version 0.10.5.dev. [InHive]
+- Release: version 0.10.4.dev. [InHive]
+- Release: version 0.10.3.dev. [InHive]
+- Merge branch 'main' of hiddify-github:hiddify/hiddify-next. [InHive]
+- Merge pull request #138 from huajizhige/main. [InHive]
 
   inlang: update translations
 - Inlang: update translations. [huajizhige]
-- Release: version 0.10.2.dev. [Hiddify]
-- Release: version 0.10.1.dev. [Hiddify]
-- Update. [Hiddify]
-- Fix. [Hiddify]
-- Fix. [Hiddify]
-- Test. [Hiddify]
-- Merge pull request #137 from huajizhige/patch-1. [Hiddify]
+- Release: version 0.10.2.dev. [InHive]
+- Release: version 0.10.1.dev. [InHive]
+- Update. [InHive]
+- Fix. [InHive]
+- Fix. [InHive]
+- Test. [InHive]
+- Merge pull request #137 from huajizhige/patch-1. [InHive]
 
   Update README_cn.md
 - Update README_cn.md. [wldjdjsks]
@@ -1908,28 +1908,28 @@ Other
 - Update README_fa.md. [lymanjre]
 - Update README.md. [lymanjre]
 - Update README.md. [lymanjre]
-- Fix. [Hiddify]
-- Update. [Hiddify]
-- Fix. [Hiddify]
-- Fix build. [Hiddify]
-- Add distutils. [Hiddify]
-- Improve Android TV. [Hiddify]
-- Update. [Hiddify]
-- Add. [Hiddify]
+- Fix. [InHive]
+- Update. [InHive]
+- Fix. [InHive]
+- Fix build. [InHive]
+- Add distutils. [InHive]
+- Improve Android TV. [InHive]
+- Update. [InHive]
+- Add. [InHive]
 - Fix appcast url. [problematicconsumer]
 - Add appcast. [problematicconsumer]
 - Add auto connect on start. [problematicconsumer]
-- Merge pull request #123 from Nyar233/main. [Hiddify]
+- Merge pull request #123 from Nyar233/main. [InHive]
 
   Update translations
 - Inlang: update translations. [Nyar233]
 - Update release_message.md. [lymanjre]
 - Update release_message.md. [lymanjre]
-- Merge pull request #115 from solokot/main. [Hiddify]
+- Merge pull request #115 from solokot/main. [InHive]
 
   Update Russian: fix google translate
 - Update Russian: fix google translate. [solokot]
-- Merge pull request #113 from Nyar233/main. [Hiddify]
+- Merge pull request #113 from Nyar233/main. [InHive]
 
   inlang: update translations
 - Inlang: update translations. [Nyar233]
@@ -1945,7 +1945,7 @@ Other
 - Add sidebar stats for large screens. [problematicconsumer]
 - Update dependencies. [problematicconsumer]
 - Change router for different screen size. [problematicconsumer]
-- Merge pull request #108 from Hiiirad/patch-1. [Hiddify]
+- Merge pull request #108 from Hiiirad/patch-1. [InHive]
 
   Update auto_translator.py to fix the Path Traversal Vulnerability
 - Update auto_translator.py to fix the Path Traversal Vulnerability.
@@ -1958,25 +1958,25 @@ Other
 - Add url test delay color. [problematicconsumer]
 - Change info logs. [problematicconsumer]
 - Delete .github/help/linux/آموزش هیدیفای‌نکست فارسی لینوکس.desktop.
-  [Hiddify]
+  [InHive]
 - Delete .github/help/mac-windows/آموزش هیدیفای‌نکست فارسی.url.
-  [Hiddify]
+  [InHive]
 - Update dependencies. [problematicconsumer]
 - Change pre release update checking off. [problematicconsumer]
 - Add terms and privacy to about page. [problematicconsumer]
 - Add memory limit option. [problematicconsumer]
 - Change directory management. [problematicconsumer]
-- Comment ios. [Hiddify]
-- Change app id. [Hiddify]
-- Merge pull request #98 from GFWFighter/main. [Hiddify]
+- Comment ios. [InHive]
+- Change app id. [InHive]
+- Merge pull request #98 from GFWFighter/main. [InHive]
 
   Initial iOS version
 - Merge pull request #1 from GFWFighter/ios. [GFWFighter]
 
   iOS
 - Merge branch 'main' into ios. [GFWFighter]
-- Merge branch 'main' of hiddify-github:hiddify/hiddify-next. [Hiddify]
-- Merge pull request #95 from solokot/main. [Hiddify]
+- Merge branch 'main' of hiddify-github:hiddify/hiddify-next. [InHive]
+- Merge pull request #95 from solokot/main. [InHive]
 
   Update Russian
 - Update Russian. [solokot]
@@ -1986,7 +1986,7 @@ Other
 - Change changelog workflow. [problematicconsumer]
 - Add russia region. [problematicconsumer]
 - Change theme prefs. [problematicconsumer]
-- Merge pull request #90 from solokot/main. [Hiddify]
+- Merge pull request #90 from solokot/main. [InHive]
 
   Russian translation: fix some mistakes
 - Russian translation: fix some mistakes. [solokot]
@@ -1996,23 +1996,23 @@ Other
 - Update README.md. [lymanjre]
 - Update README.md. [lymanjre]
 - Add rules. [problematicconsumer]
-- Update LICENSE.md. [Hiddify]
+- Update LICENSE.md. [InHive]
 - Inlang: update translations. [hiddify-com]
-- Merge pull request #85 from leic4u/main. [Hiddify]
+- Merge pull request #85 from leic4u/main. [InHive]
 
   Update README_cn.md
 - Update README_cn.md. [leic4u]
-- Merge branch 'main' of hiddify-github:hiddify/hiddify-next. [Hiddify]
-- Add inlang translations. [Hiddify]
-- Add inlang project and remove localize. [Hiddify]
-- Merge pull request #82 from Iam54r1n4/main. [Hiddify]
+- Merge branch 'main' of hiddify-github:hiddify/hiddify-next. [InHive]
+- Add inlang translations. [InHive]
+- Add inlang project and remove localize. [InHive]
+- Merge pull request #82 from Iam54r1n4/main. [InHive]
 
   add inlang translator
 - Update: fr_FR.json. [Sarina]
 - Add: french language. [Sarina]
 - Add: inlang translation files(incomplete) [Sarina]
 - Add: setup inlang translation. [Sarina]
-- Merge pull request #74 from lifeindarkside/patch-1. [Hiddify]
+- Merge pull request #74 from lifeindarkside/patch-1. [InHive]
 
   Update strings_ru.i18n.json
 - Update strings_ru.i18n.json. [Elshad Guseynov]
@@ -2024,8 +2024,8 @@ Other
 - First working version. [GFWFighter]
 - Underlying VPN Logic. [GFWFighter]
 - Initialize Packet Tunnel + Config. [GFWFighter]
-- Update Tutorial_For_HiddifyNext_Linux.desktop. [lymanjre]
-- Update Tutorial_For_HiddifyNext.url. [lymanjre]
+- Update Tutorial_For_InHiveNext_Linux.desktop. [lymanjre]
+- Update Tutorial_For_InHiveNext.url. [lymanjre]
 - Update آموزش هیدیفای‌نکست فارسی.url. [lymanjre]
 - Update آموزش هیدیفای‌نکست فارسی لینوکس.desktop. [lymanjre]
 - Update README_fa.md. [lymanjre]
@@ -2035,7 +2035,7 @@ Other
 - Release: version 0.9.2. [problematicconsumer]
 - Fix ndk setup. [problematicconsumer]
 - Fix android arm bug. [problematicconsumer]
-- Release: version 0.9.1. [Hiddify]
+- Release: version 0.9.1. [InHive]
 - Update README_cn.md. [lymanjre]
 - Update README.md. [lymanjre]
 - Update README_fa.md. [lymanjre]
@@ -2120,7 +2120,7 @@ v0.8.2 (2023-11-17)
 
 New
 ~~~
-- Add turn server. [Hiddify]
+- Add turn server. [InHive]
 
 Other
 ~~~~~
@@ -2140,7 +2140,7 @@ v0.8.0 (2023-11-09)
 
 Fix
 ~~~
-- Shadow socks links and update to singbox1.7.0.dev11. [Hiddify]
+- Shadow socks links and update to singbox1.7.0.dev11. [InHive]
 
 
 v0.7.0 (2023-10-27)
@@ -2148,11 +2148,11 @@ v0.7.0 (2023-10-27)
 
 New
 ~~~
-- Add ios build. [Hiddify]
+- Add ios build. [InHive]
 
 Fix
 ~~~
-- Ios release. [Hiddify]
+- Ios release. [InHive]
 
 Other
 ~~~~~
@@ -2162,8 +2162,8 @@ Other
 - Add start delay. [problematicconsumer]
 - Add memory limit. [problematicconsumer]
 - Fix build. [problematicconsumer]
-- Update to singbox 1.6.rc1. [Hiddify]
-- Merge pull request #2 from GFWFighter/fix-ios-name. [Hiddify]
+- Update to singbox 1.6.rc1. [InHive]
+- Merge pull request #2 from GFWFighter/fix-ios-name. [InHive]
 
   Added PRODUCT_NAME to use with ios build
 - Added PRODUCT_NAME to use with ios build. [GFWFighter]
@@ -2179,7 +2179,7 @@ v0.6.3 (2023-10-15)
 
 Fix
 ~~~
-- Issue on arm32. [Hiddify]
+- Issue on arm32. [InHive]
 
 
 v0.6.2 (2023-10-14)
@@ -2192,9 +2192,9 @@ v0.8.12 (2023-10-13)
 
 Fix
 ~~~
-- Typo. [Hiddify]
-- Bug. [Hiddify]
-- Release names. [Hiddify]
+- Typo. [InHive]
+- Bug. [InHive]
+- Release names. [InHive]
 
 Other
 ~~~~~
@@ -2203,7 +2203,7 @@ Other
 - Update README_fa.md. [lymanjre]
 - Update README_fa.md. [lymanjre]
 - Update README.md. [lymanjre]
-- Merge pull request #56 from solokot/main. [Hiddify]
+- Merge pull request #56 from solokot/main. [InHive]
 
   Improvement of Russian translation
 - Improvement of Russian translation. [solokot]
@@ -2245,19 +2245,19 @@ Other
 - Update README_fa.md. [lymanjre]
 - Update README_fa.md. [lymanjre]
 - Update release_message.md. [lymanjre]
-- Update README.md. [Hiddify]
+- Update README.md. [InHive]
 - Update README_fa.md. [lymanjre]
 - Update README_fa.md. [lymanjre]
 - Update README.md. [lymanjre]
 - Update README_fa.md. [lymanjre]
-- Update release template. [Hiddify]
+- Update release template. [InHive]
 
 
 v0.6.1 (2023-10-13)
 -------------------
 - Fix build. [problematicconsumer]
 - Update dependencies. [problematicconsumer]
-- Update ray2sing. [Hiddify]
+- Update ray2sing. [InHive]
 
 
 v0.6.0 (2023-10-12)
@@ -2265,7 +2265,7 @@ v0.6.0 (2023-10-12)
 
 New
 ~~~
-- Fix support for android 14. [Hiddify]
+- Fix support for android 14. [InHive]
 
 Other
 ~~~~~
@@ -2285,11 +2285,11 @@ v0.8.11 (2023-10-08)
 
 Changes
 ~~~~~~~
-- Remove auto release message. [Hiddify]
+- Remove auto release message. [InHive]
 
 Other
 ~~~~~
-- Release: version 0.8.11. [Hiddify]
+- Release: version 0.8.11. [InHive]
 
 
 v0.8.10 (2023-10-08)
@@ -2297,11 +2297,11 @@ v0.8.10 (2023-10-08)
 
 Fix
 ~~~
-- Release changelog. [Hiddify]
+- Release changelog. [InHive]
 
 Other
 ~~~~~
-- Release: version 0.8.10. [Hiddify]
+- Release: version 0.8.10. [InHive]
 
 
 v0.8.9 (2023-10-08)
@@ -2309,11 +2309,11 @@ v0.8.9 (2023-10-08)
 
 Fix
 ~~~
-- Missing libs. [Hiddify]
+- Missing libs. [InHive]
 
 Other
 ~~~~~
-- Release: version 0.8.9. [Hiddify]
+- Release: version 0.8.9. [InHive]
 
 
 v0.8.8 (2023-10-08)
@@ -2321,11 +2321,11 @@ v0.8.8 (2023-10-08)
 
 Fix
 ~~~
-- Release bug. [Hiddify]
+- Release bug. [InHive]
 
 Other
 ~~~~~
-- Release: version 0.8.8. [Hiddify]
+- Release: version 0.8.8. [InHive]
 
 
 v0.8.7 (2023-10-08)
@@ -2333,11 +2333,11 @@ v0.8.7 (2023-10-08)
 
 Fix
 ~~~
-- Release message. [Hiddify]
+- Release message. [InHive]
 
 Other
 ~~~~~
-- Release: version 0.8.7. [Hiddify]
+- Release: version 0.8.7. [InHive]
 
 
 v0.8.6 (2023-10-08)
@@ -2345,15 +2345,15 @@ v0.8.6 (2023-10-08)
 
 Fix
 ~~~
-- Windows build. [Hiddify]
-- Build issue. [Hiddify]
+- Windows build. [InHive]
+- Build issue. [InHive]
 
 Other
 ~~~~~
-- Release: version 0.8.6. [Hiddify]
-- Merge branch 'main' of hiddify-github:hiddify/hiddify-next. [Hiddify]
+- Release: version 0.8.6. [InHive]
+- Merge branch 'main' of hiddify-github:hiddify/hiddify-next. [InHive]
 - Update release_message.md. [lymanjre]
-- Merge branch 'main' of hiddify-github:hiddify/hiddify-next. [Hiddify]
+- Merge branch 'main' of hiddify-github:hiddify/hiddify-next. [InHive]
 - Update release_message.md. [lymanjre]
 - Update README.md. [lymanjre]
 - Update README_fa.md. [lymanjre]
@@ -2368,7 +2368,7 @@ Other
 - Update release_message.md. [lymanjre]
 - Update release_message.md. [lymanjre]
 - Update release_message.md. [lymanjre]
-- Fix build. [Hiddify]
+- Fix build. [InHive]
 
 
 v0.8.5 (2023-10-07)
@@ -2376,23 +2376,23 @@ v0.8.5 (2023-10-07)
 
 New
 ~~~
-- Add chinese lang. [Hiddify]
-- Add russian lang. [Hiddify]
+- Add chinese lang. [InHive]
+- Add russian lang. [InHive]
 
 Fix
 ~~~
-- Bug. [Hiddify]
-- Translate. [Hiddify]
-- Hysteria2 and some links. [Hiddify]
-- Chinese translation. [Hiddify]
+- Bug. [InHive]
+- Translate. [InHive]
+- Hysteria2 and some links. [InHive]
+- Chinese translation. [InHive]
 
 Other
 ~~~~~
-- Release: version 0.8.5. [Hiddify]
-- Release: version 0.8.4. [Hiddify]
-- Release: version 0.8.3. [Hiddify]
-- Add release message  and help. [Hiddify]
-- Merge branch 'main' of hiddify-github:hiddify/hiddify-next. [Hiddify]
+- Release: version 0.8.5. [InHive]
+- Release: version 0.8.4. [InHive]
+- Release: version 0.8.3. [InHive]
+- Add release message  and help. [InHive]
+- Merge branch 'main' of hiddify-github:hiddify/hiddify-next. [InHive]
 - Fix bugs. [problematicconsumer]
 - Update release_message.md. [lymanjre]
 - Update release_message.md. [lymanjre]
@@ -2418,7 +2418,7 @@ Other
 - Add feature request template. [problematicconsumer]
 - Fix issue template. [problematicconsumer]
 - Add issue template. [problematicconsumer]
-- Release: version 0.8.2. [Hiddify]
+- Release: version 0.8.2. [InHive]
 - Update README_fa.md. [lymanjre]
 - Update README_fa.md. [lymanjre]
 - Update README_fa.md. [lymanjre]
@@ -2441,30 +2441,30 @@ Other
 
   Add some features to the readme
 - Add debug export to clipboard. [problematicconsumer]
-- Release: version 0.8.1. [Hiddify]
-- Update core 0.5.1. [Hiddify]
+- Release: version 0.8.1. [InHive]
+- Update core 0.5.1. [InHive]
 - Fix floating number sub info header. [problematicconsumer]
-- Add russian. [Hiddify]
-- Add google play descriptions. [Hiddify]
-- Merge branch 'main' of hiddify-github:hiddify/hiddify-next. [Hiddify]
+- Add russian. [InHive]
+- Add google play descriptions. [InHive]
+- Merge branch 'main' of hiddify-github:hiddify/hiddify-next. [InHive]
 - Release: version 0.8.0. [problematicconsumer]
 - Add proxy tag sanitization. [problematicconsumer]
 - Fix bugs. [problematicconsumer]
 - Add ignore app update version. [problematicconsumer]
 - Add new protocols to link parser. [problematicconsumer]
-- Auto update translations on release. [Hiddify]
-- Update translation. [Hiddify]
-- Remove param in ru translation. [Hiddify]
+- Auto update translations on release. [InHive]
+- Update translation. [InHive]
+- Remove param in ru translation. [InHive]
 
 
 v0.5.2 (2023-10-07)
 -------------------
-- Updating ray2sing. [Hiddify]
+- Updating ray2sing. [InHive]
 
 
 v0.5.1 (2023-10-06)
 -------------------
-- Update hysteria vless http shadowsocks. [Hiddify]
+- Update hysteria vless http shadowsocks. [InHive]
 
 
 v0.5.0 (2023-10-05)
@@ -2472,13 +2472,13 @@ v0.5.0 (2023-10-05)
 
 New
 ~~~
-- Add hidden char. [Hiddify]
-- Add ssh and hysteria2 link support and fix vmess links. [Hiddify]
+- Add hidden char. [InHive]
+- Add ssh and hysteria2 link support and fix vmess links. [InHive]
 
 Other
 ~~~~~
 - Bump clash2singbox version. [problematicconsumer]
-- Update to singbox 1.5.0. [Hiddify]
+- Update to singbox 1.5.0. [InHive]
 
 
 v0.7.2 (2023-10-04)
@@ -2492,7 +2492,7 @@ v0.7.1 (2023-10-03)
 
 New
 ~~~
-- Add support of some exception panel with zero usage. [Hiddify]
+- Add support of some exception panel with zero usage. [InHive]
 
 Other
 ~~~~~
@@ -2502,10 +2502,10 @@ Other
 - Fix translation bug. [problematicconsumer]
 - Improve error handling and presentation. [problematicconsumer]
 - Add retry for network ops. [problematicconsumer]
-- Merge branch 'main' of hiddify-github:hiddify/hiddify-next. [Hiddify]
+- Merge branch 'main' of hiddify-github:hiddify/hiddify-next. [InHive]
 - Add local profile. [problematicconsumer]
-- Add auto translator. [Hiddify]
-- Add auto translate. [Hiddify]
+- Add auto translator. [InHive]
+- Add auto translate. [InHive]
 - Release: version 0.6.0. [problematicconsumer]
 - Fix minor bugs. [problematicconsumer]
 - Add scheduled profile update. [problematicconsumer]
@@ -2530,13 +2530,13 @@ v0.5.10 (2023-09-22)
 v0.4.1 (2023-09-22)
 -------------------
 - Fix minor bugs. [problematicconsumer]
-- Update to latest hiddify-singbox 1.5.0-rc2. [Hiddify]
+- Update to latest hiddify-singbox 1.5.0-rc2. [InHive]
 
 
 v0.5.9 (2023-09-22)
 -------------------
-- Release: version 0.5.9. [Hiddify]
-- Add build number. [Hiddify]
+- Release: version 0.5.9. [InHive]
+- Add build number. [InHive]
 
 
 v0.5.8 (2023-09-22)
@@ -2544,31 +2544,31 @@ v0.5.8 (2023-09-22)
 
 New
 ~~~
-- Add crashlytics. [Hiddify]
-- Add support for base64 sublink for header from content. [Hiddify]
+- Add crashlytics. [InHive]
+- Add support for base64 sublink for header from content. [InHive]
 - Add profile headers from comments in response! good for hosting in
-  github and show information. [Hiddify]
-- Automated version release. [Hiddify]
+  github and show information. [InHive]
+- Automated version release. [InHive]
 - Send release versions only to play market add pre-release version.
-  [Hiddify]
-- Add signing to android. [Hiddify]
-- Add android universal build also. [Hiddify]
-- Add change in network entitlements. [Hiddify]
-- Change logo icon to next. [Hiddify]
-- Add cache for speed up build process. [Hiddify]
-- Add windows portable version. [Hiddify]
-- Add libclash. [Hiddify]
-- Add as draft release. [Hiddify]
-- Make better ci and building applications. [Hiddify]
+  [InHive]
+- Add signing to android. [InHive]
+- Add android universal build also. [InHive]
+- Add change in network entitlements. [InHive]
+- Change logo icon to next. [InHive]
+- Add cache for speed up build process. [InHive]
+- Add windows portable version. [InHive]
+- Add libclash. [InHive]
+- Add as draft release. [InHive]
+- Make better ci and building applications. [InHive]
 
 Changes
 ~~~~~~~
-- Change invalid dns 235.5.5.5 to 8.8.8.8. [Hiddify]
-- Change windows logo. [Hiddify]
-- Change macos build  to flutter_distributor. [Hiddify]
-- Remove x86 builds since flutter does not support. [Hiddify]
-- Add x64 to the name. [Hiddify]
-- Update makefile. [Hiddify]
+- Change invalid dns 235.5.5.5 to 8.8.8.8. [InHive]
+- Change windows logo. [InHive]
+- Change macos build  to flutter_distributor. [InHive]
+- Remove x86 builds since flutter does not support. [InHive]
+- Add x64 to the name. [InHive]
+- Update makefile. [InHive]
 
 Fix
 ~~~
@@ -2577,46 +2577,46 @@ Fix
 - Prefs persistence. [problematicconsumer]
 - Crashlytics. [problematicconsumer]
 - App update url. [problematicconsumer]
-- Small profiles. [Hiddify]
+- Small profiles. [InHive]
 - Makefile vars. [problematicconsumer]
-- Adaptive icon. [Hiddify]
-- Pre-release. [Hiddify]
-- Typo in adaptive icon. [Hiddify]
-- If .dev is exist in the version do not show update needed. [Hiddify]
-- Keep the link as it is. fix the issue with & [Hiddify]
-- Dependency issue. [Hiddify]
-- Remove extra print. [Hiddify]
-- Bug in get headers from body. [Hiddify]
-- Bug ini ci to google play. [Hiddify]
-- Tag version issue. [Hiddify]
-- Ci bug. [Hiddify]
-- Remove comments. [Hiddify]
-- Bug. [Hiddify]
-- Space bugs in some panels. [Hiddify]
-- Aab. [Hiddify]
-- Aab build. [Hiddify]
-- Universal sign. [Hiddify]
-- KeystoreProperties. [Hiddify]
-- Name issue. [Hiddify]
-- Revert package name change. [Hiddify]
-- Name. [Hiddify]
-- Geosite download. [Hiddify]
-- Windows portable bug. [Hiddify]
-- Change name bug. [Hiddify]
-- Setup exe files. [Hiddify]
-- Libclash.so. [Hiddify]
-- Linux AppImage. [Hiddify]
-- Error. [Hiddify]
-- Category in linux. [Hiddify]
-- Add fuse for linux. [Hiddify]
-- Icon. [Hiddify]
-- Linux logo. [Hiddify]
-- Android. [Hiddify]
-- Makefile error. [Hiddify]
+- Adaptive icon. [InHive]
+- Pre-release. [InHive]
+- Typo in adaptive icon. [InHive]
+- If .dev is exist in the version do not show update needed. [InHive]
+- Keep the link as it is. fix the issue with & [InHive]
+- Dependency issue. [InHive]
+- Remove extra print. [InHive]
+- Bug in get headers from body. [InHive]
+- Bug ini ci to google play. [InHive]
+- Tag version issue. [InHive]
+- Ci bug. [InHive]
+- Remove comments. [InHive]
+- Bug. [InHive]
+- Space bugs in some panels. [InHive]
+- Aab. [InHive]
+- Aab build. [InHive]
+- Universal sign. [InHive]
+- KeystoreProperties. [InHive]
+- Name issue. [InHive]
+- Revert package name change. [InHive]
+- Name. [InHive]
+- Geosite download. [InHive]
+- Windows portable bug. [InHive]
+- Change name bug. [InHive]
+- Setup exe files. [InHive]
+- Libclash.so. [InHive]
+- Linux AppImage. [InHive]
+- Error. [InHive]
+- Category in linux. [InHive]
+- Add fuse for linux. [InHive]
+- Icon. [InHive]
+- Linux logo. [InHive]
+- Android. [InHive]
+- Makefile error. [InHive]
 
 Other
 ~~~~~
-- Release: version 0.5.8. [Hiddify]
+- Release: version 0.5.8. [InHive]
 - Fix ci. [problematicconsumer]
 - Fix false-positive error reports. [problematicconsumer]
 - Change build setup. [problematicconsumer]
@@ -2632,43 +2632,43 @@ Other
 - Ci: fix env. [problematicconsumer]
 - Ci: add dsn env. [problematicconsumer]
 - Feat: add region and terms to intro. [problematicconsumer]
-- Update ci.yml. [Hiddify]
+- Update ci.yml. [InHive]
 - Build: add sentry dsn. [problematicconsumer]
 - Feat: add intro screen. [problematicconsumer]
 - Feat: add sentry. [problematicconsumer]
 - Ci: bump macos version. [problematicconsumer]
 - Feat: update profile when adding preexisting url.
   [problematicconsumer]
-- Publish draft even with error. [Hiddify]
-- Update version of core. [Hiddify]
-- Merge branch 'main' of hiddify-github:hiddify/hiddify-next. [Hiddify]
-- Add firebase. [Hiddify]
-- Update translation. [Hiddify]
+- Publish draft even with error. [InHive]
+- Update version of core. [InHive]
+- Merge branch 'main' of hiddify-github:hiddify/hiddify-next. [InHive]
+- Add firebase. [InHive]
+- Update translation. [InHive]
 - Refactor: version presentation. [problematicconsumer]
 - Perf: improve header parser. [problematicconsumer]
 - Feat: remove check for updates in market releases.
   [problematicconsumer]
-- Release: version 0.5.6.dev 🚀 [Hiddify]
-- Release: version 0.5.5.dev 🚀 [Hiddify]
-- Release: version 0.5.4.dev 🚀 [Hiddify]
-- Better manage the market release. [Hiddify]
-- Release: version 0.5.3.dev 🚀 [Hiddify]
-- Release: version 0.5.2.dev 🚀 [Hiddify]
-- Update. [Hiddify]
-- Release: version 0.5.1.dev 🚀 [Hiddify]
+- Release: version 0.5.6.dev 🚀 [InHive]
+- Release: version 0.5.5.dev 🚀 [InHive]
+- Release: version 0.5.4.dev 🚀 [InHive]
+- Better manage the market release. [InHive]
+- Release: version 0.5.3.dev 🚀 [InHive]
+- Release: version 0.5.2.dev 🚀 [InHive]
+- Update. [InHive]
+- Release: version 0.5.1.dev 🚀 [InHive]
 - Merge branch 'main' of https://github.com/hiddify/hiddify-next.
-  [Hiddify]
+  [InHive]
 - Improve accessability. [problematicconsumer]
 - Fix per-app proxy selection. [problematicconsumer]
 - Add android per-app proxy. [problematicconsumer]
 - Add basic flavors. [problematicconsumer]
-- Update Makefile. [Hiddify]
-- Update ci.yml. [Hiddify]
-- Update ci.yml. [Hiddify]
-- Update Makefile. [Hiddify]
-- Update ci.yml. [Hiddify]
-- Update ci.yml. [Hiddify]
-- Update README.md. [Hiddify]
+- Update Makefile. [InHive]
+- Update ci.yml. [InHive]
+- Update ci.yml. [InHive]
+- Update Makefile. [InHive]
+- Update ci.yml. [InHive]
+- Update ci.yml. [InHive]
+- Update README.md. [InHive]
 - Add accessability semantics. [problematicconsumer]
 - Release v0.1.0. [problematicconsumer]
 - Fix ci build. [problematicconsumer]
@@ -2681,13 +2681,13 @@ Other
 - Change android notification permission. [problematicconsumer]
 - Add android service restart. [problematicconsumer]
 - Change mark new profile active. [problematicconsumer]
-- Add support for fragment in the url. [Hiddify]
-- Handle unlimited. [Hiddify]
-- Update upload download link stats. [Hiddify]
-- Update Translations. [Hiddify]
-- Remove // TODO add content disposition parsing. [Hiddify]
-- Add content-disposition for profile title. [Hiddify]
-- Update README.md. [Hiddify]
+- Add support for fragment in the url. [InHive]
+- Handle unlimited. [InHive]
+- Update upload download link stats. [InHive]
+- Update Translations. [InHive]
+- Remove // TODO add content disposition parsing. [InHive]
+- Add content-disposition for profile title. [InHive]
+- Update README.md. [InHive]
 - Add hysteria2. [problematicconsumer]
 - Fix android build connection. [problematicconsumer]
 - Add android connection shortcut. [problematicconsumer]
@@ -2703,13 +2703,13 @@ Other
 - Change prefs. [problematicconsumer]
 - Change default config options. [problematicconsumer]
 - Remove string casing. [problematicconsumer]
-- Update ci.yml. [Hiddify]
-- Remove caching. [Hiddify]
+- Update ci.yml. [InHive]
+- Remove caching. [InHive]
 - Change core prefs to use code generation. [problematicconsumer]
 - Fix custom lint. [problematicconsumer]
 - Fix general issues. [problematicconsumer]
 - Remove vclibs. [problematicconsumer]
-- Update README.md. [Hiddify]
+- Update README.md. [InHive]
 - Fix blank screen. [problematicconsumer]
 - Add proxies sort. [problematicconsumer]
 - Refactor preferences. [problematicconsumer]
@@ -2729,12 +2729,12 @@ Other
 - Add config options. [problematicconsumer]
 - Add pref utilities. [problematicconsumer]
 - Add stats overview. [problematicconsumer]
-- Update Translations. [Hiddify]
+- Update Translations. [InHive]
 - Fix android outbounds view. [problematicconsumer]
 - Remove unnecessary options. [problematicconsumer]
 - Change proxies flow. [problematicconsumer]
 - Add android command client support. [problematicconsumer]
-- Update README.md. [Hiddify]
+- Update README.md. [InHive]
 - Add status command receiver. [problematicconsumer]
 - Add hiddify deeplink. [problematicconsumer]
 - Add macos deeplink support. [problematicconsumer]
@@ -2743,7 +2743,7 @@ Other
 - Fix url parser. [problematicconsumer]
 - Remove unnecessary prefs. [problematicconsumer]
 - Update dependencies. [problematicconsumer]
-- Make AppImage zipped for preserving permission in linux. [Hiddify]
+- Make AppImage zipped for preserving permission in linux. [InHive]
 - Add user agent. [problematicconsumer]
 - Fix uri launch. [problematicconsumer]
 - Update ci flutter version. [problematicconsumer]
@@ -2752,11 +2752,11 @@ Other
 - Fix desktop connection error msg. [problematicconsumer]
 - Add button tooltips. [problematicconsumer]
 - Fix logging. [problematicconsumer]
-- Create dependabot.yml. [Hiddify]
-- Create CODE_OF_CONDUCT.md. [Hiddify]
-- Fix aab. [Hiddify]
-- Add aab file. [Hiddify]
-- Change windows-portable name to HiddifyNext-portable. [Hiddify]
+- Create dependabot.yml. [InHive]
+- Create CODE_OF_CONDUCT.md. [InHive]
+- Fix aab. [InHive]
+- Add aab file. [InHive]
+- Change windows-portable name to InHiveNext-portable. [InHive]
 - Add debug mode. [problematicconsumer]
 - Add misc settings ui. [problematicconsumer]
 - Remote unnecessary logs. [problematicconsumer]
@@ -2765,7 +2765,7 @@ Other
 - Fix linux build. [problematicconsumer]
 - Merge branch 'main' of https://github.com/hiddify/hiddify-next.
   [problematicconsumer]
-- Fix android builds. [Hiddify]
+- Fix android builds. [InHive]
 - Fix android splash screen. [problematicconsumer]
 - Update icons. [problematicconsumer]
 - Fix windows executable build. [problematicconsumer]
@@ -2774,26 +2774,26 @@ Other
 - Update readme. [problematicconsumer]
 - Change desktop directories. [problematicconsumer]
 - Remove desktop notifications. [problematicconsumer]
-- Force same version code for all platforms. [Hiddify]
+- Force same version code for all platforms. [InHive]
 - Add more logs. [problematicconsumer]
 - Add log timestamp. [problematicconsumer]
 - Update icons. [problematicconsumer]
 - Remove drawer branding. [problematicconsumer]
-- Add download section in readme. [Hiddify]
-- Fix name of universal apk. [Hiddify]
-- Fix order. [Hiddify]
-- Update readme. [Hiddify]
+- Add download section in readme. [InHive]
+- Fix name of universal apk. [InHive]
+- Fix order. [InHive]
+- Update readme. [InHive]
 - Update logging. [problematicconsumer]
 - Update geo assets url. [problematicconsumer]
 - Change linux directories. [problematicconsumer]
-- Update icon. [Hiddify]
-- Update icon. [Hiddify]
-- Update logo for all platforms. [Hiddify]
-- Revert name in macos. [Hiddify]
-- Temporary disable app sandbox. [Hiddify]
-- Change name. [Hiddify]
-- Update Release.entitlements to fix binding issue. [Hiddify]
-- Merge pull request #5 from evstegneych/main. [Hiddify]
+- Update icon. [InHive]
+- Update icon. [InHive]
+- Update logo for all platforms. [InHive]
+- Revert name in macos. [InHive]
+- Temporary disable app sandbox. [InHive]
+- Change name. [InHive]
+- Update Release.entitlements to fix binding issue. [InHive]
+- Merge pull request #5 from evstegneych/main. [InHive]
 
   add macos option
 - Add macos option. [EvstegneyCh]
@@ -2802,10 +2802,10 @@ Other
 - Update other dependencies. [problematicconsumer]
 - Update dependencies. [problematicconsumer]
 - Update flutter version. [problematicconsumer]
-- Update LICENSE.md. [Hiddify]
-- Add build option for ios but not tested. [Hiddify]
-- Return: build for all. [Hiddify]
-- Fix build for macos. [Hiddify]
+- Update LICENSE.md. [InHive]
+- Add build option for ios but not tested. [InHive]
+- Return: build for all. [InHive]
+- Fix build for macos. [InHive]
 - Fix ci. [problematicconsumer]
 - Migrate to singbox. [problematicconsumer]
 - Fix routing. [problematicconsumer]
@@ -2827,25 +2827,25 @@ Other
 - Update dependencies. [problematicconsumer]
 - Add about page. [problematicconsumer]
 - Fix linux notifications. [problematicconsumer]
-- Build all. [Hiddify]
-- Hard coding. [Hiddify]
-- Add png. [Hiddify]
-- Update ci.yml. [Hiddify]
-- Update ci.yml. [Hiddify]
-- Update ci.yml. [Hiddify]
-- Update ci.yml. [Hiddify]
-- Update ci.yml. [Hiddify]
-- Update ci.yml. [Hiddify]
-- Update ci.yml. [Hiddify]
-- Update ci.yml. [Hiddify]
-- Update Makefile. [Hiddify]
-- Update ci.yml. [Hiddify]
-- Update Makefile. [Hiddify]
-- Update ci.yml. [Hiddify]
-- Update ci.yml. [Hiddify]
-- Update Makefile. [Hiddify]
-- Update ci.yml. [Hiddify]
-- Update Makefile. [Hiddify]
+- Build all. [InHive]
+- Hard coding. [InHive]
+- Add png. [InHive]
+- Update ci.yml. [InHive]
+- Update ci.yml. [InHive]
+- Update ci.yml. [InHive]
+- Update ci.yml. [InHive]
+- Update ci.yml. [InHive]
+- Update ci.yml. [InHive]
+- Update ci.yml. [InHive]
+- Update ci.yml. [InHive]
+- Update Makefile. [InHive]
+- Update ci.yml. [InHive]
+- Update Makefile. [InHive]
+- Update ci.yml. [InHive]
+- Update ci.yml. [InHive]
+- Update Makefile. [InHive]
+- Update ci.yml. [InHive]
+- Update Makefile. [InHive]
 - Fix makefile. [problematicconsumer]
 - Fix actions. [problematicconsumer]
 - Fix actions. [problematicconsumer]
@@ -2853,39 +2853,39 @@ Other
 - Update build setup. [problematicconsumer]
 - Merge branch 'main' of https://github.com/hiddify/hiddify-next.
   [problematicconsumer]
-- Create LICENSE.md. [Hiddify]
+- Create LICENSE.md. [InHive]
 - Add core submodule. [problematicconsumer]
 - Remove core libs. [problematicconsumer]
-- Update Makefile. [Hiddify]
-- Update Makefile. [Hiddify]
-- Remove c install. [Hiddify]
-- Update make. [Hiddify]
+- Update Makefile. [InHive]
+- Update Makefile. [InHive]
+- Remove c install. [InHive]
+- Update make. [InHive]
 - Merge branch 'main' of https://github.com/hiddify/hiddify-next.
-  [Hiddify]
+  [InHive]
 - Add Persian font. [problematicconsumer]
 - Update dependencies. [problematicconsumer]
-- Update to libclash. [Hiddify]
-- Add cache. [Hiddify]
-- Add: new action. [Hiddify]
-- Add write permission. [Hiddify]
-- Fix. [Hiddify]
-- Modify. [Hiddify]
-- Fix. [Hiddify]
-- Update. [Hiddify]
+- Update to libclash. [InHive]
+- Add cache. [InHive]
+- Add: new action. [InHive]
+- Add write permission. [InHive]
+- Fix. [InHive]
+- Modify. [InHive]
+- Fix. [InHive]
+- Update. [InHive]
 - Fix android build. [problematicconsumer]
 - Fix code gen bug. [problematicconsumer]
-- Update ci.yml. [Hiddify]
-- Update ci.yml. [Hiddify]
+- Update ci.yml. [InHive]
+- Update ci.yml. [InHive]
 - Fix CI. [problematicconsumer]
 - Fix CI. [problematicconsumer]
 - Merge branch 'main' of https://github.com/hiddify/hiddify-next.
   [problematicconsumer]
-- Update ci.yml. [Hiddify]
-- Update ci.yml. [Hiddify]
+- Update ci.yml. [InHive]
+- Update ci.yml. [InHive]
 - Fix CI. [problematicconsumer]
-- Update ci.yml. [Hiddify]
-- Update ci.yml. [Hiddify]
-- Add CI. [Hiddify]
+- Update ci.yml. [InHive]
+- Update ci.yml. [InHive]
+- Add CI. [InHive]
 - Add silent start for desktop. [problematicconsumer]
 - Update readme. [problematicconsumer]
 - Add headless mode to desktop. [problematicconsumer]
@@ -2894,18 +2894,18 @@ Other
 - Add Farsi(fa) language. [problematicconsumer]
 - Merge branch 'main' of https://github.com/hiddify/hiddify-next.
   [problematicconsumer]
-- Initial commit. [Hiddify]
+- Initial commit. [InHive]
 - Initial. [problematicconsumer]
 
 
 v0.3.0 (2023-09-16)
 -------------------
-- Update to latest version of singbox. [Hiddify]
+- Update to latest version of singbox. [InHive]
 
 
 v0.2.0 (2023-09-11)
 -------------------
-- Update to newer version of ray2sing. [Hiddify]
+- Update to newer version of ray2sing. [InHive]
 
 
 v0.1.1 (2023-09-11)
@@ -2919,25 +2919,25 @@ v0.1.0 (2023-09-11)
 
 New
 ~~~
-- Add v2ray parser. [Hiddify]
-- Add dependency for make android. [Hiddify]
-- Add cache to go. [Hiddify]
-- Add go cache for speed up build. [Hiddify]
-- Add ios build. [Hiddify]
-- Fix all archs. [Hiddify]
-- Add macos, x86 build. [Hiddify]
+- Add v2ray parser. [InHive]
+- Add dependency for make android. [InHive]
+- Add cache to go. [InHive]
+- Add go cache for speed up build. [InHive]
+- Add ios build. [InHive]
+- Fix all archs. [InHive]
+- Add macos, x86 build. [InHive]
 
 Changes
 ~~~~~~~
-- Make ios only target to speed up process. [Hiddify]
-- Remove x86 build due to incompatible with flutter. [Hiddify]
+- Make ios only target to speed up process. [InHive]
+- Remove x86 build due to incompatible with flutter. [InHive]
 
 Fix
 ~~~
-- Bug in v2ray to clash. [Hiddify]
-- Remove useless route. [Hiddify]
-- Tree not found. [Hiddify]
-- Issues. [Hiddify]
+- Bug in v2ray to clash. [InHive]
+- Remove useless route. [InHive]
+- Tree not found. [InHive]
+- Issues. [InHive]
 
 Other
 ~~~~~
@@ -2946,12 +2946,12 @@ Other
 - Update ci. [problematicconsumer]
 - Update build. [problematicconsumer]
 - Update ci. [problematicconsumer]
-- Remove cache. [Hiddify]
+- Remove cache. [InHive]
 - Add service restart. [problematicconsumer]
-- Update to singbox to skip fatal error on outbound error. [Hiddify]
-- Fix confilicte with clash. [Hiddify]
-- Add ray2singbox. [Hiddify]
-- Update to singbox v1.5.0.6. [Hiddify]
+- Update to singbox to skip fatal error on outbound error. [InHive]
+- Fix confilicte with clash. [InHive]
+- Add ray2singbox. [InHive]
+- Update to singbox v1.5.0.6. [InHive]
 - Add tun stack option. [problematicconsumer]
 - Update dependencies. [problematicconsumer]
 - Add config builder. [problematicconsumer]
@@ -2960,24 +2960,24 @@ Other
 - Add command server. [problematicconsumer]
 - Add dart api bridge. [problematicconsumer]
 - Add box service. [problematicconsumer]
-- Update. [Hiddify]
-- Update to singbox 1.4.0.2. [Hiddify]
-- Remove: extra command for android. [Hiddify]
-- Update go to 1.21. [Hiddify]
-- Update singbox to version 1.4.0. [Hiddify]
-- Update to singbox v1.4.0 from hiddify repository. [Hiddify]
+- Update. [InHive]
+- Update to singbox 1.4.0.2. [InHive]
+- Remove: extra command for android. [InHive]
+- Update go to 1.21. [InHive]
+- Update singbox to version 1.4.0. [InHive]
+- Update to singbox v1.4.0 from hiddify repository. [InHive]
 - Fix override logic. [problematicconsumer]
 - Fix clash template. [problematicconsumer]
-- Update LICENSE.md. [Hiddify]
-- Remove macos-arm64 amd64. [Hiddify]
-- Remove macos seperate build. [Hiddify]
-- Disable ios build. [Hiddify]
+- Update LICENSE.md. [InHive]
+- Remove macos-arm64 amd64. [InHive]
+- Remove macos seperate build. [InHive]
+- Disable ios build. [InHive]
 - Add CI. [problematicconsumer]
 - Update config flow. [problematicconsumer]
 - Add config override. [problematicconsumer]
 - Add generalized config parser. [problematicconsumer]
 - Bootstrap. [problematicconsumer]
-- Create LICENSE.md. [Hiddify]
-- Initial commit. [Hiddify]
+- Create LICENSE.md. [InHive]
+- Initial commit. [InHive]
 
 

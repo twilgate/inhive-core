@@ -4,13 +4,13 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/hiddify/hiddify-core/v2/profile"
+	"github.com/buudesh/inhive-core/v2/profile"
 	"github.com/sagernet/sing-box/experimental/libbox"
 )
 
 func TestAddByContent(t *testing.T) {
 	ctx := libbox.BaseContext(nil)
-	entity, err := profile.AddByUrl(ctx, "https://raw.githubusercontent.com/hiddify/hiddify-next/refs/heads/main/test.configs/warp", "", false)
+	entity, err := profile.AddByUrl(ctx, "https://raw.githubusercontent.com/hiddify/inhive-core/refs/heads/main/test.configs/warp", "", false)
 	if err != nil {
 		t.Fatalf("expected no error, but got: %v", err)
 	}
@@ -30,13 +30,13 @@ func TestAddByContent(t *testing.T) {
 
 	// Check URLs
 	supportURL := entity.SubInfo.SupportUrl
-	if supportURL != "https://t.me/hiddify" {
-		t.Errorf("expected support URL to be https://t.me/hiddify, got %v", supportURL)
+	if supportURL != "https://t.me/inhive_bot" {
+		t.Errorf("expected support URL to be https://t.me/inhive_bot, got %v", supportURL)
 	}
 
 	profileWebPageURL := entity.SubInfo.WebPageUrl
-	if profileWebPageURL != "https://hiddify.com" {
-		t.Errorf("expected profile web page URL to be https://hiddify.com, got %v", profileWebPageURL)
+	if profileWebPageURL != "https://inhive.ru" {
+		t.Errorf("expected profile web page URL to be https://inhive.ru, got %v", profileWebPageURL)
 	}
 	profile.DeleteById(entity.Id)
 	// You can further assert individual fields of warp configurations

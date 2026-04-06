@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for hiddifyrpc
+ * @fileoverview gRPC-Web generated client stub for inhiverpc
  * @enhanceable
  * @public
  */
@@ -8,7 +8,7 @@
 // versions:
 // 	protoc-gen-grpc-web v1.5.0
 // 	protoc              v5.28.0
-// source: hiddify.proto
+// source: inhive.proto
 
 
 /* eslint-disable */
@@ -22,7 +22,7 @@ grpc.web = require('grpc-web');
 
 var base_pb = require('./base_pb.js')
 const proto = {};
-proto.hiddifyrpc = require('./hiddify_pb.js');
+proto.inhiverpc = require('./inhive_pb.js');
 
 /**
  * @param {string} hostname
@@ -32,7 +32,7 @@ proto.hiddifyrpc = require('./hiddify_pb.js');
  * @struct
  * @final
  */
-proto.hiddifyrpc.HelloClient =
+proto.inhiverpc.HelloClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -58,7 +58,7 @@ proto.hiddifyrpc.HelloClient =
  * @struct
  * @final
  */
-proto.hiddifyrpc.HelloPromiseClient =
+proto.inhiverpc.HelloPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -79,16 +79,16 @@ proto.hiddifyrpc.HelloPromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.HelloRequest,
- *   !proto.hiddifyrpc.HelloResponse>}
+ *   !proto.inhiverpc.HelloRequest,
+ *   !proto.inhiverpc.HelloResponse>}
  */
 const methodDescriptor_Hello_SayHello = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.Hello/SayHello',
+  '/inhiverpc.Hello/SayHello',
   grpc.web.MethodType.UNARY,
   base_pb.HelloRequest,
   base_pb.HelloResponse,
   /**
-   * @param {!proto.hiddifyrpc.HelloRequest} request
+   * @param {!proto.inhiverpc.HelloRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -99,19 +99,19 @@ const methodDescriptor_Hello_SayHello = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.hiddifyrpc.HelloRequest} request The
+ * @param {!proto.inhiverpc.HelloRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.hiddifyrpc.HelloResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.inhiverpc.HelloResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.HelloResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.inhiverpc.HelloResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.HelloClient.prototype.sayHello =
+proto.inhiverpc.HelloClient.prototype.sayHello =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/hiddifyrpc.Hello/SayHello',
+      '/inhiverpc.Hello/SayHello',
       request,
       metadata || {},
       methodDescriptor_Hello_SayHello,
@@ -120,17 +120,17 @@ proto.hiddifyrpc.HelloClient.prototype.sayHello =
 
 
 /**
- * @param {!proto.hiddifyrpc.HelloRequest} request The
+ * @param {!proto.inhiverpc.HelloRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.hiddifyrpc.HelloResponse>}
+ * @return {!Promise<!proto.inhiverpc.HelloResponse>}
  *     Promise that resolves to the response
  */
-proto.hiddifyrpc.HelloPromiseClient.prototype.sayHello =
+proto.inhiverpc.HelloPromiseClient.prototype.sayHello =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/hiddifyrpc.Hello/SayHello',
+      '/inhiverpc.Hello/SayHello',
       request,
       metadata || {},
       methodDescriptor_Hello_SayHello);
@@ -145,7 +145,7 @@ proto.hiddifyrpc.HelloPromiseClient.prototype.sayHello =
  * @struct
  * @final
  */
-proto.hiddifyrpc.CoreClient =
+proto.inhiverpc.CoreClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -171,7 +171,7 @@ proto.hiddifyrpc.CoreClient =
  * @struct
  * @final
  */
-proto.hiddifyrpc.CorePromiseClient =
+proto.inhiverpc.CorePromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -192,39 +192,39 @@ proto.hiddifyrpc.CorePromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.StartRequest,
- *   !proto.hiddifyrpc.CoreInfoResponse>}
+ *   !proto.inhiverpc.StartRequest,
+ *   !proto.inhiverpc.CoreInfoResponse>}
  */
 const methodDescriptor_Core_Start = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.Core/Start',
+  '/inhiverpc.Core/Start',
   grpc.web.MethodType.UNARY,
-  proto.hiddifyrpc.StartRequest,
-  proto.hiddifyrpc.CoreInfoResponse,
+  proto.inhiverpc.StartRequest,
+  proto.inhiverpc.CoreInfoResponse,
   /**
-   * @param {!proto.hiddifyrpc.StartRequest} request
+   * @param {!proto.inhiverpc.StartRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.hiddifyrpc.CoreInfoResponse.deserializeBinary
+  proto.inhiverpc.CoreInfoResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.hiddifyrpc.StartRequest} request The
+ * @param {!proto.inhiverpc.StartRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.hiddifyrpc.CoreInfoResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.inhiverpc.CoreInfoResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.CoreInfoResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.inhiverpc.CoreInfoResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.CoreClient.prototype.start =
+proto.inhiverpc.CoreClient.prototype.start =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/hiddifyrpc.Core/Start',
+      '/inhiverpc.Core/Start',
       request,
       metadata || {},
       methodDescriptor_Core_Start,
@@ -233,17 +233,17 @@ proto.hiddifyrpc.CoreClient.prototype.start =
 
 
 /**
- * @param {!proto.hiddifyrpc.StartRequest} request The
+ * @param {!proto.inhiverpc.StartRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.hiddifyrpc.CoreInfoResponse>}
+ * @return {!Promise<!proto.inhiverpc.CoreInfoResponse>}
  *     Promise that resolves to the response
  */
-proto.hiddifyrpc.CorePromiseClient.prototype.start =
+proto.inhiverpc.CorePromiseClient.prototype.start =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/hiddifyrpc.Core/Start',
+      '/inhiverpc.Core/Start',
       request,
       metadata || {},
       methodDescriptor_Core_Start);
@@ -253,36 +253,36 @@ proto.hiddifyrpc.CorePromiseClient.prototype.start =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.Empty,
- *   !proto.hiddifyrpc.CoreInfoResponse>}
+ *   !proto.inhiverpc.Empty,
+ *   !proto.inhiverpc.CoreInfoResponse>}
  */
 const methodDescriptor_Core_CoreInfoListener = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.Core/CoreInfoListener',
+  '/inhiverpc.Core/CoreInfoListener',
   grpc.web.MethodType.SERVER_STREAMING,
   base_pb.Empty,
-  proto.hiddifyrpc.CoreInfoResponse,
+  proto.inhiverpc.CoreInfoResponse,
   /**
-   * @param {!proto.hiddifyrpc.Empty} request
+   * @param {!proto.inhiverpc.Empty} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.hiddifyrpc.CoreInfoResponse.deserializeBinary
+  proto.inhiverpc.CoreInfoResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.hiddifyrpc.Empty} request The request proto
+ * @param {!proto.inhiverpc.Empty} request The request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.CoreInfoResponse>}
+ * @return {!grpc.web.ClientReadableStream<!proto.inhiverpc.CoreInfoResponse>}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.CoreClient.prototype.coreInfoListener =
+proto.inhiverpc.CoreClient.prototype.coreInfoListener =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/hiddifyrpc.Core/CoreInfoListener',
+      '/inhiverpc.Core/CoreInfoListener',
       request,
       metadata || {},
       methodDescriptor_Core_CoreInfoListener);
@@ -290,16 +290,16 @@ proto.hiddifyrpc.CoreClient.prototype.coreInfoListener =
 
 
 /**
- * @param {!proto.hiddifyrpc.Empty} request The request proto
+ * @param {!proto.inhiverpc.Empty} request The request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.CoreInfoResponse>}
+ * @return {!grpc.web.ClientReadableStream<!proto.inhiverpc.CoreInfoResponse>}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.CorePromiseClient.prototype.coreInfoListener =
+proto.inhiverpc.CorePromiseClient.prototype.coreInfoListener =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/hiddifyrpc.Core/CoreInfoListener',
+      '/inhiverpc.Core/CoreInfoListener',
       request,
       metadata || {},
       methodDescriptor_Core_CoreInfoListener);
@@ -309,36 +309,36 @@ proto.hiddifyrpc.CorePromiseClient.prototype.coreInfoListener =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.Empty,
- *   !proto.hiddifyrpc.OutboundGroupList>}
+ *   !proto.inhiverpc.Empty,
+ *   !proto.inhiverpc.OutboundGroupList>}
  */
 const methodDescriptor_Core_OutboundsInfo = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.Core/OutboundsInfo',
+  '/inhiverpc.Core/OutboundsInfo',
   grpc.web.MethodType.SERVER_STREAMING,
   base_pb.Empty,
-  proto.hiddifyrpc.OutboundGroupList,
+  proto.inhiverpc.OutboundGroupList,
   /**
-   * @param {!proto.hiddifyrpc.Empty} request
+   * @param {!proto.inhiverpc.Empty} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.hiddifyrpc.OutboundGroupList.deserializeBinary
+  proto.inhiverpc.OutboundGroupList.deserializeBinary
 );
 
 
 /**
- * @param {!proto.hiddifyrpc.Empty} request The request proto
+ * @param {!proto.inhiverpc.Empty} request The request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.OutboundGroupList>}
+ * @return {!grpc.web.ClientReadableStream<!proto.inhiverpc.OutboundGroupList>}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.CoreClient.prototype.outboundsInfo =
+proto.inhiverpc.CoreClient.prototype.outboundsInfo =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/hiddifyrpc.Core/OutboundsInfo',
+      '/inhiverpc.Core/OutboundsInfo',
       request,
       metadata || {},
       methodDescriptor_Core_OutboundsInfo);
@@ -346,16 +346,16 @@ proto.hiddifyrpc.CoreClient.prototype.outboundsInfo =
 
 
 /**
- * @param {!proto.hiddifyrpc.Empty} request The request proto
+ * @param {!proto.inhiverpc.Empty} request The request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.OutboundGroupList>}
+ * @return {!grpc.web.ClientReadableStream<!proto.inhiverpc.OutboundGroupList>}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.CorePromiseClient.prototype.outboundsInfo =
+proto.inhiverpc.CorePromiseClient.prototype.outboundsInfo =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/hiddifyrpc.Core/OutboundsInfo',
+      '/inhiverpc.Core/OutboundsInfo',
       request,
       metadata || {},
       methodDescriptor_Core_OutboundsInfo);
@@ -365,36 +365,36 @@ proto.hiddifyrpc.CorePromiseClient.prototype.outboundsInfo =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.Empty,
- *   !proto.hiddifyrpc.OutboundGroupList>}
+ *   !proto.inhiverpc.Empty,
+ *   !proto.inhiverpc.OutboundGroupList>}
  */
 const methodDescriptor_Core_MainOutboundsInfo = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.Core/MainOutboundsInfo',
+  '/inhiverpc.Core/MainOutboundsInfo',
   grpc.web.MethodType.SERVER_STREAMING,
   base_pb.Empty,
-  proto.hiddifyrpc.OutboundGroupList,
+  proto.inhiverpc.OutboundGroupList,
   /**
-   * @param {!proto.hiddifyrpc.Empty} request
+   * @param {!proto.inhiverpc.Empty} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.hiddifyrpc.OutboundGroupList.deserializeBinary
+  proto.inhiverpc.OutboundGroupList.deserializeBinary
 );
 
 
 /**
- * @param {!proto.hiddifyrpc.Empty} request The request proto
+ * @param {!proto.inhiverpc.Empty} request The request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.OutboundGroupList>}
+ * @return {!grpc.web.ClientReadableStream<!proto.inhiverpc.OutboundGroupList>}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.CoreClient.prototype.mainOutboundsInfo =
+proto.inhiverpc.CoreClient.prototype.mainOutboundsInfo =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/hiddifyrpc.Core/MainOutboundsInfo',
+      '/inhiverpc.Core/MainOutboundsInfo',
       request,
       metadata || {},
       methodDescriptor_Core_MainOutboundsInfo);
@@ -402,16 +402,16 @@ proto.hiddifyrpc.CoreClient.prototype.mainOutboundsInfo =
 
 
 /**
- * @param {!proto.hiddifyrpc.Empty} request The request proto
+ * @param {!proto.inhiverpc.Empty} request The request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.OutboundGroupList>}
+ * @return {!grpc.web.ClientReadableStream<!proto.inhiverpc.OutboundGroupList>}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.CorePromiseClient.prototype.mainOutboundsInfo =
+proto.inhiverpc.CorePromiseClient.prototype.mainOutboundsInfo =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/hiddifyrpc.Core/MainOutboundsInfo',
+      '/inhiverpc.Core/MainOutboundsInfo',
       request,
       metadata || {},
       methodDescriptor_Core_MainOutboundsInfo);
@@ -421,36 +421,36 @@ proto.hiddifyrpc.CorePromiseClient.prototype.mainOutboundsInfo =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.Empty,
- *   !proto.hiddifyrpc.SystemInfo>}
+ *   !proto.inhiverpc.Empty,
+ *   !proto.inhiverpc.SystemInfo>}
  */
 const methodDescriptor_Core_GetSystemInfo = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.Core/GetSystemInfo',
+  '/inhiverpc.Core/GetSystemInfo',
   grpc.web.MethodType.SERVER_STREAMING,
   base_pb.Empty,
-  proto.hiddifyrpc.SystemInfo,
+  proto.inhiverpc.SystemInfo,
   /**
-   * @param {!proto.hiddifyrpc.Empty} request
+   * @param {!proto.inhiverpc.Empty} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.hiddifyrpc.SystemInfo.deserializeBinary
+  proto.inhiverpc.SystemInfo.deserializeBinary
 );
 
 
 /**
- * @param {!proto.hiddifyrpc.Empty} request The request proto
+ * @param {!proto.inhiverpc.Empty} request The request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.SystemInfo>}
+ * @return {!grpc.web.ClientReadableStream<!proto.inhiverpc.SystemInfo>}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.CoreClient.prototype.getSystemInfo =
+proto.inhiverpc.CoreClient.prototype.getSystemInfo =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/hiddifyrpc.Core/GetSystemInfo',
+      '/inhiverpc.Core/GetSystemInfo',
       request,
       metadata || {},
       methodDescriptor_Core_GetSystemInfo);
@@ -458,16 +458,16 @@ proto.hiddifyrpc.CoreClient.prototype.getSystemInfo =
 
 
 /**
- * @param {!proto.hiddifyrpc.Empty} request The request proto
+ * @param {!proto.inhiverpc.Empty} request The request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.SystemInfo>}
+ * @return {!grpc.web.ClientReadableStream<!proto.inhiverpc.SystemInfo>}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.CorePromiseClient.prototype.getSystemInfo =
+proto.inhiverpc.CorePromiseClient.prototype.getSystemInfo =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/hiddifyrpc.Core/GetSystemInfo',
+      '/inhiverpc.Core/GetSystemInfo',
       request,
       metadata || {},
       methodDescriptor_Core_GetSystemInfo);
@@ -477,39 +477,39 @@ proto.hiddifyrpc.CorePromiseClient.prototype.getSystemInfo =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.SetupRequest,
- *   !proto.hiddifyrpc.Response>}
+ *   !proto.inhiverpc.SetupRequest,
+ *   !proto.inhiverpc.Response>}
  */
 const methodDescriptor_Core_Setup = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.Core/Setup',
+  '/inhiverpc.Core/Setup',
   grpc.web.MethodType.UNARY,
-  proto.hiddifyrpc.SetupRequest,
-  proto.hiddifyrpc.Response,
+  proto.inhiverpc.SetupRequest,
+  proto.inhiverpc.Response,
   /**
-   * @param {!proto.hiddifyrpc.SetupRequest} request
+   * @param {!proto.inhiverpc.SetupRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.hiddifyrpc.Response.deserializeBinary
+  proto.inhiverpc.Response.deserializeBinary
 );
 
 
 /**
- * @param {!proto.hiddifyrpc.SetupRequest} request The
+ * @param {!proto.inhiverpc.SetupRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.hiddifyrpc.Response)}
+ * @param {function(?grpc.web.RpcError, ?proto.inhiverpc.Response)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.Response>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.inhiverpc.Response>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.CoreClient.prototype.setup =
+proto.inhiverpc.CoreClient.prototype.setup =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/hiddifyrpc.Core/Setup',
+      '/inhiverpc.Core/Setup',
       request,
       metadata || {},
       methodDescriptor_Core_Setup,
@@ -518,17 +518,17 @@ proto.hiddifyrpc.CoreClient.prototype.setup =
 
 
 /**
- * @param {!proto.hiddifyrpc.SetupRequest} request The
+ * @param {!proto.inhiverpc.SetupRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.hiddifyrpc.Response>}
+ * @return {!Promise<!proto.inhiverpc.Response>}
  *     Promise that resolves to the response
  */
-proto.hiddifyrpc.CorePromiseClient.prototype.setup =
+proto.inhiverpc.CorePromiseClient.prototype.setup =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/hiddifyrpc.Core/Setup',
+      '/inhiverpc.Core/Setup',
       request,
       metadata || {},
       methodDescriptor_Core_Setup);
@@ -538,39 +538,39 @@ proto.hiddifyrpc.CorePromiseClient.prototype.setup =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.ParseRequest,
- *   !proto.hiddifyrpc.ParseResponse>}
+ *   !proto.inhiverpc.ParseRequest,
+ *   !proto.inhiverpc.ParseResponse>}
  */
 const methodDescriptor_Core_Parse = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.Core/Parse',
+  '/inhiverpc.Core/Parse',
   grpc.web.MethodType.UNARY,
-  proto.hiddifyrpc.ParseRequest,
-  proto.hiddifyrpc.ParseResponse,
+  proto.inhiverpc.ParseRequest,
+  proto.inhiverpc.ParseResponse,
   /**
-   * @param {!proto.hiddifyrpc.ParseRequest} request
+   * @param {!proto.inhiverpc.ParseRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.hiddifyrpc.ParseResponse.deserializeBinary
+  proto.inhiverpc.ParseResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.hiddifyrpc.ParseRequest} request The
+ * @param {!proto.inhiverpc.ParseRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.hiddifyrpc.ParseResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.inhiverpc.ParseResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.ParseResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.inhiverpc.ParseResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.CoreClient.prototype.parse =
+proto.inhiverpc.CoreClient.prototype.parse =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/hiddifyrpc.Core/Parse',
+      '/inhiverpc.Core/Parse',
       request,
       metadata || {},
       methodDescriptor_Core_Parse,
@@ -579,17 +579,17 @@ proto.hiddifyrpc.CoreClient.prototype.parse =
 
 
 /**
- * @param {!proto.hiddifyrpc.ParseRequest} request The
+ * @param {!proto.inhiverpc.ParseRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.hiddifyrpc.ParseResponse>}
+ * @return {!Promise<!proto.inhiverpc.ParseResponse>}
  *     Promise that resolves to the response
  */
-proto.hiddifyrpc.CorePromiseClient.prototype.parse =
+proto.inhiverpc.CorePromiseClient.prototype.parse =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/hiddifyrpc.Core/Parse',
+      '/inhiverpc.Core/Parse',
       request,
       metadata || {},
       methodDescriptor_Core_Parse);
@@ -599,39 +599,39 @@ proto.hiddifyrpc.CorePromiseClient.prototype.parse =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.ChangeHiddifySettingsRequest,
- *   !proto.hiddifyrpc.CoreInfoResponse>}
+ *   !proto.inhiverpc.ChangeHiddifySettingsRequest,
+ *   !proto.inhiverpc.CoreInfoResponse>}
  */
 const methodDescriptor_Core_ChangeHiddifySettings = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.Core/ChangeHiddifySettings',
+  '/inhiverpc.Core/ChangeHiddifySettings',
   grpc.web.MethodType.UNARY,
-  proto.hiddifyrpc.ChangeHiddifySettingsRequest,
-  proto.hiddifyrpc.CoreInfoResponse,
+  proto.inhiverpc.ChangeHiddifySettingsRequest,
+  proto.inhiverpc.CoreInfoResponse,
   /**
-   * @param {!proto.hiddifyrpc.ChangeHiddifySettingsRequest} request
+   * @param {!proto.inhiverpc.ChangeHiddifySettingsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.hiddifyrpc.CoreInfoResponse.deserializeBinary
+  proto.inhiverpc.CoreInfoResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.hiddifyrpc.ChangeHiddifySettingsRequest} request The
+ * @param {!proto.inhiverpc.ChangeHiddifySettingsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.hiddifyrpc.CoreInfoResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.inhiverpc.CoreInfoResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.CoreInfoResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.inhiverpc.CoreInfoResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.CoreClient.prototype.changeHiddifySettings =
+proto.inhiverpc.CoreClient.prototype.changeHiddifySettings =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/hiddifyrpc.Core/ChangeHiddifySettings',
+      '/inhiverpc.Core/ChangeHiddifySettings',
       request,
       metadata || {},
       methodDescriptor_Core_ChangeHiddifySettings,
@@ -640,17 +640,17 @@ proto.hiddifyrpc.CoreClient.prototype.changeHiddifySettings =
 
 
 /**
- * @param {!proto.hiddifyrpc.ChangeHiddifySettingsRequest} request The
+ * @param {!proto.inhiverpc.ChangeHiddifySettingsRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.hiddifyrpc.CoreInfoResponse>}
+ * @return {!Promise<!proto.inhiverpc.CoreInfoResponse>}
  *     Promise that resolves to the response
  */
-proto.hiddifyrpc.CorePromiseClient.prototype.changeHiddifySettings =
+proto.inhiverpc.CorePromiseClient.prototype.changeHiddifySettings =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/hiddifyrpc.Core/ChangeHiddifySettings',
+      '/inhiverpc.Core/ChangeHiddifySettings',
       request,
       metadata || {},
       methodDescriptor_Core_ChangeHiddifySettings);
@@ -660,39 +660,39 @@ proto.hiddifyrpc.CorePromiseClient.prototype.changeHiddifySettings =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.StartRequest,
- *   !proto.hiddifyrpc.CoreInfoResponse>}
+ *   !proto.inhiverpc.StartRequest,
+ *   !proto.inhiverpc.CoreInfoResponse>}
  */
 const methodDescriptor_Core_StartService = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.Core/StartService',
+  '/inhiverpc.Core/StartService',
   grpc.web.MethodType.UNARY,
-  proto.hiddifyrpc.StartRequest,
-  proto.hiddifyrpc.CoreInfoResponse,
+  proto.inhiverpc.StartRequest,
+  proto.inhiverpc.CoreInfoResponse,
   /**
-   * @param {!proto.hiddifyrpc.StartRequest} request
+   * @param {!proto.inhiverpc.StartRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.hiddifyrpc.CoreInfoResponse.deserializeBinary
+  proto.inhiverpc.CoreInfoResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.hiddifyrpc.StartRequest} request The
+ * @param {!proto.inhiverpc.StartRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.hiddifyrpc.CoreInfoResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.inhiverpc.CoreInfoResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.CoreInfoResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.inhiverpc.CoreInfoResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.CoreClient.prototype.startService =
+proto.inhiverpc.CoreClient.prototype.startService =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/hiddifyrpc.Core/StartService',
+      '/inhiverpc.Core/StartService',
       request,
       metadata || {},
       methodDescriptor_Core_StartService,
@@ -701,17 +701,17 @@ proto.hiddifyrpc.CoreClient.prototype.startService =
 
 
 /**
- * @param {!proto.hiddifyrpc.StartRequest} request The
+ * @param {!proto.inhiverpc.StartRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.hiddifyrpc.CoreInfoResponse>}
+ * @return {!Promise<!proto.inhiverpc.CoreInfoResponse>}
  *     Promise that resolves to the response
  */
-proto.hiddifyrpc.CorePromiseClient.prototype.startService =
+proto.inhiverpc.CorePromiseClient.prototype.startService =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/hiddifyrpc.Core/StartService',
+      '/inhiverpc.Core/StartService',
       request,
       metadata || {},
       methodDescriptor_Core_StartService);
@@ -721,39 +721,39 @@ proto.hiddifyrpc.CorePromiseClient.prototype.startService =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.Empty,
- *   !proto.hiddifyrpc.CoreInfoResponse>}
+ *   !proto.inhiverpc.Empty,
+ *   !proto.inhiverpc.CoreInfoResponse>}
  */
 const methodDescriptor_Core_Stop = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.Core/Stop',
+  '/inhiverpc.Core/Stop',
   grpc.web.MethodType.UNARY,
   base_pb.Empty,
-  proto.hiddifyrpc.CoreInfoResponse,
+  proto.inhiverpc.CoreInfoResponse,
   /**
-   * @param {!proto.hiddifyrpc.Empty} request
+   * @param {!proto.inhiverpc.Empty} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.hiddifyrpc.CoreInfoResponse.deserializeBinary
+  proto.inhiverpc.CoreInfoResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.hiddifyrpc.Empty} request The
+ * @param {!proto.inhiverpc.Empty} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.hiddifyrpc.CoreInfoResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.inhiverpc.CoreInfoResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.CoreInfoResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.inhiverpc.CoreInfoResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.CoreClient.prototype.stop =
+proto.inhiverpc.CoreClient.prototype.stop =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/hiddifyrpc.Core/Stop',
+      '/inhiverpc.Core/Stop',
       request,
       metadata || {},
       methodDescriptor_Core_Stop,
@@ -762,17 +762,17 @@ proto.hiddifyrpc.CoreClient.prototype.stop =
 
 
 /**
- * @param {!proto.hiddifyrpc.Empty} request The
+ * @param {!proto.inhiverpc.Empty} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.hiddifyrpc.CoreInfoResponse>}
+ * @return {!Promise<!proto.inhiverpc.CoreInfoResponse>}
  *     Promise that resolves to the response
  */
-proto.hiddifyrpc.CorePromiseClient.prototype.stop =
+proto.inhiverpc.CorePromiseClient.prototype.stop =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/hiddifyrpc.Core/Stop',
+      '/inhiverpc.Core/Stop',
       request,
       metadata || {},
       methodDescriptor_Core_Stop);
@@ -782,39 +782,39 @@ proto.hiddifyrpc.CorePromiseClient.prototype.stop =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.StartRequest,
- *   !proto.hiddifyrpc.CoreInfoResponse>}
+ *   !proto.inhiverpc.StartRequest,
+ *   !proto.inhiverpc.CoreInfoResponse>}
  */
 const methodDescriptor_Core_Restart = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.Core/Restart',
+  '/inhiverpc.Core/Restart',
   grpc.web.MethodType.UNARY,
-  proto.hiddifyrpc.StartRequest,
-  proto.hiddifyrpc.CoreInfoResponse,
+  proto.inhiverpc.StartRequest,
+  proto.inhiverpc.CoreInfoResponse,
   /**
-   * @param {!proto.hiddifyrpc.StartRequest} request
+   * @param {!proto.inhiverpc.StartRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.hiddifyrpc.CoreInfoResponse.deserializeBinary
+  proto.inhiverpc.CoreInfoResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.hiddifyrpc.StartRequest} request The
+ * @param {!proto.inhiverpc.StartRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.hiddifyrpc.CoreInfoResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.inhiverpc.CoreInfoResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.CoreInfoResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.inhiverpc.CoreInfoResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.CoreClient.prototype.restart =
+proto.inhiverpc.CoreClient.prototype.restart =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/hiddifyrpc.Core/Restart',
+      '/inhiverpc.Core/Restart',
       request,
       metadata || {},
       methodDescriptor_Core_Restart,
@@ -823,17 +823,17 @@ proto.hiddifyrpc.CoreClient.prototype.restart =
 
 
 /**
- * @param {!proto.hiddifyrpc.StartRequest} request The
+ * @param {!proto.inhiverpc.StartRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.hiddifyrpc.CoreInfoResponse>}
+ * @return {!Promise<!proto.inhiverpc.CoreInfoResponse>}
  *     Promise that resolves to the response
  */
-proto.hiddifyrpc.CorePromiseClient.prototype.restart =
+proto.inhiverpc.CorePromiseClient.prototype.restart =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/hiddifyrpc.Core/Restart',
+      '/inhiverpc.Core/Restart',
       request,
       metadata || {},
       methodDescriptor_Core_Restart);
@@ -843,39 +843,39 @@ proto.hiddifyrpc.CorePromiseClient.prototype.restart =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.SelectOutboundRequest,
- *   !proto.hiddifyrpc.Response>}
+ *   !proto.inhiverpc.SelectOutboundRequest,
+ *   !proto.inhiverpc.Response>}
  */
 const methodDescriptor_Core_SelectOutbound = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.Core/SelectOutbound',
+  '/inhiverpc.Core/SelectOutbound',
   grpc.web.MethodType.UNARY,
-  proto.hiddifyrpc.SelectOutboundRequest,
-  proto.hiddifyrpc.Response,
+  proto.inhiverpc.SelectOutboundRequest,
+  proto.inhiverpc.Response,
   /**
-   * @param {!proto.hiddifyrpc.SelectOutboundRequest} request
+   * @param {!proto.inhiverpc.SelectOutboundRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.hiddifyrpc.Response.deserializeBinary
+  proto.inhiverpc.Response.deserializeBinary
 );
 
 
 /**
- * @param {!proto.hiddifyrpc.SelectOutboundRequest} request The
+ * @param {!proto.inhiverpc.SelectOutboundRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.hiddifyrpc.Response)}
+ * @param {function(?grpc.web.RpcError, ?proto.inhiverpc.Response)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.Response>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.inhiverpc.Response>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.CoreClient.prototype.selectOutbound =
+proto.inhiverpc.CoreClient.prototype.selectOutbound =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/hiddifyrpc.Core/SelectOutbound',
+      '/inhiverpc.Core/SelectOutbound',
       request,
       metadata || {},
       methodDescriptor_Core_SelectOutbound,
@@ -884,17 +884,17 @@ proto.hiddifyrpc.CoreClient.prototype.selectOutbound =
 
 
 /**
- * @param {!proto.hiddifyrpc.SelectOutboundRequest} request The
+ * @param {!proto.inhiverpc.SelectOutboundRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.hiddifyrpc.Response>}
+ * @return {!Promise<!proto.inhiverpc.Response>}
  *     Promise that resolves to the response
  */
-proto.hiddifyrpc.CorePromiseClient.prototype.selectOutbound =
+proto.inhiverpc.CorePromiseClient.prototype.selectOutbound =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/hiddifyrpc.Core/SelectOutbound',
+      '/inhiverpc.Core/SelectOutbound',
       request,
       metadata || {},
       methodDescriptor_Core_SelectOutbound);
@@ -904,39 +904,39 @@ proto.hiddifyrpc.CorePromiseClient.prototype.selectOutbound =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.UrlTestRequest,
- *   !proto.hiddifyrpc.Response>}
+ *   !proto.inhiverpc.UrlTestRequest,
+ *   !proto.inhiverpc.Response>}
  */
 const methodDescriptor_Core_UrlTest = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.Core/UrlTest',
+  '/inhiverpc.Core/UrlTest',
   grpc.web.MethodType.UNARY,
-  proto.hiddifyrpc.UrlTestRequest,
-  proto.hiddifyrpc.Response,
+  proto.inhiverpc.UrlTestRequest,
+  proto.inhiverpc.Response,
   /**
-   * @param {!proto.hiddifyrpc.UrlTestRequest} request
+   * @param {!proto.inhiverpc.UrlTestRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.hiddifyrpc.Response.deserializeBinary
+  proto.inhiverpc.Response.deserializeBinary
 );
 
 
 /**
- * @param {!proto.hiddifyrpc.UrlTestRequest} request The
+ * @param {!proto.inhiverpc.UrlTestRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.hiddifyrpc.Response)}
+ * @param {function(?grpc.web.RpcError, ?proto.inhiverpc.Response)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.Response>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.inhiverpc.Response>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.CoreClient.prototype.urlTest =
+proto.inhiverpc.CoreClient.prototype.urlTest =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/hiddifyrpc.Core/UrlTest',
+      '/inhiverpc.Core/UrlTest',
       request,
       metadata || {},
       methodDescriptor_Core_UrlTest,
@@ -945,17 +945,17 @@ proto.hiddifyrpc.CoreClient.prototype.urlTest =
 
 
 /**
- * @param {!proto.hiddifyrpc.UrlTestRequest} request The
+ * @param {!proto.inhiverpc.UrlTestRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.hiddifyrpc.Response>}
+ * @return {!Promise<!proto.inhiverpc.Response>}
  *     Promise that resolves to the response
  */
-proto.hiddifyrpc.CorePromiseClient.prototype.urlTest =
+proto.inhiverpc.CorePromiseClient.prototype.urlTest =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/hiddifyrpc.Core/UrlTest',
+      '/inhiverpc.Core/UrlTest',
       request,
       metadata || {},
       methodDescriptor_Core_UrlTest);
@@ -965,39 +965,39 @@ proto.hiddifyrpc.CorePromiseClient.prototype.urlTest =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.GenerateWarpConfigRequest,
- *   !proto.hiddifyrpc.WarpGenerationResponse>}
+ *   !proto.inhiverpc.GenerateWarpConfigRequest,
+ *   !proto.inhiverpc.WarpGenerationResponse>}
  */
 const methodDescriptor_Core_GenerateWarpConfig = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.Core/GenerateWarpConfig',
+  '/inhiverpc.Core/GenerateWarpConfig',
   grpc.web.MethodType.UNARY,
-  proto.hiddifyrpc.GenerateWarpConfigRequest,
-  proto.hiddifyrpc.WarpGenerationResponse,
+  proto.inhiverpc.GenerateWarpConfigRequest,
+  proto.inhiverpc.WarpGenerationResponse,
   /**
-   * @param {!proto.hiddifyrpc.GenerateWarpConfigRequest} request
+   * @param {!proto.inhiverpc.GenerateWarpConfigRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.hiddifyrpc.WarpGenerationResponse.deserializeBinary
+  proto.inhiverpc.WarpGenerationResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.hiddifyrpc.GenerateWarpConfigRequest} request The
+ * @param {!proto.inhiverpc.GenerateWarpConfigRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.hiddifyrpc.WarpGenerationResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.inhiverpc.WarpGenerationResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.WarpGenerationResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.inhiverpc.WarpGenerationResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.CoreClient.prototype.generateWarpConfig =
+proto.inhiverpc.CoreClient.prototype.generateWarpConfig =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/hiddifyrpc.Core/GenerateWarpConfig',
+      '/inhiverpc.Core/GenerateWarpConfig',
       request,
       metadata || {},
       methodDescriptor_Core_GenerateWarpConfig,
@@ -1006,17 +1006,17 @@ proto.hiddifyrpc.CoreClient.prototype.generateWarpConfig =
 
 
 /**
- * @param {!proto.hiddifyrpc.GenerateWarpConfigRequest} request The
+ * @param {!proto.inhiverpc.GenerateWarpConfigRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.hiddifyrpc.WarpGenerationResponse>}
+ * @return {!Promise<!proto.inhiverpc.WarpGenerationResponse>}
  *     Promise that resolves to the response
  */
-proto.hiddifyrpc.CorePromiseClient.prototype.generateWarpConfig =
+proto.inhiverpc.CorePromiseClient.prototype.generateWarpConfig =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/hiddifyrpc.Core/GenerateWarpConfig',
+      '/inhiverpc.Core/GenerateWarpConfig',
       request,
       metadata || {},
       methodDescriptor_Core_GenerateWarpConfig);
@@ -1026,39 +1026,39 @@ proto.hiddifyrpc.CorePromiseClient.prototype.generateWarpConfig =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.Empty,
- *   !proto.hiddifyrpc.SystemProxyStatus>}
+ *   !proto.inhiverpc.Empty,
+ *   !proto.inhiverpc.SystemProxyStatus>}
  */
 const methodDescriptor_Core_GetSystemProxyStatus = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.Core/GetSystemProxyStatus',
+  '/inhiverpc.Core/GetSystemProxyStatus',
   grpc.web.MethodType.UNARY,
   base_pb.Empty,
-  proto.hiddifyrpc.SystemProxyStatus,
+  proto.inhiverpc.SystemProxyStatus,
   /**
-   * @param {!proto.hiddifyrpc.Empty} request
+   * @param {!proto.inhiverpc.Empty} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.hiddifyrpc.SystemProxyStatus.deserializeBinary
+  proto.inhiverpc.SystemProxyStatus.deserializeBinary
 );
 
 
 /**
- * @param {!proto.hiddifyrpc.Empty} request The
+ * @param {!proto.inhiverpc.Empty} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.hiddifyrpc.SystemProxyStatus)}
+ * @param {function(?grpc.web.RpcError, ?proto.inhiverpc.SystemProxyStatus)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.SystemProxyStatus>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.inhiverpc.SystemProxyStatus>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.CoreClient.prototype.getSystemProxyStatus =
+proto.inhiverpc.CoreClient.prototype.getSystemProxyStatus =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/hiddifyrpc.Core/GetSystemProxyStatus',
+      '/inhiverpc.Core/GetSystemProxyStatus',
       request,
       metadata || {},
       methodDescriptor_Core_GetSystemProxyStatus,
@@ -1067,17 +1067,17 @@ proto.hiddifyrpc.CoreClient.prototype.getSystemProxyStatus =
 
 
 /**
- * @param {!proto.hiddifyrpc.Empty} request The
+ * @param {!proto.inhiverpc.Empty} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.hiddifyrpc.SystemProxyStatus>}
+ * @return {!Promise<!proto.inhiverpc.SystemProxyStatus>}
  *     Promise that resolves to the response
  */
-proto.hiddifyrpc.CorePromiseClient.prototype.getSystemProxyStatus =
+proto.inhiverpc.CorePromiseClient.prototype.getSystemProxyStatus =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/hiddifyrpc.Core/GetSystemProxyStatus',
+      '/inhiverpc.Core/GetSystemProxyStatus',
       request,
       metadata || {},
       methodDescriptor_Core_GetSystemProxyStatus);
@@ -1087,39 +1087,39 @@ proto.hiddifyrpc.CorePromiseClient.prototype.getSystemProxyStatus =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.SetSystemProxyEnabledRequest,
- *   !proto.hiddifyrpc.Response>}
+ *   !proto.inhiverpc.SetSystemProxyEnabledRequest,
+ *   !proto.inhiverpc.Response>}
  */
 const methodDescriptor_Core_SetSystemProxyEnabled = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.Core/SetSystemProxyEnabled',
+  '/inhiverpc.Core/SetSystemProxyEnabled',
   grpc.web.MethodType.UNARY,
-  proto.hiddifyrpc.SetSystemProxyEnabledRequest,
-  proto.hiddifyrpc.Response,
+  proto.inhiverpc.SetSystemProxyEnabledRequest,
+  proto.inhiverpc.Response,
   /**
-   * @param {!proto.hiddifyrpc.SetSystemProxyEnabledRequest} request
+   * @param {!proto.inhiverpc.SetSystemProxyEnabledRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.hiddifyrpc.Response.deserializeBinary
+  proto.inhiverpc.Response.deserializeBinary
 );
 
 
 /**
- * @param {!proto.hiddifyrpc.SetSystemProxyEnabledRequest} request The
+ * @param {!proto.inhiverpc.SetSystemProxyEnabledRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.hiddifyrpc.Response)}
+ * @param {function(?grpc.web.RpcError, ?proto.inhiverpc.Response)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.Response>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.inhiverpc.Response>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.CoreClient.prototype.setSystemProxyEnabled =
+proto.inhiverpc.CoreClient.prototype.setSystemProxyEnabled =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/hiddifyrpc.Core/SetSystemProxyEnabled',
+      '/inhiverpc.Core/SetSystemProxyEnabled',
       request,
       metadata || {},
       methodDescriptor_Core_SetSystemProxyEnabled,
@@ -1128,17 +1128,17 @@ proto.hiddifyrpc.CoreClient.prototype.setSystemProxyEnabled =
 
 
 /**
- * @param {!proto.hiddifyrpc.SetSystemProxyEnabledRequest} request The
+ * @param {!proto.inhiverpc.SetSystemProxyEnabledRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.hiddifyrpc.Response>}
+ * @return {!Promise<!proto.inhiverpc.Response>}
  *     Promise that resolves to the response
  */
-proto.hiddifyrpc.CorePromiseClient.prototype.setSystemProxyEnabled =
+proto.inhiverpc.CorePromiseClient.prototype.setSystemProxyEnabled =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/hiddifyrpc.Core/SetSystemProxyEnabled',
+      '/inhiverpc.Core/SetSystemProxyEnabled',
       request,
       metadata || {},
       methodDescriptor_Core_SetSystemProxyEnabled);
@@ -1148,36 +1148,36 @@ proto.hiddifyrpc.CorePromiseClient.prototype.setSystemProxyEnabled =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.Empty,
- *   !proto.hiddifyrpc.LogMessage>}
+ *   !proto.inhiverpc.Empty,
+ *   !proto.inhiverpc.LogMessage>}
  */
 const methodDescriptor_Core_LogListener = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.Core/LogListener',
+  '/inhiverpc.Core/LogListener',
   grpc.web.MethodType.SERVER_STREAMING,
   base_pb.Empty,
-  proto.hiddifyrpc.LogMessage,
+  proto.inhiverpc.LogMessage,
   /**
-   * @param {!proto.hiddifyrpc.Empty} request
+   * @param {!proto.inhiverpc.Empty} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.hiddifyrpc.LogMessage.deserializeBinary
+  proto.inhiverpc.LogMessage.deserializeBinary
 );
 
 
 /**
- * @param {!proto.hiddifyrpc.Empty} request The request proto
+ * @param {!proto.inhiverpc.Empty} request The request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.LogMessage>}
+ * @return {!grpc.web.ClientReadableStream<!proto.inhiverpc.LogMessage>}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.CoreClient.prototype.logListener =
+proto.inhiverpc.CoreClient.prototype.logListener =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/hiddifyrpc.Core/LogListener',
+      '/inhiverpc.Core/LogListener',
       request,
       metadata || {},
       methodDescriptor_Core_LogListener);
@@ -1185,16 +1185,16 @@ proto.hiddifyrpc.CoreClient.prototype.logListener =
 
 
 /**
- * @param {!proto.hiddifyrpc.Empty} request The request proto
+ * @param {!proto.inhiverpc.Empty} request The request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.LogMessage>}
+ * @return {!grpc.web.ClientReadableStream<!proto.inhiverpc.LogMessage>}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.CorePromiseClient.prototype.logListener =
+proto.inhiverpc.CorePromiseClient.prototype.logListener =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/hiddifyrpc.Core/LogListener',
+      '/inhiverpc.Core/LogListener',
       request,
       metadata || {},
       methodDescriptor_Core_LogListener);
@@ -1209,7 +1209,7 @@ proto.hiddifyrpc.CorePromiseClient.prototype.logListener =
  * @struct
  * @final
  */
-proto.hiddifyrpc.TunnelServiceClient =
+proto.inhiverpc.TunnelServiceClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -1235,7 +1235,7 @@ proto.hiddifyrpc.TunnelServiceClient =
  * @struct
  * @final
  */
-proto.hiddifyrpc.TunnelServicePromiseClient =
+proto.inhiverpc.TunnelServicePromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -1256,39 +1256,39 @@ proto.hiddifyrpc.TunnelServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.TunnelStartRequest,
- *   !proto.hiddifyrpc.TunnelResponse>}
+ *   !proto.inhiverpc.TunnelStartRequest,
+ *   !proto.inhiverpc.TunnelResponse>}
  */
 const methodDescriptor_TunnelService_Start = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.TunnelService/Start',
+  '/inhiverpc.TunnelService/Start',
   grpc.web.MethodType.UNARY,
-  proto.hiddifyrpc.TunnelStartRequest,
-  proto.hiddifyrpc.TunnelResponse,
+  proto.inhiverpc.TunnelStartRequest,
+  proto.inhiverpc.TunnelResponse,
   /**
-   * @param {!proto.hiddifyrpc.TunnelStartRequest} request
+   * @param {!proto.inhiverpc.TunnelStartRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.hiddifyrpc.TunnelResponse.deserializeBinary
+  proto.inhiverpc.TunnelResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.hiddifyrpc.TunnelStartRequest} request The
+ * @param {!proto.inhiverpc.TunnelStartRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.hiddifyrpc.TunnelResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.inhiverpc.TunnelResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.TunnelResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.inhiverpc.TunnelResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.TunnelServiceClient.prototype.start =
+proto.inhiverpc.TunnelServiceClient.prototype.start =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/hiddifyrpc.TunnelService/Start',
+      '/inhiverpc.TunnelService/Start',
       request,
       metadata || {},
       methodDescriptor_TunnelService_Start,
@@ -1297,17 +1297,17 @@ proto.hiddifyrpc.TunnelServiceClient.prototype.start =
 
 
 /**
- * @param {!proto.hiddifyrpc.TunnelStartRequest} request The
+ * @param {!proto.inhiverpc.TunnelStartRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.hiddifyrpc.TunnelResponse>}
+ * @return {!Promise<!proto.inhiverpc.TunnelResponse>}
  *     Promise that resolves to the response
  */
-proto.hiddifyrpc.TunnelServicePromiseClient.prototype.start =
+proto.inhiverpc.TunnelServicePromiseClient.prototype.start =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/hiddifyrpc.TunnelService/Start',
+      '/inhiverpc.TunnelService/Start',
       request,
       metadata || {},
       methodDescriptor_TunnelService_Start);
@@ -1317,39 +1317,39 @@ proto.hiddifyrpc.TunnelServicePromiseClient.prototype.start =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.Empty,
- *   !proto.hiddifyrpc.TunnelResponse>}
+ *   !proto.inhiverpc.Empty,
+ *   !proto.inhiverpc.TunnelResponse>}
  */
 const methodDescriptor_TunnelService_Stop = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.TunnelService/Stop',
+  '/inhiverpc.TunnelService/Stop',
   grpc.web.MethodType.UNARY,
   base_pb.Empty,
-  proto.hiddifyrpc.TunnelResponse,
+  proto.inhiverpc.TunnelResponse,
   /**
-   * @param {!proto.hiddifyrpc.Empty} request
+   * @param {!proto.inhiverpc.Empty} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.hiddifyrpc.TunnelResponse.deserializeBinary
+  proto.inhiverpc.TunnelResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.hiddifyrpc.Empty} request The
+ * @param {!proto.inhiverpc.Empty} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.hiddifyrpc.TunnelResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.inhiverpc.TunnelResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.TunnelResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.inhiverpc.TunnelResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.TunnelServiceClient.prototype.stop =
+proto.inhiverpc.TunnelServiceClient.prototype.stop =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/hiddifyrpc.TunnelService/Stop',
+      '/inhiverpc.TunnelService/Stop',
       request,
       metadata || {},
       methodDescriptor_TunnelService_Stop,
@@ -1358,17 +1358,17 @@ proto.hiddifyrpc.TunnelServiceClient.prototype.stop =
 
 
 /**
- * @param {!proto.hiddifyrpc.Empty} request The
+ * @param {!proto.inhiverpc.Empty} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.hiddifyrpc.TunnelResponse>}
+ * @return {!Promise<!proto.inhiverpc.TunnelResponse>}
  *     Promise that resolves to the response
  */
-proto.hiddifyrpc.TunnelServicePromiseClient.prototype.stop =
+proto.inhiverpc.TunnelServicePromiseClient.prototype.stop =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/hiddifyrpc.TunnelService/Stop',
+      '/inhiverpc.TunnelService/Stop',
       request,
       metadata || {},
       methodDescriptor_TunnelService_Stop);
@@ -1378,39 +1378,39 @@ proto.hiddifyrpc.TunnelServicePromiseClient.prototype.stop =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.Empty,
- *   !proto.hiddifyrpc.TunnelResponse>}
+ *   !proto.inhiverpc.Empty,
+ *   !proto.inhiverpc.TunnelResponse>}
  */
 const methodDescriptor_TunnelService_Status = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.TunnelService/Status',
+  '/inhiverpc.TunnelService/Status',
   grpc.web.MethodType.UNARY,
   base_pb.Empty,
-  proto.hiddifyrpc.TunnelResponse,
+  proto.inhiverpc.TunnelResponse,
   /**
-   * @param {!proto.hiddifyrpc.Empty} request
+   * @param {!proto.inhiverpc.Empty} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.hiddifyrpc.TunnelResponse.deserializeBinary
+  proto.inhiverpc.TunnelResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.hiddifyrpc.Empty} request The
+ * @param {!proto.inhiverpc.Empty} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.hiddifyrpc.TunnelResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.inhiverpc.TunnelResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.TunnelResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.inhiverpc.TunnelResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.TunnelServiceClient.prototype.status =
+proto.inhiverpc.TunnelServiceClient.prototype.status =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/hiddifyrpc.TunnelService/Status',
+      '/inhiverpc.TunnelService/Status',
       request,
       metadata || {},
       methodDescriptor_TunnelService_Status,
@@ -1419,17 +1419,17 @@ proto.hiddifyrpc.TunnelServiceClient.prototype.status =
 
 
 /**
- * @param {!proto.hiddifyrpc.Empty} request The
+ * @param {!proto.inhiverpc.Empty} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.hiddifyrpc.TunnelResponse>}
+ * @return {!Promise<!proto.inhiverpc.TunnelResponse>}
  *     Promise that resolves to the response
  */
-proto.hiddifyrpc.TunnelServicePromiseClient.prototype.status =
+proto.inhiverpc.TunnelServicePromiseClient.prototype.status =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/hiddifyrpc.TunnelService/Status',
+      '/inhiverpc.TunnelService/Status',
       request,
       metadata || {},
       methodDescriptor_TunnelService_Status);
@@ -1439,39 +1439,39 @@ proto.hiddifyrpc.TunnelServicePromiseClient.prototype.status =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.Empty,
- *   !proto.hiddifyrpc.TunnelResponse>}
+ *   !proto.inhiverpc.Empty,
+ *   !proto.inhiverpc.TunnelResponse>}
  */
 const methodDescriptor_TunnelService_Exit = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.TunnelService/Exit',
+  '/inhiverpc.TunnelService/Exit',
   grpc.web.MethodType.UNARY,
   base_pb.Empty,
-  proto.hiddifyrpc.TunnelResponse,
+  proto.inhiverpc.TunnelResponse,
   /**
-   * @param {!proto.hiddifyrpc.Empty} request
+   * @param {!proto.inhiverpc.Empty} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.hiddifyrpc.TunnelResponse.deserializeBinary
+  proto.inhiverpc.TunnelResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.hiddifyrpc.Empty} request The
+ * @param {!proto.inhiverpc.Empty} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.hiddifyrpc.TunnelResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.inhiverpc.TunnelResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.TunnelResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.inhiverpc.TunnelResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.TunnelServiceClient.prototype.exit =
+proto.inhiverpc.TunnelServiceClient.prototype.exit =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/hiddifyrpc.TunnelService/Exit',
+      '/inhiverpc.TunnelService/Exit',
       request,
       metadata || {},
       methodDescriptor_TunnelService_Exit,
@@ -1480,22 +1480,22 @@ proto.hiddifyrpc.TunnelServiceClient.prototype.exit =
 
 
 /**
- * @param {!proto.hiddifyrpc.Empty} request The
+ * @param {!proto.inhiverpc.Empty} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.hiddifyrpc.TunnelResponse>}
+ * @return {!Promise<!proto.inhiverpc.TunnelResponse>}
  *     Promise that resolves to the response
  */
-proto.hiddifyrpc.TunnelServicePromiseClient.prototype.exit =
+proto.inhiverpc.TunnelServicePromiseClient.prototype.exit =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/hiddifyrpc.TunnelService/Exit',
+      '/inhiverpc.TunnelService/Exit',
       request,
       metadata || {},
       methodDescriptor_TunnelService_Exit);
 };
 
 
-module.exports = proto.hiddifyrpc;
+module.exports = proto.inhiverpc;
 

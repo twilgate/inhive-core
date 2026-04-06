@@ -1,10 +1,10 @@
 #!/sbin/openrc-run
 
 name=$RC_SVCNAME
-description="hiddify-core service"
+description="inhive-core service"
 supervisor="supervise-daemon"
-command="/usr/bin/hiddify-core"
-command_args="-D /var/lib/hiddify-core -C /etc/hiddify-core run"
+command="/usr/bin/inhive-core"
+command_args="-D /var/lib/inhive-core -C /etc/inhive-core run"
 extra_started_commands="reload"
 
 depend() {

@@ -5,16 +5,16 @@ import (
 	"sync"
 	"time"
 
-	"github.com/hiddify/hiddify-core/v2/config"
+	"github.com/buudesh/inhive-core/v2/config"
 	"github.com/sagernet/sing-box/common/monitoring"
 	"github.com/sagernet/sing-box/daemon"
 	"github.com/sagernet/sing-box/experimental/libbox"
 	"github.com/sagernet/sing-box/log"
 )
 
-type HiddifyInstance struct {
+type InhiveInstance struct {
 	StartedService *daemon.StartedService
-	HiddifyOptions *config.HiddifyOptions
+	InhiveOptions *config.InhiveOptions
 	// activeConfigPath string
 	CoreLogFactory            log.Factory
 	coreInfoObserver          *monitoring.Broadcaster[*CoreInfoResponse]
@@ -34,7 +34,7 @@ type HiddifyInstance struct {
 	logLevel LogLevel
 }
 
-var static = &HiddifyInstance{
+var static = &InhiveInstance{
 	CoreState:                 CoreStates_STOPPED,
 	coreInfoObserver:          monitoring.NewBroadcaster[*CoreInfoResponse](context.Background()),
 	logObserver:               monitoring.NewBroadcaster[*LogMessage](context.Background()),

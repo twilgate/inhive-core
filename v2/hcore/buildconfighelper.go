@@ -5,10 +5,10 @@ import (
 	"encoding/json"
 	"os"
 
-	"github.com/hiddify/hiddify-core/v2/config"
-	"github.com/hiddify/hiddify-core/v2/db"
-	hcommon "github.com/hiddify/hiddify-core/v2/hcommon"
-	hutils "github.com/hiddify/hiddify-core/v2/hutils"
+	"github.com/buudesh/inhive-core/v2/config"
+	"github.com/buudesh/inhive-core/v2/db"
+	hcommon "github.com/buudesh/inhive-core/v2/hcommon"
+	hutils "github.com/buudesh/inhive-core/v2/hutils"
 	C "github.com/sagernet/sing-box/constant"
 	"github.com/sagernet/sing-box/experimental/libbox"
 	"github.com/sagernet/sing-box/option"
@@ -30,14 +30,14 @@ func BuildConfig(ctx context.Context, in *StartRequest) (*option.Options, error)
 
 	readOpt := &config.ReadOptions{Content: in.ConfigContent, Path: in.ConfigPath}
 	if !in.EnableRawConfig {
-		// hcontent, err := json.MarshalIndent(static.HiddifyOptions, "", " ")
+		// hcontent, err := json.MarshalIndent(static.InhiveOptions, "", " ")
 		// if err != nil {
 		// 	return nil, err
 		// }
 
 		// Log(LogLevel_DEBUG, LogType_CORE, "Building config ", string(hcontent))
 		// Log(LogLevel_DEBUG, LogType_CORE, "Building config ")
-		return config.BuildConfig(ctx, static.HiddifyOptions, readOpt)
+		return config.BuildConfig(ctx, static.InhiveOptions, readOpt)
 	}
 	return config.ReadSingOptions(ctx, readOpt)
 
@@ -58,7 +58,7 @@ func Parse(ctx context.Context, in *ParseRequest) (*ParseResponse, error) {
 		path = in.ConfigPath
 	}
 
-	config, err := config.ParseConfigBytes(ctx, &config.ReadOptions{Content: in.Content, Path: path}, true, static.HiddifyOptions, false)
+	config, err := config.ParseConfigBytes(ctx, &config.ReadOptions{Content: in.Content, Path: path}, true, static.InhiveOptions, false)
 	if err != nil {
 		return &ParseResponse{
 			ResponseCode: hcommon.ResponseCode_FAILED,
@@ -81,14 +81,14 @@ func Parse(ctx context.Context, in *ParseRequest) (*ParseResponse, error) {
 	}, err
 }
 
-func (s *CoreService) ChangeHiddifySettings(ctx context.Context, in *ChangeHiddifySettingsRequest) (*CoreInfoResponse, error) {
-	return ChangeHiddifySettings(in, true)
+func (s *CoreService) ChangeInhiveSettings(ctx context.Context, in *ChangeInhiveSettingsRequest) (*CoreInfoResponse, error) {
+	return ChangeInhiveSettings(in, true)
 }
 
-func ChangeHiddifySettings(in *ChangeHiddifySettingsRequest, insert bool) (*CoreInfoResponse, error) {
-	static.HiddifyOptions = config.DefaultHiddifyOptions()
+func ChangeInhiveSettings(in *ChangeInhiveSettingsRequest, insert bool) (*CoreInfoResponse, error) {
+	static.InhiveOptions = config.DefaultInhiveOptions()
 	defer func() {
-		switch static.HiddifyOptions.LogLevel {
+		switch static.InhiveOptions.LogLevel {
 		case "debug":
 			static.logLevel = LogLevel_DEBUG
 		case "info":
@@ -113,24 +113,24 @@ func ChangeHiddifySettings(in *ChangeHiddifySettingsRequest, insert bool) (*Core
 	if insert {
 		settings := db.GetTable[hcommon.AppSettings]()
 		settings.UpdateInsert(&hcommon.AppSettings{
-			Id:    "HiddifySettingsJson",
+			Id:    "InHiveSettingsJson",
 			Value: in.HiddifySettingsJson,
 		})
 	}
 
-	err := json.Unmarshal([]byte(in.HiddifySettingsJson), static.HiddifyOptions)
+	err := json.Unmarshal([]byte(in.HiddifySettingsJson), static.InhiveOptions)
 	if err != nil {
 		return nil, err
 	}
 
-	if static.HiddifyOptions.Warp.WireguardConfigStr != "" {
-		err := json.Unmarshal([]byte(static.HiddifyOptions.Warp.WireguardConfigStr), &static.HiddifyOptions.Warp.WireguardConfig)
+	if static.InhiveOptions.Warp.WireguardConfigStr != "" {
+		err := json.Unmarshal([]byte(static.InhiveOptions.Warp.WireguardConfigStr), &static.InhiveOptions.Warp.WireguardConfig)
 		if err != nil {
 			return nil, err
 		}
 	}
-	if static.HiddifyOptions.Warp2.WireguardConfigStr != "" {
-		err := json.Unmarshal([]byte(static.HiddifyOptions.Warp2.WireguardConfigStr), &static.HiddifyOptions.Warp2.WireguardConfig)
+	if static.InhiveOptions.Warp2.WireguardConfigStr != "" {
+		err := json.Unmarshal([]byte(static.InhiveOptions.Warp2.WireguardConfigStr), &static.InhiveOptions.Warp2.WireguardConfig)
 		if err != nil {
 			return nil, err
 		}
@@ -147,10 +147,10 @@ func GenerateConfig(ctx context.Context, in *GenerateConfigRequest) (*GenerateCo
 		Log(LogLevel_FATAL, LogType_CONFIG, err.Error())
 		StopAndAlert(MessageType_UNEXPECTED_ERROR, err.Error())
 	})
-	if static.HiddifyOptions == nil {
-		static.HiddifyOptions = config.DefaultHiddifyOptions()
+	if static.InhiveOptions == nil {
+		static.InhiveOptions = config.DefaultInhiveOptions()
 	}
-	config, err := config.ParseBuildConfigBytes(ctx, static.HiddifyOptions, &config.ReadOptions{Path: in.Path})
+	config, err := config.ParseBuildConfigBytes(ctx, static.InhiveOptions, &config.ReadOptions{Path: in.Path})
 	if err != nil {
 		return nil, err
 	}

@@ -1,5 +1,5 @@
-const {  hiddifyClient } = require('./client.js');
-const hiddify = require("./hiddify_grpc_web_pb.js");
+const {  inhiveClient } = require('./client.js');
+const inhive = require("./inhive_grpc_web_pb.js");
 
 function openConnectionPage() {
     
@@ -8,20 +8,20 @@ function openConnectionPage() {
         $("#connection-page").show();
         connect();
         $("#connect-button").click(async () => {
-            const hsetting_request = new hiddify.ChangeHiddifySettingsRequest();
-            hsetting_request.setHiddifySettingsJson($("#hiddify-settings").val());
+            const hsetting_request = new inhive.ChangeHiddifySettingsRequest();
+            hsetting_request.setHiddifySettingsJson($("#inhive-settings").val());
             try{
-                const hres=await hiddifyClient.changeHiddifySettings(hsetting_request, {});
+                const hres=await inhiveClient.changeHiddifySettings(hsetting_request, {});
             }catch(err){
-                $("#hiddify-settings").val("")
+                $("#inhive-settings").val("")
                 console.log(err)
             }
             
-            const parse_request = new hiddify.ParseRequest();
+            const parse_request = new inhive.ParseRequest();
             parse_request.setContent($("#config-content").val());
             try{
-                const pres=await hiddifyClient.parse(parse_request, {});
-                if (pres.getResponseCode() !== hiddify.ResponseCode.OK){
+                const pres=await inhiveClient.parse(parse_request, {});
+                if (pres.getResponseCode() !== inhive.ResponseCode.OK){
                     alert(pres.getMessage());
                     return
                 }
@@ -32,12 +32,12 @@ function openConnectionPage() {
                                 return
             }
 
-            const request = new hiddify.StartRequest();
+            const request = new inhive.StartRequest();
     
             request.setConfigContent($("#config-content").val());
             request.setEnableRawConfig(false);
             try{
-                const res=await hiddifyClient.start(request, {});
+                const res=await inhiveClient.start(request, {});
                 console.log(res.getCoreState(),res.getMessage())
                     handleCoreStatus(res.getCoreState());
             }catch(err){
@@ -50,9 +50,9 @@ function openConnectionPage() {
         })
 
         $("#disconnect-button").click(async () => {
-            const request = new hiddify.Empty();
+            const request = new inhive.Empty();
             try{
-                const res=await hiddifyClient.stop(request, {});
+                const res=await inhiveClient.stop(request, {});
                 console.log(res.getCoreState(),res.getMessage())
                 handleCoreStatus(res.getCoreState());
             }catch(err){
@@ -65,8 +65,8 @@ function openConnectionPage() {
 
 
 function connect(){
-    const request = new hiddify.Empty();
-    const stream = hiddifyClient.coreInfoListener(request, {});
+    const request = new inhive.Empty();
+    const stream = inhiveClient.coreInfoListener(request, {});
     stream.on('data', (response) => {
         console.log('Receving ',response);
         handleCoreStatus(response);
@@ -86,19 +86,19 @@ function connect(){
 
 
 function handleCoreStatus(status){
-    if (status == hiddify.CoreState.STOPPED){
+    if (status == inhive.CoreState.STOPPED){
         $("#connection-before-connect").show();
         $("#connection-connecting").hide();
     }else{
         $("#connection-before-connect").hide();
         $("#connection-connecting").show();
-        if (status == hiddify.CoreState.STARTING){
+        if (status == inhive.CoreState.STARTING){
             $("#connection-status").text("Starting");
             $("#connection-status").css("color", "yellow");
-        }else if (status == hiddify.CoreState.STOPPING){
+        }else if (status == inhive.CoreState.STOPPING){
             $("#connection-status").text("Stopping");
             $("#connection-status").css("color", "red");
-        }else if (status == hiddify.CoreState.STARTED){
+        }else if (status == inhive.CoreState.STARTED){
             $("#connection-status").text("Connected");
             $("#connection-status").css("color", "green");
         }

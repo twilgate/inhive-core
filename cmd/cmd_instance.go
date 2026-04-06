@@ -5,7 +5,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	hcore "github.com/hiddify/hiddify-core/v2/hcore"
+	hcore "github.com/buudesh/inhive-core/v2/hcore"
 	"github.com/sagernet/sing-box/experimental/libbox"
 	"github.com/sagernet/sing-box/log"
 	"github.com/spf13/cobra"
@@ -16,16 +16,16 @@ var commandInstance = &cobra.Command{
 	Short: "instance",
 	Args:  cobra.OnlyValidArgs,
 	Run: func(cmd *cobra.Command, args []string) {
-		hiddifySetting := defaultConfigs
-		if hiddifySettingPath != "" {
-			hiddifySetting2, err := hcore.ReadHiddifyOptionsAt(hiddifySettingPath)
+		inhiveSetting := defaultConfigs
+		if inhiveSettingPath != "" {
+			inhiveSetting2, err := hcore.ReadInhiveOptionsAt(inhiveSettingPath)
 			if err != nil {
 				log.Fatal(err)
 			}
-			hiddifySetting = *hiddifySetting2
+			inhiveSetting = *inhiveSetting2
 		}
 		ctx := libbox.BaseContext(nil)
-		instance, err := hcore.RunInstanceString(ctx, &hiddifySetting, configPath)
+		instance, err := hcore.RunInstanceString(ctx, &inhiveSetting, configPath)
 		if err != nil {
 			log.Fatal(err)
 		}

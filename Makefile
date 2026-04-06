@@ -1,9 +1,9 @@
 .ONESHELL:
-PRODUCT_NAME=hiddify-core
+PRODUCT_NAME=inhive-core
 BASENAME=$(PRODUCT_NAME)
 BINDIR=bin
 LIBNAME=$(PRODUCT_NAME)
-CLINAME=HiddifyCli
+CLINAME=InhiveCli
 
 BRANCH=$(shell git branch --show-current)
 VERSION=$(shell git describe --tags || echo "unknown version")
@@ -23,7 +23,7 @@ CRONET_DIR=./cronet
 .PHONY: protos
 protos:
 	go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest
-	# protoc --go_out=./ --go-grpc_out=./ --proto_path=hiddifyrpc hiddifyrpc/*.proto
+	# protoc --go_out=./ --go-grpc_out=./ --proto_path=inhiverpc inhiverpc/*.proto
 	# for f in $(shell find v2 -name "*.proto"); do \
 	# 	protoc --go_opt=paths=source_relative --go-grpc_opt=paths=source_relative --go_out=./ --go-grpc_out=./  $$f; \
 	# done
@@ -31,7 +31,7 @@ protos:
 	# 	protoc --go_opt=paths=source_relative --go-grpc_opt=paths=source_relative --go_out=./ --go-grpc_out=./  $$f; \
 	# done
 	protoc --go_opt=paths=source_relative --go-grpc_opt=paths=source_relative --go_out=./ --go-grpc_out=./  $(shell find v2 -name "*.proto") $(shell find extension -name "*.proto")
-	protoc --doc_out=./docs  --doc_opt=markdown,hiddifyrpc.md $(shell find v2 -name "*.proto") $(shell find extension -name "*.proto")
+	protoc --doc_out=./docs  --doc_opt=markdown,inhiverpc.md $(shell find v2 -name "*.proto") $(shell find extension -name "*.proto")
 	# protoc --js_out=import_style=commonjs,binary:./extension/html/rpc/ --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./extension/html/rpc/ $(shell find v2 -name "*.proto") $(shell find extension -name "*.proto")
 	# npx browserify extension/html/rpc/extension.js >extension/html/rpc.js
 
@@ -45,16 +45,16 @@ headers:
 	go build -buildmode=c-archive -o $(BINDIR)/ ./platform/desktop2
 
 android: lib_install
-	CGO_LDFLAGS="-O2 -g -s -w -Wl,-z,max-page-size=16384" gomobile bind -v -androidapi=21 -javapkg=com.hiddify.core -libname=hiddify-core -tags=$(TAGS) -trimpath -ldflags="$(LDFLAGS)" -target=android -gcflags "all=-N -l" -o $(BINDIR)/$(LIBNAME).aar github.com/sagernet/sing-box/experimental/libbox ./platform/mobile
+	CGO_LDFLAGS="-O2 -g -s -w -Wl,-z,max-page-size=16384" gomobile bind -v -androidapi=21 -javapkg=com.inhive.core -libname=hiddify-core -tags=$(TAGS) -trimpath -ldflags="$(LDFLAGS)" -target=android -gcflags "all=-N -l" -o $(BINDIR)/$(LIBNAME).aar github.com/sagernet/sing-box/experimental/libbox ./platform/mobile
 
 ios-full: lib_install
 	gomobile bind -v  -target ios,iossimulator,tvos,tvossimulator,macos -libname=hiddify-core -tags=$(TAGS),$(IOS_ADD_TAGS) -trimpath -ldflags="$(LDFLAGS)" -o $(BINDIR)/$(PRODUCT_NAME).xcframework github.com/sagernet/sing-box/experimental/libbox ./platform/mobile 
 	mv $(BINDIR)/$(PRODUCT_NAME).xcframework $(BINDIR)/$(LIBNAME).xcframework 
-	cp HiddifyCore.podspec $(BINDIR)/$(LIBNAME).xcframework/
+	cp InhiveCore.podspec $(BINDIR)/$(LIBNAME).xcframework/
 
 ios: lib_install
-	gomobile bind -v  -target ios -libname=hiddify-core -tags=$(TAGS),$(IOS_ADD_TAGS) -trimpath -ldflags="$(LDFLAGS)" -o $(BINDIR)/HiddifyCore.xcframework github.com/sagernet/sing-box/experimental/libbox ./platform/mobile
-	cp Info.plist $(BINDIR)/HiddifyCore.xcframework/
+	gomobile bind -v  -target ios -libname=hiddify-core -tags=$(TAGS),$(IOS_ADD_TAGS) -trimpath -ldflags="$(LDFLAGS)" -o $(BINDIR)/InhiveCore.xcframework github.com/sagernet/sing-box/experimental/libbox ./platform/mobile
+	cp Info.plist $(BINDIR)/InhiveCore.xcframework/
 
 
 webui:
@@ -74,7 +74,7 @@ windows-amd64: prepare
 	go install -mod=readonly github.com/akavel/rsrc@latest ||echo "rsrc error in installation"
 	go run ./cli tunnel exit
 	cp $(BINDIR)/$(LIBNAME).dll ./$(LIBNAME).dll
-	$$(go env GOPATH)/bin/rsrc -ico ./assets/hiddify-cli.ico -o ./cmd/bydll/cli.syso ||echo "rsrc error in syso"
+	$$(go env GOPATH)/bin/rsrc -ico ./assets/inhive-cli.ico -o ./cmd/bydll/cli.syso ||echo "rsrc error in syso"
 	env GOOS=windows GOARCH=amd64 CC=x86_64-w64-mingw32-gcc CGO_LDFLAGS="$(LIBNAME).dll" $(GOBUILDSRV) -o $(BINDIR)/$(CLINAME).exe ./cmd/bydll
 	rm ./*.dll
 	if [ ! -f $(BINDIR)/$(LIBNAME).dll -o ! -f $(BINDIR)/$(CLINAME).exe ]; then \

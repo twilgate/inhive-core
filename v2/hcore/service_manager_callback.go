@@ -1,22 +1,22 @@
 package hcore
 
 import (
-	"github.com/hiddify/hiddify-core/v2/service_manager"
+	"github.com/buudesh/inhive-core/v2/service_manager"
 	"github.com/sagernet/sing-box/adapter"
 )
 
-type hiddifyMainServiceManager struct{}
+type inhiveMainServiceManager struct{}
 
-var _ adapter.LifecycleService = (*hiddifyMainServiceManager)(nil)
+var _ adapter.LifecycleService = (*inhiveMainServiceManager)(nil)
 
-func (h *hiddifyMainServiceManager) Name() string { return "hiddifyMainServiceManager" }
-func (h *hiddifyMainServiceManager) Start(stage adapter.StartStage) error {
+func (h *inhiveMainServiceManager) Name() string { return "inhiveMainServiceManager" }
+func (h *inhiveMainServiceManager) Start(stage adapter.StartStage) error {
 	if stage == adapter.StartStateStarted {
 		return service_manager.OnMainServiceStart()
 	}
 	return nil
 }
 
-func (h *hiddifyMainServiceManager) Close() error {
+func (h *inhiveMainServiceManager) Close() error {
 	return service_manager.OnMainServiceClose()
 }

@@ -12,7 +12,7 @@ import (
 	sync "sync"
 	"time"
 
-	"github.com/hiddify/hiddify-core/v2/hutils"
+	"github.com/buudesh/inhive-core/v2/hutils"
 	mDNS "github.com/miekg/dns"
 	C "github.com/sagernet/sing-box/constant"
 	sdns "github.com/sagernet/sing-box/dns"
@@ -61,7 +61,7 @@ var (
 )
 
 // TODO include selectors
-func BuildConfig(ctx context.Context, hopts *HiddifyOptions, inputOpt *ReadOptions) (*option.Options, error) {
+func BuildConfig(ctx context.Context, hopts *InhiveOptions, inputOpt *ReadOptions) (*option.Options, error) {
 
 	input, err := ReadSingOptions(ctx, inputOpt)
 	if err != nil {
@@ -127,7 +127,7 @@ func getHostnameIfNotIP(inp string) (string, error) {
 	return "", fmt.Errorf("not a hostname: %s", inp)
 }
 
-func setOutbounds(options *option.Options, input *option.Options, opt *HiddifyOptions, staticIPs *map[string][]string) error {
+func setOutbounds(options *option.Options, input *option.Options, opt *InhiveOptions, staticIPs *map[string][]string) error {
 	var outbounds []option.Outbound
 	var endpoints []option.Endpoint
 	var tags []string
@@ -378,7 +378,7 @@ func contains(slice []string, item string) bool {
 	return false
 }
 
-func setExperimental(options *option.Options, hopt *HiddifyOptions) {
+func setExperimental(options *option.Options, hopt *InhiveOptions) {
 	if len(hopt.ConnectionTestUrls) == 0 {
 		hopt.ConnectionTestUrls = []string{hopt.ConnectionTestUrl, "http://captive.apple.com/generate_204", "https://cp.cloudflare.com", "https://google.com/generate_204"}
 		if isBlockedConnectionTestUrl(hopt.ConnectionTestUrl) {
@@ -414,7 +414,7 @@ func setExperimental(options *option.Options, hopt *HiddifyOptions) {
 	}
 }
 
-func setLog(options *option.Options, opt *HiddifyOptions) {
+func setLog(options *option.Options, opt *InhiveOptions) {
 	options.Log = &option.LogOptions{
 		Level:        opt.LogLevel,
 		Output:       opt.LogFile,
@@ -430,7 +430,7 @@ func isIPv6Supported() bool {
 	_, err := net.ResolveIPAddr("ip6", "::1")
 	return err == nil
 }
-func setInbound(options *option.Options, hopt *HiddifyOptions) {
+func setInbound(options *option.Options, hopt *InhiveOptions) {
 	// var inboundDomainStrategy option.DomainStrategy
 	// if !opt.ResolveDestination {
 	// 	inboundDomainStrategy = option.DomainStrategy(dns.DomainStrategyAsIS)
@@ -562,7 +562,7 @@ func setInbound(options *option.Options, hopt *HiddifyOptions) {
 	}
 }
 
-func setRoutingOptions(options *option.Options, hopt *HiddifyOptions) error {
+func setRoutingOptions(options *option.Options, hopt *InhiveOptions) error {
 	dnsRules := []option.DefaultDNSRule{}
 	routeRules := []option.Rule{}
 	rulesets := []option.RuleSet{}
@@ -575,7 +575,7 @@ func setRoutingOptions(options *option.Options, hopt *HiddifyOptions) error {
 
 	// 	// 		DefaultOptions: option.DefaultRule{
 	// 	// 			Inbound:     []string{InboundTUNTag},
-	// 	// 			PackageName: []string{"app.hiddify.com"},
+	// 	// 			PackageName: []string{"app.inhive.ru"},
 	// 	// 			Outbound:    OutboundBypassTag,
 	// 	// 		},
 	// 	// 	},
@@ -587,7 +587,7 @@ func setRoutingOptions(options *option.Options, hopt *HiddifyOptions) error {
 	// 	// 	option.Rule{
 	// 	// 		Type: C.RuleTypeDefault,
 	// 	// 		DefaultOptions: option.DefaultRule{
-	// 	// 			ProcessName: []string{"Hiddify", "Hiddify.exe", "HiddifyCli", "HiddifyCli.exe"},
+	// 	// 			ProcessName: []string{"InHive", "InHive.exe", "InHiveCli", "InHiveCli.exe"},
 	// 	// 			Outbound:    OutboundBypassTag,
 	// 	// 		},
 	// 	// 	},
@@ -1104,7 +1104,7 @@ func setRoutingOptions(options *option.Options, hopt *HiddifyOptions) error {
 	return nil
 }
 
-func patchHiddifyWarpFromConfig(out *option.Outbound, opt HiddifyOptions) *option.Outbound {
+func patchHiddifyWarpFromConfig(out *option.Outbound, opt InhiveOptions) *option.Outbound {
 	if out.Type == C.TypePsiphon {
 		return out
 	}
@@ -1215,7 +1215,7 @@ func generateRandomString(length int) string {
 	randomBytes := make([]byte, bytesNeeded)
 	_, err := rand.Read(randomBytes)
 	if err != nil {
-		return "hiddify"
+		return "inhive"
 	}
 
 	// Encode random bytes to base64

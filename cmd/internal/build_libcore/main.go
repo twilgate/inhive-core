@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/hiddify/hiddify-core/cmd/internal/build_shared"
+	"github.com/buudesh/inhive-core/cmd/internal/build_shared"
 	_ "github.com/sagernet/gomobile"
 	"github.com/sagernet/sing-box/log"
 	"github.com/sagernet/sing/common/rw"
@@ -42,7 +42,7 @@ var (
 	iosTags     []string
 )
 
-const libName = "hiddify-core"
+const libName = "inhive-core"
 
 func init() {
 	sharedFlags = append(sharedFlags, "-trimpath")

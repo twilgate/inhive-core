@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/hiddify/hiddify-core/v2/hiddifyoptions"
+	"github.com/buudesh/inhive-core/v2/inhiveoptions"
 )
 
 const (
@@ -92,7 +92,7 @@ func (p *ProfileEntity) Parse(headers http.Header) {
 
 	p.Options = options
 	p.SubInfo = subInfo
-	p.OverrideHiddifyOptions = hiddifyoptions.GetOverridableHiddifyOptions(headers)
+	p.OverrideInhiveOptions = inhiveoptions.GetOverridableInhiveOptions(headers)
 }
 
 // parseSubscriptionInfo parses subscription info from a string

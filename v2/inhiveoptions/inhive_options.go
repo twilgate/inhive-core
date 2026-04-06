@@ -1,4 +1,4 @@
-package hiddifyoptions
+package inhiveoptions
 
 import (
 	"fmt"
@@ -7,8 +7,8 @@ import (
 	"strings"
 )
 
-func DefaultHiddifyOptions() *HiddifyOptions {
-	return &HiddifyOptions{
+func DefaultInhiveOptions() *InhiveOptions {
+	return &InhiveOptions{
 		DnsOptions: &DNSOptions{
 			RemoteDnsAddress:        "1.1.1.1",
 			RemoteDnsDomainStrategy: DomainStrategy_as_is,
@@ -158,13 +158,13 @@ func parseUint(value interface{}) (uint64, error) {
 	return 0, fmt.Errorf("invalid uint value")
 }
 
-func GetOverridableHiddifyOptions(overrides map[string][]string) *HiddifyOptions {
-	overrideHiddify := HiddifyOptions{}
+func GetOverridableInhiveOptions(overrides map[string][]string) *InhiveOptions {
+	overrideHiddify := InhiveOptions{}
 
 	// Convert flat overrides to nested structure
 	nestedOverrides := convertFlatToNested(overrides)
 
-	// Use reflection to iterate over the fields of HiddifyOptions
+	// Use reflection to iterate over the fields of InhiveOptions
 	v := reflect.ValueOf(&overrideHiddify).Elem()
 	t := reflect.TypeOf(overrideHiddify)
 

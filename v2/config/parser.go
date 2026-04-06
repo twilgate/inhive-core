@@ -32,7 +32,7 @@ func ReadContent(ctx context.Context, opt *ReadOptions) ([]byte, error) {
 	return []byte(opt.Content), nil
 }
 
-func ParseConfig(ctx context.Context, opt *ReadOptions, debug bool, configOpt *HiddifyOptions, fullConfig bool) (*option.Options, error) {
+func ParseConfig(ctx context.Context, opt *ReadOptions, debug bool, configOpt *InhiveOptions, fullConfig bool) (*option.Options, error) {
 	content, err := ReadContent(ctx, opt)
 	if err != nil {
 		return nil, err
@@ -40,7 +40,7 @@ func ParseConfig(ctx context.Context, opt *ReadOptions, debug bool, configOpt *H
 	return parseConfigContent(ctx, content, debug, nil, false)
 }
 
-func ParseConfigBytes(ctx context.Context, opt *ReadOptions, debug bool, configOpt *HiddifyOptions, fullConfig bool) ([]byte, error) {
+func ParseConfigBytes(ctx context.Context, opt *ReadOptions, debug bool, configOpt *InhiveOptions, fullConfig bool) ([]byte, error) {
 
 	options, err := ParseConfig(ctx, opt, debug, configOpt, fullConfig)
 	if err != nil {
@@ -50,9 +50,9 @@ func ParseConfigBytes(ctx context.Context, opt *ReadOptions, debug bool, configO
 	return options.MarshalJSONContext(ctx)
 
 }
-func parseConfigContent(ctx context.Context, content []byte, debug bool, configOpt *HiddifyOptions, fullConfig bool) (*option.Options, error) {
+func parseConfigContent(ctx context.Context, content []byte, debug bool, configOpt *InhiveOptions, fullConfig bool) (*option.Options, error) {
 	if configOpt == nil {
-		configOpt = DefaultHiddifyOptions()
+		configOpt = DefaultInhiveOptions()
 	}
 
 	var jsonObj map[string]interface{} = make(map[string]interface{})
@@ -113,7 +113,7 @@ func parseConfigContent(ctx context.Context, content []byte, debug bool, configO
 	return nil, fmt.Errorf("unable to determine config format")
 }
 
-func patchConfigStr(ctx context.Context, content []byte, name string, configOpt *HiddifyOptions) (*option.Options, error) {
+func patchConfigStr(ctx context.Context, content []byte, name string, configOpt *InhiveOptions) (*option.Options, error) {
 	options := option.Options{}
 	err := options.UnmarshalJSONContext(ctx, content)
 
@@ -123,7 +123,7 @@ func patchConfigStr(ctx context.Context, content []byte, name string, configOpt 
 
 	return patchConfigOptions(ctx, &options, name, configOpt)
 }
-func patchConfigOptions(ctx context.Context, options *option.Options, name string, configOpt *HiddifyOptions) (*option.Options, error) {
+func patchConfigOptions(ctx context.Context, options *option.Options, name string, configOpt *InhiveOptions) (*option.Options, error) {
 	b, _ := batch.New(ctx, batch.WithConcurrencyNum[*option.Endpoint](2))
 	for _, base := range options.Endpoints {
 		out := base

@@ -1,4 +1,4 @@
-module github.com/hiddify/hiddify-core
+module github.com/buudesh/inhive-core
 
 go 1.25.6
 

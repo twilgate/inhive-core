@@ -4,14 +4,14 @@
 
 syntax = "proto3";
 
-package hiddifyoptions;
-option go_package = "github.com/hiddify/hiddify-core/v2/hiddifyoptions";
-option java_package = "com.hiddify.core.api.v2.hiddifyoptions";
+package inhiveoptions;
+option go_package = "github.com/buudesh/inhive-core/v2/inhiveoptions";
+option java_package = "com.inhive.core.api.v2.inhiveoptions";
 
 /**
- * HiddifyOptions defines the configuration options for the Hiddify application.
+ * InhiveOptions defines the configuration options for the Hiddify application.
  */
-message HiddifyOptions {
+message InhiveOptions {
   bool enable_full_config = 1; // Enables full configuration options.
   string log_level = 2; // Specifies the logging level (e.g., INFO, DEBUG).
   string log_file = 3; // Path to the log file.

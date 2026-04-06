@@ -12,7 +12,7 @@ import (
 	"github.com/sagernet/wireguard-go/hiddify"
 
 	// "github.com/bepass-org/wireguard-go/warp"
-	"github.com/hiddify/hiddify-core/v2/db"
+	"github.com/buudesh/inhive-core/v2/db"
 
 	"github.com/sagernet/sing-box/option"
 	T "github.com/sagernet/sing-box/option"
@@ -202,7 +202,7 @@ func GenerateWarpSingboxNew(uniqueIdentifier string, noise *hiddify.NoiseOptions
 	return &out, nil
 }
 
-func patchWarp(base *option.Endpoint, configOpt *HiddifyOptions, final bool, staticIpsDns map[string][]string) error {
+func patchWarp(base *option.Endpoint, configOpt *InhiveOptions, final bool, staticIpsDns map[string][]string) error {
 	if base.Type == C.TypeWARP {
 		if opts, ok := base.Options.(*option.WireGuardWARPEndpointOptions); ok {
 			opts.ServerOptions.Server = ""

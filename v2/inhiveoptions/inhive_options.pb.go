@@ -5,9 +5,9 @@
 // versions:
 // 	protoc-gen-go v1.34.2
 // 	protoc        v5.28.0
-// source: v2/hiddifyoptions/hiddify_options.proto
+// source: v2/inhiveoptions/hiddify_options.proto
 
-package hiddifyoptions
+package inhiveoptions
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -64,11 +64,11 @@ func (x DomainStrategy) String() string {
 }
 
 func (DomainStrategy) Descriptor() protoreflect.EnumDescriptor {
-	return file_v2_hiddifyoptions_hiddify_options_proto_enumTypes[0].Descriptor()
+	return file_v2_inhiveoptions_hiddify_options_proto_enumTypes[0].Descriptor()
 }
 
 func (DomainStrategy) Type() protoreflect.EnumType {
-	return &file_v2_hiddifyoptions_hiddify_options_proto_enumTypes[0]
+	return &file_v2_inhiveoptions_hiddify_options_proto_enumTypes[0]
 }
 
 func (x DomainStrategy) Number() protoreflect.EnumNumber {
@@ -77,12 +77,12 @@ func (x DomainStrategy) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use DomainStrategy.Descriptor instead.
 func (DomainStrategy) EnumDescriptor() ([]byte, []int) {
-	return file_v2_hiddifyoptions_hiddify_options_proto_rawDescGZIP(), []int{0}
+	return file_v2_inhiveoptions_hiddify_options_proto_rawDescGZIP(), []int{0}
 }
 
 // *
-// HiddifyOptions defines the configuration options for the Hiddify application.
-type HiddifyOptions struct {
+// InhiveOptions defines the configuration options for the Hiddify application.
+type InhiveOptions struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -107,23 +107,23 @@ type HiddifyOptions struct {
 	RouteOptions            *RouteOptions   `protobuf:"bytes,18,opt,name=route_options,json=routeOptions,proto3" json:"route_options,omitempty"`                                        // Routing-related options.
 }
 
-func (x *HiddifyOptions) Reset() {
-	*x = HiddifyOptions{}
+func (x *InhiveOptions) Reset() {
+	*x = InhiveOptions{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[0]
+		mi := &file_v2_inhiveoptions_hiddify_options_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
 }
 
-func (x *HiddifyOptions) String() string {
+func (x *InhiveOptions) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*HiddifyOptions) ProtoMessage() {}
+func (*InhiveOptions) ProtoMessage() {}
 
-func (x *HiddifyOptions) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[0]
+func (x *InhiveOptions) ProtoReflect() protoreflect.Message {
+	mi := &file_v2_inhiveoptions_hiddify_options_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -134,131 +134,131 @@ func (x *HiddifyOptions) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use HiddifyOptions.ProtoReflect.Descriptor instead.
-func (*HiddifyOptions) Descriptor() ([]byte, []int) {
-	return file_v2_hiddifyoptions_hiddify_options_proto_rawDescGZIP(), []int{0}
+// Deprecated: Use InhiveOptions.ProtoReflect.Descriptor instead.
+func (*InhiveOptions) Descriptor() ([]byte, []int) {
+	return file_v2_inhiveoptions_hiddify_options_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *HiddifyOptions) GetEnableFullConfig() bool {
+func (x *InhiveOptions) GetEnableFullConfig() bool {
 	if x != nil {
 		return x.EnableFullConfig
 	}
 	return false
 }
 
-func (x *HiddifyOptions) GetLogLevel() string {
+func (x *InhiveOptions) GetLogLevel() string {
 	if x != nil {
 		return x.LogLevel
 	}
 	return ""
 }
 
-func (x *HiddifyOptions) GetLogFile() string {
+func (x *InhiveOptions) GetLogFile() string {
 	if x != nil {
 		return x.LogFile
 	}
 	return ""
 }
 
-func (x *HiddifyOptions) GetEnableClashApi() bool {
+func (x *InhiveOptions) GetEnableClashApi() bool {
 	if x != nil {
 		return x.EnableClashApi
 	}
 	return false
 }
 
-func (x *HiddifyOptions) GetClashApiPort() uint32 {
+func (x *InhiveOptions) GetClashApiPort() uint32 {
 	if x != nil {
 		return x.ClashApiPort
 	}
 	return 0
 }
 
-func (x *HiddifyOptions) GetWebSecret() string {
+func (x *InhiveOptions) GetWebSecret() string {
 	if x != nil {
 		return x.WebSecret
 	}
 	return ""
 }
 
-func (x *HiddifyOptions) GetRegion() string {
+func (x *InhiveOptions) GetRegion() string {
 	if x != nil {
 		return x.Region
 	}
 	return ""
 }
 
-func (x *HiddifyOptions) GetBlockAds() bool {
+func (x *InhiveOptions) GetBlockAds() bool {
 	if x != nil {
 		return x.BlockAds
 	}
 	return false
 }
 
-func (x *HiddifyOptions) GetUseXrayCoreWhenPossible() bool {
+func (x *InhiveOptions) GetUseXrayCoreWhenPossible() bool {
 	if x != nil {
 		return x.UseXrayCoreWhenPossible
 	}
 	return false
 }
 
-func (x *HiddifyOptions) GetRules() []*Rule {
+func (x *InhiveOptions) GetRules() []*Rule {
 	if x != nil {
 		return x.Rules
 	}
 	return nil
 }
 
-func (x *HiddifyOptions) GetWarp() *WarpOptions {
+func (x *InhiveOptions) GetWarp() *WarpOptions {
 	if x != nil {
 		return x.Warp
 	}
 	return nil
 }
 
-func (x *HiddifyOptions) GetWarp2() *WarpOptions {
+func (x *InhiveOptions) GetWarp2() *WarpOptions {
 	if x != nil {
 		return x.Warp2
 	}
 	return nil
 }
 
-func (x *HiddifyOptions) GetMux() *MuxOptions {
+func (x *InhiveOptions) GetMux() *MuxOptions {
 	if x != nil {
 		return x.Mux
 	}
 	return nil
 }
 
-func (x *HiddifyOptions) GetTlsTricks() *TLSTricks {
+func (x *InhiveOptions) GetTlsTricks() *TLSTricks {
 	if x != nil {
 		return x.TlsTricks
 	}
 	return nil
 }
 
-func (x *HiddifyOptions) GetDnsOptions() *DNSOptions {
+func (x *InhiveOptions) GetDnsOptions() *DNSOptions {
 	if x != nil {
 		return x.DnsOptions
 	}
 	return nil
 }
 
-func (x *HiddifyOptions) GetInboundOptions() *InboundOptions {
+func (x *InhiveOptions) GetInboundOptions() *InboundOptions {
 	if x != nil {
 		return x.InboundOptions
 	}
 	return nil
 }
 
-func (x *HiddifyOptions) GetUrlTestOptions() *URLTestOptions {
+func (x *InhiveOptions) GetUrlTestOptions() *URLTestOptions {
 	if x != nil {
 		return x.UrlTestOptions
 	}
 	return nil
 }
 
-func (x *HiddifyOptions) GetRouteOptions() *RouteOptions {
+func (x *InhiveOptions) GetRouteOptions() *RouteOptions {
 	if x != nil {
 		return x.RouteOptions
 	}
@@ -280,7 +280,7 @@ type IntRange struct {
 func (x *IntRange) Reset() {
 	*x = IntRange{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[1]
+		mi := &file_v2_inhiveoptions_hiddify_options_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -293,7 +293,7 @@ func (x *IntRange) String() string {
 func (*IntRange) ProtoMessage() {}
 
 func (x *IntRange) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[1]
+	mi := &file_v2_inhiveoptions_hiddify_options_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -306,7 +306,7 @@ func (x *IntRange) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IntRange.ProtoReflect.Descriptor instead.
 func (*IntRange) Descriptor() ([]byte, []int) {
-	return file_v2_hiddifyoptions_hiddify_options_proto_rawDescGZIP(), []int{1}
+	return file_v2_inhiveoptions_hiddify_options_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *IntRange) GetFrom() int32 {
@@ -331,9 +331,9 @@ type DNSOptions struct {
 	unknownFields protoimpl.UnknownFields
 
 	RemoteDnsAddress        string         `protobuf:"bytes,1,opt,name=remote_dns_address,json=remoteDnsAddress,proto3" json:"remote_dns_address,omitempty"`                                                            // Remote DNS server address.
-	RemoteDnsDomainStrategy DomainStrategy `protobuf:"varint,2,opt,name=remote_dns_domain_strategy,json=remoteDnsDomainStrategy,proto3,enum=hiddifyoptions.DomainStrategy" json:"remote_dns_domain_strategy,omitempty"` // Strategy for resolving domains with remote DNS.
+	RemoteDnsDomainStrategy DomainStrategy `protobuf:"varint,2,opt,name=remote_dns_domain_strategy,json=remoteDnsDomainStrategy,proto3,enum=inhiveoptions.DomainStrategy" json:"remote_dns_domain_strategy,omitempty"` // Strategy for resolving domains with remote DNS.
 	DirectDnsAddress        string         `protobuf:"bytes,3,opt,name=direct_dns_address,json=directDnsAddress,proto3" json:"direct_dns_address,omitempty"`                                                            // Direct DNS server address.
-	DirectDnsDomainStrategy DomainStrategy `protobuf:"varint,4,opt,name=direct_dns_domain_strategy,json=directDnsDomainStrategy,proto3,enum=hiddifyoptions.DomainStrategy" json:"direct_dns_domain_strategy,omitempty"` // Strategy for resolving domains with direct DNS.
+	DirectDnsDomainStrategy DomainStrategy `protobuf:"varint,4,opt,name=direct_dns_domain_strategy,json=directDnsDomainStrategy,proto3,enum=inhiveoptions.DomainStrategy" json:"direct_dns_domain_strategy,omitempty"` // Strategy for resolving domains with direct DNS.
 	IndependentDnsCache     bool           `protobuf:"varint,5,opt,name=independent_dns_cache,json=independentDnsCache,proto3" json:"independent_dns_cache,omitempty"`                                                  // If true, enables independent DNS caching.
 	EnableFakeDns           bool           `protobuf:"varint,6,opt,name=enable_fake_dns,json=enableFakeDns,proto3" json:"enable_fake_dns,omitempty"`                                                                    // If true, enables fake DNS responses.
 	EnableDnsRouting        bool           `protobuf:"varint,7,opt,name=enable_dns_routing,json=enableDnsRouting,proto3" json:"enable_dns_routing,omitempty"`                                                           // If true, enables DNS routing.
@@ -342,7 +342,7 @@ type DNSOptions struct {
 func (x *DNSOptions) Reset() {
 	*x = DNSOptions{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[2]
+		mi := &file_v2_inhiveoptions_hiddify_options_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -355,7 +355,7 @@ func (x *DNSOptions) String() string {
 func (*DNSOptions) ProtoMessage() {}
 
 func (x *DNSOptions) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[2]
+	mi := &file_v2_inhiveoptions_hiddify_options_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -368,7 +368,7 @@ func (x *DNSOptions) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DNSOptions.ProtoReflect.Descriptor instead.
 func (*DNSOptions) Descriptor() ([]byte, []int) {
-	return file_v2_hiddifyoptions_hiddify_options_proto_rawDescGZIP(), []int{2}
+	return file_v2_inhiveoptions_hiddify_options_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *DNSOptions) GetRemoteDnsAddress() string {
@@ -442,7 +442,7 @@ type InboundOptions struct {
 func (x *InboundOptions) Reset() {
 	*x = InboundOptions{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[3]
+		mi := &file_v2_inhiveoptions_hiddify_options_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -455,7 +455,7 @@ func (x *InboundOptions) String() string {
 func (*InboundOptions) ProtoMessage() {}
 
 func (x *InboundOptions) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[3]
+	mi := &file_v2_inhiveoptions_hiddify_options_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -468,7 +468,7 @@ func (x *InboundOptions) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InboundOptions.ProtoReflect.Descriptor instead.
 func (*InboundOptions) Descriptor() ([]byte, []int) {
-	return file_v2_hiddifyoptions_hiddify_options_proto_rawDescGZIP(), []int{3}
+	return file_v2_inhiveoptions_hiddify_options_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *InboundOptions) GetEnableTun() bool {
@@ -555,7 +555,7 @@ type URLTestOptions struct {
 func (x *URLTestOptions) Reset() {
 	*x = URLTestOptions{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[4]
+		mi := &file_v2_inhiveoptions_hiddify_options_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -568,7 +568,7 @@ func (x *URLTestOptions) String() string {
 func (*URLTestOptions) ProtoMessage() {}
 
 func (x *URLTestOptions) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[4]
+	mi := &file_v2_inhiveoptions_hiddify_options_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -581,7 +581,7 @@ func (x *URLTestOptions) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use URLTestOptions.ProtoReflect.Descriptor instead.
 func (*URLTestOptions) Descriptor() ([]byte, []int) {
-	return file_v2_hiddifyoptions_hiddify_options_proto_rawDescGZIP(), []int{4}
+	return file_v2_inhiveoptions_hiddify_options_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *URLTestOptions) GetConnectionTestUrl() string {
@@ -606,7 +606,7 @@ type RouteOptions struct {
 	unknownFields protoimpl.UnknownFields
 
 	ResolveDestination     bool           `protobuf:"varint,1,opt,name=resolve_destination,json=resolveDestination,proto3" json:"resolve_destination,omitempty"`                 // If true, resolves the destination address.
-	Ipv6Mode               DomainStrategy `protobuf:"varint,2,opt,name=ipv6_mode,json=ipv6Mode,proto3,enum=hiddifyoptions.DomainStrategy" json:"ipv6_mode,omitempty"`            // Strategy for handling IPv6 addresses.
+	Ipv6Mode               DomainStrategy `protobuf:"varint,2,opt,name=ipv6_mode,json=ipv6Mode,proto3,enum=inhiveoptions.DomainStrategy" json:"ipv6_mode,omitempty"`            // Strategy for handling IPv6 addresses.
 	BypassLan              bool           `protobuf:"varint,3,opt,name=bypass_lan,json=bypassLan,proto3" json:"bypass_lan,omitempty"`                                            // If true, bypasses LAN connections.
 	AllowConnectionFromLan bool           `protobuf:"varint,4,opt,name=allow_connection_from_lan,json=allowConnectionFromLan,proto3" json:"allow_connection_from_lan,omitempty"` // If true, allows connections from LAN.
 }
@@ -614,7 +614,7 @@ type RouteOptions struct {
 func (x *RouteOptions) Reset() {
 	*x = RouteOptions{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[5]
+		mi := &file_v2_inhiveoptions_hiddify_options_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -627,7 +627,7 @@ func (x *RouteOptions) String() string {
 func (*RouteOptions) ProtoMessage() {}
 
 func (x *RouteOptions) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[5]
+	mi := &file_v2_inhiveoptions_hiddify_options_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -640,7 +640,7 @@ func (x *RouteOptions) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RouteOptions.ProtoReflect.Descriptor instead.
 func (*RouteOptions) Descriptor() ([]byte, []int) {
-	return file_v2_hiddifyoptions_hiddify_options_proto_rawDescGZIP(), []int{5}
+	return file_v2_inhiveoptions_hiddify_options_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *RouteOptions) GetResolveDestination() bool {
@@ -689,7 +689,7 @@ type TLSTricks struct {
 func (x *TLSTricks) Reset() {
 	*x = TLSTricks{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[6]
+		mi := &file_v2_inhiveoptions_hiddify_options_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -702,7 +702,7 @@ func (x *TLSTricks) String() string {
 func (*TLSTricks) ProtoMessage() {}
 
 func (x *TLSTricks) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[6]
+	mi := &file_v2_inhiveoptions_hiddify_options_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -715,7 +715,7 @@ func (x *TLSTricks) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TLSTricks.ProtoReflect.Descriptor instead.
 func (*TLSTricks) Descriptor() ([]byte, []int) {
-	return file_v2_hiddifyoptions_hiddify_options_proto_rawDescGZIP(), []int{6}
+	return file_v2_inhiveoptions_hiddify_options_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *TLSTricks) GetEnableFragment() bool {
@@ -776,7 +776,7 @@ type MuxOptions struct {
 func (x *MuxOptions) Reset() {
 	*x = MuxOptions{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[7]
+		mi := &file_v2_inhiveoptions_hiddify_options_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -789,7 +789,7 @@ func (x *MuxOptions) String() string {
 func (*MuxOptions) ProtoMessage() {}
 
 func (x *MuxOptions) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[7]
+	mi := &file_v2_inhiveoptions_hiddify_options_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -802,7 +802,7 @@ func (x *MuxOptions) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MuxOptions.ProtoReflect.Descriptor instead.
 func (*MuxOptions) Descriptor() ([]byte, []int) {
-	return file_v2_hiddifyoptions_hiddify_options_proto_rawDescGZIP(), []int{7}
+	return file_v2_inhiveoptions_hiddify_options_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *MuxOptions) GetEnable() bool {
@@ -856,7 +856,7 @@ type WarpOptions struct {
 func (x *WarpOptions) Reset() {
 	*x = WarpOptions{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[8]
+		mi := &file_v2_inhiveoptions_hiddify_options_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -869,7 +869,7 @@ func (x *WarpOptions) String() string {
 func (*WarpOptions) ProtoMessage() {}
 
 func (x *WarpOptions) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[8]
+	mi := &file_v2_inhiveoptions_hiddify_options_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -882,7 +882,7 @@ func (x *WarpOptions) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WarpOptions.ProtoReflect.Descriptor instead.
 func (*WarpOptions) Descriptor() ([]byte, []int) {
-	return file_v2_hiddifyoptions_hiddify_options_proto_rawDescGZIP(), []int{8}
+	return file_v2_inhiveoptions_hiddify_options_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *WarpOptions) GetId() string {
@@ -976,7 +976,7 @@ type WarpAccount struct {
 func (x *WarpAccount) Reset() {
 	*x = WarpAccount{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[9]
+		mi := &file_v2_inhiveoptions_hiddify_options_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -989,7 +989,7 @@ func (x *WarpAccount) String() string {
 func (*WarpAccount) ProtoMessage() {}
 
 func (x *WarpAccount) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[9]
+	mi := &file_v2_inhiveoptions_hiddify_options_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1002,7 +1002,7 @@ func (x *WarpAccount) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WarpAccount.ProtoReflect.Descriptor instead.
 func (*WarpAccount) Descriptor() ([]byte, []int) {
-	return file_v2_hiddifyoptions_hiddify_options_proto_rawDescGZIP(), []int{9}
+	return file_v2_inhiveoptions_hiddify_options_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *WarpAccount) GetAccountId() string {
@@ -1036,7 +1036,7 @@ type WarpWireguardConfig struct {
 func (x *WarpWireguardConfig) Reset() {
 	*x = WarpWireguardConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[10]
+		mi := &file_v2_inhiveoptions_hiddify_options_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1049,7 +1049,7 @@ func (x *WarpWireguardConfig) String() string {
 func (*WarpWireguardConfig) ProtoMessage() {}
 
 func (x *WarpWireguardConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[10]
+	mi := &file_v2_inhiveoptions_hiddify_options_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1062,7 +1062,7 @@ func (x *WarpWireguardConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WarpWireguardConfig.ProtoReflect.Descriptor instead.
 func (*WarpWireguardConfig) Descriptor() ([]byte, []int) {
-	return file_v2_hiddifyoptions_hiddify_options_proto_rawDescGZIP(), []int{10}
+	return file_v2_inhiveoptions_hiddify_options_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *WarpWireguardConfig) GetPrivateKey() string {
@@ -1119,7 +1119,7 @@ type Rule struct {
 func (x *Rule) Reset() {
 	*x = Rule{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[11]
+		mi := &file_v2_inhiveoptions_hiddify_options_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1132,7 +1132,7 @@ func (x *Rule) String() string {
 func (*Rule) ProtoMessage() {}
 
 func (x *Rule) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[11]
+	mi := &file_v2_inhiveoptions_hiddify_options_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1145,7 +1145,7 @@ func (x *Rule) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Rule.ProtoReflect.Descriptor instead.
 func (*Rule) Descriptor() ([]byte, []int) {
-	return file_v2_hiddifyoptions_hiddify_options_proto_rawDescGZIP(), []int{11}
+	return file_v2_inhiveoptions_hiddify_options_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *Rule) GetRuleSetUrl() string {
@@ -1197,9 +1197,9 @@ func (x *Rule) GetOutbound() string {
 	return ""
 }
 
-var File_v2_hiddifyoptions_hiddify_options_proto protoreflect.FileDescriptor
+var File_v2_inhiveoptions_hiddify_options_proto protoreflect.FileDescriptor
 
-var file_v2_hiddifyoptions_hiddify_options_proto_rawDesc = []byte{
+var file_v2_inhiveoptions_hiddify_options_proto_rawDesc = []byte{
 	0x0a, 0x27, 0x76, 0x32, 0x2f, 0x68, 0x69, 0x64, 0x64, 0x69, 0x66, 0x79, 0x6f, 0x70, 0x74, 0x69,
 	0x6f, 0x6e, 0x73, 0x2f, 0x68, 0x69, 0x64, 0x64, 0x69, 0x66, 0x79, 0x5f, 0x6f, 0x70, 0x74, 0x69,
 	0x6f, 0x6e, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x0e, 0x68, 0x69, 0x64, 0x64, 0x69,
@@ -1435,54 +1435,54 @@ var file_v2_hiddifyoptions_hiddify_options_proto_rawDesc = []byte{
 }
 
 var (
-	file_v2_hiddifyoptions_hiddify_options_proto_rawDescOnce sync.Once
-	file_v2_hiddifyoptions_hiddify_options_proto_rawDescData = file_v2_hiddifyoptions_hiddify_options_proto_rawDesc
+	file_v2_inhiveoptions_hiddify_options_proto_rawDescOnce sync.Once
+	file_v2_inhiveoptions_hiddify_options_proto_rawDescData = file_v2_inhiveoptions_hiddify_options_proto_rawDesc
 )
 
-func file_v2_hiddifyoptions_hiddify_options_proto_rawDescGZIP() []byte {
-	file_v2_hiddifyoptions_hiddify_options_proto_rawDescOnce.Do(func() {
-		file_v2_hiddifyoptions_hiddify_options_proto_rawDescData = protoimpl.X.CompressGZIP(file_v2_hiddifyoptions_hiddify_options_proto_rawDescData)
+func file_v2_inhiveoptions_hiddify_options_proto_rawDescGZIP() []byte {
+	file_v2_inhiveoptions_hiddify_options_proto_rawDescOnce.Do(func() {
+		file_v2_inhiveoptions_hiddify_options_proto_rawDescData = protoimpl.X.CompressGZIP(file_v2_inhiveoptions_hiddify_options_proto_rawDescData)
 	})
-	return file_v2_hiddifyoptions_hiddify_options_proto_rawDescData
+	return file_v2_inhiveoptions_hiddify_options_proto_rawDescData
 }
 
-var file_v2_hiddifyoptions_hiddify_options_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_v2_hiddifyoptions_hiddify_options_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
-var file_v2_hiddifyoptions_hiddify_options_proto_goTypes = []any{
-	(DomainStrategy)(0),         // 0: hiddifyoptions.DomainStrategy
-	(*HiddifyOptions)(nil),      // 1: hiddifyoptions.HiddifyOptions
-	(*IntRange)(nil),            // 2: hiddifyoptions.IntRange
-	(*DNSOptions)(nil),          // 3: hiddifyoptions.DNSOptions
-	(*InboundOptions)(nil),      // 4: hiddifyoptions.InboundOptions
-	(*URLTestOptions)(nil),      // 5: hiddifyoptions.URLTestOptions
-	(*RouteOptions)(nil),        // 6: hiddifyoptions.RouteOptions
-	(*TLSTricks)(nil),           // 7: hiddifyoptions.TLSTricks
-	(*MuxOptions)(nil),          // 8: hiddifyoptions.MuxOptions
-	(*WarpOptions)(nil),         // 9: hiddifyoptions.WarpOptions
-	(*WarpAccount)(nil),         // 10: hiddifyoptions.WarpAccount
-	(*WarpWireguardConfig)(nil), // 11: hiddifyoptions.WarpWireguardConfig
-	(*Rule)(nil),                // 12: hiddifyoptions.Rule
+var file_v2_inhiveoptions_hiddify_options_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_v2_inhiveoptions_hiddify_options_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_v2_inhiveoptions_hiddify_options_proto_goTypes = []any{
+	(DomainStrategy)(0),         // 0: inhiveoptions.DomainStrategy
+	(*InhiveOptions)(nil),      // 1: inhiveoptions.InhiveOptions
+	(*IntRange)(nil),            // 2: inhiveoptions.IntRange
+	(*DNSOptions)(nil),          // 3: inhiveoptions.DNSOptions
+	(*InboundOptions)(nil),      // 4: inhiveoptions.InboundOptions
+	(*URLTestOptions)(nil),      // 5: inhiveoptions.URLTestOptions
+	(*RouteOptions)(nil),        // 6: inhiveoptions.RouteOptions
+	(*TLSTricks)(nil),           // 7: inhiveoptions.TLSTricks
+	(*MuxOptions)(nil),          // 8: inhiveoptions.MuxOptions
+	(*WarpOptions)(nil),         // 9: inhiveoptions.WarpOptions
+	(*WarpAccount)(nil),         // 10: inhiveoptions.WarpAccount
+	(*WarpWireguardConfig)(nil), // 11: inhiveoptions.WarpWireguardConfig
+	(*Rule)(nil),                // 12: inhiveoptions.Rule
 }
-var file_v2_hiddifyoptions_hiddify_options_proto_depIdxs = []int32{
-	12, // 0: hiddifyoptions.HiddifyOptions.rules:type_name -> hiddifyoptions.Rule
-	9,  // 1: hiddifyoptions.HiddifyOptions.warp:type_name -> hiddifyoptions.WarpOptions
-	9,  // 2: hiddifyoptions.HiddifyOptions.warp2:type_name -> hiddifyoptions.WarpOptions
-	8,  // 3: hiddifyoptions.HiddifyOptions.mux:type_name -> hiddifyoptions.MuxOptions
-	7,  // 4: hiddifyoptions.HiddifyOptions.tls_tricks:type_name -> hiddifyoptions.TLSTricks
-	3,  // 5: hiddifyoptions.HiddifyOptions.dns_options:type_name -> hiddifyoptions.DNSOptions
-	4,  // 6: hiddifyoptions.HiddifyOptions.inbound_options:type_name -> hiddifyoptions.InboundOptions
-	5,  // 7: hiddifyoptions.HiddifyOptions.url_test_options:type_name -> hiddifyoptions.URLTestOptions
-	6,  // 8: hiddifyoptions.HiddifyOptions.route_options:type_name -> hiddifyoptions.RouteOptions
-	0,  // 9: hiddifyoptions.DNSOptions.remote_dns_domain_strategy:type_name -> hiddifyoptions.DomainStrategy
-	0,  // 10: hiddifyoptions.DNSOptions.direct_dns_domain_strategy:type_name -> hiddifyoptions.DomainStrategy
-	0,  // 11: hiddifyoptions.RouteOptions.ipv6_mode:type_name -> hiddifyoptions.DomainStrategy
-	2,  // 12: hiddifyoptions.TLSTricks.fragment_size:type_name -> hiddifyoptions.IntRange
-	2,  // 13: hiddifyoptions.TLSTricks.fragment_sleep:type_name -> hiddifyoptions.IntRange
-	2,  // 14: hiddifyoptions.TLSTricks.padding_size:type_name -> hiddifyoptions.IntRange
-	11, // 15: hiddifyoptions.WarpOptions.wireguard_config:type_name -> hiddifyoptions.WarpWireguardConfig
-	2,  // 16: hiddifyoptions.WarpOptions.fake_packet_size:type_name -> hiddifyoptions.IntRange
-	2,  // 17: hiddifyoptions.WarpOptions.fake_packet_delay:type_name -> hiddifyoptions.IntRange
-	10, // 18: hiddifyoptions.WarpOptions.account:type_name -> hiddifyoptions.WarpAccount
+var file_v2_inhiveoptions_hiddify_options_proto_depIdxs = []int32{
+	12, // 0: inhiveoptions.InhiveOptions.rules:type_name -> inhiveoptions.Rule
+	9,  // 1: inhiveoptions.InhiveOptions.warp:type_name -> inhiveoptions.WarpOptions
+	9,  // 2: inhiveoptions.InhiveOptions.warp2:type_name -> inhiveoptions.WarpOptions
+	8,  // 3: inhiveoptions.InhiveOptions.mux:type_name -> inhiveoptions.MuxOptions
+	7,  // 4: inhiveoptions.InhiveOptions.tls_tricks:type_name -> inhiveoptions.TLSTricks
+	3,  // 5: inhiveoptions.InhiveOptions.dns_options:type_name -> inhiveoptions.DNSOptions
+	4,  // 6: inhiveoptions.InhiveOptions.inbound_options:type_name -> inhiveoptions.InboundOptions
+	5,  // 7: inhiveoptions.InhiveOptions.url_test_options:type_name -> inhiveoptions.URLTestOptions
+	6,  // 8: inhiveoptions.InhiveOptions.route_options:type_name -> inhiveoptions.RouteOptions
+	0,  // 9: inhiveoptions.DNSOptions.remote_dns_domain_strategy:type_name -> inhiveoptions.DomainStrategy
+	0,  // 10: inhiveoptions.DNSOptions.direct_dns_domain_strategy:type_name -> inhiveoptions.DomainStrategy
+	0,  // 11: inhiveoptions.RouteOptions.ipv6_mode:type_name -> inhiveoptions.DomainStrategy
+	2,  // 12: inhiveoptions.TLSTricks.fragment_size:type_name -> inhiveoptions.IntRange
+	2,  // 13: inhiveoptions.TLSTricks.fragment_sleep:type_name -> inhiveoptions.IntRange
+	2,  // 14: inhiveoptions.TLSTricks.padding_size:type_name -> inhiveoptions.IntRange
+	11, // 15: inhiveoptions.WarpOptions.wireguard_config:type_name -> inhiveoptions.WarpWireguardConfig
+	2,  // 16: inhiveoptions.WarpOptions.fake_packet_size:type_name -> inhiveoptions.IntRange
+	2,  // 17: inhiveoptions.WarpOptions.fake_packet_delay:type_name -> inhiveoptions.IntRange
+	10, // 18: inhiveoptions.WarpOptions.account:type_name -> inhiveoptions.WarpAccount
 	19, // [19:19] is the sub-list for method output_type
 	19, // [19:19] is the sub-list for method input_type
 	19, // [19:19] is the sub-list for extension type_name
@@ -1490,14 +1490,14 @@ var file_v2_hiddifyoptions_hiddify_options_proto_depIdxs = []int32{
 	0,  // [0:19] is the sub-list for field type_name
 }
 
-func init() { file_v2_hiddifyoptions_hiddify_options_proto_init() }
-func file_v2_hiddifyoptions_hiddify_options_proto_init() {
-	if File_v2_hiddifyoptions_hiddify_options_proto != nil {
+func init() { file_v2_inhiveoptions_hiddify_options_proto_init() }
+func file_v2_inhiveoptions_hiddify_options_proto_init() {
+	if File_v2_inhiveoptions_hiddify_options_proto != nil {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[0].Exporter = func(v any, i int) any {
-			switch v := v.(*HiddifyOptions); i {
+		file_v2_inhiveoptions_hiddify_options_proto_msgTypes[0].Exporter = func(v any, i int) any {
+			switch v := v.(*InhiveOptions); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1508,7 +1508,7 @@ func file_v2_hiddifyoptions_hiddify_options_proto_init() {
 				return nil
 			}
 		}
-		file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[1].Exporter = func(v any, i int) any {
+		file_v2_inhiveoptions_hiddify_options_proto_msgTypes[1].Exporter = func(v any, i int) any {
 			switch v := v.(*IntRange); i {
 			case 0:
 				return &v.state
@@ -1520,7 +1520,7 @@ func file_v2_hiddifyoptions_hiddify_options_proto_init() {
 				return nil
 			}
 		}
-		file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[2].Exporter = func(v any, i int) any {
+		file_v2_inhiveoptions_hiddify_options_proto_msgTypes[2].Exporter = func(v any, i int) any {
 			switch v := v.(*DNSOptions); i {
 			case 0:
 				return &v.state
@@ -1532,7 +1532,7 @@ func file_v2_hiddifyoptions_hiddify_options_proto_init() {
 				return nil
 			}
 		}
-		file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[3].Exporter = func(v any, i int) any {
+		file_v2_inhiveoptions_hiddify_options_proto_msgTypes[3].Exporter = func(v any, i int) any {
 			switch v := v.(*InboundOptions); i {
 			case 0:
 				return &v.state
@@ -1544,7 +1544,7 @@ func file_v2_hiddifyoptions_hiddify_options_proto_init() {
 				return nil
 			}
 		}
-		file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[4].Exporter = func(v any, i int) any {
+		file_v2_inhiveoptions_hiddify_options_proto_msgTypes[4].Exporter = func(v any, i int) any {
 			switch v := v.(*URLTestOptions); i {
 			case 0:
 				return &v.state
@@ -1556,7 +1556,7 @@ func file_v2_hiddifyoptions_hiddify_options_proto_init() {
 				return nil
 			}
 		}
-		file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[5].Exporter = func(v any, i int) any {
+		file_v2_inhiveoptions_hiddify_options_proto_msgTypes[5].Exporter = func(v any, i int) any {
 			switch v := v.(*RouteOptions); i {
 			case 0:
 				return &v.state
@@ -1568,7 +1568,7 @@ func file_v2_hiddifyoptions_hiddify_options_proto_init() {
 				return nil
 			}
 		}
-		file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[6].Exporter = func(v any, i int) any {
+		file_v2_inhiveoptions_hiddify_options_proto_msgTypes[6].Exporter = func(v any, i int) any {
 			switch v := v.(*TLSTricks); i {
 			case 0:
 				return &v.state
@@ -1580,7 +1580,7 @@ func file_v2_hiddifyoptions_hiddify_options_proto_init() {
 				return nil
 			}
 		}
-		file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[7].Exporter = func(v any, i int) any {
+		file_v2_inhiveoptions_hiddify_options_proto_msgTypes[7].Exporter = func(v any, i int) any {
 			switch v := v.(*MuxOptions); i {
 			case 0:
 				return &v.state
@@ -1592,7 +1592,7 @@ func file_v2_hiddifyoptions_hiddify_options_proto_init() {
 				return nil
 			}
 		}
-		file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[8].Exporter = func(v any, i int) any {
+		file_v2_inhiveoptions_hiddify_options_proto_msgTypes[8].Exporter = func(v any, i int) any {
 			switch v := v.(*WarpOptions); i {
 			case 0:
 				return &v.state
@@ -1604,7 +1604,7 @@ func file_v2_hiddifyoptions_hiddify_options_proto_init() {
 				return nil
 			}
 		}
-		file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[9].Exporter = func(v any, i int) any {
+		file_v2_inhiveoptions_hiddify_options_proto_msgTypes[9].Exporter = func(v any, i int) any {
 			switch v := v.(*WarpAccount); i {
 			case 0:
 				return &v.state
@@ -1616,7 +1616,7 @@ func file_v2_hiddifyoptions_hiddify_options_proto_init() {
 				return nil
 			}
 		}
-		file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[10].Exporter = func(v any, i int) any {
+		file_v2_inhiveoptions_hiddify_options_proto_msgTypes[10].Exporter = func(v any, i int) any {
 			switch v := v.(*WarpWireguardConfig); i {
 			case 0:
 				return &v.state
@@ -1628,7 +1628,7 @@ func file_v2_hiddifyoptions_hiddify_options_proto_init() {
 				return nil
 			}
 		}
-		file_v2_hiddifyoptions_hiddify_options_proto_msgTypes[11].Exporter = func(v any, i int) any {
+		file_v2_inhiveoptions_hiddify_options_proto_msgTypes[11].Exporter = func(v any, i int) any {
 			switch v := v.(*Rule); i {
 			case 0:
 				return &v.state
@@ -1645,19 +1645,19 @@ func file_v2_hiddifyoptions_hiddify_options_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_v2_hiddifyoptions_hiddify_options_proto_rawDesc,
+			RawDescriptor: file_v2_inhiveoptions_hiddify_options_proto_rawDesc,
 			NumEnums:      1,
 			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_v2_hiddifyoptions_hiddify_options_proto_goTypes,
-		DependencyIndexes: file_v2_hiddifyoptions_hiddify_options_proto_depIdxs,
-		EnumInfos:         file_v2_hiddifyoptions_hiddify_options_proto_enumTypes,
-		MessageInfos:      file_v2_hiddifyoptions_hiddify_options_proto_msgTypes,
+		GoTypes:           file_v2_inhiveoptions_hiddify_options_proto_goTypes,
+		DependencyIndexes: file_v2_inhiveoptions_hiddify_options_proto_depIdxs,
+		EnumInfos:         file_v2_inhiveoptions_hiddify_options_proto_enumTypes,
+		MessageInfos:      file_v2_inhiveoptions_hiddify_options_proto_msgTypes,
 	}.Build()
-	File_v2_hiddifyoptions_hiddify_options_proto = out.File
-	file_v2_hiddifyoptions_hiddify_options_proto_rawDesc = nil
-	file_v2_hiddifyoptions_hiddify_options_proto_goTypes = nil
-	file_v2_hiddifyoptions_hiddify_options_proto_depIdxs = nil
+	File_v2_inhiveoptions_hiddify_options_proto = out.File
+	file_v2_inhiveoptions_hiddify_options_proto_rawDesc = nil
+	file_v2_inhiveoptions_hiddify_options_proto_goTypes = nil
+	file_v2_inhiveoptions_hiddify_options_proto_depIdxs = nil
 }

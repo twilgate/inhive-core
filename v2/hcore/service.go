@@ -25,7 +25,7 @@ func NewService(ctx context.Context, options option.Options) (*daemon.StartedSer
 		// Options:           *options,
 		Handler: &logInterface,
 		ExtraServices: []adapter.LifecycleService{
-			&hiddifyMainServiceManager{},
+			&inhiveMainServiceManager{},
 		},
 	}
 	err := libbox.CheckConfigOptions(&options)
@@ -44,7 +44,7 @@ func NewService(ctx context.Context, options option.Options) (*daemon.StartedSer
 		return nil, err
 	}
 
-	// instance.GetInstance().AddPostService("hiddifyMainServiceManager", &hiddifyMainServiceManager{})
+	// instance.GetInstance().AddPostService("inhiveMainServiceManager", &inhiveMainServiceManager{})
 
 	// if err := startCommandServer(instance); err != nil {
 	// 	return errorWrapper(MessageType_START_COMMAND_SERVER, err)
@@ -53,7 +53,7 @@ func NewService(ctx context.Context, options option.Options) (*daemon.StartedSer
 	return instance, nil
 }
 
-func (h *HiddifyInstance) UrlTestHistory() *urltest.HistoryStorage {
+func (h *InhiveInstance) UrlTestHistory() *urltest.HistoryStorage {
 
 	ins := h.Instance()
 	if ins == nil {
@@ -62,7 +62,7 @@ func (h *HiddifyInstance) UrlTestHistory() *urltest.HistoryStorage {
 	return ins.UrlTestHistory()
 }
 
-func (h *HiddifyInstance) Box() *box.Box {
+func (h *InhiveInstance) Box() *box.Box {
 	ins := h.Instance()
 	if ins == nil {
 		return nil
@@ -70,7 +70,7 @@ func (h *HiddifyInstance) Box() *box.Box {
 	return ins.Box()
 }
 
-func (h *HiddifyInstance) Instance() *daemon.Instance {
+func (h *InhiveInstance) Instance() *daemon.Instance {
 	ss := h.StartedService
 	if ss == nil {
 		return nil
@@ -79,7 +79,7 @@ func (h *HiddifyInstance) Instance() *daemon.Instance {
 
 }
 
-func (h *HiddifyInstance) Context() context.Context {
+func (h *InhiveInstance) Context() context.Context {
 	ins := h.Instance()
 	if ins == nil {
 		return nil
@@ -87,7 +87,7 @@ func (h *HiddifyInstance) Context() context.Context {
 	return ins.Context()
 }
 
-func (h *HiddifyInstance) TrafficManager() *trafficontrol.Manager {
+func (h *InhiveInstance) TrafficManager() *trafficontrol.Manager {
 	if ins := h.Instance(); ins != nil {
 		if s := ins.ClashServer(); s != nil {
 			return s.(*clashapi.Server).TrafficManager()
