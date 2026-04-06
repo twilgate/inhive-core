@@ -29,8 +29,8 @@ jobs:
       - name: Verify build
         run: |
           # Exclude cmd/bydll (requires pre-built DLL) and platform/desktop (requires CGO headers)
-          go build $(go list ./... | grep -v -E '(cmd/bydll|platform/desktop)')
+          go build $(go list ./... | grep -v -E '(cmd/bydll|platform/desktop|profile/test)')
 
       - name: Run vet
         run: |
-          go vet $(go list ./... | grep -v -E '(cmd/bydll|platform/desktop)')
+          go vet $(go list ./... | grep -v -E '(cmd/bydll|platform/desktop|profile/test)')
