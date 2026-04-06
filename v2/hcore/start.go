@@ -126,7 +126,7 @@ func StartService(ctx context.Context, in *StartRequest) (coreResponse *CoreInfo
 		// } else {
 		// 	service.MustRegister[adapter.PlatformInterface](ctx, (*adapter.PlatformInterface)nil)
 	}
-	Log(LogLevel_DEBUG, LogType_CORE, "Stating Service with delay ?", in.DelayStart)
+	Log(LogLevel_DEBUG, LogType_CORE, "Starting Service with delay ?", in.DelayStart)
 	if in.DelayStart {
 		<-time.After(1000 * time.Millisecond)
 	}

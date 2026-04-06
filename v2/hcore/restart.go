@@ -14,7 +14,7 @@ func (s *CoreService) Restart(ctx context.Context, in *StartRequest) (*CoreInfoR
 }
 
 func Restart(ctx context.Context, in *StartRequest) (coreResponse *CoreInfoResponse, err error) {
-	defer config.DeferPanicToError("startmobile", func(recovered_err error) {
+	defer config.DeferPanicToError("restart", func(recovered_err error) {
 		coreResponse, err = errorWrapper(MessageType_UNEXPECTED_ERROR, recovered_err)
 	})
 	log.Debug("[Service] Restarting")

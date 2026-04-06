@@ -3,8 +3,6 @@ package mobile
 import (
 	hcore "github.com/buudesh/inhive-core/v2/hcore"
 
-	_ "net/http/pprof"
-
 	_ "github.com/sagernet/gomobile"
 	"github.com/sagernet/sing-box/experimental/libbox"
 )
@@ -67,10 +65,6 @@ func AddGrpcClientPublicKey(clientPublicKey []byte) error {
 
 func Close(mode int) {
 	hcore.Close(hcore.SetupMode(mode))
-}
-
-func Test() string {
-	return "Hello from mobile"
 }
 
 func Pause() {

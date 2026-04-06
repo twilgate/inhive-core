@@ -80,9 +80,11 @@ func (f *Form) ToJSON() string {
 
 // UnmarshalJSON custom unmarshals JSON data into a Form.
 func (f *Form) UnmarshalJSON(data []byte) error {
-	if err := json.Unmarshal(data, &f); err != nil {
+	type formAlias Form
+	var alias formAlias
+	if err := json.Unmarshal(data, &alias); err != nil {
 		return err
 	}
-
+	*f = Form(alias)
 	return nil
 }

@@ -49,7 +49,7 @@ var commandInstance = &cobra.Command{
 		sigChan := make(chan os.Signal, 1)
 		signal.Notify(sigChan, os.Interrupt, syscall.SIGTERM)
 		<-sigChan
-		log.Info("CTRL+C recived-->stopping\n")
+		log.Info("CTRL+C received-->stopping\n")
 		instance.Close()
 	},
 }

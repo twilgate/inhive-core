@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"os"
 	"os/signal"
@@ -107,7 +107,7 @@ func readConfigContent(configPath string) (ConfigResult, error) {
 		}
 		defer resp.Body.Close()
 
-		body, err := ioutil.ReadAll(resp.Body)
+		body, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return ConfigResult{}, fmt.Errorf("failed to read config body: %w", err)
 		}
@@ -116,7 +116,7 @@ func readConfigContent(configPath string) (ConfigResult, error) {
 		fmt.Printf("Refresh interval: %d\n", refreshInterval)
 
 	} else {
-		data, err := ioutil.ReadFile(configPath)
+		data, err := os.ReadFile(configPath)
 		if err != nil {
 			return ConfigResult{}, fmt.Errorf("failed to read config file: %w", err)
 		}

@@ -65,7 +65,7 @@ func patchOutboundTLSTricks(base option.Outbound, configOpt InhiveOptions) optio
 	}
 	tls.TLSTricks.MixedCaseSNI = tls.TLSTricks.MixedCaseSNI || configOpt.TLSTricks.MixedSNICase
 
-	if false && configOpt.TLSTricks.EnablePadding {
+	if configOpt.TLSTricks.EnablePadding {
 		tls.TLSTricks.PaddingMode = "random"
 		tls.TLSTricks.PaddingSize = configOpt.TLSTricks.PaddingSize
 		tls.UTLS = &option.OutboundUTLSOptions{
