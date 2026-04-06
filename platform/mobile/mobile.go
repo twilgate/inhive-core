@@ -34,14 +34,6 @@ func Setup(opt *SetupOptions, platformInterface libbox.PlatformInterface) error 
 	// return hcore.Start(17078)
 }
 
-// func Start(configPath string, configContent string, platformInterface libbox.PlatformInterface) (*hcore.CoreInfoResponse, error) {
-// 	state, err := hcore.StartWithPlatformInterface(&hcore.StartRequest{
-// 		ConfigContent: configContent,
-// 		ConfigPath:    configPath,
-// 	}, platformInterface)
-// 	return state, err
-// }
-
 func Start(configPath string, configContent string) error {
 	_, err := hcore.StartService(libbox.BaseContext(nil), &hcore.StartRequest{
 		ConfigPath:    configPath,

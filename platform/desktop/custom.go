@@ -8,12 +8,7 @@ package main
 import "C"
 
 import (
-	// "os"
-	// "os/signal"
-
 	"runtime"
-
-	// "syscall"
 	"unsafe"
 
 	hcore "github.com/buudesh/inhive-core/v2/hcore"
@@ -21,46 +16,10 @@ import (
 	"github.com/sagernet/sing-box/log"
 )
 
-// func init() {
-// 	runtime.LockOSThread()
-// 	C.init_signals()
-// 	runtime.UnlockOSThread()
-
-// 	go handleSignals()
-
-// 	// Your other initialization code can go here
-// }
-
-// // Signal handling function
-// func handleSignals() {
-// 	signalChan := make(chan os.Signal, 1)
-// 	signal.Notify(signalChan, syscall.SIGINT, syscall.SIGURG)
-
-// 	for {
-// 		<-signalChan
-// 		// switch sig {
-// 		// case syscall.SIGINT, syscall.SIGTERM:
-// 		// 	// runtime.LockOSThread() // Lock to the current OS thread
-// 		// 	// defer runtime.UnlockOSThread()
-// 		// 	log.Info("Received signal:", sig)
-
-// 		// 	// Call stop function or perform cleanup
-// 		// 	if err := stop(); err != nil {
-// 		// 		log.Error("Error stopping the application:", err)
-// 		// 	}
-// 		// 	log.Info("Application stopped gracefully.")
-// 		// }
-// 	}
-// }
-
 func main() {}
 
 //export cleanup
-func cleanup() {
-	// runtime.LockOSThread()
-	// defer runtime.UnlockOSThread()
-	// C.cleanup_signals()
-}
+func cleanup() {}
 
 func emptyOrErrorC(err error) *C.char {
 	runtime.LockOSThread()
@@ -70,17 +29,11 @@ func emptyOrErrorC(err error) *C.char {
 		return C.CString("")
 	}
 	log.Error(err.Error())
-	return C.CString(err.Error()) // caller is responsible for freeing
+	return C.CString(err.Error())
 }
 
 //export setup
 func setup(baseDir *C.char, workingDir *C.char, tempDir *C.char, mode C.int, listen *C.char, secret *C.char, statusPort C.longlong, debug bool) *C.char {
-	// runtime.LockOSThread()
-	// defer runtime.UnlockOSThread()
-
-	// // Ensure signals are initialized
-	// C.init_signals()
-
 	params := hcore.SetupRequest{
 		BasePath:          C.GoString(baseDir),
 		WorkingDir:        C.GoString(workingDir),
@@ -105,8 +58,6 @@ func freeString(str *C.char) {
 
 //export start
 func start(configPath *C.char, disableMemoryLimit bool) *C.char {
-	// runtime.LockOSThread()
-	// defer runtime.UnlockOSThread()
 	ctx := libbox.BaseContext(nil)
 	_, err := hcore.Start(ctx, &hcore.StartRequest{
 		ConfigPath:             C.GoString(configPath),
@@ -118,17 +69,12 @@ func start(configPath *C.char, disableMemoryLimit bool) *C.char {
 
 //export stop
 func stop() *C.char {
-	// runtime.LockOSThread()
-	// defer runtime.UnlockOSThread()
-
 	_, err := hcore.Stop()
 	return emptyOrErrorC(err)
 }
 
 //export restart
 func restart(configPath *C.char, disableMemoryLimit bool) *C.char {
-	// runtime.LockOSThread()
-	// defer runtime.UnlockOSThread()
 	ctx := libbox.BaseContext(nil)
 	_, err := hcore.Restart(ctx, &hcore.StartRequest{
 		ConfigPath:             C.GoString(configPath),
@@ -140,19 +86,12 @@ func restart(configPath *C.char, disableMemoryLimit bool) *C.char {
 
 //export GetServerPublicKey
 func GetServerPublicKey() *C.char {
-	// runtime.LockOSThread()
-	// defer runtime.UnlockOSThread()
-
 	publicKey := hcore.GetGrpcServerPublicKey()
-	return C.CString(string(publicKey)) // Return as C string, caller must free
+	return C.CString(string(publicKey))
 }
 
 //export AddGrpcClientPublicKey
 func AddGrpcClientPublicKey(clientPublicKey *C.char) *C.char {
-	// runtime.LockOSThread()
-	// defer runtime.UnlockOSThread()
-
-	// Convert C string to Go byte slice
 	clientKey := C.GoBytes(unsafe.Pointer(clientPublicKey), C.int(len(C.GoString(clientPublicKey))))
 	err := hcore.AddGrpcClientPublicKey(clientKey)
 	return emptyOrErrorC(err)
@@ -160,8 +99,5 @@ func AddGrpcClientPublicKey(clientPublicKey *C.char) *C.char {
 
 //export closeGrpc
 func closeGrpc(mode C.int) {
-	// runtime.LockOSThread()
-	// defer runtime.UnlockOSThread()
-
 	hcore.Close(hcore.SetupMode(mode))
 }

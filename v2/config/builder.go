@@ -1166,7 +1166,7 @@ func getIPs(domains ...string) []string {
 }
 
 func isBlockedDomain(domain string) bool {
-	if strings.HasPrefix("full:", domain) {
+	if strings.HasPrefix(domain, "full:") {
 		return false
 	}
 	if strings.Contains(domain, "instagram") || strings.Contains(domain, "facebook") || strings.Contains(domain, "telegram") || strings.Contains(domain, "t.me") {

@@ -4,8 +4,8 @@
 --license GPL-3.0-or-later
 --description "The universal proxy platform."
 --url "https://inhive.ru/"
---maintainer "hiddify <core@inhive.ru>"
---deb-field "Bug: https://github.com/hiddify/inhive-core/issues"
+--maintainer "inhive <core@inhive.ru>"
+--deb-field "Bug: https://github.com/buudesh/inhive-core/issues"
 --no-deb-generate-changes
 --config-files /etc/inhive-core/config.json
 --after-install release/config/inhive-core.postinst

@@ -10,7 +10,7 @@ var (
 )
 
 func RegisterPreService(service HService) {
-	preservices = append(services, service)
+	preservices = append(preservices, service)
 }
 
 func Register(service HService) {

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Hiddify Core Universal Installer
+# InHive Core Universal Installer
 # Supports OpenWrt, Ubuntu, Debian, CentOS, and other Linux distributions.
 
 set -e
@@ -10,7 +10,7 @@ GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 NC='\033[0m'
 
-echo -e "${BLUE}Hiddify Core Universal Installer${NC}"
+echo -e "${BLUE}InHive Core Universal Installer${NC}"
 
 # Check for root
 if [ "$EUID" -ne 0 ]; then
@@ -67,7 +67,7 @@ ARTIFACT="inhive-core-linux-${ARCH}${LIBC}.tar.gz"
 
 # Fetch latest version
 echo -e "Fetching latest version information..."
-REPO="hiddify/inhive-core"
+REPO="buudesh/inhive-core"
 LATEST_TAG=$(curl -s "https://api.github.com/repos/$REPO/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
 
 if [ -z "$LATEST_TAG" ]; then
@@ -93,7 +93,7 @@ curl -L "$DOWNLOAD_URL" -o "$WORKDIR/$ARTIFACT" || {
 echo -e "Installing binary to /usr/bin/inhive-core..."
 tar -zxf "$WORKDIR/$ARTIFACT" -C "$WORKDIR"
 # Find the binary in the tarball (it might be in a subdir or renamed)
-BIN_PATH=$(find "$WORKDIR" -type f -name "hiddify*" -executable | head -n 1)
+BIN_PATH=$(find "$WORKDIR" -type f -name "inhive*" -executable | head -n 1)
 mv "$BIN_PATH" /usr/bin/inhive-core
 chmod +x /usr/bin/inhive-core
 

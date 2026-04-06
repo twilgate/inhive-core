@@ -10,10 +10,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Rewrite SSH to HTTPS for submodules
+        run: git config --global url."https://github.com/".insteadOf "git@github.com:"
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: true
+          submodules: recursive
 
       - name: Setup Go
         uses: actions/setup-go@v5
@@ -22,12 +25,9 @@ jobs:
 
       - name: Download dependencies
         run: go mod download
-        continue-on-error: true
 
       - name: Verify build
         run: go build ./...
-        continue-on-error: true
 
       - name: Run vet
         run: go vet ./...
-        continue-on-error: true

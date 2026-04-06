@@ -12,88 +12,91 @@
 <p align="center">
   <a href="https://inhive.ru"><img src="https://img.shields.io/badge/Website-inhive.ru-blue?style=flat-square" alt="Website"></a>
   <a href="https://t.me/inhive_bot"><img src="https://img.shields.io/badge/Telegram-Join-blue?style=flat-square&logo=telegram" alt="Telegram"></a>
-  <img src="https://img.shields.io/github/license/hiddify/inhive-core?style=flat-square" alt="License">
-  <img src="https://img.shields.io/github/v/release/hiddify/inhive-core?style=flat-square" alt="Version">
+  <img src="https://img.shields.io/github/license/buudesh/inhive-core?style=flat-square" alt="License">
+  <img src="https://img.shields.io/github/v/release/buudesh/inhive-core?style=flat-square" alt="Version">
 </p>
 
 ---
 
-## 🚀 Quick Setup
+## Quick Setup
 
 Install `inhive-core` on any Linux platform (Ubuntu, Debian, CentOS, OpenWrt, and more) with a single command:
 
 ```bash
-bash <(curl https://raw.githubusercontent.com/buudesh/inhive-core/main/installer.sh)
-```
-or 
-```bash
-bash <(curl -Ls https://raw.githubusercontent.com/hiddify/inhive-core/main/installer.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/buudesh/inhive-core/main/installer.sh)
 ```
 
-> [!NOTE]
-> This script automatically detects your OS and architecture, installs the appropriate binary, and configures the service manager (Systemd or Procd).
+> **Note:** This script automatically detects your OS and architecture, installs the appropriate binary, and configures the service manager (Systemd or Procd).
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-- **🌐 Multi-Protocol Support**: Naive, Mieru, Hysteria, SOCKS, Shadowsocks, ShadowTLS, Tor, Trojan, VLess, VMess, WireGuard, and more.
-- **📱 Cross-Platform**: Powering InHive on Android, macOS, Linux, Windows, and iOS.
-- **🔌 Extension System**: Powerful third-party extension capability to modify configs and add custom features.
-- **⚡ High Performance**: Optimized core built on top of `sing-box` for maximum speed and stability.
-- **🏠 Router Ready**: Native support for OpenWrt and other router platforms.
+- **Multi-Protocol Support**: VLESS, VMess, Trojan, Shadowsocks, ShadowTLS, WireGuard, Hysteria, SOCKS, Naive, Mieru, Tor, and more.
+- **Cross-Platform**: Powering InHive on Android, macOS, Linux, Windows, and iOS.
+- **Extension System**: Third-party extension capability to modify configs and add custom features.
+- **High Performance**: Optimized core built on top of `sing-box` for maximum speed and stability.
+- **Router Ready**: Native support for OpenWrt and other router platforms.
 
 ---
 
-## 🛠 Installation Methods
+## Installation Methods
 
-### 🐳 Docker
-Quickly deploy as a containerized service:
-
+### Docker
 ```bash
-# Pull image
 docker pull ghcr.io/buudesh/inhive-core:latest
 
 # Or using Docker Compose
 git clone https://github.com/buudesh/inhive-core
-cd inhive-core/docker
+cd inhive-core/platform/docker
 docker-compose up -d
 ```
 
-### 📶 OpenWrt
+### OpenWrt
 For manual installation or advanced configuration on OpenWrt, refer to our [OpenWrt Setup Guide](platform/wrt/README.md).
 
 ---
 
-## Extension
+## Roadmap
 
-An extension is something that can be added to InHive application by a third party. It will add capability to modify configs, do some extra action, show and receive data from users.
+- [x] Fork and rebrand from Hiddify Core
+- [x] CI/CD pipeline with GitHub Actions
+- [x] Full code audit and dead code cleanup
+- [x] Critical bug fixes (tunnel service, config builder, service manager)
+- [ ] MTProto FakeTLS outbound — bypass LTE DPI whitelist restrictions
+- [ ] TURN proxy outbound — WebRTC-based tunneling as fallback
+- [ ] Custom Extension Outbound/Inbound support
+- [ ] Multi-language extension interface
+- [ ] InHive App integration (Flutter)
 
-This extension will be shown in all InHive Platforms such as Android/macOS/Linux/Windows/iOS
+---
 
-[Create an extension](https://github.com/buudesh/inhive-extension-example)
+## Building
 
-Features and Road map:
+### Desktop (C shared library)
+```bash
+make windows-amd64
+make linux-amd64
+make macos
+```
 
-- [x] Add Third Party Extension capability
-- [x] Test Extension from Browser without any dependency to android/mac/.... `./cmd.sh extension` the open browser `https://127.0.0.1:12346`
-- [x] Show Custom UI from Extension `github.com/buudesh/inhive-core/extension.UpdateUI()` 
-- [x] Show Custom Dialog from Extension `github.com/buudesh/inhive-core/extension.ShowDialog()`
-- [x] Show Alert Dialog from Extension `github.com/buudesh/inhive-core/extension.ShowMessage()` 
-- [x] Get Data from UI `github.com/buudesh/inhive-core/extension.SubmitData()` 
-- [x] Save Extension Data from `e.Base.Data`
-- [x] Load Extension Data to `e.Base.Data`
-- [x] Disable / Enable Extension 
-- [x] Update user proxies before connecting `github.com/buudesh/inhive-core/extension.BeforeAppConnect()` 
-- [x] Run Tiny Independent Instance  `github.com/buudesh/inhive-core/extension/sdk.RunInstance()` 
-- [x] Parse Any type of configs/url  `github.com/buudesh/inhive-core/extension/sdk.ParseConfig()` 
-- [ ] ToDo: Add Support for MultiLanguage Interface
-- [ ] ToDo: Custom Extension Outbound
-- [ ] ToDo: Custom Extension Inbound
-- [ ] ToDo: Custom Extension ProxyConfig
- 
- Demo Screenshots from HTML:
- 
- <img width="531" alt="image" src="https://github.com/user-attachments/assets/0fbef76f-896f-4c45-a6b8-7a2687c47013">
- <img width="531" alt="image" src="https://github.com/user-attachments/assets/15bccfa0-d03e-4354-9368-241836d82948">
+### Mobile (gomobile)
+```bash
+make android
+make ios
+```
 
+---
+
+## Team
+
+| Role | Who |
+|------|-----|
+| **Idea & Product** | [@buudesh](https://github.com/buudesh) |
+| **Core Development** | [Claude](https://claude.ai) (AI-assisted engineering) |
+
+---
+
+## License
+
+[GPL-3.0-or-later](LICENSE.md) — based on [Hiddify](https://github.com/hiddify/hiddify-core) open-source project.
