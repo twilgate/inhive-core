@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/buudesh/inhive-core/main/assets/logo.svg" alt="InHive Logo" width="128">
+  <img src="https://raw.githubusercontent.com/buudesh/inhive-core/main/assets/logo.png" alt="InHive Logo" width="128">
 </p>
 
 <h1 align="center">InHive Core</h1>
