@@ -63,10 +63,12 @@ Install via the universal installer script — it auto-detects OpenWrt and confi
 - [x] CI/CD pipeline with GitHub Actions
 - [x] Full code audit and dead code cleanup
 - [x] Critical bug fixes (tunnel service, config builder, service manager)
+- [x] Dependency updates (Go 1.26, grpc v1.80, sing v0.8.4, sing-box v1.13.6)
+- [x] NaiveProxy support (Chromium TLS stack, undetectable by DPI)
+- [ ] Smart failover — auto-switch between servers/IPs per carrier
 - [ ] MTProto FakeTLS outbound — bypass LTE DPI whitelist restrictions
 - [ ] TURN proxy outbound — WebRTC-based tunneling as fallback
-- [ ] Custom Extension Outbound/Inbound support
-- [ ] Multi-language extension interface
+- [ ] Split tunnel — exclude banking/gov apps from VPN
 - [ ] InHive App integration (Flutter)
 
 ---
