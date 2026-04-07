@@ -23,7 +23,6 @@ import (
 	"github.com/buudesh/inhive-core/v2/config"
 	"github.com/buudesh/inhive-core/v2/db"
 	hcommon "github.com/buudesh/inhive-core/v2/hcommon"
-	"github.com/buudesh/inhive-core/v2/hello"
 	hutils "github.com/buudesh/inhive-core/v2/hutils"
 	"github.com/sagernet/sing-box/experimental/libbox"
 	"github.com/sagernet/sing-box/log"
@@ -138,13 +137,7 @@ func StartGrpcServer(listenAddressG string, service string) (*grpc.Server, error
 	}
 	s := grpc.NewServer()
 	if service == "core" {
-		// Setup("./tmp/", "./tmp", "./tmp", 11111, false)
 		RegisterCoreServer(s, &CoreService{})
-		// pb.RegisterExtensionHostServiceServer(s, &extension.ExtensionHostService{})
-	} else if service == "hello" {
-		// RegisterHelloServer(s, &hello.HelloService{})
-	} else if service == "tunnel" {
-		// RegisterTunnelServiceServer(s, &TunnelService{})
 	}
 	log.Info("Server listening on %s", listenAddressG)
 	go func() {
@@ -239,7 +232,6 @@ func StartGrpcServerByMode(listenAddressG string, mode SetupMode) (*grpc.Server,
 	}
 	// Register your gRPC service here
 	RegisterCoreServer(grpcServer[mode], &CoreService{})
-	hello.RegisterHelloServer(grpcServer[mode], &hello.HelloService{})
 	// Listen on the provided address
 	lis, err := net.Listen("tcp", listenAddressG)
 	if err != nil {
