@@ -4,6 +4,19 @@ All notable changes to InHive Core will be documented in this file.
 
 ---
 
+## [1.0.1] — 2026-04-07
+
+### Fixed
+- **`go vet` clean pass** — fixed `reflect.TypeOf` lock copy in inhiveoptions, non-constant format strings in Printf/log.Printf
+- **CI exclusions** — excluded `cmd/bydll` (DLL-only), `platform/desktop` (CGO), `profile/test` (test-only) from CI build
+- **Removed demo gRPC service** — deleted `v2/hello/`, `v2/example_client/`, `v2/example_server/` and their imports
+
+### Removed
+- ~3240 lines of demo code
+- `package-lock.json` (added to .gitignore, auto-generated)
+
+---
+
 ## [1.0.0] — 2026-04-07
 
 ### The Fork
