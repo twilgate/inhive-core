@@ -47,54 +47,37 @@ func setDns(options *option.Options, opt *InhiveOptions, staticIps *map[string][
 	// 	remoteAddr = strings.Replace(remoteAddr, "udp://", "tcp://", 1)
 	// }
 
-	remote_dns, err := getDNSServerOptions(DNSRemoteTag, remoteAddr, DNSDirectTag, OutboundMainDetour)
-	if err != nil {
-		return err
-	}
-	remote_dns_fallback, err := getDNSServerOptions(DNSRemoteTagFallback, fallbackAddr, DNSDirectTag, OutboundMainDetour)
-	if err != nil {
-		return err
-	}
-	remote_no_warp_dns, err := getDNSServerOptions(DNSRemoteNoWarpTag, opt.RemoteDnsAddress, DNSDirectTag, OutboundWARPConfigDetour)
-	if err != nil {
-		return err
-	}
-
 	direct_detour := OutboundDirectFragmentTag
 	if strings.HasPrefix(opt.DirectDnsAddress, "udp://") || !strings.Contains(opt.DirectDnsAddress, "://") {
 		direct_detour = ""
 	}
 
-	direct_dns, err := getDNSServerOptions(DNSDirectTag, opt.DirectDnsAddress, DNSLocalTag, direct_detour)
-	if err != nil {
-		return err
+	type dnsEntry struct {
+		tag, addr, fallback, detour string
 	}
-	trick_dns, err := getDNSServerOptions(DNSTricksDirectTag, "https://dns.cloudflare.com/dns-query#fragment=300", DNSDirectTag, OutboundDirectFragmentTag)
-	if err != nil {
-		return err
+	entries := []dnsEntry{
+		{DNSRemoteTag, remoteAddr, DNSDirectTag, OutboundMainDetour},
+		{DNSRemoteTagFallback, fallbackAddr, DNSDirectTag, OutboundMainDetour},
+		{DNSRemoteNoWarpTag, opt.RemoteDnsAddress, DNSDirectTag, OutboundWARPConfigDetour},
+		{DNSDirectTag, opt.DirectDnsAddress, DNSLocalTag, direct_detour},
+		{DNSTricksDirectTag, "https://dns.cloudflare.com/dns-query#fragment=300", DNSDirectTag, OutboundDirectFragmentTag},
+		{DNSLocalTag, "local", "", ""},
 	}
-	local_dns, err := getDNSServerOptions(DNSLocalTag, "local", "", "")
-	if err != nil {
-		return err
+
+	var servers []option.DNSServerOptions
+	for _, e := range entries {
+		s, err := getDNSServerOptions(e.tag, e.addr, e.fallback, e.detour)
+		if err != nil {
+			return err
+		}
+		servers = append(servers, *s)
 	}
+
 	static_dns, err := getStaticDNSServerOptions(DNSStaticTag, staticIps)
 	if err != nil {
 		return err
 	}
-	// block_dns, err := getDNSServerOptions(DNSBlockTag, "rcode://name_error", "", "")
-	// if err != nil {
-	// 	return err
-	// }
-
-	// multi_dns_direct, err := getMultiDnsServerOptions(DNSMultiDirectTag, DnsDirectTags, false)
-	// if err != nil {
-	// 	return err
-	// }
-
-	// multi_dns_remote, err := getMultiDnsServerOptions(DNSMultiRemoteTag, DnsRemoteTags, true)
-	// if err != nil {
-	// 	return err
-	// }
+	servers = append([]option.DNSServerOptions{*static_dns}, servers...)
 
 	dnsOptions := option.DNSOptions{
 		RawDNSOptions: option.RawDNSOptions{
@@ -102,21 +85,9 @@ func setDns(options *option.Options, opt *InhiveOptions, staticIps *map[string][
 				IndependentCache: opt.IndependentDNSCache && !C.IsIos,
 				DisableExpire:    true,
 			},
-			Final: DNSMultiRemoteTag,
-
-			Servers: []option.DNSServerOptions{
-				*static_dns,
-				*remote_dns,
-				*remote_dns_fallback,
-				*trick_dns,
-				*direct_dns,
-				*local_dns,
-				*remote_no_warp_dns,
-				// *multi_dns_direct,
-				// *multi_dns_remote,
-				// *block_dns,
-			},
-			Rules: []option.DNSRule{},
+			Final:   DNSMultiRemoteTag,
+			Servers: servers,
+			Rules:   []option.DNSRule{},
 		},
 	}
 	if opt.EnableFakeDNS {
@@ -132,18 +103,6 @@ func setDns(options *option.Options, opt *InhiveOptions, staticIps *map[string][
 		})
 	}
 	options.DNS = &dnsOptions
-
-	// options.DNS.StaticIPs["time.apple.com"] = []string{"time.g.aaplimg.com", "time.apple.com"}
-	// options.DNS.StaticIPs["ipinfo.io"] = []string{"ipinfo.io"}
-	// options.DNS.StaticIPs["dns.cloudflare.com"] = []string{"www.speedtest.net", "cloudflare.com"}
-	// options.DNS.StaticIPs["ipwho.is"] = []string{"ipwho.is"}
-	// options.DNS.StaticIPs["api.my-ip.io"] = []string{"api.my-ip.io"}
-	// options.DNS.StaticIPs["myip.expert"] = []string{"myip.expert"}
-	// options.DNS.StaticIPs["ip-api.com"] = []string{"ip-api.com"}
-	// options.DNS.StaticIPs["freeipapi.com"] = []string{"www.speedtest.net", "cloudflare.com"}
-	// options.DNS.StaticIPs["reallyfreegeoip.org"] = []string{"www.speedtest.net", "cloudflare.com"}
-	// options.DNS.StaticIPs["ipapi.co"] = []string{"www.speedtest.net", "cloudflare.com"}
-	// options.DNS.StaticIPs["api.ip.sb"] = []string{"www.speedtest.net", "cloudflare.com"}
 	return nil
 }
 func getAllOutboundsOptions(options *option.Options) []any {
