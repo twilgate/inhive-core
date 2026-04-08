@@ -1,3 +1,4 @@
+// parser.go — parses configs from URL, file, or content (JSON, YAML, Clash, V2Ray).
 package config
 
 import (

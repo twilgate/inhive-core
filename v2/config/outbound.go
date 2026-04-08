@@ -1,3 +1,4 @@
+// outbound.go — TLS tricks patching (fragment, mixed SNI, padding).
 package config
 
 import (

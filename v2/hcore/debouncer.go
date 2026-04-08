@@ -1,3 +1,4 @@
+// debouncer.go — timer-based debouncer for deduplicating rapid calls.
 package hcore
 
 import (

@@ -1,3 +1,4 @@
+// builder_route.go — routing rules, DNS rules, ad blocking, region rules.
 package config
 
 import (

@@ -1,3 +1,4 @@
+// debug.go — saves configuration snapshots to disk for debugging.
 package config
 
 import (

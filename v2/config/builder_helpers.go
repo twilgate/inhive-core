@@ -1,3 +1,4 @@
+// builder_helpers.go — IP resolution, domain blocking, string utilities.
 package config
 
 import (

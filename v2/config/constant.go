@@ -1,3 +1,4 @@
+// constant.go — WARP configuration mode constants.
 package config
 
 const (

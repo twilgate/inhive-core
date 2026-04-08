@@ -1,3 +1,4 @@
+// proxy_info.go — outbound group info extraction and traffic monitoring.
 package hcore
 
 import (

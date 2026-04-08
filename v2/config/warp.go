@@ -1,3 +1,4 @@
+// warp.go — Cloudflare WARP integration and WireGuard config generation.
 package config
 
 import (

@@ -1,3 +1,4 @@
+// inhive_option.go — InhiveOptions struct with all VPN configuration parameters.
 package config
 
 import (

@@ -1,3 +1,4 @@
+// config_server.go — gRPC endpoints for config service operations.
 package config
 
 import (

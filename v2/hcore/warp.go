@@ -1,3 +1,4 @@
+// warp.go — WARP config generation stub (returns empty config).
 package hcore
 
 import (

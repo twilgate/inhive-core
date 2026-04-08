@@ -1,3 +1,4 @@
+// standalone.go — standalone execution mode with signal handling and config watch.
 package hcore
 
 import (

@@ -1,3 +1,4 @@
+// commands.go — gRPC handlers: system info, outbound selection, URL testing.
 package hcore
 
 import (

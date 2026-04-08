@@ -1,3 +1,4 @@
+// log_interface.go — implements sing-box PlatformWriter for structured logging.
 package hcore
 
 import (

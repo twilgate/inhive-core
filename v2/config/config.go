@@ -1,3 +1,4 @@
+// config.go — reads and processes sing-box configuration options.
 package config
 
 import (

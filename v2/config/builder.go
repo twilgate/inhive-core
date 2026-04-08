@@ -1,3 +1,4 @@
+// builder.go — orchestrator: constants, tags, and BuildConfig entry point.
 package config
 
 import (

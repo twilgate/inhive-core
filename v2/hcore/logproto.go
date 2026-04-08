@@ -1,3 +1,4 @@
+// logproto.go — log level conversion and gRPC log streaming.
 package hcore
 
 import (

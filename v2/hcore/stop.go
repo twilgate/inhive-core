@@ -1,3 +1,4 @@
+// stop.go — graceful VPN service shutdown and cleanup.
 package hcore
 
 import (

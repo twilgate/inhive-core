@@ -1,3 +1,4 @@
+// independent_instance.go — standalone proxy instances for testing and extensions.
 package hcore
 
 import (

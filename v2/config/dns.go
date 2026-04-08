@@ -1,3 +1,4 @@
+// dns.go — DNS server configuration with multiple resolvers and fallbacks.
 package config
 
 import (

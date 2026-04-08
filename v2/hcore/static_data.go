@@ -1,3 +1,4 @@
+// static_data.go — global InhiveInstance holding service state and context.
 package hcore
 
 import (

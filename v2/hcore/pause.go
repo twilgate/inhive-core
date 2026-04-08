@@ -1,3 +1,4 @@
+// pause.go — pause/wake/close operations for mobile background handling.
 package hcore
 
 import (

@@ -1,3 +1,4 @@
+// builder_inbound.go — inbound setup (TUN, mixed, redirect), NTP, logging.
 package config
 
 import (

@@ -1,3 +1,4 @@
+// service.go — creates sing-box daemon service instances.
 package hcore
 
 import (

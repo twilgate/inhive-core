@@ -1,3 +1,4 @@
+// restart.go — restarts VPN service (stop + start) with state preservation.
 package hcore
 
 import (

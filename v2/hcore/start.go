@@ -1,3 +1,4 @@
+// start.go — starts the VPN service: config building, validation, daemon launch.
 package hcore
 
 import (

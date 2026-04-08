@@ -1,3 +1,4 @@
+// coreinfo.go — core state tracking and status observer notifications.
 package hcore
 
 import (

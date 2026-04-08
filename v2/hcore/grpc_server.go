@@ -1,3 +1,4 @@
+// grpc_server.go — gRPC server setup with mTLS, certificate management.
 package hcore
 
 /*

@@ -1,3 +1,4 @@
+// warp_account.go — WARP account and WireGuard config data structures.
 package config
 
 import (

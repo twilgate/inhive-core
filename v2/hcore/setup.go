@@ -1,3 +1,4 @@
+// setup.go — initializes InHive service with hiddify core setup.
 package hcore
 
 import (

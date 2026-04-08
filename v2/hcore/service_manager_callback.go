@@ -1,3 +1,4 @@
+// service_manager_callback.go — lifecycle hooks for pre/post service events.
 package hcore
 
 import (

@@ -1,3 +1,4 @@
+// types.go — custom types for JSON marshaling (Duration).
 package config
 
 import (

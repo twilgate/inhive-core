@@ -1,3 +1,4 @@
+// builder_outbound.go — assembles outbound proxies, WARP patching, selectors.
 package config
 
 import (

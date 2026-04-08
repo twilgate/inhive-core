@@ -1,3 +1,4 @@
+// buildconfighelper.go — builds sing-box JSON config from gRPC StartRequest.
 package hcore
 
 import (

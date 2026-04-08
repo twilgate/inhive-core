@@ -1,3 +1,4 @@
+// custom.go — error wrappers and emergency stop-and-alert functionality.
 package hcore
 
 import (
