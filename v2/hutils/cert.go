@@ -1,3 +1,4 @@
+// cert.go — TLS certificate pair generation (self-signed, PEM format).
 package hutils
 
 import (
@@ -12,47 +13,45 @@ import (
 	"time"
 )
 
-// CertificatePair holds the certificate and private key
+// CertificatePair holds the certificate and private key in PEM format.
 type CertificatePair struct {
 	Certificate []byte
 	PrivateKey  []byte
 }
 
-// GenerateCertificatePair generates a self-signed certificate and private key
+// GenerateCertificatePair generates a self-signed certificate and private key.
 func GenerateCertificatePair() (*CertificatePair, error) {
-	// Generate a new RSA private key
-	privateKey, err := rsa.GenerateKey(rand.Reader, 2048)
+	privateKey, err := rsa.GenerateKey(rand.Reader, 4096)
 	if err != nil {
 		return nil, fmt.Errorf("failed to generate private key: %v", err)
 	}
 
-	// Create a template for the certificate
-	certTemplate := x509.Certificate{
-		SerialNumber: big.NewInt(1), // A unique serial number for the certificate
-		Subject: pkix.Name{
-			Organization: []string{"InHive, Inc."},
-			CommonName:   "InHive",
-		},
-		NotBefore: time.Now(),
-		NotAfter:  time.Now().Add(365 * 24 * time.Hour), // Valid for 1 year
-
-		KeyUsage:    x509.KeyUsageDigitalSignature | x509.KeyUsageKeyEncipherment,
-		ExtKeyUsage: []x509.ExtKeyUsage{x509.ExtKeyUsageServerAuth, x509.ExtKeyUsageClientAuth},
-
-		BasicConstraintsValid: true,
-		IsCA:                  true, // This is a CA certificate (for testing purposes)
+	// Random serial number (security requirement)
+	serialNumber, err := rand.Int(rand.Reader, new(big.Int).Lsh(big.NewInt(1), 128))
+	if err != nil {
+		return nil, fmt.Errorf("failed to generate serial number: %v", err)
 	}
 
-	// Self-sign the certificate
+	certTemplate := x509.Certificate{
+		SerialNumber: serialNumber,
+		Subject: pkix.Name{
+			Organization: []string{"InHive"},
+			CommonName:   "InHive Core",
+		},
+		NotBefore:             time.Now(),
+		NotAfter:              time.Now().Add(90 * 24 * time.Hour), // 90 days
+		KeyUsage:              x509.KeyUsageDigitalSignature | x509.KeyUsageKeyEncipherment,
+		ExtKeyUsage:           []x509.ExtKeyUsage{x509.ExtKeyUsageServerAuth, x509.ExtKeyUsageClientAuth},
+		BasicConstraintsValid: true,
+		IsCA:                  false,
+	}
+
 	certBytes, err := x509.CreateCertificate(rand.Reader, &certTemplate, &certTemplate, &privateKey.PublicKey, privateKey)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create certificate: %v", err)
 	}
 
-	// Encode the certificate to PEM format
 	certPEM := pem.EncodeToMemory(&pem.Block{Type: "CERTIFICATE", Bytes: certBytes})
-
-	// Encode the private key to PEM format
 	keyPEM := pem.EncodeToMemory(&pem.Block{Type: "RSA PRIVATE KEY", Bytes: x509.MarshalPKCS1PrivateKey(privateKey)})
 
 	return &CertificatePair{
@@ -63,31 +62,25 @@ func GenerateCertificatePair() (*CertificatePair, error) {
 
 func fileExists(path string) bool {
 	_, err := os.Stat(path)
-	return !os.IsNotExist(err) // returns true if the file exists
+	return !os.IsNotExist(err)
 }
 
+// GenerateCertificateFile writes cert and key PEM files to disk.
 func GenerateCertificateFile(certPath, keyPath string, isServer bool, skipIfExist bool) error {
 	if skipIfExist && fileExists(certPath) && fileExists(keyPath) {
 		return nil
 	}
-	err := os.MkdirAll("data/cert", 0o744)
-	if err != nil {
+	if err := os.MkdirAll("data/cert", 0o700); err != nil {
 		return err
 	}
 	cers, err := GenerateCertificatePair()
 	if err != nil {
 		return err
 	}
-	err = os.WriteFile(certPath, cers.Certificate, 0o644)
-	if err != nil {
+	if err := os.WriteFile(certPath, cers.Certificate, 0o600); err != nil {
 		return err
 	}
-	err = os.WriteFile(keyPath, cers.PrivateKey, 0o600)
-	if err != nil {
-		return err
-	}
-	err = os.Chmod(keyPath, 0o600)
-	if err != nil {
+	if err := os.WriteFile(keyPath, cers.PrivateKey, 0o600); err != nil {
 		return err
 	}
 	return nil

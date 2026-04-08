@@ -23,7 +23,7 @@ func SaveCurrentConfig(ctx context.Context, path string, options option.Options)
 	if err != nil {
 		return err
 	}
-	return os.WriteFile(p, []byte(json), 0o644)
+	return os.WriteFile(p, []byte(json), 0o600)
 }
 
 func DeferPanicToError(name string, err func(error)) {

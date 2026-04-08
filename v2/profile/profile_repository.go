@@ -300,7 +300,7 @@ func UpdateContent(ctx context.Context, profileId, content string) error {
 		return err
 	}
 
-	return os.WriteFile(profilesDirName+"/"+profileId+".info", []byte(content), 0o644)
+	return os.WriteFile(profilesDirName+"/"+profileId+".info", []byte(content), 0o600)
 }
 
 func AddByContent(ctx context.Context, content, name string, markAsActive bool) (*ProfileEntity, error) {

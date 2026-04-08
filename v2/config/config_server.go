@@ -34,7 +34,7 @@ func (s *server) ParseConfig(ctx context.Context, in *ParseConfigRequest) (resp 
 	if err != nil {
 		return nil, err
 	}
-	err = os.WriteFile(in.Path, []byte(configStr), 0o644)
+	err = os.WriteFile(in.Path, []byte(configStr), 0o600)
 	if err != nil {
 		return nil, err
 	}

@@ -67,7 +67,7 @@ func Parse(ctx context.Context, in *ParseRequest) (*ParseResponse, error) {
 		}, err
 	}
 	if in.ConfigPath != "" {
-		err = os.WriteFile(in.ConfigPath, config, 0o644)
+		err = os.WriteFile(in.ConfigPath, config, 0o600)
 		if err != nil {
 			return &ParseResponse{
 				ResponseCode: hcommon.ResponseCode_FAILED,

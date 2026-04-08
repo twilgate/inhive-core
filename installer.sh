@@ -101,11 +101,12 @@ chmod +x /usr/bin/inhive-core
 mkdir -p /etc/inhive-core
 if [ ! -f /etc/inhive-core/config.json ]; then
     echo -e "Creating default configuration..."
+    RANDOM_PASS=$(openssl rand -base64 16)
     cat <<EOF > /etc/inhive-core/config.json
 {
   "log": { "level": "info" },
   "dns": { "servers": [{ "address": "tls://8.8.8.8" }] },
-  "inbounds": [{ "type": "shadowsocks", "listen": "::", "listen_port": 8080, "network": "tcp", "method": "2022-blake3-aes-128-gcm", "password": "Gn1JUS14bLUHgv1cWDDp4A==", "multiplex": { "enabled": true, "padding": true } }],
+  "inbounds": [{ "type": "shadowsocks", "listen": "::", "listen_port": 8080, "network": "tcp", "method": "2022-blake3-aes-128-gcm", "password": "${RANDOM_PASS}", "multiplex": { "enabled": true, "padding": true } }],
   "outbounds": [{ "type": "direct" }, { "type": "dns", "tag": "dns-out" }],
   "route": { "rules": [{ "port": 53, "outbound": "dns-out" }] }
 }
