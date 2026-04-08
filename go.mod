@@ -6,7 +6,6 @@ require (
 	github.com/bepass-org/warp-plus v1.2.6
 	github.com/improbable-eng/grpc-web v0.15.0
 	github.com/jellydator/validation v1.1.0
-	github.com/kardianos/service v1.2.2
 	github.com/miekg/dns v1.1.72
 	github.com/sagernet/gomobile v0.1.12
 	github.com/sagernet/sing v0.8.4
