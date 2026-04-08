@@ -154,10 +154,6 @@ func StartCoreGrpcServer(listenAddressG string) (*grpc.Server, error) {
 	return StartGrpcServer(listenAddressG, "core")
 }
 
-func StartHelloGrpcServer(listenAddressG string) (*grpc.Server, error) {
-	return StartGrpcServer(listenAddressG, "hello")
-}
-
 var (
 	certpair   *hutils.CertificatePair
 	grpcServer map[SetupMode]*grpc.Server = make(map[SetupMode]*grpc.Server)
