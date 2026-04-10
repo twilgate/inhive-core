@@ -59,17 +59,26 @@ Install via the universal installer script — it auto-detects OpenWrt and confi
 
 ## Roadmap
 
+### Done
 - [x] Fork and rebrand from Hiddify Core
 - [x] CI/CD pipeline with GitHub Actions
-- [x] Full code audit and dead code cleanup
+- [x] Full code audit and dead code cleanup (~5400 lines of dead code removed)
 - [x] Critical bug fixes (tunnel service, config builder, service manager)
 - [x] Dependency updates (Go 1.26, grpc v1.80, sing v0.8.4, sing-box v1.13.6)
 - [x] NaiveProxy support (Chromium TLS stack, undetectable by DPI)
-- [ ] Smart failover — auto-switch between servers/IPs per carrier
+- [x] naive+https:// and naive+quic:// scheme variants support
+- [x] Go 1.26 TLS compatibility (removed psiphon, fixed WireGuard deprecated warnings)
+- [x] InHive App integration (Flutter, Windows — v2.0.0 released)
+
+### In Progress
+- [ ] Smart failover — auto-switch between servers/IPs per carrier (ping-based)
+
+### Planned
+- [ ] TUN mode — full system-level routing (Windows + Android)
+- [ ] Split tunnel — exclude banking/gov apps from VPN (Sber, Tinkoff, Alfa, Gosuslugi)
 - [ ] MTProto FakeTLS outbound — bypass LTE DPI whitelist restrictions
+- [ ] Android / iOS builds (gomobile AAR)
 - [ ] TURN proxy outbound — WebRTC-based tunneling as fallback
-- [ ] Split tunnel — exclude banking/gov apps from VPN
-- [ ] InHive App integration (Flutter)
 
 ---
 
