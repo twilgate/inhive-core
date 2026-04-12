@@ -33,8 +33,8 @@ bash <(curl -Ls https://raw.githubusercontent.com/buudesh/inhive-core/main/insta
 ## Key Features
 
 - **Multi-Protocol Support**: VLESS, VMess, Trojan, Shadowsocks, ShadowTLS, WireGuard, Hysteria, SOCKS, Naive, Mieru, Tor, and more.
+- **UTProto (FakeTLS)**: Custom MTProto-derived transport that mimics TLS handshake, invisible to DPI — developed in-house.
 - **Cross-Platform**: Powering InHive on Android, macOS, Linux, Windows, and iOS.
-- **Extension System**: Third-party extension capability to modify configs and add custom features.
 - **High Performance**: Optimized core built on top of `sing-box` for maximum speed and stability.
 - **Router Ready**: Native support for OpenWrt and other router platforms.
 
@@ -70,13 +70,15 @@ Install via the universal installer script — it auto-detects OpenWrt and confi
 - [x] Go 1.26 TLS compatibility (removed psiphon, fixed WireGuard deprecated warnings)
 - [x] InHive App integration (Flutter, Windows — v2.0.0 released)
 
+- [x] UTProto outbound — FakeTLS transport (MTProto-derived), bypasses LTE DPI whitelist restrictions
+- [x] UTProto URI scheme: `utproto://SECRET@HOST:PORT?tls_domain=DOMAIN&vless_uuid=UUID&vless_port=PORT#Name`
+
 ### In Progress
 - [ ] Smart failover — auto-switch between servers/IPs per carrier (ping-based)
 
 ### Planned
 - [ ] TUN mode — full system-level routing (Windows + Android)
 - [ ] Split tunnel — exclude banking/gov apps from VPN (Sber, Tinkoff, Alfa, Gosuslugi)
-- [ ] MTProto FakeTLS outbound — bypass LTE DPI whitelist restrictions
 - [ ] Android / iOS builds (gomobile AAR)
 - [ ] TURN proxy outbound — WebRTC-based tunneling as fallback
 
