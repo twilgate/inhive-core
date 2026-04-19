@@ -1,15 +1,15 @@
 /**
- * This file defines various configuration options for the Hiddify application.
+ * This file defines various configuration options for the InHive application.
  */
 
 syntax = "proto3";
 
 package inhiveoptions;
-option go_package = "github.com/buudesh/inhive-core/v2/inhiveoptions";
+option go_package = "github.com/twilgate/inhive-core/v2/inhiveoptions";
 option java_package = "com.inhive.core.api.v2.inhiveoptions";
 
 /**
- * InhiveOptions defines the configuration options for the Hiddify application.
+ * InhiveOptions defines the configuration options for the InHive application.
  */
 message InhiveOptions {
   bool enable_full_config = 1; // Enables full configuration options.

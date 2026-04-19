@@ -10,10 +10,10 @@ import (
 
 	"github.com/bepass-org/warp-plus/warp"
 	C "github.com/sagernet/sing-box/constant"
-	"github.com/sagernet/wireguard-go/hiddify"
+	"github.com/sagernet/wireguard-go/warpobf"
 
 	// "github.com/bepass-org/wireguard-go/warp"
-	"github.com/buudesh/inhive-core/v2/db"
+	"github.com/twilgate/inhive-core/v2/db"
 
 	"github.com/sagernet/sing-box/option"
 	T "github.com/sagernet/sing-box/option"
@@ -81,7 +81,7 @@ func getRandomWarpIP() string {
 	return "engage.cloudflareclient.com"
 }
 
-func generateWarp(license string, host string, port uint16, noise *hiddify.NoiseOptions) (*T.Endpoint, error) {
+func generateWarp(license string, host string, port uint16, noise *warpobf.NoiseOptions) (*T.Endpoint, error) {
 	_, _, wgConfig, err := GenerateWarpInfo(license, "", "")
 	if err != nil {
 		return nil, err
@@ -93,7 +93,7 @@ func generateWarp(license string, host string, port uint16, noise *hiddify.Noise
 	return GenerateWarpSingbox(*wgConfig, host, port, noise)
 }
 
-func GenerateWarpSingbox(wgConfig WarpWireguardConfig, host string, port uint16, noise *hiddify.NoiseOptions) (*T.Endpoint, error) {
+func GenerateWarpSingbox(wgConfig WarpWireguardConfig, host string, port uint16, noise *warpobf.NoiseOptions) (*T.Endpoint, error) {
 	if host == "" {
 		host = "auto4"
 	}
@@ -120,6 +120,9 @@ func GenerateWarpSingbox(wgConfig WarpWireguardConfig, host string, port uint16,
 }
 
 func GenerateWarpInfo(license string, oldAccountId string, oldAccessToken string) (*warp.Identity, string, *WarpWireguardConfig, error) {
+	// bepass warp-plus v1.2.4 upstream API (downgrade с v1.2.6 — gvisor/sing-tun
+	// версионный конфликт). В v1.2.4 API package-level:
+	// DeleteDevice(token, id), CreateIdentity(logger, license).
 	if oldAccountId != "" && oldAccessToken != "" {
 		err := warp.DeleteDevice(oldAccessToken, oldAccountId)
 		if err != nil {
@@ -129,7 +132,7 @@ func GenerateWarpInfo(license string, oldAccountId string, oldAccessToken string
 		}
 	}
 	l := slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{Level: slog.LevelInfo}))
-	identity, err := warp.CreateIdentityOnly(l, license)
+	identity, err := warp.CreateIdentity(l, license)
 	res := "Error!"
 	var warpcfg WarpWireguardConfig
 	if err == nil {
@@ -178,7 +181,7 @@ func getOrGenerateWarpLocallyIfNeeded(warpOptions *WarpOptions) WarpWireguardCon
 	return *wireguardConfig
 }
 
-func GenerateWarpSingboxNew(uniqueIdentifier string, noise *hiddify.NoiseOptions) (*T.Endpoint, error) {
+func GenerateWarpSingboxNew(uniqueIdentifier string, noise *warpobf.NoiseOptions) (*T.Endpoint, error) {
 	// if host=="auto4" || host=="auto6" || host=="auto"{
 	// }
 	// host=""
@@ -253,7 +256,7 @@ func patchWarp(base *option.Endpoint, configOpt *InhiveOptions, final bool, stat
 				if opts.MTU < 100 {
 					opts.MTU = 1280
 				}
-				opts.Noise = hiddify.NoiseOptions{}
+				opts.Noise = warpobf.NoiseOptions{}
 
 			}
 			// if base.WireGuardOptions.Detour == "" {

@@ -7,7 +7,7 @@ import (
 
 	C "github.com/sagernet/sing-box/constant"
 	"github.com/sagernet/sing-box/option"
-	"github.com/sagernet/wireguard-go/hiddify"
+	"github.com/sagernet/wireguard-go/warpobf"
 )
 
 func setOutbounds(options *option.Options, input *option.Options, opt *InhiveOptions, staticIPs *map[string][]string) error {
@@ -52,22 +52,13 @@ func setOutbounds(options *option.Options, input *option.Options, opt *InhiveOpt
 			if !strings.Contains(out.Tag, "§hide§") {
 				tags = append(tags, out.Tag)
 			}
-			// OutboundWARPConfigDetour = OutboundSelectTag
-			out = *patchHiddifyWarpFromConfig(&out, *opt)
+			out = *patchWarpFromConfig(&out, *opt)
 			outbounds = append(outbounds, out)
 		}
 	}
 
 	if opt.Warp.EnableWarp {
-		// wg := getOrGenerateWarpLocallyIfNeeded(&opt.Warp)
-
-		// out, err := GenerateWarpSingbox(wg, opt.Warp.CleanIP, opt.Warp.CleanPort, &option.WireGuardHiddify{
-		// 	FakePackets:      opt.Warp.FakePackets,
-		// 	FakePacketsSize:  opt.Warp.FakePacketSize,
-		// 	FakePacketsDelay: opt.Warp.FakePacketDelay,
-		// 	FakePacketsMode:  opt.Warp.FakePacketMode,
-		// })
-		out, err := GenerateWarpSingboxNew("p1", &hiddify.NoiseOptions{})
+		out, err := GenerateWarpSingboxNew("p1", &warpobf.NoiseOptions{})
 		if err != nil {
 			return fmt.Errorf("failed to generate warp config: %v", err)
 		}
@@ -244,7 +235,7 @@ func setOutbounds(options *option.Options, input *option.Options, opt *InhiveOpt
 	return nil
 }
 
-func patchHiddifyWarpFromConfig(out *option.Outbound, opt InhiveOptions) *option.Outbound {
+func patchWarpFromConfig(out *option.Outbound, opt InhiveOptions) *option.Outbound {
 	if out.Type == C.TypePsiphon {
 		return out
 	}

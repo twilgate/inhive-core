@@ -266,19 +266,19 @@ func parseUint(value interface{}) (uint64, error) {
 }
 
 func GetOverridableInhiveOptions(overrides map[string][]string) *InhiveOptions {
-	overrideHiddify := InhiveOptions{}
+	override := InhiveOptions{}
 
 	// Convert flat overrides to nested structure
 	nestedOverrides := convertFlatToNested(overrides)
 
 	// Use reflection to iterate over the fields of InhiveOptions
-	v := reflect.ValueOf(&overrideHiddify).Elem()
-	t := reflect.TypeOf(overrideHiddify)
+	v := reflect.ValueOf(&override).Elem()
+	t := reflect.TypeOf(override)
 
 	// Recursively set the fields that are marked as overridable
 	setOverridableFields(v, t, nestedOverrides)
 
-	return &overrideHiddify
+	return &override
 }
 
 // Converts the flat overrides map to a nested structure without removing underscores

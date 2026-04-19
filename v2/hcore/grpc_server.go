@@ -18,10 +18,10 @@ import (
 	sync "sync"
 	"time"
 
-	"github.com/buudesh/inhive-core/v2/config"
-	"github.com/buudesh/inhive-core/v2/db"
-	hcommon "github.com/buudesh/inhive-core/v2/hcommon"
-	hutils "github.com/buudesh/inhive-core/v2/hutils"
+	"github.com/twilgate/inhive-core/v2/config"
+	"github.com/twilgate/inhive-core/v2/db"
+	hcommon "github.com/twilgate/inhive-core/v2/hcommon"
+	hutils "github.com/twilgate/inhive-core/v2/hutils"
 	"github.com/sagernet/sing-box/experimental/libbox"
 	"github.com/sagernet/sing-box/log"
 	E "github.com/sagernet/sing/common/exceptions"
@@ -103,19 +103,19 @@ func Setup(params *SetupRequest, platformInterface libbox.PlatformInterface) err
 	Log(LogLevel_DEBUG, LogType_CORE, "InHiveSettingsJson", val, err)
 	if val == nil || err != nil {
 		// if params.Mode == SetupMode_GRPC_BACKGROUND_INSECURE {
-		_, err := ChangeInhiveSettings(&ChangeInhiveSettingsRequest{HiddifySettingsJson: ""}, false)
+		_, err := ChangeInhiveSettings(&ChangeInhiveSettingsRequest{InhiveSettingsJson: ""}, false)
 		if err != nil {
 			Log(LogLevel_ERROR, LogType_CORE, E.Cause(err, "ChangeInhiveSettings").Error())
 		}
 	} else {
 		// settings := db.GetTable[hcommon.AppSettings]()
-		_, err := ChangeInhiveSettings(&ChangeInhiveSettingsRequest{HiddifySettingsJson: val.Value.(string)}, false)
+		_, err := ChangeInhiveSettings(&ChangeInhiveSettingsRequest{InhiveSettingsJson: val.Value.(string)}, false)
 		if err != nil {
 			Log(LogLevel_ERROR, LogType_CORE, E.Cause(err, "ChangeInhiveSettings").Error())
 		}
 
 	}
-	return InitHiddifyService()
+	return InitInhiveService()
 }
 
 func StartGrpcServer(listenAddressG string, service string) (*grpc.Server, error) {

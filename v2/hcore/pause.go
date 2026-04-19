@@ -5,8 +5,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/buudesh/inhive-core/v2/config"
-	hcommon "github.com/buudesh/inhive-core/v2/hcommon"
+	"github.com/twilgate/inhive-core/v2/config"
+	hcommon "github.com/twilgate/inhive-core/v2/hcommon"
 	C "github.com/sagernet/sing-box/constant"
 )
 

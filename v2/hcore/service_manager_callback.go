@@ -2,7 +2,7 @@
 package hcore
 
 import (
-	"github.com/buudesh/inhive-core/v2/service_manager"
+	"github.com/twilgate/inhive-core/v2/service_manager"
 	"github.com/sagernet/sing-box/adapter"
 )
 

@@ -14,7 +14,7 @@ message ProfileEntity {
   int64 last_update = 5; // Last update time in milliseconds of the profile.
   ProfileOptions options = 6; // Options associated with the profile.
   SubscriptionInfo sub_info = 7; // Subscription-related information.
-  inhiveoptions.InhiveOptions override_inhive_options = 8; // Override Hiddify options.
+  inhiveoptions.InhiveOptions override_inhive_options = 8; // Override InHive options.
 }
 
 // ProfileOptions defines options for a profile.

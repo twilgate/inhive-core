@@ -7,7 +7,7 @@
 package hcore
 
 import (
-	hcommon "github.com/buudesh/inhive-core/v2/hcommon"
+	hcommon "github.com/twilgate/inhive-core/v2/hcommon"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -1576,7 +1576,7 @@ type ChangeInhiveSettingsRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	HiddifySettingsJson string `protobuf:"bytes,1,opt,name=inhive_settings_json,json=inhiveSettingsJson,proto3" json:"inhive_settings_json,omitempty"`
+	InhiveSettingsJson string `protobuf:"bytes,1,opt,name=inhive_settings_json,json=inhiveSettingsJson,proto3" json:"inhive_settings_json,omitempty"`
 }
 
 func (x *ChangeInhiveSettingsRequest) Reset() {
@@ -1611,9 +1611,9 @@ func (*ChangeInhiveSettingsRequest) Descriptor() ([]byte, []int) {
 	return file_v2_hcore_hcore_proto_rawDescGZIP(), []int{15}
 }
 
-func (x *ChangeInhiveSettingsRequest) GetHiddifySettingsJson() string {
+func (x *ChangeInhiveSettingsRequest) GetInhiveSettingsJson() string {
 	if x != nil {
-		return x.HiddifySettingsJson
+		return x.InhiveSettingsJson
 	}
 	return ""
 }

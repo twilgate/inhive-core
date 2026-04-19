@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/buudesh/inhive-core/v2/config"
+	"github.com/twilgate/inhive-core/v2/config"
 	"golang.org/x/net/proxy"
 
 	"github.com/sagernet/sing-box/option"
@@ -133,10 +133,6 @@ func (s *InhiveInstance) ContentFromURL(method string, url string, timeout time.
 func (s *InhiveInstance) PingCloudflare() (time.Duration, error) {
 	return s.Ping("http://cp.cloudflare.com")
 }
-
-// func (s *HiddifyService) RawConnection(ctx context.Context, url string) (net.Conn, error) {
-// 	return
-// }
 
 func (s *InhiveInstance) PingAverage(url string, count int) (time.Duration, error) {
 	if count <= 0 {

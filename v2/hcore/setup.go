@@ -1,12 +1,12 @@
-// setup.go — initializes InHive service with hiddify core setup.
+// setup.go — initializes InHive core service (DLL entry-point wiring).
 package hcore
 
 import (
 	"context"
 
-	"github.com/buudesh/inhive-core/v2/config"
-	"github.com/buudesh/inhive-core/v2/hcommon"
-	"github.com/buudesh/inhive-core/v2/service_manager"
+	"github.com/twilgate/inhive-core/v2/config"
+	"github.com/twilgate/inhive-core/v2/hcommon"
+	"github.com/twilgate/inhive-core/v2/service_manager"
 )
 
 var (
@@ -17,7 +17,7 @@ var (
 	statusPropagationPort int64
 )
 
-func InitHiddifyService() error {
+func InitInhiveService() error {
 	return service_manager.StartServices()
 }
 

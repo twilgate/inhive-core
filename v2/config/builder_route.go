@@ -228,62 +228,14 @@ func setRoutingOptions(options *option.Options, hopt *InhiveOptions) error {
 		},
 	}
 	if hopt.BlockAds {
+		// Canonical SagerNet upstream покрывает только ads. Расширенный набор
+		// (malware/phishing/cryptominers) — Wave 2 roadmap: свой twilgate/inhive-geo.
 		rulesets = append(rulesets, option.RuleSet{
 			Type:   C.RuleSetTypeRemote,
 			Tag:    "geosite-ads",
 			Format: C.RuleSetFormatBinary,
 			RemoteOptions: option.RemoteRuleSet{
-				URL:            "https://raw.githubusercontent.com/hiddify/hiddify-geo/rule-set/block/geosite-category-ads-all.srs",
-				UpdateInterval: badoption.Duration(5 * time.Hour * 24),
-				DownloadDetour: OutboundSelectTag,
-			},
-		})
-		rulesets = append(rulesets, option.RuleSet{
-			Type:   C.RuleSetTypeRemote,
-			Tag:    "geosite-malware",
-			Format: C.RuleSetFormatBinary,
-			RemoteOptions: option.RemoteRuleSet{
-				URL:            "https://raw.githubusercontent.com/hiddify/hiddify-geo/rule-set/block/geosite-malware.srs",
-				UpdateInterval: badoption.Duration(5 * time.Hour * 24),
-				DownloadDetour: OutboundSelectTag,
-			},
-		})
-		rulesets = append(rulesets, option.RuleSet{
-			Type:   C.RuleSetTypeRemote,
-			Tag:    "geosite-phishing",
-			Format: C.RuleSetFormatBinary,
-			RemoteOptions: option.RemoteRuleSet{
-				URL:            "https://raw.githubusercontent.com/hiddify/hiddify-geo/rule-set/block/geosite-phishing.srs",
-				UpdateInterval: badoption.Duration(5 * time.Hour * 24),
-				DownloadDetour: OutboundSelectTag,
-			},
-		})
-		rulesets = append(rulesets, option.RuleSet{
-			Type:   C.RuleSetTypeRemote,
-			Tag:    "geosite-cryptominers",
-			Format: C.RuleSetFormatBinary,
-			RemoteOptions: option.RemoteRuleSet{
-				URL:            "https://raw.githubusercontent.com/hiddify/hiddify-geo/rule-set/block/geosite-cryptominers.srs",
-				UpdateInterval: badoption.Duration(5 * time.Hour * 24),
-				DownloadDetour: OutboundSelectTag,
-			},
-		})
-		rulesets = append(rulesets, option.RuleSet{
-			Type:   C.RuleSetTypeRemote,
-			Tag:    "geoip-phishing",
-			Format: C.RuleSetFormatBinary,
-			RemoteOptions: option.RemoteRuleSet{
-				URL:            "https://raw.githubusercontent.com/hiddify/hiddify-geo/rule-set/block/geoip-phishing.srs",
-				UpdateInterval: badoption.Duration(5 * time.Hour * 24),
-				DownloadDetour: OutboundSelectTag,
-			},
-		})
-		rulesets = append(rulesets, option.RuleSet{
-			Type:   C.RuleSetTypeRemote,
-			Tag:    "geoip-malware",
-			Format: C.RuleSetFormatBinary,
-			RemoteOptions: option.RemoteRuleSet{
-				URL:            "https://raw.githubusercontent.com/hiddify/hiddify-geo/rule-set/block/geoip-malware.srs",
+				URL:            "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-category-ads-all.srs",
 				UpdateInterval: badoption.Duration(5 * time.Hour * 24),
 				DownloadDetour: OutboundSelectTag,
 			},
@@ -293,14 +245,7 @@ func setRoutingOptions(options *option.Options, hopt *InhiveOptions) error {
 			Type: C.RuleTypeDefault,
 			DefaultOptions: option.DefaultRule{
 				RawDefaultRule: option.RawDefaultRule{
-					RuleSet: []string{
-						"geosite-ads",
-						"geosite-malware",
-						"geosite-phishing",
-						"geosite-cryptominers",
-						"geoip-malware",
-						"geoip-phishing",
-					},
+					RuleSet: []string{"geosite-ads"},
 				},
 				RuleAction: option.RuleAction{
 					Action: C.RuleActionTypeReject,
@@ -312,13 +257,7 @@ func setRoutingOptions(options *option.Options, hopt *InhiveOptions) error {
 		})
 		dnsRules = append(dnsRules, option.DefaultDNSRule{
 			RawDefaultDNSRule: option.RawDefaultDNSRule{
-
-				RuleSet: []string{
-					"geosite-ads",
-					"geosite-malware",
-					"geosite-phishing",
-					"geosite-cryptominers",
-				},
+				RuleSet: []string{"geosite-ads"},
 			},
 			DNSRuleAction: rejectDnsAction,
 		})
@@ -376,7 +315,7 @@ func setRoutingOptions(options *option.Options, hopt *InhiveOptions) error {
 			Tag:    "geoip-" + hopt.Region,
 			Format: C.RuleSetFormatBinary,
 			RemoteOptions: option.RemoteRuleSet{
-				URL:            "https://raw.githubusercontent.com/hiddify/hiddify-geo/rule-set/country/geoip-" + hopt.Region + ".srs",
+				URL:            "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-" + hopt.Region + ".srs",
 				UpdateInterval: badoption.Duration(5 * time.Hour * 24),
 				DownloadDetour: OutboundSelectTag,
 			},
@@ -386,7 +325,7 @@ func setRoutingOptions(options *option.Options, hopt *InhiveOptions) error {
 			Tag:    "geosite-" + hopt.Region,
 			Format: C.RuleSetFormatBinary,
 			RemoteOptions: option.RemoteRuleSet{
-				URL:            "https://raw.githubusercontent.com/hiddify/hiddify-geo/rule-set/country/geosite-" + hopt.Region + ".srs",
+				URL:            "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-" + hopt.Region + ".srs",
 				UpdateInterval: badoption.Duration(5 * time.Hour * 24),
 				DownloadDetour: OutboundSelectTag,
 			},

@@ -4,7 +4,7 @@ package hcore
 import (
 	"context"
 
-	"github.com/buudesh/inhive-core/v2/config"
+	"github.com/twilgate/inhive-core/v2/config"
 )
 
 func (s *CoreService) GenerateWarpConfig(ctx context.Context, in *GenerateWarpConfigRequest) (resp *WarpGenerationResponse, err error) {

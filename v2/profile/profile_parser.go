@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/buudesh/inhive-core/v2/inhiveoptions"
+	"github.com/twilgate/inhive-core/v2/inhiveoptions"
 )
 
 const (

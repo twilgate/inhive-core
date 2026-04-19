@@ -2,7 +2,7 @@
 package hcore
 
 import (
-	"github.com/buudesh/inhive-core/v2/config"
+	"github.com/twilgate/inhive-core/v2/config"
 	"github.com/sagernet/sing-box/log"
 )
 

@@ -6,10 +6,10 @@ import (
 	"encoding/json"
 	"os"
 
-	"github.com/buudesh/inhive-core/v2/config"
-	"github.com/buudesh/inhive-core/v2/db"
-	hcommon "github.com/buudesh/inhive-core/v2/hcommon"
-	hutils "github.com/buudesh/inhive-core/v2/hutils"
+	"github.com/twilgate/inhive-core/v2/config"
+	"github.com/twilgate/inhive-core/v2/db"
+	hcommon "github.com/twilgate/inhive-core/v2/hcommon"
+	hutils "github.com/twilgate/inhive-core/v2/hutils"
 	C "github.com/sagernet/sing-box/constant"
 	"github.com/sagernet/sing-box/experimental/libbox"
 	"github.com/sagernet/sing-box/option"
@@ -117,18 +117,18 @@ func ChangeInhiveSettings(in *ChangeInhiveSettingsRequest, insert bool) (*CoreIn
 		static.debug = static.debug || static.logLevel <= LogLevel_DEBUG
 	}()
 
-	if in.HiddifySettingsJson == "" {
+	if in.InhiveSettingsJson == "" {
 		return &CoreInfoResponse{}, nil
 	}
 	if insert {
 		settings := db.GetTable[hcommon.AppSettings]()
 		settings.UpdateInsert(&hcommon.AppSettings{
 			Id:    "InHiveSettingsJson",
-			Value: in.HiddifySettingsJson,
+			Value: in.InhiveSettingsJson,
 		})
 	}
 
-	err := json.Unmarshal([]byte(in.HiddifySettingsJson), static.InhiveOptions)
+	err := json.Unmarshal([]byte(in.InhiveSettingsJson), static.InhiveOptions)
 	if err != nil {
 		return nil, err
 	}

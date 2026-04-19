@@ -7,7 +7,7 @@
 package profile
 
 import (
-	inhiveoptions "github.com/buudesh/inhive-core/v2/inhiveoptions"
+	inhiveoptions "github.com/twilgate/inhive-core/v2/inhiveoptions"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -34,7 +34,7 @@ type ProfileEntity struct {
 	LastUpdate             int64                          `protobuf:"varint,5,opt,name=last_update,json=lastUpdate,proto3" json:"last_update,omitempty"`                                      // Last update time in milliseconds of the profile.
 	Options                *ProfileOptions                `protobuf:"bytes,6,opt,name=options,proto3" json:"options,omitempty"`                                                               // Options associated with the profile.
 	SubInfo                *SubscriptionInfo              `protobuf:"bytes,7,opt,name=sub_info,json=subInfo,proto3" json:"sub_info,omitempty"`                                                // Subscription-related information.
-	OverrideInhiveOptions *inhiveoptions.InhiveOptions `protobuf:"bytes,8,opt,name=override_inhive_options,json=overrideInhiveOptions,proto3" json:"override_inhive_options,omitempty"` // Override Hiddify options.
+	OverrideInhiveOptions *inhiveoptions.InhiveOptions `protobuf:"bytes,8,opt,name=override_inhive_options,json=overrideInhiveOptions,proto3" json:"override_inhive_options,omitempty"` // Override InHive options.
 }
 
 func (x *ProfileEntity) Reset() {

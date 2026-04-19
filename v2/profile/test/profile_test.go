@@ -4,13 +4,13 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/buudesh/inhive-core/v2/profile"
+	"github.com/twilgate/inhive-core/v2/profile"
 	"github.com/sagernet/sing-box/experimental/libbox"
 )
 
 func TestAddByContent(t *testing.T) {
 	ctx := libbox.BaseContext(nil)
-	entity, err := profile.AddByUrl(ctx, "https://raw.githubusercontent.com/hiddify/inhive-core/refs/heads/main/test.configs/warp", "", false)
+	entity, err := profile.AddByUrl(ctx, "https://raw.githubusercontent.com/twilgate/inhive-core/refs/heads/main/test.configs/warp", "", false)
 	if err != nil {
 		t.Fatalf("expected no error, but got: %v", err)
 	}
