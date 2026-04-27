@@ -5,7 +5,7 @@
 --description "The universal proxy platform."
 --url "https://inhive.ru/"
 --maintainer "inhive <core@inhive.ru>"
---deb-field "Bug: https://github.com/buudesh/inhive-core/issues"
+--deb-field "Bug: https://github.com/twilgate/inhive-core/issues"
 --no-deb-generate-changes
 --config-files /etc/inhive-core/config.json
 --after-install release/config/inhive-core.postinst

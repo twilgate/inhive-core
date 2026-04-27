@@ -67,7 +67,7 @@ ARTIFACT="inhive-core-linux-${ARCH}${LIBC}.tar.gz"
 
 # Fetch latest version
 echo -e "Fetching latest version information..."
-REPO="buudesh/inhive-core"
+REPO="twilgate/inhive-core"
 LATEST_TAG=$(curl -s "https://api.github.com/repos/$REPO/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
 
 if [ -z "$LATEST_TAG" ]; then

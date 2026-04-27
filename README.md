@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/buudesh/inhive-core/main/assets/logo.svg" alt="InHive Logo" width="128">
+  <img src="https://raw.githubusercontent.com/twilgate/inhive-core/main/assets/logo.svg" alt="InHive Logo" width="128">
 </p>
 
 <h1 align="center">InHive Core</h1>
@@ -12,8 +12,8 @@
 <p align="center">
   <a href="https://inhive.ru"><img src="https://img.shields.io/badge/Website-inhive.ru-blue?style=flat-square" alt="Website"></a>
   <a href="https://t.me/inhive_bot"><img src="https://img.shields.io/badge/Telegram-Join-blue?style=flat-square&logo=telegram" alt="Telegram"></a>
-  <img src="https://img.shields.io/github/license/buudesh/inhive-core?style=flat-square" alt="License">
-  <img src="https://img.shields.io/github/v/release/buudesh/inhive-core?style=flat-square" alt="Version">
+  <img src="https://img.shields.io/github/license/twilgate/inhive-core?style=flat-square" alt="License">
+  <img src="https://img.shields.io/github/v/release/twilgate/inhive-core?style=flat-square" alt="Version">
 </p>
 
 ---
@@ -23,7 +23,7 @@
 Install `inhive-core` on any Linux platform (Ubuntu, Debian, CentOS, OpenWrt, and more) with a single command:
 
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/buudesh/inhive-core/main/installer.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/twilgate/inhive-core/main/installer.sh)
 ```
 
 > **Note:** This script automatically detects your OS and architecture, installs the appropriate binary, and configures the service manager (Systemd or Procd).
@@ -44,10 +44,10 @@ bash <(curl -Ls https://raw.githubusercontent.com/buudesh/inhive-core/main/insta
 
 ### Docker
 ```bash
-docker pull ghcr.io/buudesh/inhive-core:latest
+docker pull ghcr.io/twilgate/inhive-core:latest
 
 # Or using Docker Compose
-git clone https://github.com/buudesh/inhive-core
+git clone https://github.com/twilgate/inhive-core
 cd inhive-core/platform/docker
 docker-compose up -d
 ```
@@ -105,7 +105,7 @@ make ios
 
 | Role | Who |
 |------|-----|
-| **Idea & Product** | [@buudesh](https://github.com/buudesh) |
+| **Idea & Product** | [@twilgate](https://github.com/twilgate) |
 | **Core Development** | [Claude](https://claude.ai) (AI-assisted engineering) |
 
 ---

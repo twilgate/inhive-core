@@ -3,7 +3,7 @@ import "v2/hcommon/common.proto";
 import "google/protobuf/timestamp.proto";
 
 package hcore;
-option go_package = "github.com/buudesh/inhive-core/v2/hcore";
+option go_package = "github.com/twilgate/inhive-core/v2/hcore";
 option java_package = "com.inhive.core.api.v2.hcore";
 
 
@@ -164,7 +164,7 @@ message ParseRequest {
 
 message ParseResponse {
   hcommon.ResponseCode response_code = 1;
-  string content = 2;  
+  string content = 2;
   string message = 3;
 }
 
