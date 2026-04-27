@@ -168,6 +168,25 @@ message ParseResponse {
   string message = 3;
 }
 
+// Wave 13D — Bootstrap Subscription Fetch.
+// Fetches an HTTP resource (subscription URL) through a temporary side-instance
+// sing-box configured from `config_json`. The side-instance is brought up with
+// TUN/system-proxy/clash disabled and a SOCKS5 inbound on a random localhost port,
+// the request is issued through that SOCKS5, then the side-instance is torn down.
+// The main VPN (static.StartedService) is not touched.
+message BootstrapFetchRequest {
+  string config_json = 1;   // sing-box options JSON (e.g. urltest carousel of bootstrap endpoints)
+  string url = 2;           // URL to GET
+  int32 timeout_ms = 3;     // 0 = default 30000
+}
+
+message BootstrapFetchResponse {
+  bytes body = 1;           // raw response body
+  int32 status_code = 2;    // HTTP status code (0 if request never reached the server)
+  string error = 3;         // error text (empty on success); transport is always OK = soft error
+  int32 duration_ms = 4;    // total time spent for UI loading state
+}
+
 message ChangeInhiveSettingsRequest {
   string inhive_settings_json = 1;
 }

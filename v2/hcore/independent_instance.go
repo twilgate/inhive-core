@@ -38,6 +38,28 @@ func RunInstanceString(ctx context.Context, inhiveSettings *config.InhiveOptions
 }
 
 func RunInstance(ctx context.Context, inhiveSettings *config.InhiveOptions, singconfig *option.Options) (*InhiveInstance, error) {
+	hservice, err := runInstanceCore(ctx, inhiveSettings, singconfig)
+	if err != nil {
+		return nil, err
+	}
+	// Warm-up probe — verifies that the freshly started side-instance can actually
+	// reach the open Internet through its outbound chain. Used by cmd_instance and
+	// profile_repository which want a hard "is this config alive" signal.
+	hservice.PingCloudflare()
+	return hservice, nil
+}
+
+// RunInstanceQuiet is the same as RunInstance but skips the PingCloudflare end-of-boot
+// probe. The probe targets cp.cloudflare.com which is blocked on RU LTE carriers
+// (Megafon / Beeline / MTS / Tele2 / Yota) — the 4-second timeout would be charged
+// to every BootstrapFetch call on our main audience. Callers that already plan to
+// drive their own HTTP request through the side-instance (Wave 13D BootstrapFetch)
+// do not need the probe and should use this variant.
+func RunInstanceQuiet(ctx context.Context, inhiveSettings *config.InhiveOptions, singconfig *option.Options) (*InhiveInstance, error) {
+	return runInstanceCore(ctx, inhiveSettings, singconfig)
+}
+
+func runInstanceCore(ctx context.Context, inhiveSettings *config.InhiveOptions, singconfig *option.Options) (*InhiveInstance, error) {
 	if inhiveSettings == nil {
 		inhiveSettings = config.DefaultInhiveOptions()
 	}
@@ -64,11 +86,10 @@ func RunInstance(ctx context.Context, inhiveSettings *config.InhiveOptions, sing
 	}
 
 	<-time.After(250 * time.Millisecond)
-	hservice := &InhiveInstance{
+	return &InhiveInstance{
 		StartedService: instance,
-		ListenPort:     inhiveSettings.InboundOptions.MixedPort}
-	hservice.PingCloudflare()
-	return hservice, nil
+		ListenPort:     inhiveSettings.InboundOptions.MixedPort,
+	}, nil
 }
 
 // dialer, err := s.libbox.GetInstance().Router().Dialer(context.Background())

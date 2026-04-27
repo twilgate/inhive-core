@@ -15,6 +15,8 @@ service Core {
   rpc GetSystemInfoStream (hcommon.Empty) returns (stream SystemInfo);
   rpc Setup (SetupRequest) returns (hcommon.Response);
   rpc Parse (ParseRequest) returns (ParseResponse);
+  // Wave 13D — see BootstrapFetchRequest in hcore.proto for the full contract.
+  rpc BootstrapFetch (BootstrapFetchRequest) returns (BootstrapFetchResponse);
   rpc ChangeInhiveSettings (ChangeInhiveSettingsRequest) returns (CoreInfoResponse);
   //rpc GenerateConfig (GenerateConfigRequest) returns (GenerateConfigResponse);
   rpc StartService (StartRequest) returns (CoreInfoResponse);
