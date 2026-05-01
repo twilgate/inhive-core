@@ -7,11 +7,14 @@ import (
 	"io"
 	"net"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/twilgate/inhive-core/v2/config"
 	"golang.org/x/net/proxy"
 
+	"github.com/sagernet/sing-box/daemon"
+	"github.com/sagernet/sing-box/experimental/libbox"
 	"github.com/sagernet/sing-box/option"
 )
 
@@ -73,17 +76,34 @@ func runInstanceCore(ctx context.Context, inhiveSettings *config.InhiveOptions, 
 	inhiveSettings.InboundOptions.RedirectPort = 0
 	inhiveSettings.Region = "other"
 	inhiveSettings.BlockAds = false
-	inhiveSettings.LogFile = "/dev/null"
+	inhiveSettings.LogFile = os.DevNull
+	// BuildConfig adds a balancer outbound — strategy must be non-empty.
+	if inhiveSettings.BalancerStrategy == "" {
+		inhiveSettings.BalancerStrategy = "round-robin"
+	}
 
 	finalConfigs, err := config.BuildConfig(ctx, inhiveSettings, &config.ReadOptions{Options: singconfig})
 	if err != nil {
 		return nil, err
 	}
 
-	instance, err := NewService(ctx, *finalConfigs)
-	if err != nil {
+	// Bootstrap side-instance: use a no-op PlatformHandler so box does NOT set
+	// options.PlatformLogWriter, which would enable CacheFile and conflict with
+	// the main instance's exclusive lock on data/clash.db.
+	if err := libbox.CheckConfigOptions(finalConfigs); err != nil {
 		return nil, err
 	}
+	svc := daemon.NewStartedService(daemon.ServiceOptions{
+		Context:             ctx,
+		Debug:               static.debug,
+		LogMaxLines:         0,
+		Handler:             &noopPlatformHandler{},
+		NoPlatformLogWriter: true,
+	})
+	if err := svc.StartOrReloadServiceOptions(*finalConfigs); err != nil {
+		return nil, err
+	}
+	instance := svc
 
 	<-time.After(250 * time.Millisecond)
 	return &InhiveInstance{
@@ -184,3 +204,14 @@ func (s *InhiveInstance) Ping(url string) (time.Duration, error) {
 	duration := time.Since(startTime)
 	return duration, nil
 }
+
+// noopPlatformHandler implements daemon.PlatformHandler with no-ops.
+// Used for bootstrap side-instances where we don't want a real handler
+// but also can't pass nil (daemon calls handler methods unconditionally).
+type noopPlatformHandler struct{}
+
+func (*noopPlatformHandler) ServiceStop() error                                { return nil }
+func (*noopPlatformHandler) ServiceReload() error                              { return nil }
+func (*noopPlatformHandler) SystemProxyStatus() (*daemon.SystemProxyStatus, error) { return nil, nil }
+func (*noopPlatformHandler) SetSystemProxyEnabled(bool) error                  { return nil }
+func (*noopPlatformHandler) WriteDebugMessage(string)                          {}

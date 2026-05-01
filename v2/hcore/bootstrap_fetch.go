@@ -27,6 +27,7 @@ import (
 	"time"
 
 	"github.com/twilgate/inhive-core/v2/config"
+	"github.com/sagernet/sing-box/include"
 	"github.com/sagernet/sing-box/option"
 	"golang.org/x/net/proxy"
 )
@@ -64,6 +65,10 @@ func (s *CoreService) BootstrapFetch(ctx context.Context, in *BootstrapFetchRequ
 	if timeout == 0 {
 		timeout = bootstrapFetchDefaultTimeout
 	}
+
+	// UnmarshalJSONContext requires a context with registered outbound/inbound/endpoint
+	// registries. The incoming gRPC ctx is bare — enrich it before unmarshalling.
+	ctx = include.Context(ctx)
 
 	var opts option.Options
 	if jsonErr := opts.UnmarshalJSONContext(ctx, []byte(in.ConfigJson)); jsonErr != nil {
