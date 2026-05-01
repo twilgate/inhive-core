@@ -12,6 +12,7 @@ import (
 	hutils "github.com/twilgate/inhive-core/v2/hutils"
 	C "github.com/sagernet/sing-box/constant"
 	"github.com/sagernet/sing-box/experimental/libbox"
+	"github.com/sagernet/sing-box/common/daita"
 	"github.com/sagernet/sing-box/option"
 )
 
@@ -29,19 +30,39 @@ func BuildConfigJson(ctx context.Context, in *StartRequest) (string, error) {
 func BuildConfig(ctx context.Context, in *StartRequest) (*option.Options, error) {
 	Log(LogLevel_DEBUG, LogType_CORE, "Building Config...")
 
+	// Inject DAITA Framework into context so outbound dialers wrap connections.
+	ctx = initDaita(ctx)
+
 	readOpt := &config.ReadOptions{Content: in.ConfigContent, Path: in.ConfigPath}
 	if !in.EnableRawConfig {
-		// hcontent, err := json.MarshalIndent(static.InhiveOptions, "", " ")
-		// if err != nil {
-		// 	return nil, err
-		// }
-
-		// Log(LogLevel_DEBUG, LogType_CORE, "Building config ", string(hcontent))
-		// Log(LogLevel_DEBUG, LogType_CORE, "Building config ")
 		return config.BuildConfig(ctx, static.InhiveOptions, readOpt)
 	}
 	return config.ReadSingOptions(ctx, readOpt)
+}
 
+func initDaita(ctx context.Context) context.Context {
+	opts := static.InhiveOptions
+	if !opts.DaitaEnabled {
+		return ctx
+	}
+	machines := opts.DaitaMachines
+	if machines == "" {
+		machines = DefaultDaitaMachines // use bundled Mullvad machines
+	}
+	maxPad := opts.DaitaMaxPad
+	if maxPad <= 0 {
+		maxPad = 0.1
+	}
+	fw, err := daita.NewFramework(machines, maxPad, 0)
+	if err != nil {
+		Log(LogLevel_WARNING, LogType_CORE, "DAITA init failed: "+err.Error())
+		return ctx
+	}
+	if fw == nil {
+		return ctx
+	}
+	Log(LogLevel_INFO, LogType_CORE, "DAITA: framework initialized")
+	return daita.WithFramework(ctx, fw)
 }
 
 func (s *CoreService) Parse(ctx context.Context, in *ParseRequest) (resp *ParseResponse, err error) {

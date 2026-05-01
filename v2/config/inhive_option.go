@@ -31,6 +31,12 @@ type InhiveOptions struct {
 	TLSTricks TLSTricks   `json:"tls-tricks,omitempty"`
 	EnableNTP bool        `json:"enable-ntp,omitempty"`
 
+	// DAITA — Defence Against Traffic Analysis.
+	// When enabled, wraps all outbound TCP connections with maybenot padding injection.
+	DaitaEnabled  bool    `json:"daita-enabled,omitempty"`
+	DaitaMachines string  `json:"daita-machines,omitempty"` // LF-separated base64 machine strings
+	DaitaMaxPad   float64 `json:"daita-max-pad,omitempty"`  // fraction of bandwidth for padding (0-1)
+
 	DNSOptions
 	InboundOptions
 	URLTestOptions
