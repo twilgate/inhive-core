@@ -90,14 +90,28 @@ android-deploy:
 	@echo "OK AAR deployed: 3 ABIs verified, SHA256 match"
 	@unzip -l ../app/android/app/libs/$(LIBNAME).aar | grep -E 'jni/.*libinhive-core\.so'
 
-ios-full: lib_install
-	gomobile bind -v  -target ios,iossimulator,tvos,tvossimulator,macos -libname=inhive-core -tags=$(TAGS),$(IOS_ADD_TAGS) -trimpath -ldflags="$(LDFLAGS)" -o $(BINDIR)/$(PRODUCT_NAME).xcframework github.com/sagernet/sing-box/experimental/libbox ./platform/mobile 
-	mv $(BINDIR)/$(PRODUCT_NAME).xcframework $(BINDIR)/$(LIBNAME).xcframework 
-	cp Info.plist $(BINDIR)/$(LIBNAME).xcframework/
-
 ios: lib_install
-	gomobile bind -v  -target ios -libname=inhive-core -tags=$(TAGS),$(IOS_ADD_TAGS) -trimpath -ldflags="$(LDFLAGS)" -o $(BINDIR)/InhiveCore.xcframework github.com/sagernet/sing-box/experimental/libbox ./platform/mobile
+	gomobile bind -v \
+		-target ios,iossimulator \
+		-libname=inhive-core \
+		-tags=$(TAGS),$(IOS_ADD_TAGS) \
+		-trimpath \
+		-ldflags="$(LDFLAGS)" \
+		-o $(BINDIR)/InhiveCore.xcframework \
+		github.com/sagernet/sing-box/experimental/libbox ./platform/mobile
 	cp Info.plist $(BINDIR)/InhiveCore.xcframework/
+	$(MAKE) ios-deploy
+
+# Deploy iOS xcframework to app/ios/Frameworks (mirrors android-deploy pattern).
+.PHONY: ios-deploy
+ios-deploy:
+	@if [ ! -d $(BINDIR)/InhiveCore.xcframework ]; then \
+		echo "ERROR: $(BINDIR)/InhiveCore.xcframework not found - run 'make ios' first"; \
+		exit 1; \
+	fi
+	@rm -rf ../app/ios/Frameworks/InhiveCore.xcframework
+	@cp -R $(BINDIR)/InhiveCore.xcframework ../app/ios/Frameworks/InhiveCore.xcframework
+	@echo "OK xcframework deployed to app/ios/Frameworks/"
 
 
 # webui target dropped — у InHive нативный Flutter UI поверх gRPC, Clash web-panel
