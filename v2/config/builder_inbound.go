@@ -174,34 +174,10 @@ func setInbound(options *option.Options, hopt *InhiveOptions) {
 						Listen:     &addr,
 						ListenPort: hopt.MixedPort,
 					},
-					// SetSystemProxy is handled by no-auth http-sysproxy inbound below
-					// so browsers don't show an auth dialog for the system proxy.
-					SetSystemProxy: false,
+					SetSystemProxy: hopt.SetSystemProxy,
 				},
 			},
 		)
-
-		// No-auth HTTP inbound for system proxy (Windows). Browsers connecting via
-		// system proxy use this port — no credentials required, no auth dialog.
-		// Bound strictly to 127.0.0.1 so external devices cannot reach it even
-		// when allowLan is enabled for the main mixed inbound.
-		if hopt.SetSystemProxy {
-			localAddr := badoption.Addr(netip.MustParseAddr("127.0.0.1"))
-			options.Inbounds = append(
-				options.Inbounds,
-				option.Inbound{
-					Type: C.TypeHTTP,
-					Tag:  "http-sysproxy",
-					Options: &option.HTTPMixedInboundOptions{
-						ListenOptions: option.ListenOptions{
-							Listen:     &localAddr,
-							ListenPort: hopt.MixedPort + 1,
-						},
-						SetSystemProxy: true, // installs system proxy to this no-auth port
-					},
-				},
-			)
-		}
 
 		if C.IsLinux && !C.IsAndroid && hopt.TProxyPort > 0 && hutils.IsAdmin() {
 			options.Inbounds = append(

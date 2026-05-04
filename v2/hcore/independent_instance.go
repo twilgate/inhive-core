@@ -18,14 +18,19 @@ import (
 	"github.com/sagernet/sing-box/option"
 )
 
+// getRandomAvailblePort: best-effort port allocation. There IS a TOCTOU race
+// between Close() and sing-box bind — under heavy parallel BootstrapFetch load
+// two side-instances may pick the same port. Caller of RunInstance/Quiet should
+// retry on bind failure. Mitigated by binding to 127.0.0.1 specifically (not
+// :0) which narrows the race window vs all-interfaces.
 func getRandomAvailblePort() uint16 {
-	// TODO: implement it
-	listener, err := net.Listen("tcp", ":0")
+	listener, err := net.Listen("tcp", "127.0.0.1:0")
 	if err != nil {
 		panic(err)
 	}
-	defer listener.Close()
-	return uint16(listener.Addr().(*net.TCPAddr).Port)
+	port := uint16(listener.Addr().(*net.TCPAddr).Port)
+	listener.Close()
+	return port
 }
 
 func RunInstanceString(ctx context.Context, inhiveSettings *config.InhiveOptions, proxiesInput string) (*InhiveInstance, error) {
@@ -40,7 +45,8 @@ func RunInstanceString(ctx context.Context, inhiveSettings *config.InhiveOptions
 	return RunInstance(ctx, inhiveSettings, singconfigs)
 }
 
-func RunInstance(ctx context.Context, inhiveSettings *config.InhiveOptions, singconfig *option.Options) (*InhiveInstance, error) {
+func RunInstance(ctx context.Context, inhiveSettings *config.InhiveOptions, singconfig *option.Options) (instance *InhiveInstance, err error) {
+	defer config.RecoverPanicToError("RunInstance", func(panicErr error) { err = panicErr })
 	hservice, err := runInstanceCore(ctx, inhiveSettings, singconfig)
 	if err != nil {
 		return nil, err
@@ -58,7 +64,8 @@ func RunInstance(ctx context.Context, inhiveSettings *config.InhiveOptions, sing
 // to every BootstrapFetch call on our main audience. Callers that already plan to
 // drive their own HTTP request through the side-instance (Wave 13D BootstrapFetch)
 // do not need the probe and should use this variant.
-func RunInstanceQuiet(ctx context.Context, inhiveSettings *config.InhiveOptions, singconfig *option.Options) (*InhiveInstance, error) {
+func RunInstanceQuiet(ctx context.Context, inhiveSettings *config.InhiveOptions, singconfig *option.Options) (instance *InhiveInstance, err error) {
+	defer config.RecoverPanicToError("RunInstanceQuiet", func(panicErr error) { err = panicErr })
 	return runInstanceCore(ctx, inhiveSettings, singconfig)
 }
 
@@ -105,7 +112,13 @@ func runInstanceCore(ctx context.Context, inhiveSettings *config.InhiveOptions, 
 	}
 	instance := svc
 
-	<-time.After(250 * time.Millisecond)
+	// Settle delay — даём time для async init outbounds. Honour ctx cancellation
+	// (раньше hardcoded 250ms блокировал даже когда caller отменил context).
+	select {
+	case <-time.After(250 * time.Millisecond):
+	case <-ctx.Done():
+		return nil, ctx.Err()
+	}
 	return &InhiveInstance{
 		StartedService: instance,
 		ListenPort:     inhiveSettings.InboundOptions.MixedPort,
@@ -180,19 +193,24 @@ func (s *InhiveInstance) PingAverage(url string, count int) (time.Duration, erro
 		return -1, fmt.Errorf("count must be greater than 0")
 	}
 
-	var sum int
-	real_count := 0
+	var sum int64
+	realCount := 0
 	for i := 0; i < count; i++ {
 		delay, err := s.Ping(url)
 		if err == nil {
-			real_count++
-			sum += int(delay.Milliseconds())
-		} else if real_count == 0 && i > count/2 {
+			realCount++
+			sum += delay.Milliseconds()
+		} else if realCount == 0 && i > count/2 {
 			return -1, fmt.Errorf("ping average failed")
 		}
-
 	}
-	return time.Duration(sum / real_count * int(time.Millisecond)), nil
+	if realCount == 0 {
+		// Все пинги failed — возвращаем error, иначе division by zero ниже.
+		return -1, fmt.Errorf("all %d pings failed", count)
+	}
+	// time.Duration(sum) is in nanoseconds; we have ms — multiply BEFORE divide
+	// to avoid integer truncation (sum=15ms, count=2 → 7.5ms not 7ms).
+	return time.Duration(sum) * time.Millisecond / time.Duration(realCount), nil
 }
 
 func (s *InhiveInstance) Ping(url string) (time.Duration, error) {
