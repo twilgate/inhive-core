@@ -26,7 +26,6 @@ require (
 	filippo.io/edwards25519 v1.1.0 // indirect
 	github.com/AdguardTeam/golibs v0.35.11 // indirect
 	github.com/DataDog/zstd v1.4.1 // indirect
-	github.com/adrg/xdg v0.5.0 // indirect
 	github.com/akutz/memconn v0.1.0 // indirect
 	github.com/alexbrainman/sspi v0.0.0-20231016080023-1a75b4708caa // indirect
 	github.com/ameshkov/dnscrypt/v2 v2.4.0 // indirect
@@ -59,8 +58,6 @@ require (
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/golang/snappy v0.0.1 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
-	github.com/google/go-github/v45 v45.2.0 // indirect
-	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/google/nftables v0.2.1-0.20240414091927-5e242ec57806 // indirect
 	github.com/hdevalence/ed25519consensus v0.2.0 // indirect
 	github.com/jmhodges/levigo v1.0.0 // indirect
@@ -68,7 +65,6 @@ require (
 	github.com/keybase/go-keychain v0.0.1 // indirect
 	github.com/klauspost/reedsolomon v1.12.0 // indirect
 	github.com/libdns/acmedns v0.5.0 // indirect
-	github.com/maxmind/mmdbwriter v1.0.0 // indirect
 	github.com/mdlayher/netlink v1.9.0 // indirect
 	github.com/mdlayher/socket v0.5.1 // indirect
 	github.com/metacubex/utls v1.8.4 // indirect
@@ -77,8 +73,6 @@ require (
 	github.com/noql-net/certpool v0.0.0-20250128174907-b15afbea6eae // indirect
 	github.com/onsi/ginkgo v1.16.5 // indirect
 	github.com/openai/openai-go/v3 v3.26.0 // indirect
-	github.com/oschwald/geoip2-golang v1.11.0 // indirect
-	github.com/oschwald/maxminddb-golang v1.13.1 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/prometheus-community/pro-bing v0.4.0 // indirect
 	github.com/safchain/ethtool v0.3.0 // indirect
@@ -116,8 +110,6 @@ require (
 	github.com/sagernet/cronet-go/lib/windows_arm64 v0.0.0-20260413092954-cd09eb3e271b // indirect
 	github.com/sagernet/fswatch v0.1.1 // indirect
 	github.com/sagernet/nftables v0.3.0-beta.4 // indirect
-	github.com/sagernet/sing-geoip v0.0.0-20241009171305-ecd02c178af5 // indirect
-	github.com/sagernet/sing-geosite v0.0.0-20240912095019-dd64ae0ebf2e // indirect
 	github.com/sagernet/tailscale v1.92.4-sing-box-1.13-mod.7 // indirect
 	github.com/tailscale/certstore v0.1.1-0.20231202035212-d3fa0460f47e // indirect
 	github.com/tailscale/go-winio v0.0.0-20231025203758-c4f33415bf55 // indirect
@@ -131,7 +123,6 @@ require (
 	github.com/tidwall/pretty v1.2.1 // indirect
 	github.com/tidwall/sjson v1.2.5 // indirect
 	github.com/tjfoc/gmsm v1.4.1 // indirect
-	github.com/v2fly/v2ray-core/v5 v5.18.0 // indirect
 	github.com/x448/float16 v0.8.4 // indirect
 	github.com/xtaci/kcp-go/v5 v5.6.72 // indirect
 	github.com/xtaci/smux v1.5.57 // indirect
@@ -143,7 +134,6 @@ require (
 	golang.zx2c4.com/wintun v0.0.0-20230126152724-0fa3db229ce2 // indirect
 	golang.zx2c4.com/wireguard/wgctrl v0.0.0-20241231184526-a9ab2273dd10 // indirect
 	golang.zx2c4.com/wireguard/windows v0.5.3 // indirect
-	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	gvisor.dev/gvisor v0.0.0-20240503213918-b7c924bc64f8 // indirect
 	www.bamsoftware.com/git/dnstt.git v1.20260501.0 // indirect
 )

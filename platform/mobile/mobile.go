@@ -51,6 +51,13 @@ func Start(configPath string, configContent string) (err error) {
 	_, err = hcore.StartService(libbox.BaseContext(nil), &hcore.StartRequest{
 		ConfigPath:    configPath,
 		ConfigContent: configContent,
+		// Dart-side singbox_config_builder.dart строит готовый sing-box JSON
+		// напрямую — НЕ нужно rebuild через InhiveOptions builder (который на
+		// iOS падал с "outbound/balancer[balance]: unknown load balance
+		// strategy" из-за empty BalancerStrategy в Hiddify legacy options).
+		// Win/Android тоже передают enableRawConfig=true (см.
+		// lib/core/bridge.dart:start where configContent != null).
+		EnableRawConfig: true,
 	})
 	return err
 }
