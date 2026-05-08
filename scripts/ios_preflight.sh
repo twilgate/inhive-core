@@ -247,8 +247,13 @@ hdr "8. Code signing"
 
 # Список installed identities (Developer + Distribution certs)
 if command -v security >/dev/null 2>&1; then
-    IDENT_COUNT=$(security find-identity -v -p codesigning 2>/dev/null | grep -c "valid" || echo "0")
-    if [[ "${IDENT_COUNT// /}" -gt 0 ]]; then
+    # `security find-identity` пишет результат строкой `"     N valid identities found"`.
+    # Раньше тут было `grep -c "valid"` — но эта же строка ВСЕГДА содержит слово "valid",
+    # поэтому при N=0 grep возвращал 1 и скрипт ложно сообщал об одной identity.
+    # awk достаёт N напрямую (первое поле), default 0 если security ничего не вывел.
+    IDENT_COUNT=$(security find-identity -v -p codesigning 2>/dev/null | awk '/valid identities found/{print $1; exit}')
+    IDENT_COUNT=${IDENT_COUNT:-0}
+    if [[ "${IDENT_COUNT}" -gt 0 ]]; then
         ok "Найдено ${IDENT_COUNT} valid signing identities в keychain"
         echo "    Подробнее: security find-identity -v -p codesigning"
     else
