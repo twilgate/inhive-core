@@ -16,6 +16,7 @@ import (
 )
 
 func NewService(ctx context.Context, options option.Options) (*daemon.StartedService, error) {
+	WriteSharedLog("NewService: enter")
 
 	// ctx = filemanager.WithDefault(ctx, sWorkingPath, sTempPath, sUserID, sGroupID)
 	logInterface := LogInterface{}
@@ -29,11 +30,18 @@ func NewService(ctx context.Context, options option.Options) (*daemon.StartedSer
 			&inhiveMainServiceManager{},
 		},
 	}
+
+	WriteSharedLog("NewService: libbox.CheckConfigOptions begin")
 	err := libbox.CheckConfigOptions(&options)
 	if err != nil {
+		WriteSharedLogf("NewService: CheckConfigOptions FAILED: %v", err)
 		return nil, err
 	}
+	WriteSharedLog("NewService: CheckConfigOptions done")
+
+	WriteSharedLog("NewService: daemon.NewStartedService begin")
 	instance := daemon.NewStartedService(bopts)
+	WriteSharedLog("NewService: daemon.NewStartedService done")
 
 	// for i := 0; i < 10; i++ {
 	// 	if hutils.IsPortInUse(options.Inbounds[0].SocksOptions.ListenPort) {
@@ -41,9 +49,12 @@ func NewService(ctx context.Context, options option.Options) (*daemon.StartedSer
 	// 	}
 	// }
 
+	WriteSharedLog("NewService: StartOrReloadServiceOptions begin (sing-box engine startup, builds outbounds + TUN inbound → openTun callback)")
 	if err := instance.StartOrReloadServiceOptions(options); err != nil {
+		WriteSharedLogf("NewService: StartOrReloadServiceOptions FAILED: %v", err)
 		return nil, err
 	}
+	WriteSharedLog("NewService: StartOrReloadServiceOptions done")
 
 	// instance.GetInstance().AddPostService("inhiveMainServiceManager", &inhiveMainServiceManager{})
 
@@ -51,6 +62,7 @@ func NewService(ctx context.Context, options option.Options) (*daemon.StartedSer
 	// 	return errorWrapper(MessageType_START_COMMAND_SERVER, err)
 	// }
 
+	WriteSharedLog("NewService: returning success")
 	return instance, nil
 }
 
