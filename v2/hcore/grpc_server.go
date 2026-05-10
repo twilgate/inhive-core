@@ -13,6 +13,7 @@ import (
 	"io"
 	"net"
 	"os"
+	"runtime"
 	"strconv"
 	"strings"
 	sync "sync"
@@ -67,6 +68,19 @@ func Setup(params *SetupRequest, platformInterface libbox.PlatformInterface) err
 	sTempPath = params.TempDir
 	sUserID = os.Getuid()
 	sGroupID = os.Getgid()
+
+	// Audit Q1.3-fix: restore CWD = workingDir on mobile platforms.
+	// sing-box upstream resolves embedded geosite/geoip/rule-set paths
+	// against CWD; without Chdir each lookup falls back to slow paths,
+	// adding ~5s to MobileSetup AND ~5s to MobileStart on iOS NE
+	// (verified Build 46→47 bisect 2026-05-10).
+	// Q1.3 (audit 311bb7d) dropped Chdir to protect Windows DLL host
+	// (Flutter Engine) — that's still respected: skip Chdir on Windows
+	// only. iOS NE process and Android VPN service are separate from
+	// Flutter, so Chdir is safe (and necessary for startup speed).
+	if runtime.GOOS != "windows" {
+		_ = os.Chdir(sWorkingPath)
+	}
 
 	var defaultWriter io.Writer
 	if !params.Debug {
