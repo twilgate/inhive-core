@@ -103,6 +103,11 @@ ios: lib_install
 	$(MAKE) ios-deploy
 
 # Deploy iOS xcframework to app/ios/Frameworks (mirrors android-deploy pattern).
+# Build 44 (2026-05-10): добавлен auto-flatten через fix_xcframework_ios.sh.
+# gomobile bind v0.1.12 создаёт macOS-style deep bundle (Versions/A/...),
+# iOS требует shallow bundle (Info.plist на root). Без fix flutter build ipa
+# fail с "expected Info.plist at the root level since the platform uses shallow
+# bundles". Подробно в feedback_build_ios_cronet_purego.md.
 .PHONY: ios-deploy
 ios-deploy:
 	@if [ ! -d $(BINDIR)/InhiveCore.xcframework ]; then \
@@ -112,6 +117,8 @@ ios-deploy:
 	@rm -rf ../app/ios/Frameworks/InhiveCore.xcframework
 	@cp -R $(BINDIR)/InhiveCore.xcframework ../app/ios/Frameworks/InhiveCore.xcframework
 	@echo "OK xcframework deployed to app/ios/Frameworks/"
+	@bash scripts/fix_xcframework_ios.sh
+	@echo "OK xcframework flattened (deep -> shallow bundle for iOS)"
 
 
 # webui target dropped — у InHive нативный Flutter UI поверх gRPC, Clash web-panel
