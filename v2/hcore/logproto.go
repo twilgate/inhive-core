@@ -48,7 +48,15 @@ func (s *CoreService) LogListener(req *LogRequest, stream grpc.ServerStreamingSe
 	}
 }
 
+// dumpGoroutinesToFile is a debug-only diagnostic. In release builds
+// (static.debug == false) it's a no-op so we don't pay for a goroutine
+// stacktrace dump on every panic in production. iOS NE startup ANR triage
+// is covered by WriteSharedLog (log_shared.go) which captures step-level
+// progress without pulling in pprof.
 func dumpGoroutinesToFile(path string) error {
+	if !static.debug {
+		return nil
+	}
 	f, err := os.Create(path)
 	if err != nil {
 		return err
