@@ -23,14 +23,14 @@ import (
 // two side-instances may pick the same port. Caller of RunInstance/Quiet should
 // retry on bind failure. Mitigated by binding to 127.0.0.1 specifically (not
 // :0) which narrows the race window vs all-interfaces.
-func getRandomAvailblePort() uint16 {
+func getRandomAvailblePort() (uint16, error) {
 	listener, err := net.Listen("tcp", "127.0.0.1:0")
 	if err != nil {
-		panic(err)
+		return 0, fmt.Errorf("getRandomAvailblePort: %w", err)
 	}
 	port := uint16(listener.Addr().(*net.TCPAddr).Port)
 	listener.Close()
-	return port
+	return port, nil
 }
 
 func RunInstanceString(ctx context.Context, inhiveSettings *config.InhiveOptions, proxiesInput string) (*InhiveInstance, error) {
@@ -74,7 +74,11 @@ func runInstanceCore(ctx context.Context, inhiveSettings *config.InhiveOptions, 
 		inhiveSettings = config.DefaultInhiveOptions()
 	}
 	inhiveSettings.EnableClashApi = false
-	inhiveSettings.InboundOptions.MixedPort = getRandomAvailblePort()
+	port, err := getRandomAvailblePort()
+	if err != nil {
+		return nil, err
+	}
+	inhiveSettings.InboundOptions.MixedPort = port
 	inhiveSettings.InboundOptions.EnableTun = false
 	inhiveSettings.InboundOptions.EnableTunService = false
 	inhiveSettings.InboundOptions.SetSystemProxy = false
