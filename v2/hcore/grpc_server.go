@@ -64,7 +64,6 @@ func Setup(params *SetupRequest, platformInterface libbox.PlatformInterface) err
 	Log(LogLevel_DEBUG, LogType_CORE, fmt.Sprintf("libbox.Setup success %s %s %s %v", params.BasePath, params.WorkingDir, params.TempDir, tcpConn))
 
 	sWorkingPath = params.WorkingDir
-	os.Chdir(sWorkingPath)
 	sTempPath = params.TempDir
 	sUserID = os.Getuid()
 	sGroupID = os.Getgid()
