@@ -43,7 +43,6 @@ func (h *InhiveInstance) readStatus(prev *SystemInfo) *SystemInfo {
 					message.CurrentOutbound = TrimTagName(current)
 				}
 			}
-			// if message.CurrentOutbound == config.OutboundURLTestTag {
 			if currentOutBound, ok := box.Outbound().Outbound(current); ok {
 				if g, ok := currentOutBound.(adapter.OutboundGroup); ok {
 					if now := g.Now(); now != "" {
@@ -51,7 +50,6 @@ func (h *InhiveInstance) readStatus(prev *SystemInfo) *SystemInfo {
 					}
 				}
 			}
-			// }
 		}
 
 		if prev == nil || prev.CurrentProfile == "" || message.UplinkTotal < 1000000 {
@@ -101,7 +99,6 @@ func (h *InhiveInstance) MakeSureContextIsNew(streamContext context.Context) {
 	}
 }
 func (h *InhiveInstance) GetSystemInfo(stream grpc.ServerStreamingServer[SystemInfo]) error {
-	// return fmt.Errorf("not implemented yet")
 	h.MakeSureContextIsNew(stream.Context())
 
 	ticker := time.NewTicker(1 * time.Second)
@@ -127,7 +124,6 @@ func (h *InhiveInstance) GetSystemInfo(stream grpc.ServerStreamingServer[SystemI
 		case <-ticker.C:
 			current_status = h.readStatus(current_status)
 			if err := stream.Send(current_status); err != nil {
-				// return err
 				Log(LogLevel_ERROR, LogType_CORE, "send System Info failed", err)
 			}
 		}
@@ -145,18 +141,6 @@ func (s *CoreService) SelectOutbound(ctx context.Context, in *SelectOutboundRequ
 }
 
 func (h *InhiveInstance) SelectOutbound(in *SelectOutboundRequest) (*hcommon.Response, error) {
-	// err := libbox.NewStandaloneCommandClient().SelectOutbound(in.GroupTag, in.OutboundTag)
-	// if err != nil {
-	// 	return &hcommon.Response{
-	// 		Code:    hcommon.ResponseCode_FAILED,
-	// 		Message: err.Error(),
-	// 	}, err
-	// }
-
-	// return &hcommon.Response{
-	// 	Code:    hcommon.ResponseCode_OK,
-	// 	Message: "",
-	// }, nil
 	Log(LogLevel_DEBUG, LogType_CORE, "select outbound: ", in.GroupTag, " -> ", in.OutboundTag)
 	if box := h.Box(); box != nil {
 		outboundGroup, isLoaded := box.Outbound().Outbound(in.GroupTag)
@@ -180,10 +164,6 @@ func (h *InhiveInstance) SelectOutbound(in *SelectOutboundRequest) (*hcommon.Res
 			}, E.New("outbound not found in selector: ", in.GroupTag)
 		}
 		Log(LogLevel_DEBUG, LogType_CORE, "Trying to ping outbound: ", in.OutboundTag)
-
-		// if urltesHistory := h.UrlTestHistory(); urltesHistory != nil {
-		// 	urltesHistory.Observer().Emit(2)
-		// }
 	}
 	return &hcommon.Response{
 		Code:    hcommon.ResponseCode_OK,
@@ -256,79 +236,12 @@ func (h *InhiveInstance) UrlTest(in *UrlTestRequest) (*hcommon.Response, error) 
 	if in.Tag == "" {
 		return h.UrlTestActive()
 	}
-	// err := libbox.NewStandaloneCommandClient().URLTest(in.GroupTag)
-	// if err != nil {
-	// 	return &hcommon.Response{
-	// 		Code:    hcommon.ResponseCode_FAILED,
-	// 		Message: err.Error(),
-	// 	}, err
-	// }
-
-	// return &hcommon.Response{
-	// 	Code:    hcommon.ResponseCode_OK,
-	// 	Message: "",
-	// }, nil
-
-	// groupTag := in.GroupTag
 	box := h.Box()
 	if box == nil {
 		return nil, E.New("service not ready")
 	}
 	monitor := monitoring.Get(h.Context())
 	monitor.TestNow(in.Tag)
-	// router := box.Outbound()
-	// abstractOutboundGroup, isLoaded := router.Outbound(groupTag)
-	// if !isLoaded {
-	// 	return &hcommon.Response{
-	// 		Code:    hcommon.ResponseCode_FAILED,
-	// 		Message: E.New("outbound group not found: ", in.GroupTag).Error(),
-	// 	}, E.New("outbound group not found: ", groupTag)
-	// }
-	// outboundGroup, isOutboundGroup := abstractOutboundGroup.(adapter.OutboundGroup)
-	// if !isOutboundGroup {
-	// 	return &hcommon.Response{
-	// 		Code:    hcommon.ResponseCode_FAILED,
-	// 		Message: E.New("outbound is not a group: ", in.GroupTag).Error(),
-	// 	}, E.New("outbound is not a group: ", groupTag)
-	// }
-
-	// if urlTest, isURLTest := abstractOutboundGroup.(*group.URLTest); isURLTest {
-	// 	go func() {
-	// 		for _, p := range router.Outbounds() {
-	// 			if p.Tag() == groupTag {
-	// 				continue
-	// 			}
-	// 			if group, isGroup := p.(adapter.OutboundGroup); isGroup {
-	// 				urlTest.ForceRecheckOutbound(group.Now())
-	// 			}
-	// 		}
-	// 		urlTest.CheckOutbounds()
-	// 	}()
-	// } else {
-	// 	historyStorage := h.UrlTestHistory()
-	// 	outbounds := common.Filter(common.Map(outboundGroup.All(), func(it string) adapter.Outbound {
-	// 		itOutbound, _ := router.Outbound(it)
-	// 		return itOutbound
-	// 	}), func(it adapter.Outbound) bool {
-	// 		if it == nil {
-	// 			return false
-	// 		}
-	// 		_, isGroup := it.(adapter.OutboundGroup)
-	// 		return !isGroup
-	// 	})
-	// 	b, _ := batch.New(h.Context(), batch.WithConcurrencyNum[any](10))
-	// 	for _, detour := range outbounds {
-	// 		outboundToTest := detour
-	// 		outboundTag := outboundToTest.Tag()
-	// 		b.Go(outboundTag, func() (any, error) {
-	// 			instance := box
-
-	// 			group.CheckOutbound(instance.Logger(), h.Context(), historyStorage, router, "", outboundToTest, nil)
-	// 			return nil, nil
-	// 		})
-	// 	}
-	// }
-
 	return &hcommon.Response{
 		Code:    hcommon.ResponseCode_OK,
 		Message: "",
