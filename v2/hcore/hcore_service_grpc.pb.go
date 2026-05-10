@@ -36,6 +36,7 @@ const (
 	Core_SelectOutbound_FullMethodName        = "/hcore.Core/SelectOutbound"
 	Core_UrlTest_FullMethodName               = "/hcore.Core/UrlTest"
 	Core_UrlTestActive_FullMethodName         = "/hcore.Core/UrlTestActive"
+	Core_SpeedTest_FullMethodName             = "/hcore.Core/SpeedTest"
 	Core_GenerateWarpConfig_FullMethodName    = "/hcore.Core/GenerateWarpConfig"
 	Core_GetSystemProxyStatus_FullMethodName  = "/hcore.Core/GetSystemProxyStatus"
 	Core_SetSystemProxyEnabled_FullMethodName = "/hcore.Core/SetSystemProxyEnabled"
@@ -65,6 +66,11 @@ type CoreClient interface {
 	SelectOutbound(ctx context.Context, in *SelectOutboundRequest, opts ...grpc.CallOption) (*hcommon.Response, error)
 	UrlTest(ctx context.Context, in *UrlTestRequest, opts ...grpc.CallOption) (*hcommon.Response, error)
 	UrlTestActive(ctx context.Context, in *hcommon.Empty, opts ...grpc.CallOption) (*hcommon.Response, error)
+	// SpeedTest — измеряет download/upload speed через outbound[outbound_tag].
+	// Делает HTTP request к speed.cloudflare.com внутри core (NE process)
+	// через outbound dialer. Заменяет старый Dart-side approach через mixed
+	// proxy port — на iOS (двухпроцессная арх) тот не работал.
+	SpeedTest(ctx context.Context, in *SpeedTestRequest, opts ...grpc.CallOption) (*SpeedTestResponse, error)
 	GenerateWarpConfig(ctx context.Context, in *GenerateWarpConfigRequest, opts ...grpc.CallOption) (*WarpGenerationResponse, error)
 	GetSystemProxyStatus(ctx context.Context, in *hcommon.Empty, opts ...grpc.CallOption) (*SystemProxyStatus, error)
 	SetSystemProxyEnabled(ctx context.Context, in *SetSystemProxyEnabledRequest, opts ...grpc.CallOption) (*hcommon.Response, error)
@@ -276,6 +282,16 @@ func (c *coreClient) UrlTestActive(ctx context.Context, in *hcommon.Empty, opts 
 	return out, nil
 }
 
+func (c *coreClient) SpeedTest(ctx context.Context, in *SpeedTestRequest, opts ...grpc.CallOption) (*SpeedTestResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SpeedTestResponse)
+	err := c.cc.Invoke(ctx, Core_SpeedTest_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *coreClient) GenerateWarpConfig(ctx context.Context, in *GenerateWarpConfigRequest, opts ...grpc.CallOption) (*WarpGenerationResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(WarpGenerationResponse)
@@ -357,6 +373,11 @@ type CoreServer interface {
 	SelectOutbound(context.Context, *SelectOutboundRequest) (*hcommon.Response, error)
 	UrlTest(context.Context, *UrlTestRequest) (*hcommon.Response, error)
 	UrlTestActive(context.Context, *hcommon.Empty) (*hcommon.Response, error)
+	// SpeedTest — измеряет download/upload speed через outbound[outbound_tag].
+	// Делает HTTP request к speed.cloudflare.com внутри core (NE process)
+	// через outbound dialer. Заменяет старый Dart-side approach через mixed
+	// proxy port — на iOS (двухпроцессная арх) тот не работал.
+	SpeedTest(context.Context, *SpeedTestRequest) (*SpeedTestResponse, error)
 	GenerateWarpConfig(context.Context, *GenerateWarpConfigRequest) (*WarpGenerationResponse, error)
 	GetSystemProxyStatus(context.Context, *hcommon.Empty) (*SystemProxyStatus, error)
 	SetSystemProxyEnabled(context.Context, *SetSystemProxyEnabledRequest) (*hcommon.Response, error)
@@ -419,6 +440,9 @@ func (UnimplementedCoreServer) UrlTest(context.Context, *UrlTestRequest) (*hcomm
 }
 func (UnimplementedCoreServer) UrlTestActive(context.Context, *hcommon.Empty) (*hcommon.Response, error) {
 	return nil, status.Error(codes.Unimplemented, "method UrlTestActive not implemented")
+}
+func (UnimplementedCoreServer) SpeedTest(context.Context, *SpeedTestRequest) (*SpeedTestResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SpeedTest not implemented")
 }
 func (UnimplementedCoreServer) GenerateWarpConfig(context.Context, *GenerateWarpConfigRequest) (*WarpGenerationResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GenerateWarpConfig not implemented")
@@ -716,6 +740,24 @@ func _Core_UrlTestActive_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Core_SpeedTest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SpeedTestRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CoreServer).SpeedTest(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Core_SpeedTest_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CoreServer).SpeedTest(ctx, req.(*SpeedTestRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Core_GenerateWarpConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GenerateWarpConfigRequest)
 	if err := dec(in); err != nil {
@@ -853,6 +895,10 @@ var Core_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UrlTestActive",
 			Handler:    _Core_UrlTestActive_Handler,
+		},
+		{
+			MethodName: "SpeedTest",
+			Handler:    _Core_SpeedTest_Handler,
 		},
 		{
 			MethodName: "GenerateWarpConfig",

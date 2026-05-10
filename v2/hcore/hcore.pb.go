@@ -1905,6 +1905,152 @@ func (x *UrlTestRequest) GetTag() string {
 	return ""
 }
 
+// SpeedTestRequest — измеряет throughput через конкретный outbound.
+// Используется UI для "Тест скорости" по серверам подписки.
+type SpeedTestRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Tag outbound'а через который тестируем (например "p-xxx").
+	OutboundTag string `protobuf:"bytes,1,opt,name=outbound_tag,json=outboundTag,proto3" json:"outbound_tag,omitempty"`
+	// Сколько байт скачать/залить (default 2_000_000 = 2MB).
+	TestBytes int64 `protobuf:"varint,2,opt,name=test_bytes,json=testBytes,proto3" json:"test_bytes,omitempty"`
+	// Тестировать download (false) или upload (true). Default download.
+	Upload bool `protobuf:"varint,3,opt,name=upload,proto3" json:"upload,omitempty"`
+	// Timeout сек (default 20). Long timeout важен на slow connections.
+	TimeoutSec    int32 `protobuf:"varint,4,opt,name=timeout_sec,json=timeoutSec,proto3" json:"timeout_sec,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SpeedTestRequest) Reset() {
+	*x = SpeedTestRequest{}
+	mi := &file_v2_hcore_hcore_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SpeedTestRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SpeedTestRequest) ProtoMessage() {}
+
+func (x *SpeedTestRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_v2_hcore_hcore_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SpeedTestRequest.ProtoReflect.Descriptor instead.
+func (*SpeedTestRequest) Descriptor() ([]byte, []int) {
+	return file_v2_hcore_hcore_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *SpeedTestRequest) GetOutboundTag() string {
+	if x != nil {
+		return x.OutboundTag
+	}
+	return ""
+}
+
+func (x *SpeedTestRequest) GetTestBytes() int64 {
+	if x != nil {
+		return x.TestBytes
+	}
+	return 0
+}
+
+func (x *SpeedTestRequest) GetUpload() bool {
+	if x != nil {
+		return x.Upload
+	}
+	return false
+}
+
+func (x *SpeedTestRequest) GetTimeoutSec() int32 {
+	if x != nil {
+		return x.TimeoutSec
+	}
+	return 0
+}
+
+type SpeedTestResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Скорость в килобайтах/сек (KB/s). 0 если test failed.
+	SpeedKbps int64 `protobuf:"varint,1,opt,name=speed_kbps,json=speedKbps,proto3" json:"speed_kbps,omitempty"`
+	// Время теста в миллисекундах (для diagnostic).
+	ElapsedMs int64 `protobuf:"varint,2,opt,name=elapsed_ms,json=elapsedMs,proto3" json:"elapsed_ms,omitempty"`
+	// Сколько байт реально получено/отправлено.
+	BytesTransferred int64 `protobuf:"varint,3,opt,name=bytes_transferred,json=bytesTransferred,proto3" json:"bytes_transferred,omitempty"`
+	// Error message если test failed (empty on success).
+	Error         string `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SpeedTestResponse) Reset() {
+	*x = SpeedTestResponse{}
+	mi := &file_v2_hcore_hcore_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SpeedTestResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SpeedTestResponse) ProtoMessage() {}
+
+func (x *SpeedTestResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_v2_hcore_hcore_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SpeedTestResponse.ProtoReflect.Descriptor instead.
+func (*SpeedTestResponse) Descriptor() ([]byte, []int) {
+	return file_v2_hcore_hcore_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *SpeedTestResponse) GetSpeedKbps() int64 {
+	if x != nil {
+		return x.SpeedKbps
+	}
+	return 0
+}
+
+func (x *SpeedTestResponse) GetElapsedMs() int64 {
+	if x != nil {
+		return x.ElapsedMs
+	}
+	return 0
+}
+
+func (x *SpeedTestResponse) GetBytesTransferred() int64 {
+	if x != nil {
+		return x.BytesTransferred
+	}
+	return 0
+}
+
+func (x *SpeedTestResponse) GetError() string {
+	if x != nil {
+		return x.Error
+	}
+	return ""
+}
+
 type GenerateWarpConfigRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	LicenseKey    string                 `protobuf:"bytes,1,opt,name=license_key,json=licenseKey,proto3" json:"license_key,omitempty"`
@@ -1916,7 +2062,7 @@ type GenerateWarpConfigRequest struct {
 
 func (x *GenerateWarpConfigRequest) Reset() {
 	*x = GenerateWarpConfigRequest{}
-	mi := &file_v2_hcore_hcore_proto_msgTypes[22]
+	mi := &file_v2_hcore_hcore_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1928,7 +2074,7 @@ func (x *GenerateWarpConfigRequest) String() string {
 func (*GenerateWarpConfigRequest) ProtoMessage() {}
 
 func (x *GenerateWarpConfigRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_hcore_hcore_proto_msgTypes[22]
+	mi := &file_v2_hcore_hcore_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1941,7 +2087,7 @@ func (x *GenerateWarpConfigRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GenerateWarpConfigRequest.ProtoReflect.Descriptor instead.
 func (*GenerateWarpConfigRequest) Descriptor() ([]byte, []int) {
-	return file_v2_hcore_hcore_proto_rawDescGZIP(), []int{22}
+	return file_v2_hcore_hcore_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *GenerateWarpConfigRequest) GetLicenseKey() string {
@@ -1974,7 +2120,7 @@ type SetSystemProxyEnabledRequest struct {
 
 func (x *SetSystemProxyEnabledRequest) Reset() {
 	*x = SetSystemProxyEnabledRequest{}
-	mi := &file_v2_hcore_hcore_proto_msgTypes[23]
+	mi := &file_v2_hcore_hcore_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1986,7 +2132,7 @@ func (x *SetSystemProxyEnabledRequest) String() string {
 func (*SetSystemProxyEnabledRequest) ProtoMessage() {}
 
 func (x *SetSystemProxyEnabledRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_hcore_hcore_proto_msgTypes[23]
+	mi := &file_v2_hcore_hcore_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1999,7 +2145,7 @@ func (x *SetSystemProxyEnabledRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetSystemProxyEnabledRequest.ProtoReflect.Descriptor instead.
 func (*SetSystemProxyEnabledRequest) Descriptor() ([]byte, []int) {
-	return file_v2_hcore_hcore_proto_rawDescGZIP(), []int{23}
+	return file_v2_hcore_hcore_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *SetSystemProxyEnabledRequest) GetIsEnabled() bool {
@@ -2021,7 +2167,7 @@ type LogMessage struct {
 
 func (x *LogMessage) Reset() {
 	*x = LogMessage{}
-	mi := &file_v2_hcore_hcore_proto_msgTypes[24]
+	mi := &file_v2_hcore_hcore_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2033,7 +2179,7 @@ func (x *LogMessage) String() string {
 func (*LogMessage) ProtoMessage() {}
 
 func (x *LogMessage) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_hcore_hcore_proto_msgTypes[24]
+	mi := &file_v2_hcore_hcore_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2046,7 +2192,7 @@ func (x *LogMessage) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LogMessage.ProtoReflect.Descriptor instead.
 func (*LogMessage) Descriptor() ([]byte, []int) {
-	return file_v2_hcore_hcore_proto_rawDescGZIP(), []int{24}
+	return file_v2_hcore_hcore_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *LogMessage) GetLevel() LogLevel {
@@ -2086,7 +2232,7 @@ type LogRequest struct {
 
 func (x *LogRequest) Reset() {
 	*x = LogRequest{}
-	mi := &file_v2_hcore_hcore_proto_msgTypes[25]
+	mi := &file_v2_hcore_hcore_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2098,7 +2244,7 @@ func (x *LogRequest) String() string {
 func (*LogRequest) ProtoMessage() {}
 
 func (x *LogRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_hcore_hcore_proto_msgTypes[25]
+	mi := &file_v2_hcore_hcore_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2111,7 +2257,7 @@ func (x *LogRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LogRequest.ProtoReflect.Descriptor instead.
 func (*LogRequest) Descriptor() ([]byte, []int) {
-	return file_v2_hcore_hcore_proto_rawDescGZIP(), []int{25}
+	return file_v2_hcore_hcore_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *LogRequest) GetLevel() LogLevel {
@@ -2129,7 +2275,7 @@ type StopRequest struct {
 
 func (x *StopRequest) Reset() {
 	*x = StopRequest{}
-	mi := &file_v2_hcore_hcore_proto_msgTypes[26]
+	mi := &file_v2_hcore_hcore_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2141,7 +2287,7 @@ func (x *StopRequest) String() string {
 func (*StopRequest) ProtoMessage() {}
 
 func (x *StopRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_hcore_hcore_proto_msgTypes[26]
+	mi := &file_v2_hcore_hcore_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2154,7 +2300,7 @@ func (x *StopRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StopRequest.ProtoReflect.Descriptor instead.
 func (*StopRequest) Descriptor() ([]byte, []int) {
-	return file_v2_hcore_hcore_proto_rawDescGZIP(), []int{26}
+	return file_v2_hcore_hcore_proto_rawDescGZIP(), []int{28}
 }
 
 var File_v2_hcore_hcore_proto protoreflect.FileDescriptor
@@ -2305,7 +2451,21 @@ const file_v2_hcore_hcore_proto_rawDesc = "" +
 	"\tgroup_tag\x18\x01 \x01(\tR\bgroupTag\x12!\n" +
 	"\foutbound_tag\x18\x02 \x01(\tR\voutboundTag\"\"\n" +
 	"\x0eUrlTestRequest\x12\x10\n" +
-	"\x03tag\x18\x01 \x01(\tR\x03tag\"~\n" +
+	"\x03tag\x18\x01 \x01(\tR\x03tag\"\x8d\x01\n" +
+	"\x10SpeedTestRequest\x12!\n" +
+	"\foutbound_tag\x18\x01 \x01(\tR\voutboundTag\x12\x1d\n" +
+	"\n" +
+	"test_bytes\x18\x02 \x01(\x03R\ttestBytes\x12\x16\n" +
+	"\x06upload\x18\x03 \x01(\bR\x06upload\x12\x1f\n" +
+	"\vtimeout_sec\x18\x04 \x01(\x05R\n" +
+	"timeoutSec\"\x94\x01\n" +
+	"\x11SpeedTestResponse\x12\x1d\n" +
+	"\n" +
+	"speed_kbps\x18\x01 \x01(\x03R\tspeedKbps\x12\x1d\n" +
+	"\n" +
+	"elapsed_ms\x18\x02 \x01(\x03R\telapsedMs\x12+\n" +
+	"\x11bytes_transferred\x18\x03 \x01(\x03R\x10bytesTransferred\x12\x14\n" +
+	"\x05error\x18\x04 \x01(\tR\x05error\"~\n" +
 	"\x19GenerateWarpConfigRequest\x12\x1f\n" +
 	"\vlicense_key\x18\x01 \x01(\tR\n" +
 	"licenseKey\x12\x1d\n" +
@@ -2381,7 +2541,7 @@ func file_v2_hcore_hcore_proto_rawDescGZIP() []byte {
 }
 
 var file_v2_hcore_hcore_proto_enumTypes = make([]protoimpl.EnumInfo, 5)
-var file_v2_hcore_hcore_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
+var file_v2_hcore_hcore_proto_msgTypes = make([]protoimpl.MessageInfo, 29)
 var file_v2_hcore_hcore_proto_goTypes = []any{
 	(CoreStates)(0),                      // 0: hcore.CoreStates
 	(MessageType)(0),                     // 1: hcore.MessageType
@@ -2410,29 +2570,31 @@ var file_v2_hcore_hcore_proto_goTypes = []any{
 	(*GenerateConfigResponse)(nil),       // 24: hcore.GenerateConfigResponse
 	(*SelectOutboundRequest)(nil),        // 25: hcore.SelectOutboundRequest
 	(*UrlTestRequest)(nil),               // 26: hcore.UrlTestRequest
-	(*GenerateWarpConfigRequest)(nil),    // 27: hcore.GenerateWarpConfigRequest
-	(*SetSystemProxyEnabledRequest)(nil), // 28: hcore.SetSystemProxyEnabledRequest
-	(*LogMessage)(nil),                   // 29: hcore.LogMessage
-	(*LogRequest)(nil),                   // 30: hcore.LogRequest
-	(*StopRequest)(nil),                  // 31: hcore.StopRequest
-	(*timestamppb.Timestamp)(nil),        // 32: google.protobuf.Timestamp
-	(hcommon.ResponseCode)(0),            // 33: hcommon.ResponseCode
+	(*SpeedTestRequest)(nil),             // 27: hcore.SpeedTestRequest
+	(*SpeedTestResponse)(nil),            // 28: hcore.SpeedTestResponse
+	(*GenerateWarpConfigRequest)(nil),    // 29: hcore.GenerateWarpConfigRequest
+	(*SetSystemProxyEnabledRequest)(nil), // 30: hcore.SetSystemProxyEnabledRequest
+	(*LogMessage)(nil),                   // 31: hcore.LogMessage
+	(*LogRequest)(nil),                   // 32: hcore.LogRequest
+	(*StopRequest)(nil),                  // 33: hcore.StopRequest
+	(*timestamppb.Timestamp)(nil),        // 34: google.protobuf.Timestamp
+	(hcommon.ResponseCode)(0),            // 35: hcommon.ResponseCode
 }
 var file_v2_hcore_hcore_proto_depIdxs = []int32{
 	0,  // 0: hcore.CoreInfoResponse.core_state:type_name -> hcore.CoreStates
 	1,  // 1: hcore.CoreInfoResponse.message_type:type_name -> hcore.MessageType
 	2,  // 2: hcore.CloseRequest.mode:type_name -> hcore.SetupMode
 	2,  // 3: hcore.SetupRequest.mode:type_name -> hcore.SetupMode
-	32, // 4: hcore.OutboundInfo.url_test_time:type_name -> google.protobuf.Timestamp
+	34, // 4: hcore.OutboundInfo.url_test_time:type_name -> google.protobuf.Timestamp
 	11, // 5: hcore.OutboundInfo.ipinfo:type_name -> hcore.IpInfo
 	10, // 6: hcore.OutboundGroup.items:type_name -> hcore.OutboundInfo
 	12, // 7: hcore.OutboundGroupList.items:type_name -> hcore.OutboundGroup
 	14, // 8: hcore.WarpGenerationResponse.account:type_name -> hcore.WarpAccount
 	15, // 9: hcore.WarpGenerationResponse.config:type_name -> hcore.WarpWireguardConfig
-	33, // 10: hcore.ParseResponse.response_code:type_name -> hcommon.ResponseCode
+	35, // 10: hcore.ParseResponse.response_code:type_name -> hcommon.ResponseCode
 	3,  // 11: hcore.LogMessage.level:type_name -> hcore.LogLevel
 	4,  // 12: hcore.LogMessage.type:type_name -> hcore.LogType
-	32, // 13: hcore.LogMessage.time:type_name -> google.protobuf.Timestamp
+	34, // 13: hcore.LogMessage.time:type_name -> google.protobuf.Timestamp
 	3,  // 14: hcore.LogRequest.level:type_name -> hcore.LogLevel
 	15, // [15:15] is the sub-list for method output_type
 	15, // [15:15] is the sub-list for method input_type
@@ -2453,7 +2615,7 @@ func file_v2_hcore_hcore_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_v2_hcore_hcore_proto_rawDesc), len(file_v2_hcore_hcore_proto_rawDesc)),
 			NumEnums:      5,
-			NumMessages:   27,
+			NumMessages:   29,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

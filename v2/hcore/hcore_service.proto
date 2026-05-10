@@ -25,6 +25,11 @@ service Core {
   rpc SelectOutbound (SelectOutboundRequest) returns (hcommon.Response);
   rpc UrlTest (UrlTestRequest) returns (hcommon.Response);
   rpc UrlTestActive (hcommon.Empty) returns (hcommon.Response);
+  // SpeedTest — измеряет download/upload speed через outbound[outbound_tag].
+  // Делает HTTP request к speed.cloudflare.com внутри core (NE process)
+  // через outbound dialer. Заменяет старый Dart-side approach через mixed
+  // proxy port — на iOS (двухпроцессная арх) тот не работал.
+  rpc SpeedTest (SpeedTestRequest) returns (SpeedTestResponse);
   rpc GenerateWarpConfig (GenerateWarpConfigRequest) returns (WarpGenerationResponse);
   rpc GetSystemProxyStatus (hcommon.Empty) returns (SystemProxyStatus);
   rpc SetSystemProxyEnabled (SetSystemProxyEnabledRequest) returns (hcommon.Response);

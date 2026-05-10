@@ -212,6 +212,30 @@ message UrlTestRequest {
   string tag = 1;
 }
 
+// SpeedTestRequest — измеряет throughput через конкретный outbound.
+// Используется UI для "Тест скорости" по серверам подписки.
+message SpeedTestRequest {
+  // Tag outbound'а через который тестируем (например "p-xxx").
+  string outbound_tag = 1;
+  // Сколько байт скачать/залить (default 2_000_000 = 2MB).
+  int64 test_bytes = 2;
+  // Тестировать download (false) или upload (true). Default download.
+  bool upload = 3;
+  // Timeout сек (default 20). Long timeout важен на slow connections.
+  int32 timeout_sec = 4;
+}
+
+message SpeedTestResponse {
+  // Скорость в килобайтах/сек (KB/s). 0 если test failed.
+  int64 speed_kbps = 1;
+  // Время теста в миллисекундах (для diagnostic).
+  int64 elapsed_ms = 2;
+  // Сколько байт реально получено/отправлено.
+  int64 bytes_transferred = 3;
+  // Error message если test failed (empty on success).
+  string error = 4;
+}
+
 message GenerateWarpConfigRequest {
   string license_key = 1;
   string account_id = 2;

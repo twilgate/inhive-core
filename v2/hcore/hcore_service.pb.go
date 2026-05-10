@@ -25,7 +25,7 @@ var File_v2_hcore_hcore_service_proto protoreflect.FileDescriptor
 
 const file_v2_hcore_hcore_service_proto_rawDesc = "" +
 	"\n" +
-	"\x1cv2/hcore/hcore_service.proto\x12\x05hcore\x1a\x17v2/hcommon/common.proto\x1a\x14v2/hcore/hcore.proto2\x96\n" +
+	"\x1cv2/hcore/hcore_service.proto\x12\x05hcore\x1a\x17v2/hcommon/common.proto\x1a\x14v2/hcore/hcore.proto2\xd6\n" +
 	"\n" +
 	"\x04Core\x125\n" +
 	"\x05Start\x12\x13.hcore.StartRequest\x1a\x17.hcore.CoreInfoResponse\x12=\n" +
@@ -43,7 +43,8 @@ const file_v2_hcore_hcore_service_proto_rawDesc = "" +
 	"\aRestart\x12\x13.hcore.StartRequest\x1a\x17.hcore.CoreInfoResponse\x12A\n" +
 	"\x0eSelectOutbound\x12\x1c.hcore.SelectOutboundRequest\x1a\x11.hcommon.Response\x123\n" +
 	"\aUrlTest\x12\x15.hcore.UrlTestRequest\x1a\x11.hcommon.Response\x122\n" +
-	"\rUrlTestActive\x12\x0e.hcommon.Empty\x1a\x11.hcommon.Response\x12U\n" +
+	"\rUrlTestActive\x12\x0e.hcommon.Empty\x1a\x11.hcommon.Response\x12>\n" +
+	"\tSpeedTest\x12\x17.hcore.SpeedTestRequest\x1a\x18.hcore.SpeedTestResponse\x12U\n" +
 	"\x12GenerateWarpConfig\x12 .hcore.GenerateWarpConfigRequest\x1a\x1d.hcore.WarpGenerationResponse\x12@\n" +
 	"\x14GetSystemProxyStatus\x12\x0e.hcommon.Empty\x1a\x18.hcore.SystemProxyStatus\x12O\n" +
 	"\x15SetSystemProxyEnabled\x12#.hcore.SetSystemProxyEnabledRequest\x1a\x11.hcommon.Response\x125\n" +
@@ -60,19 +61,21 @@ var file_v2_hcore_hcore_service_proto_goTypes = []any{
 	(*ChangeInhiveSettingsRequest)(nil),  // 5: hcore.ChangeInhiveSettingsRequest
 	(*SelectOutboundRequest)(nil),        // 6: hcore.SelectOutboundRequest
 	(*UrlTestRequest)(nil),               // 7: hcore.UrlTestRequest
-	(*GenerateWarpConfigRequest)(nil),    // 8: hcore.GenerateWarpConfigRequest
-	(*SetSystemProxyEnabledRequest)(nil), // 9: hcore.SetSystemProxyEnabledRequest
-	(*LogRequest)(nil),                   // 10: hcore.LogRequest
-	(*CloseRequest)(nil),                 // 11: hcore.CloseRequest
-	(*CoreInfoResponse)(nil),             // 12: hcore.CoreInfoResponse
-	(*OutboundGroupList)(nil),            // 13: hcore.OutboundGroupList
-	(*SystemInfo)(nil),                   // 14: hcore.SystemInfo
-	(*hcommon.Response)(nil),             // 15: hcommon.Response
-	(*ParseResponse)(nil),                // 16: hcore.ParseResponse
-	(*BootstrapFetchResponse)(nil),       // 17: hcore.BootstrapFetchResponse
-	(*WarpGenerationResponse)(nil),       // 18: hcore.WarpGenerationResponse
-	(*SystemProxyStatus)(nil),            // 19: hcore.SystemProxyStatus
-	(*LogMessage)(nil),                   // 20: hcore.LogMessage
+	(*SpeedTestRequest)(nil),             // 8: hcore.SpeedTestRequest
+	(*GenerateWarpConfigRequest)(nil),    // 9: hcore.GenerateWarpConfigRequest
+	(*SetSystemProxyEnabledRequest)(nil), // 10: hcore.SetSystemProxyEnabledRequest
+	(*LogRequest)(nil),                   // 11: hcore.LogRequest
+	(*CloseRequest)(nil),                 // 12: hcore.CloseRequest
+	(*CoreInfoResponse)(nil),             // 13: hcore.CoreInfoResponse
+	(*OutboundGroupList)(nil),            // 14: hcore.OutboundGroupList
+	(*SystemInfo)(nil),                   // 15: hcore.SystemInfo
+	(*hcommon.Response)(nil),             // 16: hcommon.Response
+	(*ParseResponse)(nil),                // 17: hcore.ParseResponse
+	(*BootstrapFetchResponse)(nil),       // 18: hcore.BootstrapFetchResponse
+	(*SpeedTestResponse)(nil),            // 19: hcore.SpeedTestResponse
+	(*WarpGenerationResponse)(nil),       // 20: hcore.WarpGenerationResponse
+	(*SystemProxyStatus)(nil),            // 21: hcore.SystemProxyStatus
+	(*LogMessage)(nil),                   // 22: hcore.LogMessage
 }
 var file_v2_hcore_hcore_service_proto_depIdxs = []int32{
 	0,  // 0: hcore.Core.Start:input_type -> hcore.StartRequest
@@ -91,34 +94,36 @@ var file_v2_hcore_hcore_service_proto_depIdxs = []int32{
 	6,  // 13: hcore.Core.SelectOutbound:input_type -> hcore.SelectOutboundRequest
 	7,  // 14: hcore.Core.UrlTest:input_type -> hcore.UrlTestRequest
 	1,  // 15: hcore.Core.UrlTestActive:input_type -> hcommon.Empty
-	8,  // 16: hcore.Core.GenerateWarpConfig:input_type -> hcore.GenerateWarpConfigRequest
-	1,  // 17: hcore.Core.GetSystemProxyStatus:input_type -> hcommon.Empty
-	9,  // 18: hcore.Core.SetSystemProxyEnabled:input_type -> hcore.SetSystemProxyEnabledRequest
-	10, // 19: hcore.Core.LogListener:input_type -> hcore.LogRequest
-	11, // 20: hcore.Core.Close:input_type -> hcore.CloseRequest
-	12, // 21: hcore.Core.Start:output_type -> hcore.CoreInfoResponse
-	12, // 22: hcore.Core.CoreInfoListener:output_type -> hcore.CoreInfoResponse
-	13, // 23: hcore.Core.OutboundsInfo:output_type -> hcore.OutboundGroupList
-	13, // 24: hcore.Core.MainOutboundsInfo:output_type -> hcore.OutboundGroupList
-	14, // 25: hcore.Core.GetSystemInfo:output_type -> hcore.SystemInfo
-	14, // 26: hcore.Core.GetSystemInfoStream:output_type -> hcore.SystemInfo
-	15, // 27: hcore.Core.Setup:output_type -> hcommon.Response
-	16, // 28: hcore.Core.Parse:output_type -> hcore.ParseResponse
-	17, // 29: hcore.Core.BootstrapFetch:output_type -> hcore.BootstrapFetchResponse
-	12, // 30: hcore.Core.ChangeInhiveSettings:output_type -> hcore.CoreInfoResponse
-	12, // 31: hcore.Core.StartService:output_type -> hcore.CoreInfoResponse
-	12, // 32: hcore.Core.Stop:output_type -> hcore.CoreInfoResponse
-	12, // 33: hcore.Core.Restart:output_type -> hcore.CoreInfoResponse
-	15, // 34: hcore.Core.SelectOutbound:output_type -> hcommon.Response
-	15, // 35: hcore.Core.UrlTest:output_type -> hcommon.Response
-	15, // 36: hcore.Core.UrlTestActive:output_type -> hcommon.Response
-	18, // 37: hcore.Core.GenerateWarpConfig:output_type -> hcore.WarpGenerationResponse
-	19, // 38: hcore.Core.GetSystemProxyStatus:output_type -> hcore.SystemProxyStatus
-	15, // 39: hcore.Core.SetSystemProxyEnabled:output_type -> hcommon.Response
-	20, // 40: hcore.Core.LogListener:output_type -> hcore.LogMessage
-	1,  // 41: hcore.Core.Close:output_type -> hcommon.Empty
-	21, // [21:42] is the sub-list for method output_type
-	0,  // [0:21] is the sub-list for method input_type
+	8,  // 16: hcore.Core.SpeedTest:input_type -> hcore.SpeedTestRequest
+	9,  // 17: hcore.Core.GenerateWarpConfig:input_type -> hcore.GenerateWarpConfigRequest
+	1,  // 18: hcore.Core.GetSystemProxyStatus:input_type -> hcommon.Empty
+	10, // 19: hcore.Core.SetSystemProxyEnabled:input_type -> hcore.SetSystemProxyEnabledRequest
+	11, // 20: hcore.Core.LogListener:input_type -> hcore.LogRequest
+	12, // 21: hcore.Core.Close:input_type -> hcore.CloseRequest
+	13, // 22: hcore.Core.Start:output_type -> hcore.CoreInfoResponse
+	13, // 23: hcore.Core.CoreInfoListener:output_type -> hcore.CoreInfoResponse
+	14, // 24: hcore.Core.OutboundsInfo:output_type -> hcore.OutboundGroupList
+	14, // 25: hcore.Core.MainOutboundsInfo:output_type -> hcore.OutboundGroupList
+	15, // 26: hcore.Core.GetSystemInfo:output_type -> hcore.SystemInfo
+	15, // 27: hcore.Core.GetSystemInfoStream:output_type -> hcore.SystemInfo
+	16, // 28: hcore.Core.Setup:output_type -> hcommon.Response
+	17, // 29: hcore.Core.Parse:output_type -> hcore.ParseResponse
+	18, // 30: hcore.Core.BootstrapFetch:output_type -> hcore.BootstrapFetchResponse
+	13, // 31: hcore.Core.ChangeInhiveSettings:output_type -> hcore.CoreInfoResponse
+	13, // 32: hcore.Core.StartService:output_type -> hcore.CoreInfoResponse
+	13, // 33: hcore.Core.Stop:output_type -> hcore.CoreInfoResponse
+	13, // 34: hcore.Core.Restart:output_type -> hcore.CoreInfoResponse
+	16, // 35: hcore.Core.SelectOutbound:output_type -> hcommon.Response
+	16, // 36: hcore.Core.UrlTest:output_type -> hcommon.Response
+	16, // 37: hcore.Core.UrlTestActive:output_type -> hcommon.Response
+	19, // 38: hcore.Core.SpeedTest:output_type -> hcore.SpeedTestResponse
+	20, // 39: hcore.Core.GenerateWarpConfig:output_type -> hcore.WarpGenerationResponse
+	21, // 40: hcore.Core.GetSystemProxyStatus:output_type -> hcore.SystemProxyStatus
+	16, // 41: hcore.Core.SetSystemProxyEnabled:output_type -> hcommon.Response
+	22, // 42: hcore.Core.LogListener:output_type -> hcore.LogMessage
+	1,  // 43: hcore.Core.Close:output_type -> hcommon.Empty
+	22, // [22:44] is the sub-list for method output_type
+	0,  // [0:22] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
