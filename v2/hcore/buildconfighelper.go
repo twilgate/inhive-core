@@ -74,10 +74,16 @@ func (s *CoreService) Parse(ctx context.Context, in *ParseRequest) (resp *ParseR
 	return Parse(libbox.FromContext(ctx, nil), in)
 }
 
-func Parse(ctx context.Context, in *ParseRequest) (*ParseResponse, error) {
-	defer config.DeferPanicToError("parse", func(err error) {
-		Log(LogLevel_FATAL, LogType_CONFIG, err.Error())
-		StopAndAlert(MessageType_UNEXPECTED_ERROR, err.Error())
+func Parse(ctx context.Context, in *ParseRequest) (resp *ParseResponse, err error) {
+	// Recover the panic into a normal error and FAILED response — never call
+	// StopAndAlert here. Parse runs from background subscription updates
+	// (profile_repository.go:296); a malformed remote config must NOT take down
+	// the user's active tunnel. The gRPC wrapper at CoreService.Parse already
+	// has its own RecoverPanicToError; this defer covers in-process callers.
+	defer config.RecoverPanicToError("parse", func(panicErr error) {
+		Log(LogLevel_FATAL, LogType_CONFIG, panicErr.Error())
+		resp = &ParseResponse{ResponseCode: hcommon.ResponseCode_FAILED, Message: panicErr.Error()}
+		err = panicErr
 	})
 
 	path := in.TempPath
@@ -177,10 +183,12 @@ func (s *CoreService) GenerateConfig(ctx context.Context, in *GenerateConfigRequ
 	return GenerateConfig(libbox.FromContext(ctx, nil), in)
 }
 
-func GenerateConfig(ctx context.Context, in *GenerateConfigRequest) (*GenerateConfigResponse, error) {
-	defer config.DeferPanicToError("generateConfig", func(err error) {
-		Log(LogLevel_FATAL, LogType_CONFIG, err.Error())
-		StopAndAlert(MessageType_UNEXPECTED_ERROR, err.Error())
+func GenerateConfig(ctx context.Context, in *GenerateConfigRequest) (resp *GenerateConfigResponse, err error) {
+	// Same rationale as Parse: never StopAndAlert from a config-build helper.
+	// CoreService.GenerateConfig wraps with its own RecoverPanicToError.
+	defer config.RecoverPanicToError("generateConfig", func(panicErr error) {
+		Log(LogLevel_FATAL, LogType_CONFIG, panicErr.Error())
+		err = panicErr
 	})
 	if static.InhiveOptions == nil {
 		static.InhiveOptions = config.DefaultInhiveOptions()
