@@ -115,10 +115,6 @@ func Parse(ctx context.Context, in *ParseRequest) (resp *ParseResponse, err erro
 }
 
 func (s *CoreService) ChangeInhiveSettings(ctx context.Context, in *ChangeInhiveSettingsRequest) (resp *CoreInfoResponse, err error) {
-	defer config.RecoverPanicToError("CoreService.ChangeInhiveSettings", func(e error) {
-		Log(LogLevel_FATAL, LogType_CORE, e.Error())
-		err = e
-	})
 	return ChangeInhiveSettings(in, true)
 }
 
@@ -176,10 +172,6 @@ func ChangeInhiveSettings(in *ChangeInhiveSettingsRequest, insert bool) (*CoreIn
 }
 
 func (s *CoreService) GenerateConfig(ctx context.Context, in *GenerateConfigRequest) (resp *GenerateConfigResponse, err error) {
-	defer config.RecoverPanicToError("CoreService.GenerateConfig", func(e error) {
-		Log(LogLevel_FATAL, LogType_CORE, e.Error())
-		err = e
-	})
 	return GenerateConfig(libbox.FromContext(ctx, nil), in)
 }
 

@@ -122,7 +122,10 @@ func StartGrpcServer(listenAddressG string, service string) (*grpc.Server, error
 		log.Error("failed to listen: %v", err)
 		return nil, err
 	}
-	s := grpc.NewServer()
+	s := grpc.NewServer(
+		grpc.UnaryInterceptor(recoveryUnaryInterceptor),
+		grpc.StreamInterceptor(recoveryStreamInterceptor),
+	)
 	if service == "core" {
 		RegisterCoreServer(s, &CoreService{})
 	}
@@ -173,7 +176,10 @@ func StartGrpcServerByMode(listenAddressG string, mode SetupMode) (*grpc.Server,
 	}
 
 	if mode == SetupMode_GRPC_BACKGROUND_INSECURE || mode == SetupMode_GRPC_NORMAL_INSECURE {
-		grpcServer[mode] = grpc.NewServer()
+		grpcServer[mode] = grpc.NewServer(
+			grpc.UnaryInterceptor(recoveryUnaryInterceptor),
+			grpc.StreamInterceptor(recoveryStreamInterceptor),
+		)
 	} else {
 		table := db.GetTable[hcommon.AppSettings]()
 		Log(LogLevel_DEBUG, LogType_CORE, table)
@@ -214,7 +220,11 @@ func StartGrpcServerByMode(listenAddressG string, mode SetupMode) (*grpc.Server,
 
 		// Create a new gRPC server with TLS credentials
 		creds := credentials.NewTLS(tlsConfig)
-		grpcServer[mode] = grpc.NewServer(grpc.Creds(creds))
+		grpcServer[mode] = grpc.NewServer(
+			grpc.Creds(creds),
+			grpc.UnaryInterceptor(recoveryUnaryInterceptor),
+			grpc.StreamInterceptor(recoveryStreamInterceptor),
+		)
 	}
 	// Register your gRPC service here
 	RegisterCoreServer(grpcServer[mode], &CoreService{})

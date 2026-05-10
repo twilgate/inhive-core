@@ -5,16 +5,11 @@ import (
 	"context"
 	"time"
 
-	"github.com/twilgate/inhive-core/v2/config"
 	hcommon "github.com/twilgate/inhive-core/v2/hcommon"
 	C "github.com/sagernet/sing-box/constant"
 )
 
 func (s *CoreService) Close(ctx context.Context, closeReq *CloseRequest) (resp *hcommon.Empty, err error) {
-	defer config.RecoverPanicToError("CoreService.Close", func(e error) {
-		Log(LogLevel_FATAL, LogType_CORE, e.Error())
-		err = e
-	})
 	if closeReq == nil {
 		return nil, nil
 	}

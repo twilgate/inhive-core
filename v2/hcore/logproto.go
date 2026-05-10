@@ -7,7 +7,6 @@ import (
 	"runtime/pprof"
 	"time"
 
-	"github.com/twilgate/inhive-core/v2/config"
 	"google.golang.org/grpc"
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
@@ -27,10 +26,6 @@ func Log(level LogLevel, typ LogType, message ...any) {
 }
 
 func (s *CoreService) LogListener(req *LogRequest, stream grpc.ServerStreamingServer[LogMessage]) (err error) {
-	defer config.RecoverPanicToError("CoreService.LogListener", func(e error) {
-		Log(LogLevel_FATAL, LogType_CORE, e.Error())
-		err = e
-	})
 	logSub := static.logObserver.Subscribe(1)
 	defer static.logObserver.Unsubscribe(logSub)
 

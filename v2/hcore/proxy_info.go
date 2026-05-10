@@ -180,18 +180,10 @@ func TrimTagName(tag string) string {
 }
 
 func (s *CoreService) OutboundsInfo(req *hcommon.Empty, stream grpc.ServerStreamingServer[OutboundGroupList]) (err error) {
-	defer config.RecoverPanicToError("CoreService.OutboundsInfo", func(e error) {
-		Log(LogLevel_FATAL, LogType_CORE, e.Error())
-		err = e
-	})
 	return static.AllProxiesInfoStream(stream, false)
 }
 
 func (s *CoreService) MainOutboundsInfo(req *hcommon.Empty, stream grpc.ServerStreamingServer[OutboundGroupList]) (err error) {
-	defer config.RecoverPanicToError("CoreService.MainOutboundsInfo", func(e error) {
-		Log(LogLevel_FATAL, LogType_CORE, e.Error())
-		err = e
-	})
 	return static.AllProxiesInfoStream(stream, true)
 }
 

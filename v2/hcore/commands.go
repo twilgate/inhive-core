@@ -67,18 +67,10 @@ func (h *InhiveInstance) readStatus(prev *SystemInfo) *SystemInfo {
 }
 
 func (s *CoreService) GetSystemInfo(ctx context.Context, req *hcommon.Empty) (resp *SystemInfo, err error) {
-	defer config.RecoverPanicToError("CoreService.GetSystemInfo", func(e error) {
-		Log(LogLevel_FATAL, LogType_CORE, e.Error())
-		err = e
-	})
 	return static.readStatus(nil), nil
 
 }
 func (s *CoreService) GetSystemInfoStream(req *hcommon.Empty, stream grpc.ServerStreamingServer[SystemInfo]) (err error) {
-	defer config.RecoverPanicToError("CoreService.GetSystemInfoStream", func(e error) {
-		Log(LogLevel_FATAL, LogType_CORE, e.Error())
-		err = e
-	})
 	return static.GetSystemInfo(stream)
 
 }

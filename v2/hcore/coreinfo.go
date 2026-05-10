@@ -4,7 +4,6 @@ package hcore
 import (
 	"fmt"
 
-	"github.com/twilgate/inhive-core/v2/config"
 	hcommon "github.com/twilgate/inhive-core/v2/hcommon"
 	"google.golang.org/grpc"
 )
@@ -27,10 +26,6 @@ func SetCoreStatus(state CoreStates, msgType MessageType, message string) *CoreI
 }
 
 func (s *CoreService) CoreInfoListener(req *hcommon.Empty, stream grpc.ServerStreamingServer[CoreInfoResponse]) (err error) {
-	defer config.RecoverPanicToError("CoreService.CoreInfoListener", func(e error) {
-		Log(LogLevel_FATAL, LogType_CORE, e.Error())
-		err = e
-	})
 	coreSub := static.coreInfoObserver.Subscribe(1)
 	defer static.coreInfoObserver.Unsubscribe(coreSub)
 	stream.Send(&CoreInfoResponse{
