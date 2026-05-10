@@ -37,7 +37,6 @@ type CoreService struct {
 func Setup(params *SetupRequest, platformInterface libbox.PlatformInterface) error {
 	defer config.DeferPanicToError("setup", func(err error) {
 		Log(LogLevel_FATAL, LogType_CORE, err.Error())
-		<-time.After(5 * time.Second)
 	})
 	mu.Lock()
 	defer mu.Unlock()
@@ -233,7 +232,6 @@ func StartGrpcServerByMode(listenAddressG string, mode SetupMode) (*grpc.Server,
 	go func() {
 		defer config.DeferPanicToError("grpcsetup", func(err error) {
 			Log(LogLevel_FATAL, LogType_CORE, err.Error())
-			<-time.After(5 * time.Second)
 		})
 		if err := grpcServer[mode].Serve(lis); err != nil {
 			Log(LogLevel_DEBUG, LogType_CORE, fmt.Sprintf("failed to serve: %v\n", err))
