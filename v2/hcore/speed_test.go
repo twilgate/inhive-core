@@ -18,11 +18,9 @@ import (
 	"io"
 	"net"
 	"net/http"
-	"strings"
 	"time"
 
 	"github.com/sagernet/sing-box/adapter"
-	C "github.com/sagernet/sing-box/constant"
 	"github.com/sagernet/sing/common/ntp"
 	"github.com/twilgate/inhive-core/v2/config"
 	E "github.com/sagernet/sing/common/exceptions"
@@ -130,7 +128,11 @@ func runDownload(ctx context.Context, client *http.Client, bytesToFetch int64) (
 }
 
 func runUpload(ctx context.Context, client *http.Client, bytesToSend int64) (*SpeedTestResponse, error) {
-	body := strings.NewReader(strings.Repeat("a", int(bytesToSend)))
+	// Stream the body instead of allocating bytesToSend bytes up-front: at the
+	// 2 MB default that's already 4% of the 50 MB iOS Network Extension budget,
+	// and callers can request bigger payloads via SpeedTestRequest.TestBytes.
+	// http.Transport will pull this in ~32 KB chunks; allocation is bounded.
+	body := io.LimitReader(constByteReader('a'), bytesToSend)
 	url := fmt.Sprintf("https://%s/__up", speedTestHost)
 	req, err := http.NewRequestWithContext(ctx, http.MethodPost, url, body)
 	if err != nil {
@@ -164,6 +166,15 @@ func computeKbps(bytes int64, elapsed time.Duration) *SpeedTestResponse {
 	return resp
 }
 
-// Заглушка чтобы C constant импорт не unused — он будет нужен если будем
-// расширять с C.TCPTimeout / C.ReadPayloadTimeout.
-var _ = C.TCPTimeout
+// constByteReader is an io.Reader that yields a single repeating byte forever;
+// wrap it with io.LimitReader to bound the size. Used for upload speed tests
+// where the actual payload contents don't matter, only the byte count and we
+// want to avoid materializing the whole payload in RAM.
+type constByteReader byte
+
+func (c constByteReader) Read(p []byte) (int, error) {
+	for i := range p {
+		p[i] = byte(c)
+	}
+	return len(p), nil
+}
