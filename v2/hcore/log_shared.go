@@ -27,6 +27,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"runtime"
 	"sync"
 	"time"
 )
@@ -39,9 +40,19 @@ var (
 // shared log file. Failures (file open/write) are silently swallowed —
 // diagnostic logging shouldn't break tunnel startup.
 //
+// No-op on every platform except iOS: only Swift InhiveVPNPlugin /
+// PacketTunnelProvider read this file (ne_last_error.log) and only on iOS
+// does the NE/main-app process split make Go-side diagnostics necessary
+// before openTun is reached. On Windows / Android / desktop sing-box logging
+// already covers the same ground, and we don't want ~30 syscalls on every
+// startup chain there.
+//
 // Use sparingly for major step boundaries (BuildConfig, NewService entry/exit,
 // outbound init). NOT for per-packet or hot-path logging.
 func WriteSharedLog(msg string) {
+	if runtime.GOOS != "ios" {
+		return
+	}
 	if sWorkingPath == "" {
 		return // Setup() не был вызван — нет workingDir
 	}
