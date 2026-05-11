@@ -32,7 +32,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/twilgate/inhive-core/main/inst
 
 ## Key Features
 
-- **Multi-Protocol Support**: VLESS, VMess, Trojan, Shadowsocks, ShadowTLS, WireGuard, Hysteria, SOCKS, Naive, Mieru, Tor, and more.
+- **Multi-Protocol Support**: VLESS (Reality / XHTTP / XTLS-Vision), VMess, Trojan, Shadowsocks, ShadowTLS, WireGuard, AmneziaWG, Hysteria2, TUIC, SOCKS, NaiveProxy, Mieru, DNSTT, Tor, and more.
 - **UTProto (FakeTLS)**: Custom MTProto-derived transport that mimics TLS handshake, invisible to DPI — developed in-house.
 - **Cross-Platform**: Powering InHive on Android, macOS, Linux, Windows, and iOS.
 - **High Performance**: Optimized core built on top of `sing-box` for maximum speed and stability.
@@ -64,23 +64,30 @@ Install via the universal installer script — it auto-detects OpenWrt and confi
 - [x] CI/CD pipeline with GitHub Actions
 - [x] Full code audit and dead code cleanup (~5400 lines of dead code removed)
 - [x] Critical bug fixes (tunnel service, config builder, service manager)
-- [x] Dependency updates (Go 1.26, grpc v1.80, sing v0.8.4, sing-box v1.13.6)
-- [x] NaiveProxy support (Chromium TLS stack, undetectable by DPI)
+- [x] Dependency updates (Go 1.26, grpc v1.80, sing v0.8.4, sing-box v1.13.8)
+- [x] NaiveProxy support (Chromium TLS stack)
 - [x] naive+https:// and naive+quic:// scheme variants support
+- [x] Hysteria2 / TUIC support (high-performance UDP-based protocols)
+- [x] AmneziaWG (AWG) — WireGuard variant with junk packets / fragmentation
+- [x] Mieru / DNSTT outbound support
 - [x] Go 1.26 TLS compatibility (removed psiphon, fixed WireGuard deprecated warnings)
 - [x] InHive App integration (Flutter, Windows — v2.0.0 released)
-
-- [x] UTProto outbound — FakeTLS transport (MTProto-derived), bypasses LTE DPI whitelist restrictions
+- [x] UTProto outbound — FakeTLS transport (MTProto-derived) — developed in-house
 - [x] UTProto URI scheme: `utproto://SECRET@HOST:PORT?tls_domain=DOMAIN&vless_uuid=UUID&vless_port=PORT#Name`
+- [x] TUN mode — full system-level routing (Windows + Android + iOS)
+- [x] Split tunnel — domain / app / provider-based bypass (banking, gov apps)
+- [x] Android build — gomobile AAR with 3 ABIs (arm64-v8a + armeabi-v7a + x86_64)
+- [x] iOS build — XCFramework with arm64-device + arm64-simulator slices
+- [x] iOS NetworkExtension PacketTunnelProvider — full iOS VPN integration
+- [x] Wave 17 — Standalone iOS main-app core (speed test + bootstrap without VPN)
+- [x] Smart failover (urltest + ping-based) — auto-switch between servers per carrier
 
 ### In Progress
-- [ ] Smart failover — auto-switch between servers/IPs per carrier (ping-based)
+- [ ] macOS native build — Flutter macOS target + NEPacketTunnelProvider for macOS
 
 ### Planned
-- [ ] TUN mode — full system-level routing (Windows + Android)
-- [ ] Split tunnel — exclude banking/gov apps from VPN (Sber, Tinkoff, Alfa, Gosuslugi)
-- [ ] Android / iOS builds (gomobile AAR)
-- [ ] TURN proxy outbound — WebRTC-based tunneling as fallback
+- [ ] Linux client (Flutter desktop + systemd integration)
+- [ ] WARP integration as fallback (Cloudflare WireGuard for stationary contexts — not RU mobile)
 
 ---
 
