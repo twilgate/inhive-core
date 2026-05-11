@@ -24,7 +24,7 @@ All notable changes to InHive Core will be documented in this file.
 InHive Core is born — a fork of [Hiddify Core](https://github.com/hiddify/hiddify-core) (v4.1.0, sing-box v1.13.0), rebranded and cleaned up for the InHive ecosystem.
 
 ### Added
-- New branding: InHive Core (`github.com/twilgate/inhive-core`)
+- New branding: InHive Core (`github.com/TwilgateLabs/inhive-core`)
 - CI/CD pipeline with GitHub Actions (build + vet on every push)
 - Recursive submodule checkout with SSH→HTTPS rewrite for CI
 - New logo and assets
