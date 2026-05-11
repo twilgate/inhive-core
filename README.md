@@ -71,23 +71,16 @@ Install via the universal installer script — it auto-detects OpenWrt and confi
 - [x] AmneziaWG (AWG) — WireGuard variant with junk packets / fragmentation
 - [x] Mieru / DNSTT outbound support
 - [x] Go 1.26 TLS compatibility (removed psiphon, fixed WireGuard deprecated warnings)
-- [x] InHive App integration (Flutter, Windows — v2.0.0 released)
 - [x] UTProto outbound — FakeTLS transport (MTProto-derived) — developed in-house
 - [x] UTProto URI scheme: `utproto://SECRET@HOST:PORT?tls_domain=DOMAIN&vless_uuid=UUID&vless_port=PORT#Name`
-- [x] TUN mode — full system-level routing (Windows + Android + iOS)
-- [x] Split tunnel — domain / app / provider-based bypass (banking, gov apps)
-- [x] Android build — gomobile AAR with 3 ABIs (arm64-v8a + armeabi-v7a + x86_64)
-- [x] iOS build — XCFramework with arm64-device + arm64-simulator slices
-- [x] iOS NetworkExtension PacketTunnelProvider — full iOS VPN integration
-- [x] Wave 17 — Standalone iOS main-app core (speed test + bootstrap without VPN)
-- [x] Smart failover (urltest + ping-based) — auto-switch between servers per carrier
-
-### In Progress
-- [ ] macOS native build — Flutter macOS target + NEPacketTunnelProvider for macOS
+- [x] Android build target — gomobile AAR with 3 ABIs (arm64-v8a + armeabi-v7a + x86_64)
+- [x] iOS build target — XCFramework with arm64-device + arm64-simulator slices
 
 ### Planned
-- [ ] Linux client (Flutter desktop + systemd integration)
-- [ ] WARP integration as fallback (Cloudflare WireGuard for stationary contexts — not RU mobile)
+- [ ] macOS build target — XCFramework with macOS slice for native Flutter macOS apps
+- [ ] Linux build target — shared library for Flutter desktop integration
+
+> **Note:** Client-app roadmap (UI, TUN integration, Split tunnel, platform clients) is tracked in [twilgate/inhive-app](https://github.com/twilgate/inhive-app). This repository covers only the Go core / proxy engine.
 
 ---
 
