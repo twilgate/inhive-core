@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/twilgate/inhive-core/cmd"
+	"github.com/TwilgateLabs/inhive-core/cmd"
 )
 
 func main() {

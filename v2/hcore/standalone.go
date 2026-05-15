@@ -15,7 +15,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/twilgate/inhive-core/v2/config"
+	"github.com/TwilgateLabs/inhive-core/v2/config"
 
 	"github.com/sagernet/sing-box/option"
 )
